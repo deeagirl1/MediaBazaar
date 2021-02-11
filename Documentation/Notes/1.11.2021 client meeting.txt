@@ -1,0 +1,44 @@
+We are speaking to the manager
+He wants overviews, stats, salaries per employee per year, statistics related to products etc
+
+Different contracts: full time, part time (40 hours/12 hours)
+If there's gaps in schedule it is filled with shifts of 8 hours.
+Shifts:
+morning 7-3
+after 3-11
+night 11-7
+Couple of shifts per week, can't go over how many hours they have in contract.
+If not enough employees, call employees from pool, they have 0 hour contracts
+Admin can fill in the schedule
+Admin assigns employees to shifts (Monday morning etc)
+Should not be possible to assign to many shifts
+No more than 10-12 hours a day (check law)
+2 adjacent aren't possible
+
+employees can indicate that they dont want to work and when they dont want to work (or cant)
+
+Employees can signal if they prefer night shifts or not
+
+
+Privacy sensitive information (we need encryption)
+We keep track on excel sheets lots of excell sheets employees products information no link between sheets
+
+employee: first name, family name, address, email, account (user:pass), DOB
+they make schedule on whiteboard
+
+more than 1 meeting in semester
+
+a couple of steps, in the end we have emoloyees, customers, admins, manager that will use software app
+
+first 6 weeks we work on c# application for administrator, mainly managinig data, can add new employees etc, modify vaious information, deleting not needed (active/not active, started working/not started yet) (but maybe add for Outstanding)
+
+
+idea: have a "start work on" system for employees
+employees just use website to change some personal data
+employee types: cashier, janitor etc
+admin should be able to schedule employees for workshifts
+
+
+
+after week 6 we have meeting and discuss managing products/managing products in stock 
+week 7 website for employees
