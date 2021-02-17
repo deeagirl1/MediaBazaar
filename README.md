@@ -1,13 +1,12 @@
-❮img src="https://media.discordapp.net/attachments/808681271688953861/810838076561162260/Logo_1.png" ❯
+## The goal
+We are aiming to create an administrative system that allows **Media Bazaar**'s employees to run their business easier and keep track of their assets.
 
+## Who are we?
+We are **Tree**, a 4-person group of students that focuses on fixing other companies' logistical problems.
 
-## 
-We are Tree, a 
-
-What is our project?
 
 Meet the team:
 Bohdan Tymofieienko
 Andreea Şindrilaru
 Andrei Sava
-Stelian
+Stelian Rumenov
