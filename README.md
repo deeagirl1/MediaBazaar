@@ -9,3 +9,6 @@ Bohdan Tymofieienko
 Andreea Şindrilaru
 Andrei Sava
 Stelian Rumenov
+
+
+Learn more about our future plans by reading our [Project Plan](https://git.fhict.nl/I454066/prj-cb07-group1/-/tree/master)
