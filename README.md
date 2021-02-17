@@ -4,8 +4,7 @@ We are aiming to create an administrative system that allows **Media Bazaar**'s 
 ## Who are we?
 We are **Tree**, a 4-person group of students that focuses on fixing other companies' logistical problems.
 
-
-Meet the team:
+## The team
 Bohdan Tymofieienko
 Andreea Şindrilaru
 Andrei Sava
