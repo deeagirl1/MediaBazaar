@@ -12,5 +12,7 @@ We are **Tree**, a 4-person group of students that focuses on fixing other compa
 |Andrei Sava|
 |Stelian Rumenov|
 
-
-Learn more about our future plans by reading our [Project Plan](https://git.fhict.nl/I454066/prj-cb07-group1/-/tree/master)
+## Documentation
+- [Project plan](https://git.fhict.nl/I454066/prj-cb07-group1/-/blob/master/Documentation/Project_plan.pdf)
+- [Meeting agendas](https://git.fhict.nl/I454066/prj-cb07-group1/-/tree/master/Documentation/Agendas)
+- [Meeting notes](https://git.fhict.nl/I454066/prj-cb07-group1/-/tree/master/Documentation/Notes)
