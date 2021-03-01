@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaBazaarApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="1000">
     <Grid>
         <TabControl>
-            
-            
-            
+
+
+
             <TabItem Header="Employees">
                 <Grid Background="LightGray">
                     <TextBox Margin="10,10,244,342">
-                        
+
                     </TextBox>
                     <Button Margin="547,10,122,342">
                         <TextBlock>Search</TextBlock>
@@ -34,13 +34,13 @@
                     </Button>
                 </Grid>
             </TabItem>
-            
-            
-            
+
+
+
             <TabItem Header="Stock" >
                 <Grid Background="LightGray">
                     <ListView Margin="10,10,122,10">
-                        </ListView>
+                    </ListView>
                     <Button Margin="669,347,10,10">
                         <TextBlock>Add</TextBlock>
                     </Button>
@@ -49,16 +49,17 @@
                     </Button>
                 </Grid>
             </TabItem>
-            
-            
-            
+
+
+
             <TabItem Header="Requests" HorizontalAlignment="Left">
                 <Grid Background="LightGray">
                     <ListView Margin="10,10,122,10">
 
                     </ListView>
                     <Button Margin="669,347,10,10">
-                        <TextBlock>View</TextBlock></Button>
+                        <TextBlock>View</TextBlock>
+                    </Button>
                     <Button Margin="669,308,10,49">
                         <TextBlock>Reject</TextBlock>
                     </Button>
@@ -68,19 +69,65 @@
 
                 </Grid>
             </TabItem>
-            
-            
-            
+
+
+
             <TabItem Header="Calendar" HorizontalAlignment="Left">
-                <Grid Background="LightGray">
-                    <Rectangle Fill="Aqua" Margin="10,10,122,10">
-                        
-                    </Rectangle>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" MaxWidth="120" MaxHeight="40"/>
+                    <Button Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" MaxWidth="120" MaxHeight="40"/>
+                    <Border Grid.Column="7" Grid.RowSpan="6" BorderBrush="LightGray" Opacity="0.6" BorderThickness="1,0,0,0"/>
+
+                    <Grid Grid.Row="1" Grid.Column="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="1"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="31*"/>
+                                <RowDefinition Height="58*"/>
+                                <RowDefinition Height="1"/>
+                            </Grid.RowDefinitions>
+
+                            <Rectangle Fill="LightGray"></Rectangle>
+                            <StackPanel Grid.Row="0" Grid.Column="1">
+                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" Padding="0">1</Label>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="1">
+                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Padding="0" Foreground="DarkOrange">
+                                    <Bold>Empty</Bold>
+                                </Label>
+                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Padding="0">Employee 1</Label>
+                                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Padding="0">Employee 2</Label>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
                 </Grid>
             </TabItem>
-            
-            
-            
+
+
+
             <TabItem Header="Statistics" HorizontalAlignment="Left">
                 <Grid Background="LightGray">
                     <TextBox Margin="10,10,244,342" Opacity="0.7">
@@ -95,9 +142,9 @@
 
                 </Grid>
             </TabItem>
-            
-            
-            
+
+
+
             <TabItem Header="Departments" HorizontalAlignment="Left">
                 <Grid Background="LightGray">
                     <ListView Margin="10,10,122,10">
