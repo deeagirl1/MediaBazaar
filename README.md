@@ -14,5 +14,7 @@ We are **Tree**, a 4-person group of students that focuses on fixing other compa
 
 ## Documentation
 - [Project plan](https://git.fhict.nl/I454066/prj-cb07-group1/-/blob/master/Documentation/Project_plan.pdf)
+- [Wireframes](https://git.fhict.nl/I454066/prj-cb07-group1/-/tree/master/Documentation/Wireframes.pdf)
 - [Meeting agendas](https://git.fhict.nl/I454066/prj-cb07-group1/-/tree/master/Documentation/Agendas)
 - [Meeting notes](https://git.fhict.nl/I454066/prj-cb07-group1/-/tree/master/Documentation/Notes)
+
