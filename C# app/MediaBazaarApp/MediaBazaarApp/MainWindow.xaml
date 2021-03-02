@@ -8,18 +8,28 @@
         Title="MainWindow" Height="600" Width="1000">
     <Grid>
         <TabControl>
+            
+            
+            
             <TabItem Header="Employees">
                 <Grid Background="LightGray">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
-                    
-                    <ListView Grid.Column="0">
+
+                    <TextBox Grid.Row="0" Grid.Column="0"/>
+                    <Button Grid.Column="1" Content="Search"/>
+
+                    <ListView Grid.Row="1" Grid.Column="0">
                         
                     </ListView>
 
-                    <Grid Grid.Column="1">
+                    <Grid Grid.Column="1" Grid.RowSpan="2">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10"/>
                             <RowDefinition Height="100*"/>
@@ -46,9 +56,9 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
-                    
+
                     <ListView Grid.Column="0">
-                        
+
                     </ListView>
 
                     <Grid Grid.Column="1">
@@ -67,9 +77,6 @@
 
 
 
-            
-            
-            
             <TabItem Header="Requests" HorizontalAlignment="Left">
                 <Grid Background="LightGray">
                     <Grid.ColumnDefinitions>
