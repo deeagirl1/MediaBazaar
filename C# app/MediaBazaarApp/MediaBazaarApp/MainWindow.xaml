@@ -8,64 +8,90 @@
         Title="MainWindow" Height="600" Width="1000">
     <Grid>
         <TabControl>
-
-
-
             <TabItem Header="Employees">
                 <Grid Background="LightGray">
-                    <TextBox Margin="10,10,244,342">
-
-                    </TextBox>
-                    <Button Margin="547,10,122,342">
-                        <TextBlock>Search</TextBlock>
-                    </Button>
-                    <ListView Margin="10,54,122,10">
-
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <ListView Grid.Column="0">
+                        
                     </ListView>
-                    <Button Margin="669,347,10,10">
-                        <TextBlock>Edit</TextBlock>
 
-                    </Button>
-                    <Button Margin="669,269,10,88">
-                        <TextBlock>Add</TextBlock>
-                    </Button>
-                    <Button Margin="669,308,10,49">
-                        <TextBlock>Remove</TextBlock>
-                    </Button>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="100*"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                            <Button Content="Search"/>
+                            <Button Content="Edit"/>
+                            <Button Content="Add"/>
+                            <Button Content="Remove"/>
+                        </StackPanel>
+                    </Grid>
+
                 </Grid>
             </TabItem>
+
+
 
 
 
             <TabItem Header="Stock" >
                 <Grid Background="LightGray">
-                    <ListView Margin="10,10,122,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <ListView Grid.Column="0">
+                        
                     </ListView>
-                    <Button Margin="669,347,10,10">
-                        <TextBlock>Add</TextBlock>
-                    </Button>
-                    <Button Margin="669,308,10,49">
-                        <TextBlock>View</TextBlock>
-                    </Button>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="100*"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel  Grid.Row="1" VerticalAlignment="Center">
+                            <Button Content="Add"/>
+                            <Button Content="View"/>
+                        </StackPanel>
+                    </Grid>
                 </Grid>
             </TabItem>
 
 
 
+            
+            
+            
             <TabItem Header="Requests" HorizontalAlignment="Left">
                 <Grid Background="LightGray">
-                    <ListView Margin="10,10,122,10">
-
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <ListView Grid.Column="0">
+                        
                     </ListView>
-                    <Button Margin="669,347,10,10">
-                        <TextBlock>View</TextBlock>
-                    </Button>
-                    <Button Margin="669,308,10,49">
-                        <TextBlock>Reject</TextBlock>
-                    </Button>
-                    <Button Margin="669,269,10,88">
-                        <TextBlock>Approve</TextBlock>
-                    </Button>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="100*"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel VerticalAlignment="Center" Grid.Row="1">
+                            <Button Content="View"/>
+                            <Button Content="Reject"/>
+                            <Button Content="Approve"/>
+                        </StackPanel>
+                        
+                    </Grid>
 
                 </Grid>
             </TabItem>
@@ -130,15 +156,18 @@
 
             <TabItem Header="Statistics" HorizontalAlignment="Left">
                 <Grid Background="LightGray">
-                    <TextBox Margin="10,10,244,342" Opacity="0.7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ListView Grid.Row="1" Grid.ColumnSpan="2"/>
 
-                    </TextBox>
-                    <Button Margin="547,10,122,342" Opacity="0.7">
-                        <TextBlock>View</TextBlock>
-                    </Button>
-                    <ListView Margin="10,54,122,10">
-
-                    </ListView>
+                    <TextBox Grid.Column="0"/>
+                    <Button Grid.Column ="1" Content="View"/>
 
                 </Grid>
             </TabItem>
@@ -147,19 +176,23 @@
 
             <TabItem Header="Departments" HorizontalAlignment="Left">
                 <Grid Background="LightGray">
-                    <ListView Margin="10,10,122,10">
-
-                    </ListView>
-                    <Button Margin="669,347,10,10">
-                        <TextBlock>Edit</TextBlock>
-                    </Button>
-                    <Button Margin="669,269,10,88">
-                        <TextBlock>Add</TextBlock>
-                    </Button>
-                    <Button Margin="669,308,10,49">
-                        <TextBlock>Remove</TextBlock>
-                    </Button>
-
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <ListView/>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="100*"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel VerticalAlignment="Center" Grid.Row="1">
+                            <Button Content="Edit"/>
+                            <Button Content="Add"/>
+                            <Button Content="Remove"/>
+                        </StackPanel>
+                    </Grid>
                 </Grid>
             </TabItem>
         </TabControl>
