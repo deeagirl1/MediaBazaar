@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1480</x>
+      <y>350</y>
+      <w>330</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Account
+--
+-login : string
+-password : string
+--
++ Account(id : string, login : string, password : string)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>990</x>
+      <y>350</y>
+      <w>340</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>AccountCollection
+--
+
+--
++ Add (account : Account) : bool
++ Remove(account : Account) : bool
++ Update(account : Account) : bool
++ isValid(account : Account) : User
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1020</x>
+      <y>220</y>
+      <w>270</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+IEnumerable&lt;Account&gt;
+--
++ GetEnumerator : IEnumerator&lt;Account&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1140</x>
+      <y>270</y>
+      <w>30</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1320</x>
+      <y>390</y>
+      <w>180</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=*</panel_attributes>
+    <additional_attributes>160.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>330</y>
+      <w>260</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Department
+--
+- id : string
+- name : string
+--
++ Department (id : string, name : string)
++ Add (employee : Employee) : bool
++ Remove (employee : Employee) : bool
++ Update (employee : Employee) : bool
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>330</y>
+      <w>340</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>DepartmentCollection
+--
+
+--
++ Add (department : Department) : bool
++ Remove (department : Department) : bool
++ Update (department : Department) : bool
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>470</x>
+      <y>200</y>
+      <w>300</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+IEnumerable&lt;Department&gt;
+--
++ GetEnumerator : IEnumerator&lt;Department&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>260</x>
+      <y>390</y>
+      <w>210</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=*</panel_attributes>
+    <additional_attributes>10.0;10.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>250</y>
+      <w>30</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>120</x>
+      <y>250</y>
+      <w>30</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>200</y>
+      <w>280</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+IEnumerable&lt;Employee&gt;
+--
++ GetEnumerator : IEnumerator&lt;Employee&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
