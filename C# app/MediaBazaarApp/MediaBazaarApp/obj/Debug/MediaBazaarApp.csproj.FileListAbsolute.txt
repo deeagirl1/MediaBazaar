@@ -23,3 +23,5 @@ C:\Users\andis\source\repos\prj-cb07-group1\C# app\MediaBazaarApp\MediaBazaarApp
 C:\Users\andis\source\repos\prj-cb07-group1\C# app\MediaBazaarApp\MediaBazaarApp\obj\Debug\MediaBazaarApp.exe
 C:\Users\andis\source\repos\prj-cb07-group1\C# app\MediaBazaarApp\MediaBazaarApp\obj\Debug\MediaBazaarApp.pdb
 C:\Users\andis\source\repos\prj-cb07-group1\C# app\MediaBazaarApp\MediaBazaarApp\obj\Debug\MediaBazaarApp.csprojAssemblyReference.cache
+C:\Users\andis\source\repos\prj-cb07-group1\C# app\MediaBazaarApp\MediaBazaarApp\obj\Debug\Popups\Login.g.cs
+C:\Users\andis\source\repos\prj-cb07-group1\C# app\MediaBazaarApp\MediaBazaarApp\obj\Debug\Popups\Login.baml

@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Calendar.cs" />
     <Compile Include="Popups\AddEmployee.xaml.cs">
       <DependentUpon>AddEmployee.xaml</DependentUpon>
     </Compile>
@@ -78,6 +79,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Popups\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Popups\Window2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -94,6 +99,9 @@
   <ItemGroup>
     <Compile Include="Popups\EditEmployee.xaml.cs">
       <DependentUpon>EditEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="Popups\Window2.xaml.cs">
       <DependentUpon>Window2.xaml</DependentUpon>
