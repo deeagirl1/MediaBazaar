@@ -16,7 +16,7 @@
             Media Bazaar</Label>
         
             <StackPanel Grid.Row="1" VerticalAlignment="Center" MaxWidth="200">
-                <Label >Email</Label>
+                <Label>Email</Label>
                 <TextBox/>
                 <Label>Password</Label>
                 <TextBox/>
