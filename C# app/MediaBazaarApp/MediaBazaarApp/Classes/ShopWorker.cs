@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-    public class ShopWorker : ISalary, IComparable<ShopWorker>
+    public class ShopWorker : Person, ISalary, IComparable<ShopWorker>
     {
         
         private bool nightShifts;
