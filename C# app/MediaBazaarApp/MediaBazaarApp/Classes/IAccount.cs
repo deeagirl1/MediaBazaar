@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-    class Calendar
+    interface IAccount
     {
+        string GetLogin();
+        void SetLogin(string login);
+        string GetPassword();
+        void SetPassword(string password);
     }
 }

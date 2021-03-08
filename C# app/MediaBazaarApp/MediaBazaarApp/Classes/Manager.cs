@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-    class Calendar
+    class Manager
     {
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

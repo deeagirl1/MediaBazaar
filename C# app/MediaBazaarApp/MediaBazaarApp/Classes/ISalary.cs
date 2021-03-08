@@ -13,6 +13,6 @@ namespace MediaBazaarApp.Classes
         void IncreaseSalary(decimal amount);
         void ReduceSalary(decimal amount);
         string GetBankAccount();
-        void SetBankAccount(string account)
+        void SetBankAccount(string account);
     }
 }

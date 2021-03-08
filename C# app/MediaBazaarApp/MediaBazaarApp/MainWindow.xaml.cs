@@ -32,6 +32,7 @@ namespace MediaBazaarApp
             calendar = new Calendar(this);
         }
 
+
         public class Calendar
         {
             private MainWindow mainWindow;

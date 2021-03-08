@@ -62,6 +62,11 @@
     <Compile Include="Classes\ShopWorker.cs" />
     <Compile Include="Classes\Departments.cs" />
     <Compile Include="Classes\WorkingDays.cs" />
+    <Compile Include="Classes\AccountManager.cs" />
+    <Compile Include="Classes\Administrator.cs" />
+    <Compile Include="Classes\IAccount.cs" />
+    <Compile Include="Classes\Manager.cs" />
+    <Compile Include="Classes\Person.cs" />
     <Compile Include="Popups\AddEmployee.xaml.cs">
       <DependentUpon>AddEmployee.xaml</DependentUpon>
     </Compile>
