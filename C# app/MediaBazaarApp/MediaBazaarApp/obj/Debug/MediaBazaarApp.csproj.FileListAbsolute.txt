@@ -1,4 +1,3 @@
-C:\Users\andis\source\repos\prj-cb07-group1\C# app\MediaBazaarApp\MediaBazaarApp\bin\Debug\MediaBazaarApp.exe.config
 C:\Users\andis\source\repos\prj-cb07-group1\C# app\MediaBazaarApp\MediaBazaarApp\bin\Debug\MediaBazaarApp.exe
 C:\Users\andis\source\repos\prj-cb07-group1\C# app\MediaBazaarApp\MediaBazaarApp\bin\Debug\MediaBazaarApp.pdb
 C:\Users\andis\source\repos\prj-cb07-group1\C# app\MediaBazaarApp\MediaBazaarApp\obj\Debug\MainWindow.g.cs
