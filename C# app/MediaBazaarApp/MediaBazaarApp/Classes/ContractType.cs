@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-    class Calendar
+    public enum ContractType
     {
+        FIXED_32,
+        FIXED_40,
+        ZERO_HOUR
     }
 }

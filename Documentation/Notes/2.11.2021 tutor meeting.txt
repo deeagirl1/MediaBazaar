@@ -1,6 +1,0 @@
-1) Team and mentor introduction
-2) Discussed waterfall methodology
-3) Discussed current project situation
-4) Project plan draft started 
-5) Approach chosen - app and website connected by mutual database
-6) Establish communication channels (with client, mentor and each other)

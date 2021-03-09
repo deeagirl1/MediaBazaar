@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-    class Calendar
+    public enum Departments
     {
+       HOUSEHOLD,
+       ELECTRONICS,
+       CASHIER,
+       TOOLS
     }
 }
