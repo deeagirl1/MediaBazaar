@@ -8,7 +8,7 @@ namespace MediaBazaarApp.Classes
 {
     class Administrator : Person
     {
-        public Administrator(string firstName, string secondName) : base (firstName, secondName)
+        public Administrator(string firstName, string lastName) : base (firstName, lastName)
         {
 
         }

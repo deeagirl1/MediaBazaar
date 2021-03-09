@@ -8,7 +8,7 @@ namespace MediaBazaarApp.Classes
 {
     class Manager : Person
     {
-        public Manager(string a, string b) : base(a, b)
+        public Manager(string firstName, string lastName) : base(firstName, lastName)
         {
 
         }
