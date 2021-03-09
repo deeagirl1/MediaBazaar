@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-    class AccountManager
+    public class AccountManager
     {
         private List<IAccount> accounts;
 
@@ -40,7 +40,7 @@ namespace MediaBazaarApp.Classes
         {
             foreach(IAccount a in this.accounts)
             {
-                if(a.ID == account.ID &&
+                if(a.Login == account.Login &&
                     a.Password == account.Password)
                 {
                     return a;

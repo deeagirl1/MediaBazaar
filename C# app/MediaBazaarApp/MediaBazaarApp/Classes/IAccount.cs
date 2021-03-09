@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-    interface IAccount
+    public interface IAccount
     {
         int ID { get; set; }
         string Login { get; set; }

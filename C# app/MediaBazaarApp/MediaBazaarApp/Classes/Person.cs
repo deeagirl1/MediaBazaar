@@ -31,7 +31,6 @@ namespace MediaBazaarApp.Classes
             get { return this.Email; }
             set { this.Email = value; }
         }        
-        
 
         public override string ToString() => $"{this.ID} {this.FirstName} {this.LastName}";
     }
