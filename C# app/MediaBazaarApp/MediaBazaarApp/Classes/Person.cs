@@ -6,12 +6,27 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-    class Person : IAccount 
+    abstract class Person : IAccount 
     {
         private int id;
         private string firstName;
         private string lastName;
         private string email;
+        private string password;
+
+        //Id generation will be added to constructor later after we settle how to handle it
+        
+
+        //Create person from first name and lastname
+        public Person(string firstName, string lastName)
+        {
+
+        }
+
+        public int GetId()
+        {
+            throw new NotImplementedException();
+        }
 
         public string GetLogin()
         {
@@ -19,6 +34,11 @@ namespace MediaBazaarApp.Classes
         }
 
         public string GetPassword()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetId(int id)
         {
             throw new NotImplementedException();
         }

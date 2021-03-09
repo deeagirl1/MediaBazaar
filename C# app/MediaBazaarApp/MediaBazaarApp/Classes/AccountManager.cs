@@ -10,6 +10,12 @@ namespace MediaBazaarApp.Classes
     {
         private List<IAccount> accounts;
 
+        public AccountManager()
+        {
+            accounts = new List<IAccount>();
+        }
+
+
         public bool Add(IAccount account)
         {
             return false;

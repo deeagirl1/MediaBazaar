@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-    class Administrator
+    class Administrator : Person
     {
+        public Administrator(string firstName, string secondName) : base (firstName, secondName)
+        {
+
+        }
         public override string ToString()
         {
             return base.ToString();
