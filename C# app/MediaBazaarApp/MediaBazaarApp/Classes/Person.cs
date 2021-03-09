@@ -8,51 +8,57 @@ namespace MediaBazaarApp.Classes
 {
     abstract class Person : IAccount 
     {
-        private int id;
-        private string firstName;
-        private string lastName;
-        private string email;
-        private string password;
+        private int _id;
+        private string _firstName;
+        private string _lastName;
+        private string _email;
+        private string _password;
 
-        //Id generation will be added to constructor later after we settle how to handle it
-        
+        public Person() { }
 
-        //Create person from first name and lastname
-        public Person(string firstName, string lastName)
+        public Person(int id, string firstName, string lastName, string email, string password)
         {
-
+            this.ID = id;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Email = email;
+            this.Password = password;
         }
 
-        public int GetId()
+        public int ID
         {
-            throw new NotImplementedException();
+            get { return this._id; }
+            set { this._id = value; }
+        }
+        public string Login
+        {
+            get { return this.Email; }
+            set { this.Email = value; }
+        }        
+        public string Password
+        {
+            get { return this._password; }
+            set { this._password= value; }
         }
 
-        public string GetLogin()
+        public string Email 
         {
-            throw new NotImplementedException();
+            get { return this._email; }
+            set { this._email = value; }
         }
 
-        public string GetPassword()
+        public string FirstName 
         {
-            throw new NotImplementedException();
+            get { return this._firstName; }
+            set { this._firstName = value; }
         }
 
-        public void SetId(int id)
+        public string LastName
         {
-            throw new NotImplementedException();
+            get { return this._lastName; }
+            set { this._lastName = value; }
         }
 
-        public void SetLogin(string login)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetPassword(string password)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override string ToString() => firstName + " " + lastName;
+        public override string ToString() => $"{this.ID} {this.FirstName} {this.LastName}";
     }
 }

@@ -8,11 +8,8 @@ namespace MediaBazaarApp.Classes
 {
     interface IAccount
     {
-        int GetId();
-        void SetId(int id);
-        string GetLogin();
-        void SetLogin(string login);
-        string GetPassword();
-        void SetPassword(string password);
+        int ID { get; set; }
+        string Login { get; set; }
+        string Password { get; set; }
     }
 }

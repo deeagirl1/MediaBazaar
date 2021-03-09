@@ -15,18 +15,38 @@ namespace MediaBazaarApp.Classes
             accounts = new List<IAccount>();
         }
 
-
         public bool Add(IAccount account)
         {
-            return false;
+            if (this.exists(account))
+                return false;
+            this.accounts.Add(account);
+            return true;
         }
         public bool Remove(IAccount account)
         {
+            this.accounts.RemoveAll(a => a.ID == account.ID);
+            return true;
+        }
+
+        private bool exists(IAccount account)
+        {
+            foreach(IAccount a in this.accounts)
+            {
+                if (a.ID == account.ID) { return true; }
+            }
             return false;
         }
-        public bool isValid(IAccount account)
+        public IAccount isValid(IAccount account)
         {
-            return false;
+            foreach(IAccount a in this.accounts)
+            {
+                if(a.ID == account.ID &&
+                    a.Password == account.Password)
+                {
+                    return a;
+                }
+            }
+            return null;
         }
     }
 }
