@@ -25,7 +25,7 @@
                     <TextBox Grid.Row="0" Grid.Column="0"/>
                     <Button Grid.Column="1" Content="Search"/>
 
-                    <ListView Grid.Row="1" Grid.Column="0">
+                    <ListView x:Name="lvEmployees" Grid.Row="1" Grid.Column="0">
                         
                     </ListView>
 
@@ -36,66 +36,10 @@
                             <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                            <Button Content="Search"/>
                             <Button Content="Edit"/>
                             <Button Content="Add"/>
                             <Button Content="Remove"/>
                         </StackPanel>
-                    </Grid>
-
-                </Grid>
-            </TabItem>
-
-
-
-            <TabItem Header="Stock" >
-                <Grid Background="LightGray">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="100"/>
-                    </Grid.ColumnDefinitions>
-
-                    <ListView Grid.Column="0">
-
-                    </ListView>
-
-                    <Grid Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="10"/>
-                            <RowDefinition Height="100*"/>
-                            <RowDefinition Height="10"/>
-                        </Grid.RowDefinitions>
-                        <StackPanel  Grid.Row="1" VerticalAlignment="Center">
-                            <Button Content="Add"/>
-                            <Button Content="View"/>
-                        </StackPanel>
-                    </Grid>
-                </Grid>
-            </TabItem>
-
-
-
-            <TabItem Header="Requests" HorizontalAlignment="Left">
-                <Grid Background="LightGray">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="100"/>
-                    </Grid.ColumnDefinitions>
-                    <ListView Grid.Column="0">
-                        
-                    </ListView>
-                    <Grid Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="10"/>
-                            <RowDefinition Height="100*"/>
-                            <RowDefinition Height="10"/>
-                        </Grid.RowDefinitions>
-                        <StackPanel VerticalAlignment="Center" Grid.Row="1">
-                            <Button Content="View"/>
-                            <Button Content="Reject"/>
-                            <Button Content="Approve"/>
-                        </StackPanel>
-                        
                     </Grid>
 
                 </Grid>
@@ -155,50 +99,6 @@
 
 
 
-            <TabItem Header="Statistics" HorizontalAlignment="Left">
-                <Grid Background="LightGray">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="100"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="20"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <ListView Grid.Row="1" Grid.ColumnSpan="2"/>
-
-                    <TextBox Grid.Column="0"/>
-                    <Button Grid.Column ="1" Content="View"/>
-
-                </Grid>
-            </TabItem>
-
-
-
-            <TabItem Header="Departments" HorizontalAlignment="Left">
-                <Grid Background="LightGray">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="100"/>
-                    </Grid.ColumnDefinitions>
-                    <ListView/>
-                    <Grid Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="10"/>
-                            <RowDefinition Height="100*"/>
-                            <RowDefinition Height="10"/>
-                        </Grid.RowDefinitions>
-                        <StackPanel VerticalAlignment="Center" Grid.Row="1">
-                            <Button Content="Edit"/>
-                            <Button Content="Add"/>
-                            <Button Content="Remove"/>
-                        </StackPanel>
-                    </Grid>
-                </Grid>
-            </TabItem>
-            
-            
-            
         </TabControl>
     </Grid>
 </Window>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MediaBazaarApp.Classes;
 
 namespace MediaBazaarApp
 {
@@ -21,10 +22,14 @@ namespace MediaBazaarApp
     public partial class MainWindow : Window
     {
         private Classes.Calendar calendar;
-        public MainWindow()
+        private Company company;
+        public MainWindow(Company company)
         {
             Loaded += OnLoad;
             InitializeComponent();
+            this.company = company;
+            foreach(ShopWorker in  company.)
+            this.lvEmployees.Items.Add()
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)
