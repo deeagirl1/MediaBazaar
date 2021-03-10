@@ -104,34 +104,52 @@
 
 
             <TabItem Header="Calendar" HorizontalAlignment="Left">
-                <Grid x:Name="calendarGrid">
+                <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
+                        <RowDefinition Height="80"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
+                    <Border Grid.Column="1" Grid.RowSpan="6" BorderBrush="LightGray" Opacity="0.6" BorderThickness="1,0,0,0"/>
+                    <Border Grid.Column="0" Grid.Row="0" BorderBrush="LightGray" Opacity="0.6" BorderThickness="0,0,0,1"/>
 
-                    <Button Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" MaxWidth="120" MaxHeight="40"/>
-                    <Button Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" MaxWidth="120" MaxHeight="40"/>
-                    <Border Grid.Column="7" Grid.RowSpan="6" BorderBrush="LightGray" Opacity="0.6" BorderThickness="1,0,0,0"/>
+                    <Grid Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Row="0" Grid.Column="0" MaxWidth="120" MaxHeight="40" Click="Button_Click_1"/>
+                        <Button Grid.Row="0" Grid.Column="2" MaxWidth="120" MaxHeight="40" Click="Button_Click"/>
+                    </Grid>
 
 
-                    <!--Here are inserted all the day grids for the calendar, procedurally generated-->
-                    
-                    
+                    <Grid Grid.Row="1" Grid.Column="0" x:Name="calendarGrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <!--Here are inserted all the day grids for the calendar, procedurally generated-->
+
+                    </Grid>
+
+
                 </Grid>
             </TabItem>
 
