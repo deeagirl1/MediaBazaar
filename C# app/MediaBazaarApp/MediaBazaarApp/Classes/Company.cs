@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-    interface ISalary
+    public class Company
     {
-        decimal HourlyWage{ get; set; }
-        void Increase(decimal amount);
-        void Reduce(decimal amount);
+        public readonly AccountManager accountManager = new AccountManager();
+
     }
 }

@@ -36,12 +36,12 @@ namespace MediaBazaarApp.Classes
             }
             return false;
         }
-        public IAccount isValid(IAccount account)
+        public IAccount isValid(string login, string password)
         {
             foreach(IAccount a in this.accounts)
             {
-                if(a.Login == account.Login &&
-                    a.Password == account.Password)
+                if(a.Login == login &&
+                    a.Password == password)
                 {
                     return a;
                 }

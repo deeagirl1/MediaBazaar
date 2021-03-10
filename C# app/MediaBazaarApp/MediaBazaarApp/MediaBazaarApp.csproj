@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Classes\Address.cs" />
     <Compile Include="Classes\Calendar.cs" />
+    <Compile Include="Classes\Company.cs" />
     <Compile Include="Classes\ContractType.cs" />
     <Compile Include="Classes\ISalary.cs" />
     <Compile Include="Classes\ShopWorker.cs" />
@@ -90,7 +91,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Popups\Login.xaml">
+    <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -111,7 +112,7 @@
     <Compile Include="Popups\EditEmployee.xaml.cs">
       <DependentUpon>EditEmployee.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Popups\Login.xaml.cs">
+    <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="Popups\Window2.xaml.cs">
