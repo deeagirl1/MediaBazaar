@@ -21,7 +21,7 @@ namespace MediaBazaarApp.Popups
     public partial class Login : Window
     {
         private Company company;
-        private MainWindow mainWindow;
+        private MainWindow admWindow;
         public Login()
         {
             this.company = new Company();
@@ -43,8 +43,8 @@ namespace MediaBazaarApp.Popups
 
             if (user is Administrator)
             {
-                this.mainWindow = new MainWindow(this.company);
-                this.mainWindow.Show();
+                this.admWindow = new MainWindow(this.company);
+                this.admWindow.Show();
             }
             
                 
