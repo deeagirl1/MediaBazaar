@@ -28,17 +28,6 @@ namespace MediaBazaarApp
             InitializeComponent();
             this.company = company;
         }
-        private void btn_AddEmployee_Click(object sender, RoutedEventArgs e)
-        {
-            string firstName = tb_FirstName.Text;
-            string lastName = tb_LastName.Text;
-            string email = tb_Email.Text;
-            DateTime birthDate = dp_BirthDate.DisplayDate;
-            DateTime hireDate = dp_HireDate.DisplayDate;
-
-            worker = new ShopWorker(1, firstName, lastName, email, birthDate, hireDate);
-            company.AccountManager.Add(worker);
-        }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -48,6 +37,20 @@ namespace MediaBazaarApp
         private void tb_FirstName_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string firstName = tb_FirstName.Text;
+            string lastName = tb_LastName.Text;
+            string email = tb_Email.Text;
+            DateTime birthDate = dp_BirthDate.DisplayDate;
+            DateTime hireDate = dp_HireDate.DisplayDate;
+
+            worker = new ShopWorker(1, firstName, lastName, email, birthDate, hireDate);
+            company.ShopWorkers.Add(worker);
+            MessageBox.Show("Succesfully added!");
+            this.Close();
         }
     }
 }

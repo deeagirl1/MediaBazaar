@@ -38,7 +38,7 @@
                             <Button Content="Remove" Height="25"/>
                         </StackPanel>
                     </Grid>
-                    <ListView HorizontalAlignment="Left" Height="642" VerticalAlignment="Top" Width="1010" ItemsSource="{Binding employees}" Margin="10,16,0,0" Grid.Row="1" Grid.ColumnSpan="3">
+                    <ListView x:Name="lvShopWorkers" HorizontalAlignment="Left" Height="642" VerticalAlignment="Top" Width="1010" ItemsSource="{Binding employees}" Margin="10,16,0,0" Grid.Row="1" Grid.ColumnSpan="3">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="50">ID</GridViewColumn>

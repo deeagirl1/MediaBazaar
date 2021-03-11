@@ -26,24 +26,22 @@ namespace MediaBazaarApp
         private Company company;
         private AddEmployee window;
 
-        public ShopWorker [] employees { get; set; }
+        public ShopWorker[] employees { get; set; }
         public MainWindow(Company company)
         {
             Loaded += OnLoad;
             InitializeComponent();
             this.company = company;
             Loaded += OnLoad;
-         
-            employees = this.company.ShopWorkers.ToArray<ShopWorker>();
-            DataContext = this;
 
-            
-
+            this.employees = this.company.ShopWorkers.ToArray<ShopWorker>();
+            this.lvShopWorkers.ItemsSource = this.employees;
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)
         {
             calendar = new Classes.Calendar(this);
+            this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -92,10 +90,8 @@ namespace MediaBazaarApp
 
         private void btn_Refresh_Click(object sender, RoutedEventArgs e)
         {
-            foreach (ShopWorker sp in employees)
-            {
-                
-            }
+            this.employees = this.company.ShopWorkers.ToArray<ShopWorker>();
+            this.lvShopWorkers.ItemsSource = this.employees;
         }
     }
 }
