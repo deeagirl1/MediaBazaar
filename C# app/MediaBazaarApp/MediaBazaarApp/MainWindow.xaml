@@ -30,7 +30,7 @@
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="1" VerticalAlignment="Center">
                             <Button Content="Edit"/>
-                            <Button Content="Add"/>
+                            <Button Content="Add" Click="Button_Click_2"/>
                             <Button Content="Remove"/>
                         </StackPanel>
                     </Grid>

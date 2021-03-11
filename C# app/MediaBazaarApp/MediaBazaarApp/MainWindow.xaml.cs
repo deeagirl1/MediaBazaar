@@ -23,6 +23,7 @@ namespace MediaBazaarApp
     {
         private Classes.Calendar calendar;
         private Company company;
+        private AddEmployee window;
 
         public List<ShopWorker> employees { get; set; }
         public MainWindow(Company company)
@@ -83,6 +84,12 @@ namespace MediaBazaarApp
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            window = new AddEmployee();
+            window.Show();
         }
     }
 }
