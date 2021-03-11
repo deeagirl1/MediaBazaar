@@ -13,6 +13,21 @@ namespace MediaBazaarApp.Classes
     {
         private MainWindow mainWindow;
         private int indexYear, indexMonth;
+
+        public int Year 
+        {
+            get { return this.indexYear; }
+        }
+
+        public string Month
+        {
+            get 
+            {
+                string fullMonthName = new DateTime(2015, this.indexMonth, 1).ToString("MMMM");
+                return fullMonthName;
+            }
+        }
+
         public ViewMode CurrentViewMode
         {
             get => _viewMode;

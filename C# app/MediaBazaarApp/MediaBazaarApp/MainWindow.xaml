@@ -10,6 +10,8 @@
         <TabControl SelectionChanged="TabControl_SelectionChanged">
             <TabItem Header="Employees">
                 <Grid Background="LightGray">
+
+
                     <Grid.RowDefinitions>
                         <RowDefinition Height="20"/>
                         <RowDefinition/>
@@ -29,10 +31,11 @@
                             <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                            <Button Content="Edit" Height="27" Click="Button_Click_3"/>
-                            
-                            <Button x:Name="btn_Add" Content="Add" Click="Button_Add_Click"/>
-                            <Button Content="Remove"/>
+
+                            <Button Content="Edit" Height="25" Click="Button_Click_3"/>
+
+                            <Button x:Name="btn_Add" Content="Add" Click="Button_Add_Click" Height="25"/>
+                            <Button Content="Remove" Height="25"/>
                         </StackPanel>
                     </Grid>
                     <ListView HorizontalAlignment="Left" Height="642" VerticalAlignment="Top" Width="1010" ItemsSource="{Binding employees}" Margin="10,16,0,0" Grid.Row="1" Grid.ColumnSpan="3">
@@ -49,41 +52,46 @@
                         </ListView.View>
                     </ListView>
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="10,11,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="1010" TextChanged="TextBox_TextChanged" Grid.ColumnSpan="3"/>
+                    <Button x:Name="btn_Refresh" Content="Refresh" Grid.Column="3" Margin="0,215,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Click="btn_Refresh_Click"/>
 
                 </Grid>
             </TabItem>
 
 
-            <TabItem Header="Calendar" Margin="-2,-2,2,0">
+            <TabItem Header="Calendar" HorizontalAlignment="Left">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="11*"/>
-                        <ColumnDefinition Width="16*"/>
-                        <ColumnDefinition Width="1003*"/>
+                        <ColumnDefinition/>
                         <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Border Grid.Column="3" Grid.RowSpan="2" BorderBrush="LightGray" Opacity="0.6" BorderThickness="1,0,0,0"/>
-                    <Border Grid.Column="0" Grid.Row="0" BorderBrush="LightGray" Opacity="0.6" BorderThickness="0,0,0,1" Grid.ColumnSpan="3">
+                    <Border Grid.Column="1" Grid.RowSpan="6" BorderBrush="LightGray" Opacity="0.6" BorderThickness="1,0,0,0"/>
+                    <Border Grid.Column="0" Grid.Row="0" BorderBrush="LightGray" Opacity="0.6" BorderThickness="0,0,0,1"/>
 
-                    </Border>
-
-                    <Grid Grid.Column="0" Grid.ColumnSpan="3">
+                    <Grid Grid.Column="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <Button Grid.Row="0" Grid.Column="0" MaxWidth="120" MaxHeight="40" Click="Button_Click_1" Content="Previous Month" FontSize="14"/>
-                        <Button Grid.Row="0" Grid.Column="2" MaxWidth="120" MaxHeight="40" Click="Button_Click" Margin="0,0,10,0" Content="Next Month" FontSize="14" />
+                        <Button Grid.Row="0" Grid.Column="0" MaxWidth="120" MaxHeight="40" Click="Button_Click_1" Content="Previous"/>
+                        <Button Grid.Row="0" Grid.Column="2" MaxWidth="120" MaxHeight="40" Click="Button_Click" Content="Next"/>
+                        <Label x:Name="lblMonthYear" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="137,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231"/>
+                        <Label x:Name="lblMonthYear_Copy" Content="Monday" HorizontalAlignment="Left" Margin="55,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" FontWeight="Bold"/>
+                        <Label x:Name="lblMonthYear_Copy1" Content="Tuesday" HorizontalAlignment="Left" Margin="192,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" FontWeight="Bold"/>
+                        <Label x:Name="lblMonthYear_Copy2" Content="Wednesday" HorizontalAlignment="Left" Margin="325,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.ColumnSpan="2" FontWeight="Bold"/>
+                        <Label x:Name="lblMonthYear_Copy3" Content="Thursday" Margin="158,80,112,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.Column="1" FontWeight="Bold"/>
+                        <Label x:Name="lblMonthYear_Copy4" Content="Friday" HorizontalAlignment="Left" Margin="299,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.Column="1" Width="52" FontWeight="Bold" Grid.ColumnSpan="2"/>
+                        <Label x:Name="lblMonthYear_Copy5" Content="Saturday" HorizontalAlignment="Left" Margin="92,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.Column="2" FontWeight="Bold"/>
+                        <Label x:Name="lblMonthYear_Copy6" Content="Sunday" HorizontalAlignment="Left" Margin="239,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.Column="2" FontWeight="Bold"/>
                     </Grid>
 
 
-                    <Grid Grid.Row="1" Grid.Column="0" x:Name="calendarGrid" Grid.ColumnSpan="3">
+                    <Grid Grid.Row="1" Grid.Column="0" x:Name="calendarGrid" Margin="0,25,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -107,16 +115,6 @@
 
                 </Grid>
             </TabItem>
-            <ListView Height="100" Width="100">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-
-
-
 
         </TabControl>
     </Grid>

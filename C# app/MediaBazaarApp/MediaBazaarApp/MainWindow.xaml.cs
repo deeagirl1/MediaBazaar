@@ -24,7 +24,7 @@ namespace MediaBazaarApp
     {
         private Classes.Calendar calendar;
         private Company company;
-        
+        private AddEmployee window;
 
         public ShopWorker [] employees { get; set; }
         public MainWindow(Company company)
@@ -37,6 +37,7 @@ namespace MediaBazaarApp
             employees = this.company.ShopWorkers.ToArray<ShopWorker>();
             DataContext = this;
 
+            
 
         }
 
@@ -48,11 +49,13 @@ namespace MediaBazaarApp
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             calendar.NextMonth();
+            this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             calendar.PreviousMonth();
+            this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -80,5 +83,19 @@ namespace MediaBazaarApp
             
         }
 
+        private void Button_Add_Click(object sender, RoutedEventArgs e)
+        {
+            this.window = new AddEmployee(company);
+            this.window.Show();
+
+        }
+
+        private void btn_Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (ShopWorker sp in employees)
+            {
+                
+            }
+        }
     }
 }
