@@ -8,7 +8,8 @@ namespace MediaBazaarApp.Classes
 {
     public class Company
     {
-        public readonly AccountManager accountManager = new AccountManager();
-
+        public readonly AccountManager AccountManager = new AccountManager();
+        public readonly ShiftSchedule ShiftSchedule = new ShiftSchedule();
+        public readonly EmployeeList ShopWorkers= new EmployeeList();
     }
 }

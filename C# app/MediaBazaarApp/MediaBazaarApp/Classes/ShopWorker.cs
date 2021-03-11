@@ -19,6 +19,10 @@ namespace MediaBazaarApp.Classes
         public decimal HourlyWage { get; set; }
         public string Role { get; set; }
 
+        public ShopWorker() { }
+
+        public ShopWorker(int id, string firstName, string lastName) : base (id, firstName, lastName)
+        { }
         public ShopWorker(int id, string firstName, string lastName, string email, string password) :
             base(id, firstName, lastName, email, password)
         { }
@@ -38,7 +42,6 @@ namespace MediaBazaarApp.Classes
             this.NightShifts = NightShifts;
             this.HourlyWage = HourlyWage;
             this.Role = Role;
-
         }
 
         void ISalary.Increase(decimal amount)

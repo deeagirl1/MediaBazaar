@@ -10,35 +10,29 @@ namespace MediaBazaarApp.Classes
     {
         private List<WorkShift> workShifts = new List<WorkShift>();
 
-        public void Add(WorkShift shift)
-        {
-            workShifts.Add(shift);
-        }
+        public void Add(WorkShift shift) { workShifts.Add(shift); }
 
         public void Remove(WorkShift shift)
         {
             this.workShifts.RemoveAll(a => a.ID == shift.ID);
-           
         }
 
         public void Update(WorkShift shift)
         {
-            this.workShifts.Find(a => a.ID == shift.ID);
+            int index = getShift(shift);
+            if (index != -1)
+                this.workShifts[index] = shift;
         }
 
         private int getShift(WorkShift shift)
         {
-            foreach (WorkShift s in workShifts)
+            for(int i = 0; i < this.workShifts.Count; i++)
             {
-                if(s.ID == shift.ID)
-                {
-                    return 1;
-                }
+                if (workShifts[i].ID == shift.ID)
+                    return i;
             }
-
-            return 0;
+            return -1;
         }
-
 
         public IEnumerable<WorkShift> GetShiftsInPerioad(DateTime start, DateTime end)
         {
@@ -48,14 +42,7 @@ namespace MediaBazaarApp.Classes
                 {
                     yield return s;
                 }
-               
             }
         }
-
-
-
-
-
-        
     }
 }

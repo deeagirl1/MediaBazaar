@@ -8,16 +8,16 @@ namespace MediaBazaarApp.Classes
 {
     public class Address
     {
-        private string country;
-        private string city;
-        private string street;
-        private string streetNumber;
-        private string zipCode;
+        public string Country { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public string StreetNumber { get; set; }
+        public string ZipCode { get; set; }
 
 
         public override string ToString()
         {
-            return base.ToString();
+            return $"{this.Country}, {this.City}, {this.Street}, {this.StreetNumber}, {this.ZipCode}";
         }
 
     }

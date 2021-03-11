@@ -5,12 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaBazaarApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000">
+        Title="MainWindow" Height="756.466" Width="1143.534">
     <Grid>
-        <TabControl>
-            
-            
-            
+        <TabControl SelectionChanged="TabControl_SelectionChanged">
             <TabItem Header="Employees">
                 <Grid Background="LightGray">
                     <Grid.RowDefinitions>
@@ -18,169 +15,105 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="109*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="915*"/>
                         <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
+                    <Button Content="Search" Margin="913,7,2,661" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="2"/>
 
-                    <TextBox Grid.Row="0" Grid.Column="0"/>
-                    <Button Grid.Column="1" Content="Search"/>
-
-                    <ListView Grid.Row="1" Grid.Column="0">
-                        
-                    </ListView>
-
-                    <Grid Grid.Column="1" Grid.RowSpan="2">
+                    <Grid Grid.Column="3" Grid.RowSpan="2">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10"/>
                             <RowDefinition Height="100*"/>
                             <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                            <Button Content="Search"/>
                             <Button Content="Edit"/>
                             <Button Content="Add"/>
                             <Button Content="Remove"/>
                         </StackPanel>
                     </Grid>
+                    <ListView HorizontalAlignment="Left" Height="636" VerticalAlignment="Top" Width="1010" ItemsSource="{Binding employees}" Margin="10,22,0,0" Grid.Row="1" Grid.ColumnSpan="3">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding ID}">ID</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Width="100">First Name</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding LastName}">Last Name</GridViewColumn>
 
-                </Grid>
-            </TabItem>
-
-
-
-            <TabItem Header="Stock" >
-                <Grid Background="LightGray">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="100"/>
-                    </Grid.ColumnDefinitions>
-
-                    <ListView Grid.Column="0">
-
+                            </GridView>
+                        </ListView.View>
                     </ListView>
-
-                    <Grid Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="10"/>
-                            <RowDefinition Height="100*"/>
-                            <RowDefinition Height="10"/>
-                        </Grid.RowDefinitions>
-                        <StackPanel  Grid.Row="1" VerticalAlignment="Center">
-                            <Button Content="Add"/>
-                            <Button Content="View"/>
-                        </StackPanel>
-                    </Grid>
-                </Grid>
-            </TabItem>
-
-
-
-            <TabItem Header="Requests" HorizontalAlignment="Left">
-                <Grid Background="LightGray">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="100"/>
-                    </Grid.ColumnDefinitions>
-                    <ListView Grid.Column="0">
-                        
-                    </ListView>
-                    <Grid Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="10"/>
-                            <RowDefinition Height="100*"/>
-                            <RowDefinition Height="10"/>
-                        </Grid.RowDefinitions>
-                        <StackPanel VerticalAlignment="Center" Grid.Row="1">
-                            <Button Content="View"/>
-                            <Button Content="Reject"/>
-                            <Button Content="Approve"/>
-                        </StackPanel>
-                        
-                    </Grid>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="10,11,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="1010" TextChanged="TextBox_TextChanged" Grid.ColumnSpan="3"/>
 
                 </Grid>
             </TabItem>
 
 
-
-            <TabItem Header="Calendar" HorizontalAlignment="Left">
-                <Grid x:Name="calendarGrid">
+            <TabItem Header="Calendar" Margin="-2,-2,2,0">
+                <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="11*"/>
+                        <ColumnDefinition Width="16*"/>
+                        <ColumnDefinition Width="1003*"/>
                         <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
+                        <RowDefinition Height="80"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
+                    <Border Grid.Column="3" Grid.RowSpan="2" BorderBrush="LightGray" Opacity="0.6" BorderThickness="1,0,0,0"/>
+                    <Border Grid.Column="0" Grid.Row="0" BorderBrush="LightGray" Opacity="0.6" BorderThickness="0,0,0,1" Grid.ColumnSpan="3">
 
-                    <Button Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" MaxWidth="120" MaxHeight="40"/>
-                    <Button Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" MaxWidth="120" MaxHeight="40"/>
-                    <Border Grid.Column="7" Grid.RowSpan="6" BorderBrush="LightGray" Opacity="0.6" BorderThickness="1,0,0,0"/>
+                    </Border>
 
+                    <Grid Grid.Column="0" Grid.ColumnSpan="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
 
-                    <!--Here are inserted all the day grids for the calendar, procedurally generated-->
-                    
-                    
-                </Grid>
-            </TabItem>
-
-
-
-            <TabItem Header="Statistics" HorizontalAlignment="Left">
-                <Grid Background="LightGray">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="100"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="20"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <ListView Grid.Row="1" Grid.ColumnSpan="2"/>
-
-                    <TextBox Grid.Column="0"/>
-                    <Button Grid.Column ="1" Content="View"/>
-
-                </Grid>
-            </TabItem>
-
-
-
-            <TabItem Header="Departments" HorizontalAlignment="Left">
-                <Grid Background="LightGray">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="100"/>
-                    </Grid.ColumnDefinitions>
-                    <ListView/>
-                    <Grid Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="10"/>
-                            <RowDefinition Height="100*"/>
-                            <RowDefinition Height="10"/>
-                        </Grid.RowDefinitions>
-                        <StackPanel VerticalAlignment="Center" Grid.Row="1">
-                            <Button Content="Edit"/>
-                            <Button Content="Add"/>
-                            <Button Content="Remove"/>
-                        </StackPanel>
+                        <Button Grid.Row="0" Grid.Column="0" MaxWidth="120" MaxHeight="40" Click="Button_Click_1" Content="Previous Month" FontSize="14"/>
+                        <Button Grid.Row="0" Grid.Column="2" MaxWidth="120" MaxHeight="40" Click="Button_Click" Margin="0,0,10,0" Content="Next Month" FontSize="14" />
                     </Grid>
+
+
+                    <Grid Grid.Row="1" Grid.Column="0" x:Name="calendarGrid" Grid.ColumnSpan="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <!--Here are inserted all the day grids for the calendar, procedurally generated-->
+
+                    </Grid>
+
+
                 </Grid>
             </TabItem>
-            
-            
-            
+            <ListView Height="100" Width="100">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+
+
+
         </TabControl>
     </Grid>
 </Window>

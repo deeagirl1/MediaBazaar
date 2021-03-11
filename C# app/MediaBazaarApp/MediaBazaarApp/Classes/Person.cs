@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-
     public abstract class Person : IAccount 
     {
         public int ID { get; set; }
@@ -16,6 +15,13 @@ namespace MediaBazaarApp.Classes
         public string Password { get; set; }
 
         public Person() { }
+
+        public Person(int id, string firstName, string lastName) 
+        {
+            this.ID = id;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+        }
 
         public Person(int id, string firstName, string lastName, string email, string password)
         {
