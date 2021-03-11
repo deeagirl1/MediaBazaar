@@ -16,11 +16,12 @@ namespace MediaBazaarApp.Classes
 
         public Person() { }
 
-        public Person(int id, string firstName, string lastName) 
+        public Person(int id, string firstName, string lastName,string email) 
         {
             this.ID = id;
             this.FirstName = firstName;
             this.LastName = lastName;
+            this.Email = email;
         }
 
         public Person(int id, string firstName, string lastName, string email, string password)

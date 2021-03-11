@@ -21,8 +21,11 @@ namespace MediaBazaarApp.Classes
 
         public ShopWorker() { }
 
-        public ShopWorker(int id, string firstName, string lastName) : base (id, firstName, lastName)
-        { }
+        public ShopWorker(int id, string firstName, string lastName, string email, DateTime birthDate, DateTime hireDate) : base (id, firstName, lastName, email)
+        {
+            this.BirthDate = birthDate;
+            this.HireTime = hireDate;
+        }
         public ShopWorker(int id, string firstName, string lastName, string email, string password) :
             base(id, firstName, lastName, email, password)
         { }

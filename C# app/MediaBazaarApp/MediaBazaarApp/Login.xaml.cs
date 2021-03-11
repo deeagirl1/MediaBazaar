@@ -34,7 +34,7 @@ namespace MediaBazaarApp.Popups
             string password = this.tbPassword.Text;
 
             this.company.AccountManager.Add(new Administrator(10, "a", "b", "em", "pass"));
-            this.company.ShopWorkers.Add(new ShopWorker(01, "a1", "b1", "em1", "pass")); // to be seen in the list
+            this.company.ShopWorkers.Add(new ShopWorker(01, "a1", "b1", "em1", new DateTime(1996,06,13), new DateTime(2020,03,2))); 
             this.company.ShopWorkers.Add(new ShopWorker(02, "a2", "b2", "em2", "pass"));
             this.company.ShopWorkers.Add(new ShopWorker(03, "a3", "b3", "em3", "pass"));
 
