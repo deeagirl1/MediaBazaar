@@ -13,7 +13,7 @@ namespace MediaBazaarApp.Classes
         public Address HomeAddress { get; set; }
         public DateTime BirthDate { get; set; }
         public string BankAccount { get; set; }
-        public DateTime HireTime { get; set; }
+        public DateTime HireTime { get; set; }  
         public ContractType Contract { get; set; }
         public bool NightShifts { get; set; }
         public decimal HourlyWage { get; set; }

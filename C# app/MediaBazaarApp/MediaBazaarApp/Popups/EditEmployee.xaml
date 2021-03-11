@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaBazaarApp.Popups"
         mc:Ignorable="d"
-        Title="EditEmployee" Height="353.92" Width="500">
+        Title="Edit Employee" Height="353.92" Width="500">
     <Grid>
         <Grid Background="LightGray">
             <Grid.ColumnDefinitions>

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MediaBazaarApp.Classes;
+using MediaBazaarApp.Popups;
 
 namespace MediaBazaarApp
 {
@@ -23,6 +24,7 @@ namespace MediaBazaarApp
     {
         private Classes.Calendar calendar;
         private Company company;
+        
 
         public ShopWorker [] employees { get; set; }
         public MainWindow(Company company)
@@ -77,5 +79,6 @@ namespace MediaBazaarApp
         {
             
         }
+
     }
 }

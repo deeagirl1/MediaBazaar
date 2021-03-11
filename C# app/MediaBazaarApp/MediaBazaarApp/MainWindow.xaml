@@ -31,7 +31,7 @@
                         <StackPanel Grid.Row="1" VerticalAlignment="Center">
                             <Button Content="Edit" Height="27" Click="Button_Click_3"/>
                             
-                            <Button Content="Add" Click="Button_Click_2"/>
+                            <Button x:Name="btn_Add" Content="Add" Click="Button_Add_Click"/>
                             <Button Content="Remove"/>
                         </StackPanel>
                     </Grid>
