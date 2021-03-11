@@ -20,9 +20,12 @@ namespace MediaBazaarApp.Classes
         public string Role { get; set; }
 
         public ShopWorker() { }
+<<<<<<< HEAD
 
         public ShopWorker(int id, string firstName, string lastName) : base (id, firstName, lastName)
         { }
+=======
+>>>>>>> 0f6824ca87bdcde9928d5d364260e5d8c6c484da
         public ShopWorker(int id, string firstName, string lastName, string email, string password) :
             base(id, firstName, lastName, email, password)
         { }

@@ -8,6 +8,12 @@
         Title="MainWindow" Height="756.466" Width="1143.534">
     <Grid>
         <TabControl SelectionChanged="TabControl_SelectionChanged">
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 0f6824ca87bdcde9928d5d364260e5d8c6c484da
             <TabItem Header="Employees">
                 <Grid Background="LightGray">
                     <Grid.RowDefinitions>
@@ -22,7 +28,25 @@
                     </Grid.ColumnDefinitions>
                     <Button Content="Search" Margin="913,7,2,661" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="2"/>
 
+<<<<<<< HEAD
                     <Grid Grid.Column="3" Grid.RowSpan="2">
+=======
+                    <TextBox Grid.Row="0" Grid.Column="0"/>
+                    <Button Grid.Column="1" Content="Search"/>
+
+                    <ListView HorizontalAlignment="Left" Height="636" VerticalAlignment="Top" Width="1010" ItemsSource="{Binding employees}" Margin="10,22,0,0" Grid.Row="1" Grid.ColumnSpan="3">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding ID}">ID</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Width="100">First Name</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding LastName}">Last Name</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+
+                    <Grid Grid.Column="1" Grid.RowSpan="2">
+>>>>>>> 0f6824ca87bdcde9928d5d364260e5d8c6c484da
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10"/>
                             <RowDefinition Height="100*"/>
@@ -34,6 +58,7 @@
                             <Button Content="Remove"/>
                         </StackPanel>
                     </Grid>
+<<<<<<< HEAD
                     <ListView HorizontalAlignment="Left" Height="636" VerticalAlignment="Top" Width="1010" ItemsSource="{Binding employees}" Margin="10,22,0,0" Grid.Row="1" Grid.ColumnSpan="3">
                         <ListView.View>
                             <GridView>
@@ -45,41 +70,74 @@
                         </ListView.View>
                     </ListView>
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="10,11,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="1010" TextChanged="TextBox_TextChanged" Grid.ColumnSpan="3"/>
+=======
+>>>>>>> 0f6824ca87bdcde9928d5d364260e5d8c6c484da
 
                 </Grid>
             </TabItem>
 
 
+<<<<<<< HEAD
             <TabItem Header="Calendar" Margin="-2,-2,2,0">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="11*"/>
                         <ColumnDefinition Width="16*"/>
                         <ColumnDefinition Width="1003*"/>
+=======
+            <TabItem Header="Calendar" HorizontalAlignment="Left">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+>>>>>>> 0f6824ca87bdcde9928d5d364260e5d8c6c484da
                         <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
+<<<<<<< HEAD
                     <Border Grid.Column="3" Grid.RowSpan="2" BorderBrush="LightGray" Opacity="0.6" BorderThickness="1,0,0,0"/>
                     <Border Grid.Column="0" Grid.Row="0" BorderBrush="LightGray" Opacity="0.6" BorderThickness="0,0,0,1" Grid.ColumnSpan="3">
 
                     </Border>
 
                     <Grid Grid.Column="0" Grid.ColumnSpan="3">
+=======
+                    <Border Grid.Column="1" Grid.RowSpan="6" BorderBrush="LightGray" Opacity="0.6" BorderThickness="1,0,0,0"/>
+                    <Border Grid.Column="0" Grid.Row="0" BorderBrush="LightGray" Opacity="0.6" BorderThickness="0,0,0,1"/>
+
+                    <Grid Grid.Column="0">
+>>>>>>> 0f6824ca87bdcde9928d5d364260e5d8c6c484da
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
+<<<<<<< HEAD
                         <Button Grid.Row="0" Grid.Column="0" MaxWidth="120" MaxHeight="40" Click="Button_Click_1" Content="Previous Month" FontSize="14"/>
                         <Button Grid.Row="0" Grid.Column="2" MaxWidth="120" MaxHeight="40" Click="Button_Click" Margin="0,0,10,0" Content="Next Month" FontSize="14" />
                     </Grid>
 
 
                     <Grid Grid.Row="1" Grid.Column="0" x:Name="calendarGrid" Grid.ColumnSpan="3">
+=======
+                        <Button Grid.Row="0" Grid.Column="0" MaxWidth="120" MaxHeight="40" Click="Button_Click_1" Content="Previous"/>
+                        <Button Grid.Row="0" Grid.Column="2" MaxWidth="120" MaxHeight="40" Click="Button_Click" Content="Next"/>
+                        <Label x:Name="lblMonthYear" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="137,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231"/>
+                        <Label x:Name="lblMonthYear_Copy" Content="Monday" HorizontalAlignment="Left" Margin="55,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" FontWeight="Bold"/>
+                        <Label x:Name="lblMonthYear_Copy1" Content="Tuesday" HorizontalAlignment="Left" Margin="192,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" FontWeight="Bold"/>
+                        <Label x:Name="lblMonthYear_Copy2" Content="Wednesday" HorizontalAlignment="Left" Margin="325,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.ColumnSpan="2" FontWeight="Bold"/>
+                        <Label x:Name="lblMonthYear_Copy3" Content="Thursday" Margin="158,80,112,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.Column="1" FontWeight="Bold"/>
+                        <Label x:Name="lblMonthYear_Copy4" Content="Friday" HorizontalAlignment="Left" Margin="299,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.Column="1" Width="52" FontWeight="Bold" Grid.ColumnSpan="2"/>
+                        <Label x:Name="lblMonthYear_Copy5" Content="Saturday" HorizontalAlignment="Left" Margin="92,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.Column="2" FontWeight="Bold"/>
+                        <Label x:Name="lblMonthYear_Copy6" Content="Sunday" HorizontalAlignment="Left" Margin="239,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.Column="2" FontWeight="Bold"/>
+                    </Grid>
+
+
+                    <Grid Grid.Row="1" Grid.Column="0" x:Name="calendarGrid" Margin="0,25,0,0">
+>>>>>>> 0f6824ca87bdcde9928d5d364260e5d8c6c484da
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -114,6 +172,10 @@
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0f6824ca87bdcde9928d5d364260e5d8c6c484da
         </TabControl>
     </Grid>
 </Window>

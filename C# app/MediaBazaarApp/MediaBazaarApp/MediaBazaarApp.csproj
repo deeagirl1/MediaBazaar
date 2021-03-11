@@ -72,7 +72,14 @@
     <Compile Include="Classes\Manager.cs" />
     <Compile Include="Classes\Person.cs" />
     <Compile Include="Classes\WorkShift.cs" />
+<<<<<<< HEAD
     <Compile Include="AddEmployee.xaml.cs">
+=======
+    <Compile Include="ManagerWindow.xaml.cs">
+      <DependentUpon>ManagerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\AddEmployee.xaml.cs">
+>>>>>>> 0f6824ca87bdcde9928d5d364260e5d8c6c484da
       <DependentUpon>AddEmployee.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -87,7 +94,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+<<<<<<< HEAD
     <Page Include="AddEmployee.xaml">
+=======
+    <Page Include="ManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\AddEmployee.xaml">
+>>>>>>> 0f6824ca87bdcde9928d5d364260e5d8c6c484da
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

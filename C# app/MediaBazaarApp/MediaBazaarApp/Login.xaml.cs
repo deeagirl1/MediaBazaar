@@ -21,7 +21,7 @@ namespace MediaBazaarApp.Popups
     public partial class Login : Window
     {
         private Company company;
-        private MainWindow mainWindow;
+        private MainWindow admWindow;
         public Login()
         {
             this.company = new Company();
@@ -34,7 +34,11 @@ namespace MediaBazaarApp.Popups
             string password = this.tbPassword.Text;
 
             this.company.AccountManager.Add(new Administrator(10, "a", "b", "em", "pass"));
+<<<<<<< HEAD
             this.company.ShopWorkers.Add(new ShopWorker(01, "a1", "b1", "em1", "pass")); // to be seen in the list
+=======
+            this.company.ShopWorkers.Add(new ShopWorker(01, "a1", "b1", "em1", "pass"));
+>>>>>>> 0f6824ca87bdcde9928d5d364260e5d8c6c484da
             this.company.ShopWorkers.Add(new ShopWorker(02, "a2", "b2", "em2", "pass"));
             this.company.ShopWorkers.Add(new ShopWorker(03, "a3", "b3", "em3", "pass"));
 
@@ -43,8 +47,13 @@ namespace MediaBazaarApp.Popups
 
             if (user is Administrator)
             {
+<<<<<<< HEAD
                 this.mainWindow = new MainWindow(this.company);
                 this.mainWindow.Show();
+=======
+                this.admWindow = new MainWindow(this.company);
+                this.admWindow.Show();
+>>>>>>> 0f6824ca87bdcde9928d5d364260e5d8c6c484da
             }
             
                 

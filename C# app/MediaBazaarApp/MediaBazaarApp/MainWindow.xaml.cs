@@ -23,14 +23,19 @@ namespace MediaBazaarApp
     {
         private Classes.Calendar calendar;
         private Company company;
+<<<<<<< HEAD
         private AddEmployee window;
 
         public List<ShopWorker> employees { get; set; }
+=======
+        public ShopWorker[] employees { get; set; }
+>>>>>>> 0f6824ca87bdcde9928d5d364260e5d8c6c484da
         public MainWindow(Company company)
         {
             Loaded += OnLoad;
             InitializeComponent();
             this.company = company;
+<<<<<<< HEAD
             employees = new List<ShopWorker>();
 
             ShopWorker employee1 = new ShopWorker();
@@ -54,11 +59,16 @@ namespace MediaBazaarApp
             DataContext = this;
 
 
+=======
+            employees = this.company.ShopWorkers.ToArray<ShopWorker>();
+            DataContext = this;
+>>>>>>> 0f6824ca87bdcde9928d5d364260e5d8c6c484da
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)
         {
             calendar = new Classes.Calendar(this);
+<<<<<<< HEAD
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -90,6 +100,31 @@ namespace MediaBazaarApp
         {
             window = new AddEmployee();
             window.Show();
+=======
+            this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            calendar.NextMonth();
+            this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            calendar.PreviousMonth();
+            this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+>>>>>>> 0f6824ca87bdcde9928d5d364260e5d8c6c484da
         }
     }
 }
