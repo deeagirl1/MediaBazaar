@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-    class Manager : Person
+    public class Manager : Person
     {
         public Manager(int id, string firstName, string lastName, string email, string password) :
             base(id, firstName, lastName, email, password)

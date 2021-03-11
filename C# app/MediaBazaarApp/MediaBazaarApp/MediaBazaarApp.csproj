@@ -60,14 +60,18 @@
     <Compile Include="Classes\Company.cs" />
     <Compile Include="Classes\ContractType.cs" />
     <Compile Include="Classes\ISalary.cs" />
+    <Compile Include="Classes\Shift.cs" />
+    <Compile Include="Classes\ShiftSchedule.cs" />
     <Compile Include="Classes\ShopWorker.cs" />
     <Compile Include="Classes\Departments.cs" />
+    <Compile Include="Classes\EmployeeList.cs" />
     <Compile Include="Classes\WorkingDays.cs" />
     <Compile Include="Classes\AccountManager.cs" />
     <Compile Include="Classes\Administrator.cs" />
     <Compile Include="Classes\IAccount.cs" />
     <Compile Include="Classes\Manager.cs" />
     <Compile Include="Classes\Person.cs" />
+    <Compile Include="Classes\WorkShift.cs" />
     <Compile Include="Popups\AddEmployee.xaml.cs">
       <DependentUpon>AddEmployee.xaml</DependentUpon>
     </Compile>

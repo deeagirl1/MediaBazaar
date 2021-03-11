@@ -33,19 +33,20 @@ namespace MediaBazaarApp.Popups
             string login = this.tbEmail.Text;
             string password = this.tbPassword.Text;
 
-            this.company.accountManager.Add(new ShopWorker(10, "a", "b", "em", "pass"));
+            this.company.AccountManager.Add(new Administrator(10, "a", "b", "em", "pass"));
+            this.company.ShopWorkers.Add(new ShopWorker(01, "a1", "b1", "em1", "pass"));
+            this.company.ShopWorkers.Add(new ShopWorker(02, "a2", "b2", "em2", "pass"));
+            this.company.ShopWorkers.Add(new ShopWorker(03, "a3", "b3", "em3", "pass"));
 
             IAccount user = 
-                this.company.accountManager.isValid(login, password);
+                this.company.AccountManager.isValid(login, password);
 
-            if (user is ShopWorker)
+            if (user is Administrator)
             {
-                MessageBox.Show("Correct");
+                this.mainWindow = new MainWindow(this.company);
+                this.mainWindow.Show();
             }
-            else
-            {
-                MessageBox.Show("Wrong");
-            }
+            
                 
                 
         }
