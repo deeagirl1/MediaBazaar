@@ -23,6 +23,7 @@ namespace MediaBazaarApp.Popups
         private Company company;
         private MainWindow mainWindow;
         private ManagerWindow managerWindow;
+        private bool loggedIn = false;
         public Login()
         {
             this.company = new Company();
@@ -49,21 +50,27 @@ namespace MediaBazaarApp.Popups
             {
                 this.mainWindow = new MainWindow(this.company);
                 this.mainWindow.Show();
+                loggedIn = true;
             }
             if(user is Manager)
             {
                 this.managerWindow = new ManagerWindow(this.company);
                 this.managerWindow.Show();
+                loggedIn = true;
             }
-            
-                
-                
+            if (loggedIn)
+            {
+                this.Close();
+            }
         }
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
 
-            Application.Current.Shutdown();
+            if (!loggedIn)
+            {
+                Application.Current.Shutdown();
+            }
         }
     }
 }
