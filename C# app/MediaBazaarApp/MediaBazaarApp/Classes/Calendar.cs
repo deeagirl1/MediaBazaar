@@ -106,6 +106,7 @@ namespace MediaBazaarApp.Classes
             for (int i = 1; i < DateTime.DaysInMonth(indexYear, indexMonth) + 1; i++)
             {
                 Grid grid = new Grid();
+                grid.Margin = new Thickness(2);
                 grid.Background = Brushes.DarkGray;
                 RowDefinition row = new RowDefinition();
                 row.Height = new GridLength(30, GridUnitType.Star);
