@@ -22,19 +22,25 @@ namespace MediaBazaarApp.Popups
     {
         private Company company;
         private MainWindow mainWindow;
+        private ManagerWindow managerWindow;
         public Login()
         {
             this.company = new Company();
+            this.managerWindow = new ManagerWindow(this.company);
             InitializeComponent();
+
+            this.company.AccountManager.Add(new Administrator(10, "John", "Brown", "admin", "pass"));
+            this.company.AccountManager.Add(new Manager(20, "a", "b", "manager", "pass"));
+            this.company.ShopWorkers.Add(new ShopWorker(01, "John", "Brown", "em1", new DateTime(1996, 06, 13), new DateTime(2020, 03, 2)));
+            this.company.ShopWorkers.Add(new ShopWorker(02, "William", "Jhonson", "em1", new DateTime(1996, 06, 13), new DateTime(2020, 03, 2)));
+            this.company.ShopWorkers.Add(new ShopWorker(03, "Viktor", "Smith", "em1", new DateTime(1996, 06, 13), new DateTime(2020, 03, 2)));
+
         }
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
             string login = this.tbEmail.Text;
             string password = this.tbPassword.Text;
-
-            this.company.AccountManager.Add(new Administrator(10, "a", "b", "em", "pass"));
-            this.company.ShopWorkers.Add(new ShopWorker(01, "a1", "b1", "em1", new DateTime(1996, 06, 13), new DateTime(2020, 03, 2)));
 
             IAccount user = 
                 this.company.AccountManager.isValid(login, password);
@@ -43,6 +49,11 @@ namespace MediaBazaarApp.Popups
             {
                 this.mainWindow = new MainWindow(this.company);
                 this.mainWindow.Show();
+            }
+            if(user is Manager)
+            {
+                this.managerWindow = new ManagerWindow(this.company);
+                this.managerWindow.Show();
             }
             
                 

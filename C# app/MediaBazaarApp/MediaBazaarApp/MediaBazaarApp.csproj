@@ -61,14 +61,14 @@
     <Compile Include="Classes\Address.cs" />
     <Compile Include="Classes\Calendar.cs" />
     <Compile Include="Classes\Company.cs" />
+    <Compile Include="Classes\Contract.cs" />
     <Compile Include="Classes\ContractType.cs" />
+    <Compile Include="Classes\Department.cs" />
     <Compile Include="Classes\ISalary.cs" />
     <Compile Include="Classes\Shift.cs" />
     <Compile Include="Classes\ShiftSchedule.cs" />
     <Compile Include="Classes\ShopWorker.cs" />
-    <Compile Include="Classes\Departments.cs" />
     <Compile Include="Classes\EmployeeList.cs" />
-    <Compile Include="Classes\WorkingDays.cs" />
     <Compile Include="Classes\AccountManager.cs" />
     <Compile Include="Classes\Administrator.cs" />
     <Compile Include="Classes\IAccount.cs" />
@@ -91,6 +91,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Popups\EditEmployee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -113,6 +117,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ManagerWindow.xaml.cs">
+      <DependentUpon>ManagerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Popups\EditEmployee.xaml.cs">
       <DependentUpon>EditEmployee.xaml</DependentUpon>
     </Compile>

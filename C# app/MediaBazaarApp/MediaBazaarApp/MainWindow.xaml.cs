@@ -93,5 +93,10 @@ namespace MediaBazaarApp
             this.employees = this.company.ShopWorkers.ToArray<ShopWorker>();
             this.lvShopWorkers.ItemsSource = this.employees;
         }
+
+        private void BtnRemoveEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            ShopWorker worker = (ShopWorker)this.lvShopWorkers.SelectedItem;
+        }
     }
 }
