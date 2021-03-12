@@ -10,13 +10,36 @@ namespace MediaBazaarApp.Classes
     {
         public int ID { get; set; }
         public Shift Shift { get; set; }
-        private DateTime date { get; set; }
+        public DateTime date { get; set; }
         public int Day { get => date.Day; }
         public int Month { get => date.Month; }
         public int Year { get => date.Year; }
         public List<ShopWorker> ShopWorkers { get; set; }
                                  = new List<ShopWorker>();
 
+        public WorkShift(DateTime time)
+        {
+            if (time.TimeOfDay.Hours >= 8 && time.TimeOfDay.Hours < 16)
+            {
+                Shift = Shift.MORNING;
+            }
+            else
+            {
+                if (time.TimeOfDay.Hours >= 16 && time.TimeOfDay.Hours < 24)
+                {
+                    Shift = Shift.DAY;
+                }
+                else
+                {
+                    if (time.TimeOfDay.Hours <= 0 && time.TimeOfDay.Hours < 8)
+                    {
+                        Shift = Shift.NIGHT;
+                    }
+                }
+            }
+            date = time;
+        }
+        
         public int CompareTo(WorkShift other)
         {
             if (this.date > other.date) return 1;

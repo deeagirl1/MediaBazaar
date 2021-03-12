@@ -40,10 +40,25 @@ namespace MediaBazaarApp.Popups
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
+            LoginMethod();
+        }
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            if (!loggedIn)
+            {
+                Application.Current.Shutdown();
+            }
+        }
+
+
+        private void LoginMethod()
+        {
             string login = this.tbEmail.Text;
             string password = this.tbPassword.Text;
 
-            IAccount user = 
+            IAccount user =
                 this.company.AccountManager.isValid(login, password);
 
             if (user is Administrator)
@@ -52,7 +67,7 @@ namespace MediaBazaarApp.Popups
                 this.mainWindow.Show();
                 loggedIn = true;
             }
-            if(user is Manager)
+            if (user is Manager)
             {
                 this.managerWindow = new ManagerWindow(this.company);
                 this.managerWindow.Show();
@@ -63,13 +78,12 @@ namespace MediaBazaarApp.Popups
                 this.Close();
             }
         }
-        protected override void OnClosed(EventArgs e)
-        {
-            base.OnClosed(e);
 
-            if (!loggedIn)
+        private void tbPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
             {
-                Application.Current.Shutdown();
+                LoginMethod();
             }
         }
     }

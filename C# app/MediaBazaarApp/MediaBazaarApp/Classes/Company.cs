@@ -20,10 +20,16 @@ namespace MediaBazaarApp.Classes
             this.Departments.Add(new Department(2, "Electroncis"));
             this.Departments.Add(new Department(3, "Cashiers"));
             this.Departments.Add(new Department(4, "Tools"));
-
+            
             this.Contracts.Add(new Contract(1,true,32));
             this.Contracts.Add(new Contract(2,true,40));
             this.Contracts.Add(new Contract(3,false));
+
+            this.ShiftSchedule.WorkShifts.Add(new WorkShift(DateTime.Now));
+            this.ShiftSchedule.WorkShifts.Add(new WorkShift(DateTime.Now.AddHours(8)));
+            this.ShiftSchedule.WorkShifts.Add(new WorkShift(DateTime.Now.AddHours(16)));
+            this.ShiftSchedule.WorkShifts.Add(new WorkShift(DateTime.Now.AddHours(24)));
+            this.ShiftSchedule.WorkShifts.Add(new WorkShift(DateTime.Now.AddHours(32)));
         }
     }
 }

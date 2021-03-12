@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MediaBazaarApp.Popups"
         mc:Ignorable="d"
         Title="Login" Height="450" Width="400">
-    <Grid Background="LightGray">
+    <Grid FocusManager.FocusedElement="{Binding ElementName=tbEmail}" Background="LightGray">
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition Height="250"/>
@@ -17,9 +17,9 @@
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center" MaxWidth="200">
             <Label>Email</Label>
-            <TextBox x:Name="tbEmail"/>
+            <TextBox  x:Name="tbEmail"/>
             <Label>Password</Label>
-            <TextBox x:Name="tbPassword"/>
+            <TextBox x:Name="tbPassword" KeyDown="tbPassword_KeyDown"/>
         </StackPanel>
 
         <Button x:Name="btn_login" Grid.Row="2" VerticalAlignment="Bottom" MaxHeight="25" MaxWidth="100" Content="Login" RenderTransformOrigin="0.872,0.5" Click="btn_login_Click" Margin="0,0,0,55" Height="44"></Button>

@@ -38,7 +38,6 @@ namespace MediaBazaarApp.Classes
         {
             get { return this.indexYear; }
         }
-
         public string Month
         {
             get
@@ -95,7 +94,6 @@ namespace MediaBazaarApp.Classes
 
         private void Reload()
         {
-
             switch (CurrentViewMode)
             {
                 case ViewMode.YEAR:
@@ -104,10 +102,6 @@ namespace MediaBazaarApp.Classes
                     LoadMonth();
                     break;
             }
-            for (int i = 0; i < workShifts.Count; i++)
-            {
-                
-            }
         }
         private void LoadMonth()
         {
@@ -115,6 +109,34 @@ namespace MediaBazaarApp.Classes
             mainGrid.Children.Clear();
             for (int i = 1; i < DateTime.DaysInMonth(indexYear, indexMonth) + 1; i++)
             {
+                Button[] buttons = new Button[] { null, null, null };
+
+                for (int j = 0; j < workShifts.Count; j++)
+                {
+                    if (workShifts[j].Year == indexYear && workShifts[j].Month == indexMonth && workShifts[j].Day == i && workShifts[j].AddedToCalendar == false)
+                    {
+                        workShifts[j].AddedToCalendar = true;
+                        buttons[(int)workShifts[j].Shift] = new Button();
+                        buttons[(int)workShifts[j].Shift].BorderThickness = new Thickness(1);
+                        buttons[(int)workShifts[j].Shift].HorizontalContentAlignment = HorizontalAlignment.Center;
+                        buttons[(int)workShifts[j].Shift].VerticalAlignment = VerticalAlignment.Top;
+                        buttons[(int)workShifts[j].Shift].Padding = new Thickness(1);
+                        buttons[(int)workShifts[j].Shift].Background = Brushes.Gray;
+                        buttons[(int)workShifts[j].Shift].Content = workShifts[j].ID;
+                        switch (workShifts[j].Shift)
+                        {
+                            case Shift.MORNING:
+                                buttons[(int)workShifts[j].Shift].Background = Brushes.YellowGreen;
+                                break;
+                            case Shift.DAY:
+                                buttons[(int)workShifts[j].Shift].Background = Brushes.Green;
+                                break;
+                            case Shift.NIGHT:
+                                buttons[(int)workShifts[j].Shift].Background = Brushes.Brown;
+                                break;
+                        }
+                    }
+                }
                 Grid grid = new Grid();
                 grid.Margin = new Thickness(2);
                 grid.Background = Brushes.DarkGray;
@@ -135,36 +157,42 @@ namespace MediaBazaarApp.Classes
                 grid.Children.Add(sPanel);
                 Grid.SetRow(sPanel, 0);
 
-
                 sPanel = new StackPanel();
-                Button btn;
                 for (int j = 0; j < 3; j++)
                 {
-                    btn = new Button();
-                    btn.BorderThickness = new Thickness(1);
-                    btn.HorizontalContentAlignment = HorizontalAlignment.Center;
-                    btn.VerticalAlignment = VerticalAlignment.Top;
-                    btn.Padding = new Thickness(1);
-                    btn.Background = Brushes.Gray;
-
-
-                    switch (j)
+                    if (buttons[j] == null)
                     {
-                        case 0:
+                        buttons[j] = new Button();
+                        buttons[j].BorderThickness = new Thickness(1);
+                        buttons[j].HorizontalContentAlignment = HorizontalAlignment.Center;
+                        buttons[j].VerticalAlignment = VerticalAlignment.Top;
+                        buttons[j].Padding = new Thickness(1);
+                        buttons[j].Background = Brushes.Gray;
+                        buttons[j].Opacity = .7;
 
-                            break;
-                        case 1:
-                            break;
-                        case 2:
-                            break;
+                        switch (j)
+                        {
+                            case 0:
+                                buttons[j].Content = "Morning";
+                                buttons[j].Background = Brushes.Yellow;
+                                break;
+                            case 1:
+                                buttons[j].Content = "Afternoon";
+                                buttons[j].Background = Brushes.White;
+                                break;
+                            case 2:
+                                buttons[j].Content = "Night";
+                                buttons[j].Background = Brushes.RosyBrown;
+                                break;
+                        }
                     }
-                    sPanel.Children.Add(btn);
                 }
-
-
+                for (int j = 0; j < buttons.Length; j++)
+                {
+                    sPanel.Children.Add(buttons[j]);
+                }
                 grid.Children.Add(sPanel);
                 Grid.SetRow(sPanel, 1);
-
                 Grid.SetRow(grid, i / 7);
                 Grid.SetColumn(grid, i % 7);
                 mainGrid.Children.Add(grid);
