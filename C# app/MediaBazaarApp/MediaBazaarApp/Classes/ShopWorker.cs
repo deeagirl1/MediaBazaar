@@ -41,7 +41,6 @@ namespace MediaBazaarApp.Classes
             this.Contract = Contract;
             this.NightShifts = NightShifts;
             this.HourlyWage = HourlyWage;
-            this.Role = Role;
         }
 
         void ISalary.Increase(decimal amount)
