@@ -45,8 +45,6 @@
                 <TextBox x:Name="tb_AccountNumber" Margin="0,0,25,0"></TextBox>
                 <Label>Department</Label>
                 <ComboBox x:Name="cbx_Department" Height="18" Margin="0,0,25,0"/>
-                <Label>Role</Label>
-                <ComboBox x:Name="cbx_Role" Height="18" Margin="0,0,25,0"/>
                 <Label>Contract</Label>
                 <ComboBox x:Name="cbx_Contract" Height="18" Margin="0,0,25,0"/>
 
@@ -55,19 +53,19 @@
             <StackPanel Grid.Column="2">
                 <Label>Email</Label>
                 <TextBox x:Name="tb_Email" Margin="0,0,25,0"></TextBox>
-                <Label>Date of birth</Label>
-                <DatePicker x:Name="dp_BirthDate"/>
+                <Label Content="Date of birth"/>
+                <TextBox Margin="0,0,179,0"/>
                 <Label>Date of first working day</Label>
-                <DatePicker x:Name="dp_HireDate"/>
-                <Label>Shifts</Label>
-                <ComboBox x:Name="cbx_Shifts" Height="18" Margin="0,0,25,0"/>
-                <Label>Status</Label>
-                <ComboBox x:Name="cbx_Status" Height="18" Margin="0,0,25,0"/>
-                <Label>Hourly wage</Label>
-                <TextBox x:Name="tb_HourlyWage" Margin="0,0,25,0"></TextBox>
+                <DatePicker x:Name="dp_HireDate" Margin="0,0,10,0"/>
+                <Label Content="Date of last working day"/>
+                <DatePicker x:Name="dp_HireDate_Copy" Margin="0,0,10,0"/>
+                <Label Content="Hourly wage"/>
+                <TextBox x:Name="tb_HourlyWage" Margin="0,0,25,0"/>
 
             </StackPanel>
             <Button x:Name="btnAdd" Grid.Row="1" MaxHeight="25" MaxWidth="100" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="3" Content="Add employee" Height="20" Click="Button_Click"/>
+            <TextBox Margin="74,70,105,239" Grid.Column="2"/>
+            <TextBox Margin="153,70,26,239" Grid.Column="2"/>
         </Grid>
     </Grid>
 </Window>
