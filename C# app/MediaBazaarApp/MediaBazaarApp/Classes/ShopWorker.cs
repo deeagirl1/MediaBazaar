@@ -14,7 +14,7 @@ namespace MediaBazaarApp.Classes
         public string BankAccount { get; set; }
         public DateTime HireTime { get; set; }  
         public ContractType Contract { get; set; }
-        public bool NightShifts { get; set; }
+        public Status Status { get; set; }
         public decimal HourlyWage { get; set; }
 
         public ShopWorker() { }
@@ -30,7 +30,7 @@ namespace MediaBazaarApp.Classes
 
         public ShopWorker(int id, string firstName, string lastName, string email, string password,
             Department Department, Address HomeAddress, DateTime BirthDate,
-            string BankAccount, DateTime HireTime, ContractType Contract, bool NightShifts, decimal HourlyWage, string Role) :
+            string BankAccount, DateTime HireTime, ContractType Contract, Status Status, decimal HourlyWage, string Role) :
             base(id, firstName, lastName, email, password)
         {
             this.WorksAt = Department;
@@ -39,7 +39,7 @@ namespace MediaBazaarApp.Classes
             this.BankAccount = BankAccount;
             this.HireTime = HireTime;
             this.Contract = Contract;
-            this.NightShifts = NightShifts;
+            this.Status = Status;
             this.HourlyWage = HourlyWage;
         }
 

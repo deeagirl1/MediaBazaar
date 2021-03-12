@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-    class Status
+    public enum Status
     {
+        NOT_STRATED,
+        WORKING,
+        STOPED
     }
 }
