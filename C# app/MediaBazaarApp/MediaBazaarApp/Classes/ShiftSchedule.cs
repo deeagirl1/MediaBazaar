@@ -9,6 +9,7 @@ namespace MediaBazaarApp.Classes
     public class ShiftSchedule
     {
         private List<WorkShift> workShifts = new List<WorkShift>();
+        public List<WorkShift> WorkShifts { get => workShifts; }
 
         public void Add(WorkShift shift) { workShifts.Add(shift); }
 
@@ -38,7 +39,7 @@ namespace MediaBazaarApp.Classes
         {
             foreach (WorkShift s in workShifts)
             {
-                if(s.date >= start && s.date <= end)
+                if (s.date >= start && s.date <= end)
                 {
                     yield return s;
                 }

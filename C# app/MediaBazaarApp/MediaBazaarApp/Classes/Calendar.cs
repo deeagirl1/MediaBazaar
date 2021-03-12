@@ -13,6 +13,7 @@ namespace MediaBazaarApp.Classes
     {
         private Window window;
         private int indexYear, indexMonth;
+        private List<WorkShift> workShifts;
         public ViewMode CurrentViewMode
         {
             get => _viewMode;
@@ -24,9 +25,10 @@ namespace MediaBazaarApp.Classes
         }
         private ViewMode _viewMode;
 
-        public Calendar(Window window)
+        public Calendar(Window window, List<WorkShift> workShifts)
         {
             this.window = window;
+            this.workShifts = workShifts;
             DateTime currentTime = DateTime.Now;
             indexYear = currentTime.Year;
             indexMonth = currentTime.Month;
@@ -102,6 +104,10 @@ namespace MediaBazaarApp.Classes
                     LoadMonth();
                     break;
             }
+            for (int i = 0; i < workShifts.Count; i++)
+            {
+                
+            }
         }
         private void LoadMonth()
         {
@@ -140,23 +146,21 @@ namespace MediaBazaarApp.Classes
                     btn.VerticalAlignment = VerticalAlignment.Top;
                     btn.Padding = new Thickness(1);
                     btn.Background = Brushes.Gray;
+
+
                     switch (j)
                     {
                         case 0:
-                            btn.Content = "Morning";
-                            btn.Foreground = Brushes.BlueViolet;
                             break;
                         case 1:
-                            btn.Content = "Afternoon";
-                            btn.Foreground = Brushes.GreenYellow;
                             break;
                         case 2:
-                            btn.Content = "Night";
-                            btn.Foreground = Brushes.Coral;
                             break;
                     }
                     sPanel.Children.Add(btn);
                 }
+
+
                 grid.Children.Add(sPanel);
                 Grid.SetRow(sPanel, 1);
 
