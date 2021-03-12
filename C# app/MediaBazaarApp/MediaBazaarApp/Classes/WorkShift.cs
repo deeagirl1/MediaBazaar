@@ -17,6 +17,11 @@ namespace MediaBazaarApp.Classes
         public List<ShopWorker> ShopWorkers { get; set; }
                                  = new List<ShopWorker>();
 
+
+        /// <summary>
+        /// MUST FIX DONT USE THIS CONSTRUCTOR, USE THE ONE WITH 2 PARAMETERS
+        /// </summary>
+        /// <param name="time"></param>
         public WorkShift(DateTime time)
         {
             if (time.TimeOfDay.Hours >= 8 && time.TimeOfDay.Hours < 16)
@@ -39,7 +44,12 @@ namespace MediaBazaarApp.Classes
             }
             date = time;
         }
-        
+        public WorkShift(DateTime time, Shift shift)
+        {
+            Shift = shift;
+            date = time;
+        }
+
         public int CompareTo(WorkShift other)
         {
             if (this.date > other.date) return 1;

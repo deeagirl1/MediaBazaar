@@ -14,6 +14,7 @@ namespace MediaBazaarApp.Classes
         private Window window;
         private int indexYear, indexMonth;
         private List<WorkShift> workShifts;
+
         public ViewMode CurrentViewMode
         {
             get => _viewMode;
@@ -110,12 +111,50 @@ namespace MediaBazaarApp.Classes
             for (int i = 1; i < DateTime.DaysInMonth(indexYear, indexMonth) + 1; i++)
             {
                 Button[] buttons = new Button[] { null, null, null };
+                WorkShift[] todaysWorkShifts = new WorkShift[] { null, null, null };
+
+                for (int j = 0; j < 3; j++)
+                {
+                    if (buttons[j] == null)
+                    {
+                        buttons[j] = new Button();
+                        buttons[j].BorderThickness = new Thickness(1);
+                        buttons[j].HorizontalContentAlignment = HorizontalAlignment.Center;
+                        buttons[j].VerticalAlignment = VerticalAlignment.Top;
+                        buttons[j].Padding = new Thickness(1);
+                        buttons[j].Background = Brushes.Gray;
+                        buttons[j].Opacity = .7;
+
+                        switch (j)
+                        {
+                            case 0:
+                                buttons[j].Content = "Morning";
+                                buttons[j].Background = Brushes.Yellow;
+                                break;
+                            case 1:
+                                buttons[j].Content = "Afternoon";
+                                buttons[j].Background = Brushes.White;
+                                break;
+                            case 2:
+                                buttons[j].Content = "Night";
+                                buttons[j].Background = Brushes.RosyBrown;
+                                break;
+                        }
+                    }
+                }
 
                 for (int j = 0; j < workShifts.Count; j++)
                 {
-                    if (workShifts[j].Year == indexYear && workShifts[j].Month == indexMonth && workShifts[j].Day == i && workShifts[j].AddedToCalendar == false)
+                    if (workShifts[j].Year == indexYear && workShifts[j].Month == indexMonth && workShifts[j].Day == i)
                     {
-                        workShifts[j].AddedToCalendar = true;
+                        todaysWorkShifts[(int)workShifts[j].Shift] = workShifts[j];
+                    }
+                }
+
+                for (int j = 0; j < todaysWorkShifts.Length; j++)
+                {
+                    if (todaysWorkShifts[j] != null)
+                    {
                         buttons[(int)workShifts[j].Shift] = new Button();
                         buttons[(int)workShifts[j].Shift].BorderThickness = new Thickness(1);
                         buttons[(int)workShifts[j].Shift].HorizontalContentAlignment = HorizontalAlignment.Center;
@@ -158,35 +197,6 @@ namespace MediaBazaarApp.Classes
                 Grid.SetRow(sPanel, 0);
 
                 sPanel = new StackPanel();
-                for (int j = 0; j < 3; j++)
-                {
-                    if (buttons[j] == null)
-                    {
-                        buttons[j] = new Button();
-                        buttons[j].BorderThickness = new Thickness(1);
-                        buttons[j].HorizontalContentAlignment = HorizontalAlignment.Center;
-                        buttons[j].VerticalAlignment = VerticalAlignment.Top;
-                        buttons[j].Padding = new Thickness(1);
-                        buttons[j].Background = Brushes.Gray;
-                        buttons[j].Opacity = .7;
-
-                        switch (j)
-                        {
-                            case 0:
-                                buttons[j].Content = "Morning";
-                                buttons[j].Background = Brushes.Yellow;
-                                break;
-                            case 1:
-                                buttons[j].Content = "Afternoon";
-                                buttons[j].Background = Brushes.White;
-                                break;
-                            case 2:
-                                buttons[j].Content = "Night";
-                                buttons[j].Background = Brushes.RosyBrown;
-                                break;
-                        }
-                    }
-                }
                 for (int j = 0; j < buttons.Length; j++)
                 {
                     sPanel.Children.Add(buttons[j]);
