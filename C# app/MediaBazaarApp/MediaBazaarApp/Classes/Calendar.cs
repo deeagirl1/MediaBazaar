@@ -151,6 +151,7 @@ namespace MediaBazaarApp.Classes
                     switch (j)
                     {
                         case 0:
+
                             break;
                         case 1:
                             break;
@@ -168,14 +169,6 @@ namespace MediaBazaarApp.Classes
                 Grid.SetColumn(grid, i % 7);
                 mainGrid.Children.Add(grid);
             }
-        }
-
-
-
-
-        public class Day
-        {
-
         }
         public enum ViewMode
         {

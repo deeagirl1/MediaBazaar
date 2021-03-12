@@ -9,8 +9,11 @@ namespace MediaBazaarApp.Classes
     public class WorkShift : IComparable<WorkShift>
     {
         public int ID { get; set; }
-        public Shift shift { get; set; }
-        public DateTime date { get; set; }
+        public Shift Shift { get; set; }
+        private DateTime date { get; set; }
+        public int Day { get => date.Day; }
+        public int Month { get => date.Month; }
+        public int Year { get => date.Year; }
         public List<ShopWorker> ShopWorkers { get; set; }
                                  = new List<ShopWorker>();
 
