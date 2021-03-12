@@ -106,11 +106,12 @@ namespace MediaBazaarApp.Classes
             for (int i = 1; i < DateTime.DaysInMonth(indexYear, indexMonth) + 1; i++)
             {
                 Grid grid = new Grid();
+                grid.Background = Brushes.DarkGray;
                 RowDefinition row = new RowDefinition();
-                row.Height = new GridLength(31, GridUnitType.Star);
+                row.Height = new GridLength(30, GridUnitType.Star);
                 grid.RowDefinitions.Add(row);
                 row = new RowDefinition();
-                row.Height = new GridLength(58, GridUnitType.Star);
+                row.Height = new GridLength(60);
                 grid.RowDefinitions.Add(row);
                 StackPanel sPanel = new StackPanel();
                 Label lbl = new Label();
@@ -129,18 +130,25 @@ namespace MediaBazaarApp.Classes
                 for (int j = 0; j < 3; j++)
                 {
                     btn = new Button();
-                    btn.BorderThickness = new Thickness(0);
+                    btn.BorderThickness = new Thickness(1);
                     btn.HorizontalContentAlignment = HorizontalAlignment.Center;
                     btn.VerticalAlignment = VerticalAlignment.Top;
                     btn.Padding = new Thickness(1);
-                    if (j == 0)
+                    btn.Background = Brushes.Gray;
+                    switch (j)
                     {
-                        btn.Foreground = Brushes.DarkOrange;
-                        btn.Content = "Empty";
-                    }
-                    else
-                    {
-                        btn.Content = "Joe " + rnd.Next(1000, 9999);
+                        case 0:
+                            btn.Content = "Morning";
+                            btn.Foreground = Brushes.BlueViolet;
+                            break;
+                        case 1:
+                            btn.Content = "Afternoon";
+                            btn.Foreground = Brushes.GreenYellow;
+                            break;
+                        case 2:
+                            btn.Content = "Night";
+                            btn.Foreground = Brushes.Coral;
+                            break;
                     }
                     sPanel.Children.Add(btn);
                 }
