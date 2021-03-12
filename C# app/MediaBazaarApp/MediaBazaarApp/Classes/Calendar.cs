@@ -11,7 +11,7 @@ namespace MediaBazaarApp.Classes
 {
     class Calendar
     {
-        private MainWindow mainWindow;
+        private Window window;
         private int indexYear, indexMonth;
         public ViewMode CurrentViewMode
         {
@@ -24,9 +24,9 @@ namespace MediaBazaarApp.Classes
         }
         private ViewMode _viewMode;
 
-        public Calendar(MainWindow window)
+        public Calendar(Window window)
         {
-            mainWindow = window;
+            this.window = window;
             DateTime currentTime = DateTime.Now;
             indexYear = currentTime.Year;
             indexMonth = currentTime.Month;
@@ -92,7 +92,8 @@ namespace MediaBazaarApp.Classes
         }
         private void LoadMonth()
         {
-            mainWindow.calendarGrid.Children.Clear();
+            Grid mainGrid = (Grid)window.FindName("calendarGrid");
+            mainGrid.Children.Clear();
             for (int i = 1; i < DateTime.DaysInMonth(indexYear, indexMonth) + 1; i++)
             {
                 Grid grid = new Grid();
@@ -137,7 +138,7 @@ namespace MediaBazaarApp.Classes
 
                 Grid.SetRow(grid, i / 7);
                 Grid.SetColumn(grid, i % 7);
-                mainWindow.calendarGrid.Children.Add(grid);
+                mainGrid.Children.Add(grid);
             }
         }
 
