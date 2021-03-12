@@ -98,5 +98,11 @@ namespace MediaBazaarApp
         {
             ShopWorker worker = (ShopWorker)this.lvShopWorkers.SelectedItem;
         }
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            Application.Current.Shutdown();
+        }
     }
 }

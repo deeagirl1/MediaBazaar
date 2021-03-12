@@ -52,5 +52,12 @@ namespace MediaBazaarApp
             MessageBox.Show("Succesfully added!");
             this.Close();
         }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            Application.Current.Shutdown();
+        }
     }
 }

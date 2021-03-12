@@ -13,5 +13,6 @@ namespace MediaBazaarApp
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

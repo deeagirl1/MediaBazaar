@@ -56,5 +56,12 @@ namespace MediaBazaarApp
             calendar.PreviousMonth();
             this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
         }
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            Application.Current.Shutdown();
+        }
+
     }
 }
