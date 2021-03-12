@@ -13,7 +13,7 @@ namespace MediaBazaarApp.Classes
     {
         private Window window;
         private int indexYear, indexMonth;
-        public ViewMode CurrentViewMode
+        public View ViewMode
         {
             get => _viewMode;
             set
@@ -22,7 +22,17 @@ namespace MediaBazaarApp.Classes
                 Reload();
             }
         }
-        private ViewMode _viewMode;
+        private View _viewMode;
+        public ButtonView ButtonViewMode
+        {
+            get => _buttonViewMode;
+            set
+            {
+                _buttonViewMode = value;
+                Reload();
+            }
+        }
+        private ButtonView _buttonViewMode;
 
         public Calendar(Window window)
         {
@@ -30,7 +40,7 @@ namespace MediaBazaarApp.Classes
             DateTime currentTime = DateTime.Now;
             indexYear = currentTime.Year;
             indexMonth = currentTime.Month;
-            CurrentViewMode = ViewMode.MONTH;
+            ViewMode = View.MONTH;
         }
 
 
@@ -80,12 +90,11 @@ namespace MediaBazaarApp.Classes
 
         private void Reload()
         {
-
-            switch (CurrentViewMode)
+            switch (ViewMode)
             {
-                case ViewMode.YEAR:
+                case View.YEAR:
                     break;
-                case ViewMode.MONTH:
+                case View.MONTH:
                     LoadMonth();
                     break;
             }
@@ -108,7 +117,7 @@ namespace MediaBazaarApp.Classes
                 lbl.HorizontalContentAlignment = HorizontalAlignment.Center;
                 lbl.VerticalAlignment = VerticalAlignment.Top;
                 lbl.FontSize = 15;
-                lbl.Padding = new Thickness(0);
+                lbl.Padding = new Thickness(5);
                 lbl.Content = i;
                 sPanel.Children.Add(lbl);
                 grid.Children.Add(sPanel);
@@ -116,22 +125,24 @@ namespace MediaBazaarApp.Classes
 
 
                 sPanel = new StackPanel();
+                Button btn;
                 for (int j = 0; j < 3; j++)
                 {
-                    lbl = new Label();
-                    lbl.HorizontalContentAlignment = HorizontalAlignment.Center;
-                    lbl.VerticalAlignment = VerticalAlignment.Top;
-                    lbl.Padding = new Thickness(0);
+                    btn = new Button();
+                    btn.BorderThickness = new Thickness(0);
+                    btn.HorizontalContentAlignment = HorizontalAlignment.Center;
+                    btn.VerticalAlignment = VerticalAlignment.Top;
+                    btn.Padding = new Thickness(1);
                     if (j == 0)
                     {
-                        lbl.Foreground = Brushes.DarkOrange;
-                        lbl.Content = "Empty";
+                        btn.Foreground = Brushes.DarkOrange;
+                        btn.Content = "Empty";
                     }
                     else
                     {
-                        lbl.Content = "Joe " + rnd.Next(1000, 9999);
+                        btn.Content = "Joe " + rnd.Next(1000, 9999);
                     }
-                    sPanel.Children.Add(lbl);
+                    sPanel.Children.Add(btn);
                 }
                 grid.Children.Add(sPanel);
                 Grid.SetRow(sPanel, 1);
@@ -148,10 +159,15 @@ namespace MediaBazaarApp.Classes
         {
 
         }
-        public enum ViewMode
+        public enum View
         {
             YEAR,
             MONTH
+        }
+        public enum ButtonView
+        {
+            SHIFTS,
+            EMPLOYEES
         }
     }
 }
