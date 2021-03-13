@@ -25,15 +25,19 @@ namespace MediaBazaarApp
         private Classes.Calendar calendar;
         private Company company;
         private AddEmployee window;
+        private Administrator administrator; 
 
         public ShopWorker[] employees { get; set; }
-        public MainWindow(Company company)
+        public MainWindow(Company company, IAccount user)
         {
             Loaded += OnLoad;
             InitializeComponent();
             this.company = company;
             Loaded += OnLoad;
+            this.administrator = (Administrator)user;
 
+            
+                
             this.employees = this.company.ShopWorkers.ToArray<ShopWorker>();
             this.lvShopWorkers.ItemsSource = this.employees;
         }

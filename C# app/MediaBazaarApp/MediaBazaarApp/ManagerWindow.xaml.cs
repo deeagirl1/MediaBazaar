@@ -22,12 +22,17 @@ namespace MediaBazaarApp
     {
         private Classes.Calendar calendar;
         private Company company;
-        public ManagerWindow(Company company)
+        private Manager manager;
+
+        public ManagerWindow(Company company, IAccount user)
         {
             Loaded += OnLoad;
             InitializeComponent();
             this.company = company;
+            this.manager = (Manager)user;
         }
+
+        
 
         private void OnLoad(object sender, RoutedEventArgs e)
         {
@@ -55,6 +60,29 @@ namespace MediaBazaarApp
         {
             calendar.PreviousMonth();
             this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            int result = this.company.AccountManager.changePassword(this.manager.Email, tbOldPass.Text, tbNewPass.Text, tbRepeatPass.Text);
+
+            if (result ==1)
+            {
+                MessageBox.Show("Password changed successfully");
+            }
+            else if (result == 0)
+            {
+                MessageBox.Show("Make sure you write the same password in both fields");
+            }
+            else if (result == -1)
+            {
+                MessageBox.Show("You do not have authorization to do this");
+            }
         }
     }
 }

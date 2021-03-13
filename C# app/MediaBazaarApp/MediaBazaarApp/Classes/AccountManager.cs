@@ -48,5 +48,28 @@ namespace MediaBazaarApp.Classes
             }
             return null;
         }
+
+        public int changePassword(string login, string currentPass, string newPass, string newPassRepeat)
+        {
+            IAccount account = this.isValid(login, currentPass);
+            if (this.isValid(login, currentPass) is Person)
+            {
+                if(newPass == newPassRepeat)
+                {
+                    account.Password = newPass;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+
+            }
+            else
+            {
+                return -1;
+            }
+            
+        }
     }
 }

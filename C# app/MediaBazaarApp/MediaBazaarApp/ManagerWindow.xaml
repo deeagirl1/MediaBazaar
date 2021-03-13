@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         Title="ManagerWindow" Height="756.466" Width="1143.534">
     <Grid>
-        <TabControl SelectionChanged="TabControl_SelectionChanged">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="101*"/>
+            <ColumnDefinition Width="1037*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl SelectionChanged="TabControl_SelectionChanged" Grid.ColumnSpan="2" Margin="0,0,-0.2,0.2">
             <TabItem Header="Statistics">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
@@ -81,6 +85,26 @@
                     </Grid>
 
 
+                </Grid>
+            </TabItem>
+            <TabItem Header="My Account" Margin="-2,-2,-2,0">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="1" Width="250" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        
+                            <Label Content="Welcome, " HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <Label Content="Old password"  HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+                            <TextBox x:Name="tbOldPass" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
+                            <Label Content="New password" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+                            <TextBox x:Name="tbNewPass" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="122"/>
+                            <Label Content="Repeat new password" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+                            <TextBox x:Name="tbRepeatPass"  HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="122"/>
+                            <Button Margin="0,10,0,0" Content="Button" HorizontalAlignment="Left"  VerticalAlignment="Top" Click="Button_Click"/>
+                    </StackPanel>
                 </Grid>
             </TabItem>
         </TabControl>

@@ -26,7 +26,8 @@ namespace MediaBazaarApp.Popups
         public Login()
         {
             this.company = new Company();
-            this.managerWindow = new ManagerWindow(this.company);
+            
+            //this.managerWindow = new ManagerWindow(this.company);
             InitializeComponent();
 
             this.company.AccountManager.Add(new Administrator(10, "John", "Brown", "admin", "pass"));
@@ -47,12 +48,12 @@ namespace MediaBazaarApp.Popups
 
             if (user is Administrator)
             {
-                this.mainWindow = new MainWindow(this.company);
+                this.mainWindow = new MainWindow(this.company, user);
                 this.mainWindow.Show();
             }
             if(user is Manager)
             {
-                this.managerWindow = new ManagerWindow(this.company);
+                this.managerWindow = new ManagerWindow(this.company, user);
                 this.managerWindow.Show();
             }
             
