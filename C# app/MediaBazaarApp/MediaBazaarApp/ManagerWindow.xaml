@@ -11,17 +11,18 @@
             <TabItem Header="Statistics">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="82*"/>
-                        <ColumnDefinition Width="1049*"/>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="525*"/>
                     </Grid.ColumnDefinitions>
-                    <ListView x:Name="lvIndicators" HorizontalAlignment="Left" Height="534" Margin="10,10,0,0" VerticalAlignment="Top" Width="778" Grid.ColumnSpan="2">
+                    <ListView x:Name="lvIndicators" HorizontalAlignment="Left" Height="664" Margin="10,10,0,0" VerticalAlignment="Top" Width="1007" Grid.ColumnSpan="3">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn/>
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <Button x:Name="btnView" Content="View" HorizontalAlignment="Left" Margin="793.5,10,0,0" VerticalAlignment="Top" Width="100" Height="32" Click="btnView_Click" Grid.Column="1"/>
+                    <Button x:Name="btnView" Content="View" HorizontalAlignment="Left" Margin="940,10,0,0" VerticalAlignment="Top" Width="100" Height="32" Click="btnView_Click" Grid.Column="2"/>
                 </Grid>
             </TabItem>
 

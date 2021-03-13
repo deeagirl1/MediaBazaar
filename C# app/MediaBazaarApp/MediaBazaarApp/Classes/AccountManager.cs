@@ -48,5 +48,22 @@ namespace MediaBazaarApp.Classes
             }
             return null;
         }
+
+        public bool ChangePassword(string login, string CurrentPass, string NewPass, string NewPassRepeat)
+        {
+            //1) Check if current credentials are correct
+            IAccount account = this.isValid(login, CurrentPass);
+            if (account is Administrator)
+            {//2) If yes change the pass return true
+                if (NewPass == NewPassRepeat)
+                {
+                    account.Password = NewPass;
+                    return true;
+                }
+            }
+            return false;    
+
+            //3) If not return false
+        }
     }
 }

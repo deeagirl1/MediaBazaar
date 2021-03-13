@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-    public class Administrator : Person
+    class Administrator : Person
     {
-        public Administrator(int id, string firstName, string lastName, string email, string password) :
-            base(id, firstName, lastName, email, password)
-        { }
+        public Administrator(string firstName, string lastName) : base (firstName, lastName)
+        {
 
-
+        }
         public override string ToString()
         {
             return base.ToString();
