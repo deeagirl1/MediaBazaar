@@ -23,12 +23,21 @@ namespace MediaBazaarApp.Classes
             Shift = shift;
             date = time;
         }
-
+        
         public int CompareTo(WorkShift other)
         {
             if (this.date > other.date) return 1;
             else if (this.date < other.date) return -1;
             else return 0;
+        }
+
+
+        /// <summary>
+        /// Shows a new window where you can edit the WorkShift object
+        /// </summary>
+        public void ShowDialog()
+        {
+
         }
     }
 }

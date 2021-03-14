@@ -227,6 +227,7 @@ namespace MediaBazaarApp.Classes
                 //Workshift not assigned
             }
         }
+        
 
         public enum ViewMode
         {
