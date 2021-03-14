@@ -40,12 +40,14 @@
                     <ListView x:Name="lvShopWorkers" HorizontalAlignment="Left" Height="642" VerticalAlignment="Top" Width="1010" ItemsSource="{Binding employees}" Margin="10,16,0,0" Grid.Row="1" Grid.ColumnSpan="3">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="50">ID</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="40">ID</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Width="100">First Name</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding LastName}" Width="70">Last Name</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Email}" Width="70">Email</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding BirthDate}" Width="60">Birthday</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding HireTime}" Width="70">Hire date</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding LastHireDate}" Width="90">Last hire date</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding HomeAddress}" Width="90">Address</GridViewColumn>
 
                             </GridView>
                         </ListView.View>

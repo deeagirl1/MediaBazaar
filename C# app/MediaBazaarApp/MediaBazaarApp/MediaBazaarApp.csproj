@@ -62,7 +62,6 @@
     <Compile Include="Classes\Calendar.cs" />
     <Compile Include="Classes\Company.cs" />
     <Compile Include="Classes\Contract.cs" />
-    <Compile Include="Classes\ContractType.cs" />
     <Compile Include="Classes\Department.cs" />
     <Compile Include="Classes\ISalary.cs" />
     <Compile Include="Classes\Shift.cs" />
