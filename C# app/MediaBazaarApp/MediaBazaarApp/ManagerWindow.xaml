@@ -76,6 +76,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
+                        
                         <!--Here are inserted all the day grids for the calendar, procedurally generated-->
 
                     </Grid>
