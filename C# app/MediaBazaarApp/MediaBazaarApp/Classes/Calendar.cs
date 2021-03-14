@@ -113,6 +113,15 @@ namespace MediaBazaarApp.Classes
                 Button[] buttons = new Button[] { null, null, null };
                 WorkShift[] todaysWorkShifts = new WorkShift[] { null, null, null };
 
+                for (int j = 0; j < workShifts.Count; j++)
+                {
+                    if (workShifts[j].Year == indexYear && workShifts[j].Month == indexMonth && workShifts[j].Day == i)
+                    {
+                        todaysWorkShifts[(int)workShifts[j].Shift] = workShifts[j];
+                    }
+                }
+                todaysWorkShifts.OrderBy(s=>s.Shift);
+
                 for (int j = 0; j < 3; j++)
                 {
                     if (buttons[j] == null)
@@ -145,19 +154,12 @@ namespace MediaBazaarApp.Classes
                     }
                 }
 
-                for (int j = 0; j < workShifts.Count; j++)
-                {
-                    if (workShifts[j].Year == indexYear && workShifts[j].Month == indexMonth && workShifts[j].Day == i)
-                    {
-                        todaysWorkShifts[(int)workShifts[j].Shift] = workShifts[j];
-                    }
-                }
 
                 for (int j = 0; j < todaysWorkShifts.Length; j++)
                 {
                     if (todaysWorkShifts[j] != null)
                     {
-                        buttons[(int)workShifts[j].Shift] = new Button
+                        buttons[j] = new Button
                         {
                             BorderThickness = new Thickness(1),
                             HorizontalContentAlignment = HorizontalAlignment.Center,
@@ -222,10 +224,13 @@ namespace MediaBazaarApp.Classes
             {
                 //Workshift assigned
                 WorkShift workShift = (WorkShift)btn.DataContext;
+                workShift.ShowDialog();
             }
             else
             {
                 //Workshift not assigned
+
+                //Create new WorkShift maybe and add it everywhere 
             }
         }
         

@@ -15,13 +15,24 @@ using System.Windows.Shapes;
 namespace MediaBazaarApp.Popups
 {
     /// <summary>
-    /// Interaction logic for WorkShift.xaml
+    /// Interaction logic for WorkShiftWindow.xaml
     /// </summary>
-    public partial class WorkShift : Window
+    public partial class WorkShiftWindow : Window
     {
-        public WorkShift()
+        private Classes.WorkShift workShift;
+        public WorkShiftWindow(Classes.WorkShift workShift)
         {
+            this.workShift = workShift;
             InitializeComponent();
+            LoadData();
+        }
+
+        public void LoadData()
+        {
+            for (int i = 0; i < workShift.ShopWorkers.Count; i++)
+            {
+                AssignedWorkersListView.Items.Add(workShift.ShopWorkers[i]);
+            }
         }
     }
 }

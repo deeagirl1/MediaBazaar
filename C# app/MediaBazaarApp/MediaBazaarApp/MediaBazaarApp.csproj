@@ -120,7 +120,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Popups\WorkShift.xaml">
+    <Page Include="Popups\WorkShiftWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,8 +147,8 @@
     <Compile Include="Popups\Window4.xaml.cs">
       <DependentUpon>Window4.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Popups\WorkShift.xaml.cs">
-      <DependentUpon>WorkShift.xaml</DependentUpon>
+    <Compile Include="Popups\WorkShiftWindow.xaml.cs">
+      <DependentUpon>WorkShiftWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
