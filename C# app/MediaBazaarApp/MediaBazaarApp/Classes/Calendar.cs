@@ -211,6 +211,7 @@ namespace MediaBazaarApp.Classes
                 Grid.SetRow(grid, i / 7);
                 Grid.SetColumn(grid, i % 7);
                 mainGrid.Children.Add(grid);
+                //😎😎😎😎😎😎😎
             }
         }
 
