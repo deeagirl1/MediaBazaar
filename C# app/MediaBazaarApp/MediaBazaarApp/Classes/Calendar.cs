@@ -117,14 +117,16 @@ namespace MediaBazaarApp.Classes
                 {
                     if (buttons[j] == null)
                     {
-                        buttons[j] = new Button();
-                        buttons[j].BorderThickness = new Thickness(1);
-                        buttons[j].HorizontalContentAlignment = HorizontalAlignment.Center;
-                        buttons[j].VerticalAlignment = VerticalAlignment.Top;
-                        buttons[j].Padding = new Thickness(1);
-                        buttons[j].Background = Brushes.Gray;
-                        buttons[j].Opacity = .7;
-
+                        buttons[j] = new Button
+                        {
+                            BorderThickness = new Thickness(1),
+                            HorizontalContentAlignment = HorizontalAlignment.Center,
+                            VerticalAlignment = VerticalAlignment.Top,
+                            Padding = new Thickness(1),
+                            Background = Brushes.Gray,
+                            Opacity = .7
+                        };
+                        buttons[j].Click += Calendar_Button_Click;
                         switch (j)
                         {
                             case 0:
@@ -155,13 +157,16 @@ namespace MediaBazaarApp.Classes
                 {
                     if (todaysWorkShifts[j] != null)
                     {
-                        buttons[(int)workShifts[j].Shift] = new Button();
-                        buttons[(int)workShifts[j].Shift].BorderThickness = new Thickness(1);
-                        buttons[(int)workShifts[j].Shift].HorizontalContentAlignment = HorizontalAlignment.Center;
-                        buttons[(int)workShifts[j].Shift].VerticalAlignment = VerticalAlignment.Top;
-                        buttons[(int)workShifts[j].Shift].Padding = new Thickness(1);
-                        buttons[(int)workShifts[j].Shift].Background = Brushes.Gray;
-                        buttons[(int)workShifts[j].Shift].Content = workShifts[j].ID;
+                        buttons[(int)workShifts[j].Shift] = new Button
+                        {
+                            BorderThickness = new Thickness(1),
+                            HorizontalContentAlignment = HorizontalAlignment.Center,
+                            VerticalAlignment = VerticalAlignment.Top,
+                            Padding = new Thickness(1),
+                            Background = Brushes.Gray,
+                            Content = workShifts[j].ID,
+                            DataContext = workShifts[j]
+                        };
                         switch (workShifts[j].Shift)
                         {
                             case Shift.MORNING:
@@ -208,6 +213,21 @@ namespace MediaBazaarApp.Classes
                 mainGrid.Children.Add(grid);
             }
         }
+
+        private void Calendar_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (btn.DataContext != null)
+            {
+                //Workshift assigned
+                WorkShift workShift = (WorkShift)btn.DataContext;
+            }
+            else
+            {
+                //Workshift not assigned
+            }
+        }
+
         public enum ViewMode
         {
             YEAR,
