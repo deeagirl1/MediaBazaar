@@ -51,7 +51,6 @@ namespace MediaBazaarApp
                 Address address = new Address(tb_Country.Text, tb_City.Text, tb_Street.Text, tb_StreetNumber.Text, tb_ZipCode.Text);
                 Department department = (Department)cbx_Department.SelectedItem;
                 Contract contract = (Contract) cbx_Contract.SelectedItem;
-
                 DateTime birthDate = new DateTime(year, month, day);
                 DateTime hireDate = dp_HireDate.DisplayDate;
                 DateTime lastHireDate = dp_LastHireDate.DisplayDate;

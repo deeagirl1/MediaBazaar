@@ -78,7 +78,8 @@ namespace MediaBazaarApp
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            
+            this.window = new EditEmployee(company);
+            this.window.Show();
         }
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
