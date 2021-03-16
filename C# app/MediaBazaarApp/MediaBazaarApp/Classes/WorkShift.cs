@@ -16,7 +16,7 @@ namespace MediaBazaarApp.Classes
         public int Year { get => date.Year; }
         public List<ShopWorker> ShopWorkers { get; set; }
                                  = new List<ShopWorker>();
-
+        private Popups.WorkShiftWindow window;
 
         public WorkShift(DateTime time, Shift shift)
         {
@@ -37,7 +37,8 @@ namespace MediaBazaarApp.Classes
         /// </summary>
         public void ShowDialog()
         {
-
+            window = new Popups.WorkShiftWindow(this);
+            window.Show();
         }
     }
 }

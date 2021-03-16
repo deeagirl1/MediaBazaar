@@ -48,7 +48,6 @@ namespace MediaBazaarApp.Classes
             }
         }
 
-
         #region Boring year and month stuff
         public void NextYear()
         {
@@ -122,35 +121,32 @@ namespace MediaBazaarApp.Classes
                 }
                 todaysWorkShifts.OrderBy(s=>s.Shift);
 
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < buttons.Length; j++)
                 {
-                    if (buttons[j] == null)
+                    buttons[j] = new Button
                     {
-                        buttons[j] = new Button
-                        {
-                            BorderThickness = new Thickness(1),
-                            HorizontalContentAlignment = HorizontalAlignment.Center,
-                            VerticalAlignment = VerticalAlignment.Top,
-                            Padding = new Thickness(1),
-                            Background = Brushes.Gray,
-                            Opacity = .7
-                        };
-                        buttons[j].Click += Calendar_Button_Click;
-                        switch (j)
-                        {
-                            case 0:
-                                buttons[j].Content = "Morning";
-                                buttons[j].Background = Brushes.Yellow;
-                                break;
-                            case 1:
-                                buttons[j].Content = "Afternoon";
-                                buttons[j].Background = Brushes.White;
-                                break;
-                            case 2:
-                                buttons[j].Content = "Night";
-                                buttons[j].Background = Brushes.RosyBrown;
-                                break;
-                        }
+                        BorderThickness = new Thickness(1),
+                        HorizontalContentAlignment = HorizontalAlignment.Center,
+                        VerticalAlignment = VerticalAlignment.Top,
+                        Padding = new Thickness(1),
+                        Background = Brushes.Gray,
+                        Opacity = .7
+                    };
+                    buttons[j].Click += Calendar_Button_Click;
+                    switch (j)
+                    {
+                        case 0:
+                            buttons[j].Content = "Morning";
+                            buttons[j].Background = Brushes.Yellow;
+                            break;
+                        case 1:
+                            buttons[j].Content = "Afternoon";
+                            buttons[j].Background = Brushes.White;
+                            break;
+                        case 2:
+                            buttons[j].Content = "Night";
+                            buttons[j].Background = Brushes.RosyBrown;
+                            break;
                     }
                 }
 
@@ -159,33 +155,36 @@ namespace MediaBazaarApp.Classes
                 {
                     if (todaysWorkShifts[j] != null)
                     {
-                        buttons[j] = new Button
-                        {
-                            BorderThickness = new Thickness(1),
-                            HorizontalContentAlignment = HorizontalAlignment.Center,
-                            VerticalAlignment = VerticalAlignment.Top,
-                            Padding = new Thickness(1),
-                            Background = Brushes.Gray,
-                            Content = workShifts[j].ID,
-                            DataContext = workShifts[j]
-                        };
+                        buttons[j].BorderThickness = new Thickness(1);
+                        buttons[j].HorizontalContentAlignment = HorizontalAlignment.Center;
+                        buttons[j].VerticalAlignment = VerticalAlignment.Top;
+                        buttons[j].Padding = new Thickness(1);
+                        buttons[j].Background = Brushes.Gray;
+                        buttons[j].Content = workShifts[j].ID;
+                        buttons[j].DataContext = workShifts[j];
+                        
                         switch (workShifts[j].Shift)
                         {
                             case Shift.MORNING:
-                                buttons[(int)workShifts[j].Shift].Background = Brushes.YellowGreen;
+                                buttons[j].Background = Brushes.YellowGreen;
                                 break;
                             case Shift.DAY:
-                                buttons[(int)workShifts[j].Shift].Background = Brushes.Green;
+                                buttons[j].Background = Brushes.Green;
                                 break;
                             case Shift.NIGHT:
-                                buttons[(int)workShifts[j].Shift].Background = Brushes.Brown;
+                                buttons[j].Background = Brushes.Brown;
                                 break;
                         }
                     }
                 }
-                Grid grid = new Grid();
-                grid.Margin = new Thickness(2);
-                grid.Background = Brushes.DarkGray;
+
+
+
+                Grid grid = new Grid
+                {
+                    Margin = new Thickness(2),
+                    Background = Brushes.DarkGray
+                };
                 RowDefinition row = new RowDefinition();
                 row.Height = new GridLength(30, GridUnitType.Star);
                 grid.RowDefinitions.Add(row);
@@ -193,16 +192,17 @@ namespace MediaBazaarApp.Classes
                 row.Height = new GridLength(60);
                 grid.RowDefinitions.Add(row);
                 StackPanel sPanel = new StackPanel();
-                Label lbl = new Label();
-                lbl.HorizontalContentAlignment = HorizontalAlignment.Center;
-                lbl.VerticalAlignment = VerticalAlignment.Top;
-                lbl.FontSize = 15;
-                lbl.Padding = new Thickness(5);
-                lbl.Content = i;
+                Label lbl = new Label
+                {
+                    HorizontalContentAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Top,
+                    FontSize = 15,
+                    Padding = new Thickness(5),
+                    Content = i
+                };
                 sPanel.Children.Add(lbl);
                 grid.Children.Add(sPanel);
                 Grid.SetRow(sPanel, 0);
-
                 sPanel = new StackPanel();
                 for (int j = 0; j < buttons.Length; j++)
                 {
@@ -213,7 +213,6 @@ namespace MediaBazaarApp.Classes
                 Grid.SetRow(grid, i / 7);
                 Grid.SetColumn(grid, i % 7);
                 mainGrid.Children.Add(grid);
-                //😎😎😎😎😎😎😎
             }
         }
 
