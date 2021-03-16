@@ -128,7 +128,6 @@ namespace MediaBazaarApp.Classes
         {
             storyboard.Begin(mainGrid);
             mainGrid.Children.Clear();
-            int dayOfMonth = 1;
             Grid[] grids = new Grid[7 * 6];
             Button[] buttons;
             StackPanel sPanel;
@@ -143,6 +142,36 @@ namespace MediaBazaarApp.Classes
                     Margin = new Thickness(2),
                     Background = Brushes.WhiteSmoke
                 };
+                row = new RowDefinition
+                {
+                    Height = new GridLength(30, GridUnitType.Star)
+                };
+                grids[i].RowDefinitions.Add(row);
+                row = new RowDefinition
+                {
+                    Height = new GridLength(60)
+                };
+                b = new Border()
+                {
+                    BorderThickness = new Thickness(2),
+                    BorderBrush = Brushes.Black,
+                    Opacity = .5,
+                    CornerRadius = new CornerRadius(10, 10, 2, 2)
+                };
+                grids[i].Children.Add(b);
+                grids[i].RowDefinitions.Add(row);
+                sPanel = new StackPanel();
+                lbl = new Label
+                {
+                    HorizontalContentAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Top,
+                    FontSize = 25,
+                    Padding = new Thickness(5),
+                    Content = 0
+                };
+                sPanel.Children.Add(lbl);
+                grids[i].Children.Add(sPanel);
+                Grid.SetRow(sPanel, 0);
                 sPanel = new StackPanel();
                 for (int j = 0; j < buttons.Length; j++)
                 {
@@ -152,7 +181,7 @@ namespace MediaBazaarApp.Classes
                         HorizontalContentAlignment = HorizontalAlignment.Center,
                         VerticalAlignment = VerticalAlignment.Top,
                         Padding = new Thickness(0),
-                        Background = Brushes.Gray,
+                      //  Background = Brushes.Gray,
                         FontSize = 13,
                         Opacity = .7
                     };
@@ -173,49 +202,20 @@ namespace MediaBazaarApp.Classes
                             break;
                     }
                     sPanel.Children.Add(buttons[j]);
-
                 }
                 grids[i].Children.Add(sPanel);
                 Grid.SetRow(sPanel, 1);
-                row = new RowDefinition
-                {
-                    Height = new GridLength(30, GridUnitType.Star)
-                };
-                grids[i].RowDefinitions.Add(row);
-                row = new RowDefinition
-                {
-                    Height = new GridLength(60)
-                };
-                grids[i].RowDefinitions.Add(row);
-                sPanel = new StackPanel();
-                lbl = new Label
-                {
-                    HorizontalContentAlignment = HorizontalAlignment.Center,
-                    VerticalAlignment = VerticalAlignment.Top,
-                    FontSize = 25,
-                    Padding = new Thickness(5),
-                    Content = dayOfMonth++
-                };
-                sPanel.Children.Add(lbl);
-                grids[i].Children.Add(sPanel);
-                sPanel = new StackPanel();
-                Grid.SetRow(sPanel, 0);
                 Grid.SetRow(grids[i], i / 7);
                 Grid.SetColumn(grids[i], i % 7);
-                b = new Border()
-                {
-                    BorderThickness = new Thickness(2),
-                    BorderBrush = Brushes.Black,
-                    Opacity=.5
-                };
-                b.CornerRadius = new CornerRadius(10, 10, 2, 2);
-                grids[i].Children.Add(b);
                 Grid.SetRowSpan(b, 2);
                 grids[i].Opacity = .3;
             }
-
+            new Popups.Popup("", $"{(int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek)}");
             WorkShift[] todaysWorkShifts;
-            for (int i = (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek);  dayOfMonth -1 < DateTime.DaysInMonth(indexYear, indexMonth); i++)
+
+
+            int dayOfMonth = 1;
+            for (int i = (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek); i <= DateTime.DaysInMonth(indexYear, indexMonth); i++)
             {
                 grids[i].Opacity = 1;
                 todaysWorkShifts = new WorkShift[] { null, null, null };
@@ -228,15 +228,17 @@ namespace MediaBazaarApp.Classes
                 }
                 todaysWorkShifts.OrderBy(s => s.Shift);
 
-                buttons = grids[i].Children.OfType<StackPanel>().ToArray()[0].Children.OfType<Button>().ToArray();
+                lbl = grids[i].Children.OfType<StackPanel>().ToArray()[0].Children.OfType<Label>().ToArray()[0];
+                lbl.Content = dayOfMonth++;
+                buttons = grids[i].Children.OfType<StackPanel>().ToArray()[1].Children.OfType<Button>().ToArray();
                 for (int j = 0; j < buttons.Length; j++)
                 {
-                    buttons = grids[i].Children.OfType<Button>().ToArray();
                     buttons[j].BorderThickness = new Thickness(1);
                     buttons[j].HorizontalContentAlignment = HorizontalAlignment.Center;
                     buttons[j].VerticalAlignment = VerticalAlignment.Top;
                     buttons[j].Padding = new Thickness(1);
-                    buttons[j].Background = Brushes.Gray;
+                 //   buttons[j].Background = Brushes.Gray;
+                    
                     if (todaysWorkShifts[j] != null)
                     {
                         buttons[j].Content = workShifts[j].ID;
@@ -257,18 +259,13 @@ namespace MediaBazaarApp.Classes
                     else
                     {
                         buttons[j].Content = (Shift)j;
-                    }       
+                    }
                 }
             }
             for (int i = 0; i < grids.Length; i++)
             {
                 mainGrid.Children.Add(grids[i]);
             }
-        }
-
-        private int GetLastDayOfMonth()
-        {
-            return 31;
         }
 
         private void Calendar_Button_Click(object sender, RoutedEventArgs e)
