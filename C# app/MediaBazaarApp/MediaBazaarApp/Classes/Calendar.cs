@@ -130,7 +130,7 @@ namespace MediaBazaarApp.Classes
             mainGrid.Children.Clear();
             int dayOfMonth = 1;
 
-            for (int i = (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek); i <= DateTime.DaysInMonth(indexYear, indexMonth); i++)
+            for (int i = (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek);  dayOfMonth -1 < DateTime.DaysInMonth(indexYear, indexMonth); i++)
             {
                 Button[] buttons = new Button[] { null, null, null };
                 WorkShift[] todaysWorkShifts = new WorkShift[] { null, null, null };
