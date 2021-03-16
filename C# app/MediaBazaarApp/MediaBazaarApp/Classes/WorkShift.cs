@@ -10,10 +10,10 @@ namespace MediaBazaarApp.Classes
     {
         public int ID { get; set; }
         public Shift Shift { get; set; }
-        public DateTime date { get; set; }
-        public int Day { get => date.Day; }
-        public int Month { get => date.Month; }
-        public int Year { get => date.Year; }
+        public DateTime Date { get; set; }
+        public int Day { get => Date.Day; }
+        public int Month { get => Date.Month; }
+        public int Year { get => Date.Year; }
         public List<ShopWorker> ShopWorkers { get; set; }
                                  = new List<ShopWorker>();
         private Popups.WorkShiftWindow window;
@@ -21,13 +21,13 @@ namespace MediaBazaarApp.Classes
         public WorkShift(DateTime time, Shift shift)
         {
             Shift = shift;
-            date = time;
+            Date = time;
         }
         
         public int CompareTo(WorkShift other)
         {
-            if (this.date > other.date) return 1;
-            else if (this.date < other.date) return -1;
+            if (this.Date > other.Date) return 1;
+            else if (this.Date < other.Date) return -1;
             else return 0;
         }
 
@@ -35,7 +35,7 @@ namespace MediaBazaarApp.Classes
         /// <summary>
         /// Shows a new window where you can edit the WorkShift object
         /// </summary>
-        public void ShowDialog()
+        public void ShowDialog()    
         {
             window = new Popups.WorkShiftWindow(this);
             window.Show();

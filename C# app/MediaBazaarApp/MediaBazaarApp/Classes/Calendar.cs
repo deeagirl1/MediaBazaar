@@ -226,10 +226,11 @@ namespace MediaBazaarApp.Classes
                 workShift.ShowDialog();
             }
             else
-            {
+            {               
+
                 //Workshift not assigned
 
-                //Create new WorkShift maybe and add it everywhere 
+                //Create new WorkShift maybe and add it everywhere 6
             }
         }
         

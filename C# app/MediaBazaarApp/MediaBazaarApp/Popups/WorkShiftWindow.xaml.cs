@@ -29,6 +29,8 @@ namespace MediaBazaarApp.Popups
 
         public void LoadData()
         {
+            dateLabel.Content = workShift.Date.ToString("D").Replace(", ", Environment.NewLine);
+            timeLabel.Content = workShift.Date.ToString("t").Replace(" ", Environment.NewLine);
             for (int i = 0; i < workShift.ShopWorkers.Count; i++)
             {
                 AssignedWorkersListView.Items.Add(workShift.ShopWorkers[i]);

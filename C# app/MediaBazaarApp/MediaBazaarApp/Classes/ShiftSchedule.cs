@@ -39,7 +39,7 @@ namespace MediaBazaarApp.Classes
         {
             foreach (WorkShift s in workShifts)
             {
-                if (s.date >= start && s.date <= end)
+                if (s.Date >= start && s.Date <= end)
                 {
                     yield return s;
                 }
