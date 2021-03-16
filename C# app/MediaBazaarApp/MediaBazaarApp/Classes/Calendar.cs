@@ -123,11 +123,14 @@ namespace MediaBazaarApp.Classes
                     break;
             }
         }
+
         private void LoadMonth()
         {
             storyboard.Begin(mainGrid);
             mainGrid.Children.Clear();
-            for (int i = 1; i < DateTime.DaysInMonth(indexYear, indexMonth) + 1; i++)
+            int dayOfMonth = 1;
+
+            for (int i = (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek); i <= DateTime.DaysInMonth(indexYear, indexMonth); i++)
             {
                 Button[] buttons = new Button[] { null, null, null };
                 WorkShift[] todaysWorkShifts = new WorkShift[] { null, null, null };
@@ -222,7 +225,7 @@ namespace MediaBazaarApp.Classes
                     VerticalAlignment = VerticalAlignment.Top,
                     FontSize = 25,
                     Padding = new Thickness(5),
-                    Content = i
+                    Content = dayOfMonth++
                 };
                 sPanel.Children.Add(lbl);
                 grid.Children.Add(sPanel);
@@ -250,6 +253,12 @@ namespace MediaBazaarApp.Classes
                 Grid.SetRowSpan(b, 2);
                 mainGrid.Children.Add(grid);
             }
+
+        }
+
+        private int GetLastDayOfMonth()
+        {
+            return 31;
         }
 
         private void Calendar_Button_Click(object sender, RoutedEventArgs e)
