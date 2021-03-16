@@ -129,21 +129,21 @@ namespace MediaBazaarApp.Classes
             storyboard.Begin(mainGrid);
             mainGrid.Children.Clear();
             int dayOfMonth = 1;
-
-            for (int i = (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek);  dayOfMonth -1 < DateTime.DaysInMonth(indexYear, indexMonth); i++)
+            Grid[] grids = new Grid[7 * 6];
+            Button[] buttons;
+            StackPanel sPanel;
+            RowDefinition row;
+            Label lbl;
+            Border b;
+            for (int i = 0; i < grids.Length; i++)
             {
-                Button[] buttons = new Button[] { null, null, null };
-                WorkShift[] todaysWorkShifts = new WorkShift[] { null, null, null };
-
-                for (int j = 0; j < workShifts.Count; j++)
+                buttons = new Button[] { null, null, null };
+                grids[i] = new Grid()
                 {
-                    if (workShifts[j].Year == indexYear && workShifts[j].Month == indexMonth && workShifts[j].Day == i)
-                    {
-                        todaysWorkShifts[(int)workShifts[j].Shift] = workShifts[j];
-                    }
-                }
-                todaysWorkShifts.OrderBy(s => s.Shift);
-
+                    Margin = new Thickness(2),
+                    Background = Brushes.WhiteSmoke
+                };
+                sPanel = new StackPanel();
                 for (int j = 0; j < buttons.Length; j++)
                 {
                     buttons[j] = new Button
@@ -172,21 +172,75 @@ namespace MediaBazaarApp.Classes
                             buttons[j].Background = Brushes.RosyBrown;
                             break;
                     }
+                    sPanel.Children.Add(buttons[j]);
+
                 }
-
-
-                for (int j = 0; j < todaysWorkShifts.Length; j++)
+                grids[i].Children.Add(sPanel);
+                Grid.SetRow(sPanel, 1);
+                row = new RowDefinition
                 {
+                    Height = new GridLength(30, GridUnitType.Star)
+                };
+                grids[i].RowDefinitions.Add(row);
+                row = new RowDefinition
+                {
+                    Height = new GridLength(60)
+                };
+                grids[i].RowDefinitions.Add(row);
+                sPanel = new StackPanel();
+                lbl = new Label
+                {
+                    HorizontalContentAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Top,
+                    FontSize = 25,
+                    Padding = new Thickness(5),
+                    Content = dayOfMonth++
+                };
+                sPanel.Children.Add(lbl);
+                grids[i].Children.Add(sPanel);
+                sPanel = new StackPanel();
+                Grid.SetRow(sPanel, 0);
+                Grid.SetRow(grids[i], i / 7);
+                Grid.SetColumn(grids[i], i % 7);
+                b = new Border()
+                {
+                    BorderThickness = new Thickness(2),
+                    BorderBrush = Brushes.Black,
+                    Opacity=.5
+                };
+                b.CornerRadius = new CornerRadius(10, 10, 2, 2);
+                grids[i].Children.Add(b);
+                Grid.SetRowSpan(b, 2);
+                grids[i].Opacity = .3;
+            }
+
+            WorkShift[] todaysWorkShifts;
+            for (int i = (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek);  dayOfMonth -1 < DateTime.DaysInMonth(indexYear, indexMonth); i++)
+            {
+                grids[i].Opacity = 1;
+                todaysWorkShifts = new WorkShift[] { null, null, null };
+                for (int j = 0; j < workShifts.Count; j++)
+                {
+                    if (workShifts[j].Year == indexYear && workShifts[j].Month == indexMonth && workShifts[j].Day == i)
+                    {
+                        todaysWorkShifts[(int)workShifts[j].Shift] = workShifts[j];
+                    }
+                }
+                todaysWorkShifts.OrderBy(s => s.Shift);
+
+                buttons = grids[i].Children.OfType<StackPanel>().ToArray()[0].Children.OfType<Button>().ToArray();
+                for (int j = 0; j < buttons.Length; j++)
+                {
+                    buttons = grids[i].Children.OfType<Button>().ToArray();
+                    buttons[j].BorderThickness = new Thickness(1);
+                    buttons[j].HorizontalContentAlignment = HorizontalAlignment.Center;
+                    buttons[j].VerticalAlignment = VerticalAlignment.Top;
+                    buttons[j].Padding = new Thickness(1);
+                    buttons[j].Background = Brushes.Gray;
                     if (todaysWorkShifts[j] != null)
                     {
-                        buttons[j].BorderThickness = new Thickness(1);
-                        buttons[j].HorizontalContentAlignment = HorizontalAlignment.Center;
-                        buttons[j].VerticalAlignment = VerticalAlignment.Top;
-                        buttons[j].Padding = new Thickness(1);
-                        buttons[j].Background = Brushes.Gray;
                         buttons[j].Content = workShifts[j].ID;
                         buttons[j].DataContext = workShifts[j];
-
                         switch (workShifts[j].Shift)
                         {
                             case Shift.MORNING:
@@ -200,60 +254,16 @@ namespace MediaBazaarApp.Classes
                                 break;
                         }
                     }
+                    else
+                    {
+                        buttons[j].Content = (Shift)j;
+                    }       
                 }
-
-
-                Grid grid = new Grid
-                {
-                    Margin = new Thickness(2),
-                    Background=Brushes.WhiteSmoke
-                };
-
-
-
-
-                RowDefinition row = new RowDefinition();
-                row.Height = new GridLength(30, GridUnitType.Star);
-                grid.RowDefinitions.Add(row);
-                row = new RowDefinition();
-                row.Height = new GridLength(60);
-                grid.RowDefinitions.Add(row);
-                StackPanel sPanel = new StackPanel();
-                Label lbl = new Label
-                {
-                    HorizontalContentAlignment = HorizontalAlignment.Center,
-                    VerticalAlignment = VerticalAlignment.Top,
-                    FontSize = 25,
-                    Padding = new Thickness(5),
-                    Content = dayOfMonth++
-                };
-                sPanel.Children.Add(lbl);
-                grid.Children.Add(sPanel);
-                Grid.SetRow(sPanel, 0);
-                sPanel = new StackPanel();
-                for (int j = 0; j < buttons.Length; j++)
-                {
-                    sPanel.Children.Add(buttons[j]);
-                }
-                grid.Children.Add(sPanel);
-                Grid.SetRow(sPanel, 1);
-                Grid.SetRow(grid, i / 7);
-                Grid.SetColumn(grid, i % 7);
-
-
-                Border b;
-                b = new Border()
-                {
-                    BorderThickness = new Thickness(2),
-                    BorderBrush = Brushes.Black,
-                    Opacity=.5
-                };
-                b.CornerRadius = new CornerRadius(10, 10, 2, 2);
-                                grid.Children.Add(b);
-                Grid.SetRowSpan(b, 2);
-                mainGrid.Children.Add(grid);
             }
-
+            for (int i = 0; i < grids.Length; i++)
+            {
+                mainGrid.Children.Add(grids[i]);
+            }
         }
 
         private int GetLastDayOfMonth()
@@ -271,7 +281,7 @@ namespace MediaBazaarApp.Classes
                 workShift.ShowDialog();
             }
             else
-            {               
+            {
                 //Workshift not assigned
 
                 //Create new WorkShift maybe and add it everywhere 6
