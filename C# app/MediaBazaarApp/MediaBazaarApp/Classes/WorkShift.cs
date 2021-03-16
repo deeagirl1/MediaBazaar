@@ -35,9 +35,12 @@ namespace MediaBazaarApp.Classes
         /// <summary>
         /// Shows a new window where you can edit the WorkShift object
         /// </summary>
-        public void ShowDialog()    
+        public void ShowDialog()
         {
-            window = new Popups.WorkShiftWindow(this);
+            if(window==null)
+            {
+                window = new Popups.WorkShiftWindow(this);
+            }
             window.Show();
         }
     }

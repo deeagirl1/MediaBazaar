@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
 
 namespace MediaBazaarApp.Classes
 {
@@ -14,9 +16,11 @@ namespace MediaBazaarApp.Classes
         private Window window;
         private int indexYear, indexMonth;
         private List<WorkShift> workShifts;
-
+        private Grid mainGrid;
+        private DoubleAnimation doubleAnimation;
+        private Storyboard storyboard;
         //TODO: Handle days with no workshits
-        
+
         public ViewMode CurrentViewMode
         {
             get => _viewMode;
@@ -30,8 +34,26 @@ namespace MediaBazaarApp.Classes
 
         public Calendar(Window window, List<WorkShift> workShifts)
         {
+
             this.window = window;
             this.workShifts = workShifts;
+            mainGrid = (Grid)window.FindName("calendarGrid");
+            doubleAnimation = new DoubleAnimation
+            {
+                From = 1.0,
+                To = .6,
+                Duration = new Duration(TimeSpan.FromMilliseconds(150)),
+                AutoReverse = true
+            };
+            storyboard = new Storyboard
+            {
+                Children =
+                {
+                    doubleAnimation
+                }
+            };
+            Storyboard.SetTarget(doubleAnimation, mainGrid);
+            Storyboard.SetTargetProperty(doubleAnimation, new PropertyPath(Grid.OpacityProperty));
             DateTime currentTime = DateTime.Now;
             indexYear = currentTime.Year;
             indexMonth = currentTime.Month;
@@ -103,7 +125,7 @@ namespace MediaBazaarApp.Classes
         }
         private void LoadMonth()
         {
-            Grid mainGrid = (Grid)window.FindName("calendarGrid");
+            storyboard.Begin(mainGrid);
             mainGrid.Children.Clear();
             for (int i = 1; i < DateTime.DaysInMonth(indexYear, indexMonth) + 1; i++)
             {
@@ -117,7 +139,7 @@ namespace MediaBazaarApp.Classes
                         todaysWorkShifts[(int)workShifts[j].Shift] = workShifts[j];
                     }
                 }
-                todaysWorkShifts.OrderBy(s=>s.Shift);
+                todaysWorkShifts.OrderBy(s => s.Shift);
 
                 for (int j = 0; j < buttons.Length; j++)
                 {
@@ -126,8 +148,9 @@ namespace MediaBazaarApp.Classes
                         BorderThickness = new Thickness(1),
                         HorizontalContentAlignment = HorizontalAlignment.Center,
                         VerticalAlignment = VerticalAlignment.Top,
-                        Padding = new Thickness(1),
+                        Padding = new Thickness(0),
                         Background = Brushes.Gray,
+                        FontSize = 13,
                         Opacity = .7
                     };
                     buttons[j].Click += Calendar_Button_Click;
@@ -160,7 +183,7 @@ namespace MediaBazaarApp.Classes
                         buttons[j].Background = Brushes.Gray;
                         buttons[j].Content = workShifts[j].ID;
                         buttons[j].DataContext = workShifts[j];
-                        
+
                         switch (workShifts[j].Shift)
                         {
                             case Shift.MORNING:
@@ -177,12 +200,15 @@ namespace MediaBazaarApp.Classes
                 }
 
 
-
                 Grid grid = new Grid
                 {
                     Margin = new Thickness(2),
-                    Background = Brushes.DarkGray
+                    Background=Brushes.WhiteSmoke
                 };
+
+
+
+
                 RowDefinition row = new RowDefinition();
                 row.Height = new GridLength(30, GridUnitType.Star);
                 grid.RowDefinitions.Add(row);
@@ -194,7 +220,7 @@ namespace MediaBazaarApp.Classes
                 {
                     HorizontalContentAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Top,
-                    FontSize = 15,
+                    FontSize = 25,
                     Padding = new Thickness(5),
                     Content = i
                 };
@@ -210,6 +236,18 @@ namespace MediaBazaarApp.Classes
                 Grid.SetRow(sPanel, 1);
                 Grid.SetRow(grid, i / 7);
                 Grid.SetColumn(grid, i % 7);
+
+
+                Border b;
+                b = new Border()
+                {
+                    BorderThickness = new Thickness(2),
+                    BorderBrush = Brushes.Black,
+                    Opacity=.5
+                };
+                b.CornerRadius = new CornerRadius(10, 10, 2, 2);
+                                grid.Children.Add(b);
+                Grid.SetRowSpan(b, 2);
                 mainGrid.Children.Add(grid);
             }
         }
@@ -228,6 +266,8 @@ namespace MediaBazaarApp.Classes
                 //Workshift not assigned
 
                 //Create new WorkShift maybe and add it everywhere 6
+                
+                //Just let Bohdan decide I guess
             }
         }
         

@@ -56,8 +56,9 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Label x:Name="dateLabel" Grid.Column="0" VerticalAlignment="Center" HorizontalContentAlignment="Center" Content="Date"/>
-            <Label x:Name="timeLabel" Grid.Column="1" VerticalAlignment="Center" HorizontalContentAlignment="Center" Content="Time"/>
+            <Label x:Name="dateLabel" Grid.Column="0" VerticalAlignment="Center" HorizontalContentAlignment="Right" Content="Date"/>
+            
+            <Label x:Name="timeLabel" Grid.Column="1" VerticalAlignment="Center" HorizontalContentAlignment="Left" Content="Time"/>
         </Grid>
 
 
