@@ -17,7 +17,7 @@
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center" MaxWidth="200">
             <Label>Email</Label>
-            <TextBox  x:Name="tbEmail"/>
+            <TextBox  x:Name="tbEmail" KeyDown="tbPassword_KeyDown"/>
             <Label>Password</Label>
             <TextBox x:Name="tbPassword" KeyDown="tbPassword_KeyDown"/>
         </StackPanel>

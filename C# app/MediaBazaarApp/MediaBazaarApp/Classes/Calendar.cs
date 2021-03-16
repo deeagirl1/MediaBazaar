@@ -15,6 +15,8 @@ namespace MediaBazaarApp.Classes
         private int indexYear, indexMonth;
         private List<WorkShift> workShifts;
 
+        //TODO: Handle days with no workshits
+        
         public ViewMode CurrentViewMode
         {
             get => _viewMode;
@@ -87,10 +89,6 @@ namespace MediaBazaarApp.Classes
         }
 
         #endregion
-
-        //Temporary variables for debugging!
-        private Random rnd = new Random();
-        //End temp
 
         private void Reload()
         {
@@ -227,7 +225,6 @@ namespace MediaBazaarApp.Classes
             }
             else
             {               
-
                 //Workshift not assigned
 
                 //Create new WorkShift maybe and add it everywhere 6
