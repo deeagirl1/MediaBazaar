@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-    interface IAccount
+    public interface IAccount
     {
-        int GetId();
-        void SetId(int id);
-        string GetLogin();
-        void SetLogin(string login);
-        string GetPassword();
-        void SetPassword(string password);
+        int ID { get; set; }
+        int AccessLevel { get; set; }
+        string Username { get; set; }
+        string Password { get; set; }
+        
     }
 }

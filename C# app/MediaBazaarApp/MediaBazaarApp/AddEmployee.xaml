@@ -1,18 +1,17 @@
-﻿<Window x:Class="MediaBazaarApp.Popups.EditEmployee"
+﻿<Window x:Class="MediaBazaarApp.AddEmployee"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MediaBazaarApp.Popups"
+        xmlns:local="clr-namespace:MediaBazaarApp"
         mc:Ignorable="d"
-        Title="Edit Employee" Height="386.587" Width="757.152">
+        Title="Add Employee" Height="386.531" Width="709">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="79*"/>
-            <ColumnDefinition Width="400*"/>
-            <ColumnDefinition Width="270*"/>
+            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="110*"/>
         </Grid.ColumnDefinitions>
-        <Grid Background="LightGray" Grid.ColumnSpan="3">
+        <Grid Background="LightGray" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="187*" />
@@ -27,16 +26,16 @@
             </Grid.RowDefinitions>
             <StackPanel Grid.Column="1" Grid.ColumnSpan="2" >
                 <Label>First name</Label>
-                <TextBox x:Name="tb_FirstName" Margin="0,0,25,0">
+                <TextBox x:Name="tb_FirstName" Margin="0,0,25,0" TextChanged="tb_FirstName_TextChanged">
                 </TextBox>
                 <Label>Last name</Label>
                 <TextBox x:Name="tb_LastName" Margin="0,0,25,0"></TextBox>
                 <Label>Country</Label>
-                <TextBox x:Name="tb_Country" Margin="0,0,25,0"></TextBox>
+                <TextBox x:Name="tb_Country" Margin="0,0,25,0" TextChanged="TextBox_TextChanged"></TextBox>
                 <Label>City</Label>
                 <TextBox x:Name="tb_City" Margin="0,0,25,0"></TextBox>
                 <Label>Street</Label>
-                <TextBox x:Name="tb_Street" Margin="0,0,143,0"></TextBox>
+                <TextBox x:Name="tb_Street" Margin="0,0,107,0"></TextBox>
                 <Label>Zip-code</Label>
                 <TextBox x:Name="tb_ZipCode" Margin="0,0,143,0"></TextBox>
 
@@ -70,7 +69,6 @@
             <TextBox x:Name="tb_day" Margin="153,70,26,239" Grid.Column="3" RenderTransformOrigin="0.568,0.528"/>
             <Label  Grid.Column="1" Margin="118,179,6,100">Street Nr.</Label>
             <TextBox x:Name ="tb_StreetNumber" Margin="118,202,3,106" Grid.Column="1"/>
-
 
 
         </Grid>

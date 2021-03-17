@@ -1,0 +1,70 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MediaBazaarApp.Classes
+{
+    public class ShopWorker : Person, ISalary, IComparable<ShopWorker>
+    {
+        public Department WorksAt { get; set; }
+        public Address HomeAddress { get; set; }
+        public DateTime BirthDate { get; set; }
+        public string BankAccount { get; set; }
+        public DateTime HireTime { get; set; }  
+        public DateTime LastHireDate { get; set; }
+        public Contract Contract { get; set; }
+        public bool NightShifts { get; set; }
+        public decimal HourlyWage { get; set; }
+
+        public ShopWorker() { }
+
+        public ShopWorker(int id, string firstName, string lastName, string email, DateTime birthDate, DateTime hireDate,DateTime lastHireDate, Address address) : base (id, firstName, lastName, email)
+        {
+
+            this.BirthDate = birthDate.Date;
+            this.HireTime = hireDate;
+            this.HomeAddress = address;
+            this.LastHireDate = lastHireDate;
+        }
+
+        public ShopWorker(int id, string firstName, string lastName, string email,string username, string password) :
+            base(id, firstName, lastName, email, username, password)
+        { }
+
+        public ShopWorker(int id, string firstName, string lastName, string email,string username, string password,
+            Department Department, Address HomeAddress, DateTime BirthDate,
+            string BankAccount, DateTime HireTime, Contract Contract, bool NightShifts, decimal HourlyWage, string Role) :
+            base(id, firstName, lastName, email,username, password)
+        {
+            this.WorksAt = Department;
+            this.HomeAddress = HomeAddress;
+            this.BirthDate = BirthDate;
+            this.BankAccount = BankAccount;
+            this.HireTime = HireTime;
+            this.Contract = Contract;
+            this.NightShifts = NightShifts;
+            this.HourlyWage = HourlyWage;
+        }
+
+        void ISalary.Increase(decimal amount)
+        {
+            if (amount > 0)
+                this.HourlyWage += amount;
+        }
+
+        void ISalary.Reduce(decimal amount)
+        {
+            if (amount > 0)
+                this.HourlyWage += amount;
+        }
+
+        public int CompareTo(ShopWorker other)
+        {
+            throw new NotImplementedException();
+        }
+
+        
+    }
+}

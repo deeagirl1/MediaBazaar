@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MediaBazaarApp.Classes;
+using MediaBazaarApp.Popups;
 
 namespace MediaBazaarApp
 {
@@ -21,25 +23,86 @@ namespace MediaBazaarApp
     public partial class MainWindow : Window
     {
         private Classes.Calendar calendar;
-        public MainWindow()
+        private Person person;
+        private Company company;
+        private AddEmployee window;
+        private EditEmployee editWindow;
+
+        public ShopWorker[] employees { get; set; }
+        public MainWindow(Company company, Person person)
         {
             Loaded += OnLoad;
             InitializeComponent();
+            this.company = company;
+            Loaded += OnLoad;
+
+            this.employees = this.company.ShopWorkers.ToArray<ShopWorker>();
+            this.lvShopWorkers.ItemsSource = this.employees;
+
+            this.person = person;
+            MessageBox.Show(person.LastName);
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)
         {
             calendar = new Classes.Calendar(this);
+            this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             calendar.NextMonth();
+            this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             calendar.PreviousMonth();
+            this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            this.editWindow = new EditEmployee(company);
+            this.editWindow.Show();
+        }
+
+        private void Button_Add_Click(object sender, RoutedEventArgs e)
+        {
+            this.window = new AddEmployee(company);
+            this.window.Show();
+
+        }
+
+        private void btn_Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            this.employees = this.company.ShopWorkers.ToArray<ShopWorker>();
+            this.lvShopWorkers.ItemsSource = this.employees;
+        }
+
+        private void BtnRemoveEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            ShopWorker worker = (ShopWorker)this.lvShopWorkers.SelectedItem;
         }
     }
 }

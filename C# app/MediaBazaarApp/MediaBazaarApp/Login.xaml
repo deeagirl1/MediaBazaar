@@ -14,14 +14,14 @@
         </Grid.RowDefinitions>
         <Label HorizontalAlignment="Center"  FontSize="25" VerticalAlignment="Center">
             Media Bazaar</Label>
-        
-            <StackPanel Grid.Row="1" VerticalAlignment="Center" MaxWidth="200">
-                <Label>Email</Label>
-                <TextBox/>
-                <Label>Password</Label>
-                <TextBox/>
-            </StackPanel>
-        
-        <Button Grid.Row="2" VerticalAlignment="Top" MaxHeight="25" MaxWidth="100" Content="Login"></Button>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" MaxWidth="200">
+            <Label>Email</Label>
+            <TextBox x:Name="tbEmail"/>
+            <Label>Password</Label>
+            <TextBox x:Name="tbPassword"/>
+        </StackPanel>
+
+        <Button x:Name="btn_login" Grid.Row="2" VerticalAlignment="Bottom" MaxHeight="25" MaxWidth="100" Content="Login" RenderTransformOrigin="0.872,0.5" Click="btn_login_Click" Margin="0,0,0,55" Height="44"></Button>
     </Grid>
 </Window>

@@ -13,7 +13,7 @@ namespace MediaBazaarApp.Classes
     {
         private Window window;
         private int indexYear, indexMonth;
-        public View ViewMode
+        public ViewMode CurrentViewMode
         {
             get => _viewMode;
             set
@@ -22,17 +22,7 @@ namespace MediaBazaarApp.Classes
                 Reload();
             }
         }
-        private View _viewMode;
-        public ButtonView ButtonViewMode
-        {
-            get => _buttonViewMode;
-            set
-            {
-                _buttonViewMode = value;
-                Reload();
-            }
-        }
-        private ButtonView _buttonViewMode;
+        private ViewMode _viewMode;
 
         public Calendar(Window window)
         {
@@ -40,7 +30,20 @@ namespace MediaBazaarApp.Classes
             DateTime currentTime = DateTime.Now;
             indexYear = currentTime.Year;
             indexMonth = currentTime.Month;
-            ViewMode = View.MONTH;
+            CurrentViewMode = ViewMode.MONTH;
+        }
+        public int Year
+        {
+            get { return this.indexYear; }
+        }
+
+        public string Month
+        {
+            get
+            {
+                string fullMonthName = new DateTime(2015, this.indexMonth, 1).ToString("MMMM");
+                return fullMonthName;
+            }
         }
 
 
@@ -90,11 +93,12 @@ namespace MediaBazaarApp.Classes
 
         private void Reload()
         {
-            switch (ViewMode)
+
+            switch (CurrentViewMode)
             {
-                case View.YEAR:
+                case ViewMode.YEAR:
                     break;
-                case View.MONTH:
+                case ViewMode.MONTH:
                     LoadMonth();
                     break;
             }
@@ -164,19 +168,16 @@ namespace MediaBazaarApp.Classes
 
 
 
+
         public class Day
         {
 
         }
-        public enum View
+        public enum ViewMode
         {
             YEAR,
             MONTH
         }
-        public enum ButtonView
-        {
-            SHIFTS,
-            EMPLOYEES
-        }
     }
 }
+

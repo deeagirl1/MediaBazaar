@@ -6,53 +6,31 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-    abstract class Person : IAccount 
+    public abstract class Person : IAccount 
     {
-        private int id;
-        private string firstName;
-        private string lastName;
-        private string email;
-        private string password;
-
-        //Id generation will be added to constructor later after we settle how to handle it
-        
-
-        //Create person from first name and lastname
-        public Person(string firstName, string lastName)
+        public int ID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Username { get; set; }
+        public int AccessLevel { get; set; }
+        public Person() { }
+        public Person(int id, string firstName, string lastName,string email) 
         {
-
+            this.ID = id;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Email = email;
         }
-
-        public int GetId()
+        public Person(int id, string firstName, string lastName, string email,string username, string password)
         {
-            throw new NotImplementedException();
+            this.ID = id;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Email = email;
+            this.Password = password;
         }
-
-        public string GetLogin()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetPassword()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetId(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetLogin(string login)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetPassword(string password)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override string ToString() => firstName + " " + lastName;
+        public override string ToString() => $"{this.ID} {this.FirstName} {this.LastName}";
     }
 }
