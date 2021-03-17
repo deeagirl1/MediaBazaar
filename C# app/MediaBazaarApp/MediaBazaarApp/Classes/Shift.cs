@@ -8,8 +8,8 @@ namespace MediaBazaarApp.Classes
 {
     public enum Shift
     {
-        MORNING,
-        DAY,
-        NIGHT
+        Morning,
+        Day,
+        Night
     }
 }

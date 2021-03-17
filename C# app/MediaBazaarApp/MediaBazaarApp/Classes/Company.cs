@@ -25,10 +25,10 @@ namespace MediaBazaarApp.Classes
             this.Contracts.Add(new Contract(2,true,40));
             this.Contracts.Add(new Contract(3,false));
 
-            this.ShiftSchedule.WorkShifts.Add(new WorkShift(DateTime.Today, Shift.MORNING));
-            this.ShiftSchedule.WorkShifts.Add(new WorkShift(DateTime.Today.AddDays(1), Shift.DAY));
-            this.ShiftSchedule.WorkShifts.Add(new WorkShift(DateTime.Today.AddDays(2), Shift.NIGHT));
-            this.ShiftSchedule.WorkShifts.Add(new WorkShift(DateTime.Today.AddDays(3), Shift.MORNING));
+            this.ShiftSchedule.WorkShifts.Add(new WorkShift(DateTime.Today, Shift.Morning));
+            this.ShiftSchedule.WorkShifts.Add(new WorkShift(DateTime.Today.AddDays(1), Shift.Day));
+            this.ShiftSchedule.WorkShifts.Add(new WorkShift(DateTime.Today.AddDays(2), Shift.Night));
+            this.ShiftSchedule.WorkShifts.Add(new WorkShift(DateTime.Today.AddDays(3), Shift.Morning));
         }
     }
 }

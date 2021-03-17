@@ -20,6 +20,8 @@ namespace MediaBazaarApp.Classes
         private DoubleAnimation doubleAnimation;
         private Storyboard storyboard;
         //TODO: Handle days with no workshits
+        private int[] lastMonthDays { get => new int[] { DateTime.DaysInMonth(indexYear, indexMonth-1) }; }
+        private int[] nextMonthDays { get => new int[] { DateTime.DaysInMonth(indexYear, indexMonth+1) }; }
 
         public ViewMode CurrentViewMode
         {
@@ -156,7 +158,7 @@ namespace MediaBazaarApp.Classes
                     BorderThickness = new Thickness(2),
                     BorderBrush = Brushes.Black,
                     Opacity = .5,
-                    CornerRadius = new CornerRadius(10, 10, 2, 2)
+                    CornerRadius = new CornerRadius(25, 3, 120, 60)
                 };
                 grids[i].Children.Add(b);
                 grids[i].RowDefinitions.Add(row);
@@ -177,14 +179,9 @@ namespace MediaBazaarApp.Classes
                 {
                     buttons[j] = new Button
                     {
-                        BorderThickness = new Thickness(1),
-                        HorizontalContentAlignment = HorizontalAlignment.Center,
-                        VerticalAlignment = VerticalAlignment.Top,
-                        Padding = new Thickness(0),
-                      //  Background = Brushes.Gray,
-                        FontSize = 13,
-                        Opacity = .7
+                        IsEnabled = false
                     };
+                    
                     buttons[j].Click += Calendar_Button_Click;
                     switch (j)
                     {
@@ -208,14 +205,17 @@ namespace MediaBazaarApp.Classes
                 Grid.SetRow(grids[i], i / 7);
                 Grid.SetColumn(grids[i], i % 7);
                 Grid.SetRowSpan(b, 2);
-                grids[i].Opacity = .3;
+                grids[i].Opacity = .4;
             }
-            new Popups.Popup("", $"{(int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek)}");
             WorkShift[] todaysWorkShifts;
-
-
-            int dayOfMonth = 1;
-            for (int i = (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek); i <= DateTime.DaysInMonth(indexYear, indexMonth); i++)
+            int dayOfMonth = DateTime.DaysInMonth(indexYear, indexMonth - 1) - (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek) + 1;
+            for (int i = 0; i < (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek); i++)
+            {
+                lbl = grids[i].Children.OfType<StackPanel>().ToArray()[0].Children.OfType<Label>().ToArray()[0];
+                lbl.Content = dayOfMonth++;
+            }
+            dayOfMonth = 1;
+            for (int i = (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek); i < (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek)+ DateTime.DaysInMonth(indexYear, indexMonth); i++)
             {
                 grids[i].Opacity = 1;
                 todaysWorkShifts = new WorkShift[] { null, null, null };
@@ -233,10 +233,11 @@ namespace MediaBazaarApp.Classes
                 buttons = grids[i].Children.OfType<StackPanel>().ToArray()[1].Children.OfType<Button>().ToArray();
                 for (int j = 0; j < buttons.Length; j++)
                 {
+                    buttons[j].IsEnabled = true;
                     buttons[j].BorderThickness = new Thickness(1);
                     buttons[j].HorizontalContentAlignment = HorizontalAlignment.Center;
                     buttons[j].VerticalAlignment = VerticalAlignment.Top;
-                    buttons[j].Padding = new Thickness(1);
+                   
                  //   buttons[j].Background = Brushes.Gray;
                     
                     if (todaysWorkShifts[j] != null)
@@ -245,13 +246,13 @@ namespace MediaBazaarApp.Classes
                         buttons[j].DataContext = workShifts[j];
                         switch (workShifts[j].Shift)
                         {
-                            case Shift.MORNING:
+                            case Shift.Morning:
                                 buttons[j].Background = Brushes.YellowGreen;
                                 break;
-                            case Shift.DAY:
+                            case Shift.Day:
                                 buttons[j].Background = Brushes.Green;
                                 break;
-                            case Shift.NIGHT:
+                            case Shift.Night:
                                 buttons[j].Background = Brushes.Brown;
                                 break;
                         }
@@ -261,6 +262,12 @@ namespace MediaBazaarApp.Classes
                         buttons[j].Content = (Shift)j;
                     }
                 }
+            }
+            dayOfMonth = 1;
+            for (int i = (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek) + DateTime.DaysInMonth(indexYear, indexMonth); i < grids.Length; i++)
+            {
+                lbl = grids[i].Children.OfType<StackPanel>().ToArray()[0].Children.OfType<Label>().ToArray()[0];
+                lbl.Content = dayOfMonth++;
             }
             for (int i = 0; i < grids.Length; i++)
             {
