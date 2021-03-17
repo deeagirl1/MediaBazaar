@@ -23,7 +23,7 @@ namespace MediaBazaarApp
 
         public override string ToString()
         {
-            return $"server={server};database={dbi};uid={uid};password={password}";
+            return $"server={server};database={dbi};uid={uid};password={password}; Allow User Variables=True; ";
         }
     }
 }

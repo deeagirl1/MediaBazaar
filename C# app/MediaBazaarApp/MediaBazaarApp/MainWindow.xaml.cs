@@ -40,7 +40,24 @@ namespace MediaBazaarApp
             this.lvShopWorkers.ItemsSource = this.employees;
 
             this.person = person;
+
             MessageBox.Show(person.LastName);
+
+            ShopWorker emp = new ShopWorker(100,
+                                                    "A",
+                                                    "A",
+                                                    "A",
+                                                    "B",
+                                                    "C",
+                                                    new Department(2, "Electronics"),
+                                                    new Address("S", "S", "S", "S", "S", ""),
+                                                    new DateTime(1990, 05, 30),
+                                                    "VBMN321321",
+                                                    new DateTime(2020, 05, 30),
+                                                    new Contract(2, true, 32),
+                                                    Convert.ToDecimal(15.55));
+
+            this.company.ShopWorkers.Add(emp);
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)

@@ -67,9 +67,39 @@ namespace MediaBazaarApp.Classes
             return employees;
         }
 
-        public void Add(ShopWorker worker)
+        public void Add(ShopWorker shopWorker)
         {
+            //INSERT INTO `person`(`FirstName`, `LastName`, `Email`, `Username`, `Password`, `AccessLevel`) VALUES('a', 'b', 'c', 'd', 'e', 1); SET @last_id_in_table1 = LAST_INSERT_ID(); INSERT INTO `employee`(`ID`, `BirthDate`, `HireDate`, `Country`, `City`, `Street`, `StreetNumber`, `ZipCode`, `Wage`, `AccountNumber`, `DepartmentID`, `ContractID`) VALUES(@last_id_in_table1, 2020 - 12 - 08, 2020 - 12 - 08, 's', 's', 'e', 75, 'asas', 10, 'dsadsa', 2, 1)
+            string sql = " INSERT INTO person(FirstName, LastName, Email, Username, Password, AccessLevel) " +
+                         " VALUES (@FirstName, @LastName, @Email, @Username, @Password, @AccessLevel); " +
+                         " SET @last_id_in_table1 = LAST_INSERT_ID(); " +
+                         " INSERT INTO employee(ID, BirthDate, HireDate, Country, City, Street, StreetNumber, " +
+                         " AddressAddition, ZipCode, Wage, AccountNumber, DepartmentID, ContractID) " +
+                         " VALUES (@last_id_in_table1, @BirthDate, @HireDate, @Country, @City, @Street, @StreetNumber, " +
+                         " @AddressAddition, @ZipCode, @Wage, @AccountNumber, @DepartmentID, @ContractID )";
 
+            MySqlParameter[] prms = new MySqlParameter[18];
+
+            prms[0] = new MySqlParameter("@FirstName", shopWorker.FirstName);
+            prms[1] = new MySqlParameter("@LastName", shopWorker.LastName);
+            prms[2] = new MySqlParameter("@Email", shopWorker.Email);
+            prms[3] = new MySqlParameter("@Username", shopWorker.Email);
+            prms[4] = new MySqlParameter("@Password", "test");
+            prms[5] = new MySqlParameter("@AccessLevel", 1); 
+            prms[6] = new MySqlParameter("@BirthDate", shopWorker.BirthDate.Date);
+            prms[7] = new MySqlParameter("@HireDate", shopWorker.HireTime.Date);
+            prms[8] = new MySqlParameter("@Country", shopWorker.HomeAddress.Country);
+            prms[9] = new MySqlParameter("@City", shopWorker.HomeAddress.City);
+            prms[10] = new MySqlParameter("@Street", shopWorker.HomeAddress.Street); 
+            prms[11] = new MySqlParameter("@StreetNumber", shopWorker.HomeAddress.StreetNumber);
+            prms[12] = new MySqlParameter("@AddressAddition", shopWorker.HomeAddress.Addition);
+            prms[13] = new MySqlParameter("@ZipCode", shopWorker.HomeAddress.ZipCode);
+            prms[14] = new MySqlParameter("@Wage", shopWorker.HourlyWage);
+            prms[15] = new MySqlParameter("@AccountNumber", shopWorker.BankAccount);
+            prms[16] = new MySqlParameter("@DepartmentID", shopWorker.WorksAt.ID);
+            prms[17] = new MySqlParameter("@ContractID", shopWorker.Contract.ID);
+
+            this.ExecuteQuery(sql,prms);
         }
     }
 }
