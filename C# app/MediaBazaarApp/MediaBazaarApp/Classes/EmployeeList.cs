@@ -66,5 +66,10 @@ namespace MediaBazaarApp.Classes
             }
             return employees;
         }
+
+        public void Add(ShopWorker worker)
+        {
+
+        }
     }
 }

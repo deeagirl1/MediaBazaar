@@ -25,8 +25,8 @@ namespace MediaBazaarApp
         private Classes.Calendar calendar;
         private Person person;
         private Company company;
-        private AddEmployee window;
-        private EditEmployee editWindow;
+        private AddEmployee addEmployeeForm;
+        private EditEmployee editEmployeeForm;
 
         private List<ShopWorker> employees;
         public MainWindow(Company company, Person person)
@@ -66,32 +66,16 @@ namespace MediaBazaarApp
 
         }
 
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            this.editWindow = new EditEmployee(company);
-            this.editWindow.Show();
-        }
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
-            this.window = new AddEmployee(company);
-            this.window.Show();
-
+            //this.window = new AddEmployee(company);
+            //this.window.Show();
         }
 
         private void btn_Refresh_Click(object sender, RoutedEventArgs e)
@@ -100,9 +84,10 @@ namespace MediaBazaarApp
             this.lvShopWorkers.ItemsSource = this.employees;
         }
 
-        private void BtnRemoveEmployee_Click(object sender, RoutedEventArgs e)
+        private void Button_Edit_Click(object sender, RoutedEventArgs e)
         {
-            ShopWorker worker = (ShopWorker)this.lvShopWorkers.SelectedItem;
+            this.editEmployeeForm = new EditEmployee(this.company);
+
         }
     }
 }

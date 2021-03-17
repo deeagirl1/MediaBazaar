@@ -57,7 +57,7 @@ namespace MediaBazaarApp
             
             
             
-                worker = new ShopWorker(1, firstName, lastName, email, birthDate, hireDate, lastHireDate, address);
+                //worker = new ShopWorker(1, firstName, lastName, email, birthDate, hireDate, lastHireDate, address);
                 //company.ShopWorkers.Add(worker);
                 MessageBox.Show("Succesfully added!");
                 this.Close();

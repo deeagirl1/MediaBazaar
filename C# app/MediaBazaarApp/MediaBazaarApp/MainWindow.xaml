@@ -32,7 +32,7 @@
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="1" VerticalAlignment="Center">
 
-                            <Button x:Name ="btn_Edit" Content="Edit" Height="25" Click="Button_Click_3"/>
+                            <Button x:Name ="btn_Edit" Content="Edit" Height="25" Click="Button_Edit_Click"/>
 
                             <Button x:Name="btn_Add" Content="Add" Click="Button_Add_Click" Height="25"/>
                         </StackPanel>
@@ -46,12 +46,11 @@
                                 <GridViewColumn DisplayMemberBinding="{Binding Email}" Width="70">Email</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding BirthDate}" Width="60">Birthday</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding HireTime}" Width="70">Hire date</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding LastHireDate}" Width="90">Last hire date</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding HomeAddress}" Width="90">Address</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Contract}" Width="90">Contract</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding WorksAt}" Width="90">Department</GridViewColumn>
-                              
-
+                                <GridViewColumn DisplayMemberBinding="{Binding HourlyWage}" Width="90">Wage</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding BankAccount}" Width="90">BankAccount</GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>

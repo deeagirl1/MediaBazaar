@@ -13,19 +13,17 @@ namespace MediaBazaarApp.Classes
         public DateTime BirthDate { get; set; }
         public string BankAccount { get; set; }
         public DateTime HireTime { get; set; }  
-        public DateTime LastHireDate { get; set; }
         public Contract Contract { get; set; }
         public decimal HourlyWage { get; set; }
 
         public ShopWorker() { }
 
-        public ShopWorker(int id, string firstName, string lastName, string email, DateTime birthDate, DateTime hireDate,DateTime lastHireDate, Address address) : base (id, firstName, lastName, email)
+        public ShopWorker(int id, string firstName, string lastName, string email, DateTime birthDate, DateTime hireDate,Address address) : base (id, firstName, lastName, email)
         {
 
             this.BirthDate = birthDate.Date;
             this.HireTime = hireDate;
             this.HomeAddress = address;
-            this.LastHireDate = lastHireDate;
         }
 
         public ShopWorker(int id, string firstName, string lastName, string email,string username, string password) :
