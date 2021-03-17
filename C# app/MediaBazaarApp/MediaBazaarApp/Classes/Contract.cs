@@ -22,5 +22,13 @@ namespace MediaBazaarApp.Classes
             this.Fixed = Fixed;
             this.Hours = Hours;
         }
+
+        public override string ToString()
+        {
+            if (this.Fixed)
+                return $"FIXED {this.hours}";
+            else
+                return $"ZERO HOUR";
+        }
     }
 }

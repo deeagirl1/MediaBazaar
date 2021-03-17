@@ -19,7 +19,7 @@ namespace MediaBazaarApp.Classes
                 $" c.ID as ContractID, c.Fixed as ContractFixed,c.Hours as ContractHours " +
                 $" FROM PERSON p INNER JOIN EMPLOYEE e ON p.ID = e.ID " +
                 $" INNER JOIN department d ON e.DepartmentID = d.ID " +
-                $" INNER JOIN contract c on e.ID = c.ID WHERE ACCESSLEVEL = 1";
+                $" INNER JOIN contract c on e.ContractID = c.ID WHERE ACCESSLEVEL = 1";
             MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
             MySqlDataReader reader = null;
             List<ShopWorker> employees = new List<ShopWorker>();

@@ -49,6 +49,7 @@
                                 <GridViewColumn DisplayMemberBinding="{Binding LastHireDate}" Width="90">Last hire date</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding HomeAddress}" Width="90">Address</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Contract}" Width="90">Contract</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding WorksAt}" Width="90">Department</GridViewColumn>
                               
 
                             </GridView>
