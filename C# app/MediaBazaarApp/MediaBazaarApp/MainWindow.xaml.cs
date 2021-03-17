@@ -28,7 +28,7 @@ namespace MediaBazaarApp
         private AddEmployee window;
         private EditEmployee editWindow;
 
-        public ShopWorker[] employees { get; set; }
+        private List<ShopWorker> employees;
         public MainWindow(Company company, Person person)
         {
             Loaded += OnLoad;
@@ -36,7 +36,7 @@ namespace MediaBazaarApp
             this.company = company;
             Loaded += OnLoad;
 
-            this.employees = this.company.ShopWorkers.ToArray<ShopWorker>();
+            this.employees = this.company.ShopWorkers.ToList();
             this.lvShopWorkers.ItemsSource = this.employees;
 
             this.person = person;
@@ -96,7 +96,7 @@ namespace MediaBazaarApp
 
         private void btn_Refresh_Click(object sender, RoutedEventArgs e)
         {
-            this.employees = this.company.ShopWorkers.ToArray<ShopWorker>();
+            this.employees = this.company.ShopWorkers.ToList();
             this.lvShopWorkers.ItemsSource = this.employees;
         }
 

@@ -48,7 +48,7 @@ namespace MediaBazaarApp
                 int year = Convert.ToInt32(tb_year.Text);
                 int month = Convert.ToInt32(tb_month.Text);
                 int day = Convert.ToInt32(tb_day.Text);
-                Address address = new Address(tb_Country.Text, tb_City.Text, tb_Street.Text, tb_StreetNumber.Text, tb_ZipCode.Text);
+                Address address = new Address(tb_Country.Text, tb_City.Text, tb_Street.Text, tb_StreetNumber.Text, tb_ZipCode.Text, "");
                 Department department = (Department)cbx_Department.SelectedItem;
                 Contract contract = (Contract) cbx_Contract.SelectedItem;
                 DateTime birthDate = new DateTime(year, month, day);
@@ -58,7 +58,7 @@ namespace MediaBazaarApp
             
             
                 worker = new ShopWorker(1, firstName, lastName, email, birthDate, hireDate, lastHireDate, address);
-                company.ShopWorkers.Add(worker);
+                //company.ShopWorkers.Add(worker);
                 MessageBox.Show("Succesfully added!");
                 this.Close();
             

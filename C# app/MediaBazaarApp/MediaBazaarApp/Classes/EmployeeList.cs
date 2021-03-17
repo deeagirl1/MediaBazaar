@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,64 +8,63 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-    public class EmployeeList : IList<ShopWorker>
+    public class EmployeeList : DBmanager
     {
-        readonly IList<ShopWorker> _list = new List<ShopWorker>();
-
-        public ShopWorker this[int index] { get => _list[index]; set => _list[index] = value; }
-
-        public int Count => _list.Count;
-
-        public bool IsReadOnly => _list.IsReadOnly;
-
-        public void Add(ShopWorker item)
+        public List<ShopWorker> ToList()
         {
-            _list.Add(item);
-        }
+            string sql = $"SELECT p.ID, p.FirstName, p. LastName, p.Email, " +
+                $" p.Username, p.Password, p.AccessLevel, e.BirthDate, e.HireDate, " +
+                $" e.Country, e.City,e.Street,e.StreetNumber,e.AddressAddition,e.ZipCode, " +
+                $" e.Wage, e.AccountNumber,d.ID as DepartmentID, d.Name as Department, " +
+                $" c.ID as ContractID, c.Fixed as ContractFixed,c.Hours as ContractHours " +
+                $" FROM PERSON p INNER JOIN EMPLOYEE e ON p.ID = e.ID " +
+                $" INNER JOIN department d ON e.DepartmentID = d.ID " +
+                $" INNER JOIN contract c on e.ID = c.ID WHERE ACCESSLEVEL = 1";
+            MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
+            MySqlDataReader reader = null;
+            List<ShopWorker> employees = new List<ShopWorker>();
+            try
+            {
+                reader = this.OpenExecuteReader(cmd);
 
-        public void Clear()
-        {
-            _list.Clear();
-        }
+                while (reader.Read())
+                {
+                    Address address = new Address(Convert.ToString(reader["Country"]),
+                                                  Convert.ToString(reader["City"]),
+                                                  Convert.ToString(reader["Street"]),
+                                                  Convert.ToString(reader["StreetNumber"]),
+                                                  Convert.ToString(reader["ZipCode"]),
+                                                  Convert.ToString(reader["AddressAddition"]));
 
-        public bool Contains(ShopWorker item)
-        {
-            return _list.Contains(item);
-        }
+                    Contract contract = new Contract(Convert.ToInt32(reader["ContractID"]),
+                                                     Convert.ToBoolean(reader["ContractFixed"]),
+                                                     Convert.ToInt32(reader["ContractHours"]));
 
-        public void CopyTo(ShopWorker[] array, int arrayIndex)
-        {
-            _list.CopyTo(array, arrayIndex);
-        }
+                    Department department = new Department(Convert.ToInt32(reader["DepartmentID"]),
+                                                     Convert.ToString(reader["Department"]));
 
-        public IEnumerator<ShopWorker> GetEnumerator()
-        {
-            return _list.GetEnumerator();
-        }
+                    ShopWorker emp = new ShopWorker(Convert.ToInt32(reader["ID"]),
+                                                    Convert.ToString(reader["FirstName"]),
+                                                    Convert.ToString(reader["LastName"]),
+                                                    Convert.ToString(reader["Email"]),
+                                                    Convert.ToString(reader["Username"]),
+                                                    Convert.ToString(reader["Password"]),
+                                                    department,
+                                                    address,
+                                                    Convert.ToDateTime(reader["BirthDate"]),
+                                                    Convert.ToString(reader["AccountNumber"]),
+                                                    Convert.ToDateTime(reader["HireDate"]),
+                                                    contract,
+                                                    Convert.ToDecimal(reader["Wage"]));
 
-        public int IndexOf(ShopWorker item)
-        {
-            return _list.IndexOf(item);
-        }
-
-        public void Insert(int index, ShopWorker item)
-        {
-            _list.Insert(index, item);
-        }
-
-        public bool Remove(ShopWorker item)
-        {
-            return _list.Remove(item);
-        }
-
-        public void RemoveAt(int index)
-        {
-            _list.RemoveAt(index);
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return ((IEnumerable)_list).GetEnumerator();
+                    employees.Add(emp);
+                }
+            }
+            finally
+            {
+                this.CloseExecuteReader(reader);
+            }
+            return employees;
         }
     }
 }
