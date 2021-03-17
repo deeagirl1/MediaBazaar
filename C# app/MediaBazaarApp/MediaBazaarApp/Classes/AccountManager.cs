@@ -16,36 +16,6 @@ namespace MediaBazaarApp.Classes
         {
             accounts = new List<IAccount>();
         }
-
-        public Object GetStatus(IAccount account)
-        {
-            string sql = "SELECT *";
-            MySqlParameter[] prms = new MySqlParameter[1];
-            prms[0] = new MySqlParameter("@id", account.ID);
-            return this.ReadScalar(sql, prms);
-        }
-
-        public bool Add(IAccount account)
-        {
-            if (this.exists(account))
-                return false;
-            this.accounts.Add(account);
-            return true;
-        }
-        public bool Remove(IAccount account)
-        {
-            this.accounts.RemoveAll(a => a.ID == account.ID);
-            return true;
-        }
-
-        private bool exists(IAccount account)
-        {
-            foreach(IAccount a in this.accounts)
-            {
-                if (a.ID == account.ID) { return true; }
-            }
-            return false;
-        }
         public Person IsValid(string username, string password)
         {
             string sql = $"SELECT * FROM PERSON WHERE Username = @username AND Password = @password";
@@ -92,6 +62,41 @@ namespace MediaBazaarApp.Classes
                     return new Manager(ID, FirstName, LastName, Email, Username, Password);
             }
             throw new ArgumentException("Invalid credentials supplied");
+        }
+
+        public void ChangePassword(Person person)
+        {
+            string sql = " UPDATE person SET Password=@Password, WHERE ID = @ID; ";
+
+            MySqlParameter[] prms = new MySqlParameter[2];
+
+            prms[0] = new MySqlParameter("@Password", person.Password);
+            prms[1] = new MySqlParameter("@ID",person.ID);
+
+            this.ExecuteQuery(sql, prms);
+        }
+
+        public void Add(Person person)
+        {
+            string sql = " INSERT INTO person(FirstName, LastName, Email, Username, Password, AccessLevel) " +
+                         " VALUES (@FirstName, @LastName, @Email, @Username, @Password, @AccessLevel); ";
+
+            MySqlParameter[] prms = new MySqlParameter[4];
+
+            int accessLevel = 0;
+            if (person is Administrator)
+                accessLevel = 1;
+            if (person is Manager)
+                accessLevel = 2;
+
+            prms[0] = new MySqlParameter("@FirstName", person.FirstName);
+            prms[1] = new MySqlParameter("@LastName", person.LastName);
+            prms[2] = new MySqlParameter("@Email", person.Email);
+            prms[3] = new MySqlParameter("@Username", person.Username);
+            prms[4] = new MySqlParameter("@Password", person.Password);
+            prms[5] = new MySqlParameter("@AccessLevel", accessLevel);
+
+            this.ExecuteQuery(sql, prms);
         }
     }
 }

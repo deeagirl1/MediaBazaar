@@ -67,6 +67,33 @@ namespace MediaBazaarApp.Classes
             return employees;
         }
 
+        public void Edit(ShopWorker shopWorker)
+        {
+            string sql = " UPDATE person SET Email=@Email, WHERE ID = @ID; " +
+                         " UPDATE employee SET HireDate=@HireDate, Country=@Country, " +
+                         " City=@City, Street=@Street, StreetNumber=@StreetNumber, AddressAddition=@AddressAddition, " +
+                         " ZipCode=@ZipCode,Wage=@Wage,AccountNumber=@AccountNumber,DepartmentID=@DepartmentID, " +
+                         " ContractID=@ContractID WHERE ID = @ID; ";
+
+            MySqlParameter[] prms = new MySqlParameter[13];
+
+            prms[0] = new MySqlParameter("@Email", "helloWorld2");
+            prms[1] = new MySqlParameter("@HireDate", shopWorker.HireTime.Date);
+            prms[2] = new MySqlParameter("@Country", shopWorker.HomeAddress.Country);
+            prms[3] = new MySqlParameter("@City", shopWorker.HomeAddress.City);
+            prms[4] = new MySqlParameter("@Street", shopWorker.HomeAddress.Street);
+            prms[5] = new MySqlParameter("@StreetNumber", shopWorker.HomeAddress.StreetNumber);
+            prms[6] = new MySqlParameter("@AddressAddition", shopWorker.HomeAddress.Addition);
+            prms[7] = new MySqlParameter("@ZipCode", shopWorker.HomeAddress.ZipCode);
+            prms[8] = new MySqlParameter("@Wage", shopWorker.HourlyWage);
+            prms[9] = new MySqlParameter("@AccountNumber", shopWorker.BankAccount);
+            prms[10] = new MySqlParameter("@DepartmentID", shopWorker.WorksAt.ID);
+            prms[11] = new MySqlParameter("@ContractID", shopWorker.Contract.ID);
+            prms[12] = new MySqlParameter("@ID", shopWorker.ID);
+
+            this.ExecuteQuery(sql, prms);
+        }
+
         public void Add(ShopWorker shopWorker)
         {
             //INSERT INTO `person`(`FirstName`, `LastName`, `Email`, `Username`, `Password`, `AccessLevel`) VALUES('a', 'b', 'c', 'd', 'e', 1); SET @last_id_in_table1 = LAST_INSERT_ID(); INSERT INTO `employee`(`ID`, `BirthDate`, `HireDate`, `Country`, `City`, `Street`, `StreetNumber`, `ZipCode`, `Wage`, `AccountNumber`, `DepartmentID`, `ContractID`) VALUES(@last_id_in_table1, 2020 - 12 - 08, 2020 - 12 - 08, 's', 's', 'e', 75, 'asas', 10, 'dsadsa', 2, 1)

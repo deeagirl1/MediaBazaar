@@ -43,7 +43,7 @@ namespace MediaBazaarApp
 
             MessageBox.Show(person.LastName);
 
-            ShopWorker emp = new ShopWorker(100,
+            ShopWorker emp = new ShopWorker(25,
                                                     "A",
                                                     "A",
                                                     "A",
@@ -57,7 +57,7 @@ namespace MediaBazaarApp
                                                     new Contract(2, true, 32),
                                                     Convert.ToDecimal(15.55));
 
-            this.company.ShopWorkers.Add(emp);
+            this.company.ShopWorkers.Edit(emp);
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)
