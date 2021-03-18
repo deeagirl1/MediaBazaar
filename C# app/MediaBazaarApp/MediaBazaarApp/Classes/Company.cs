@@ -14,11 +14,14 @@ namespace MediaBazaarApp.Classes
         public readonly EmployeeList ShopWorkers= new EmployeeList();
         public readonly List<Department> Departments = new List<Department>();
         public readonly List<Contract> Contracts = new List<Contract>();
+        public readonly List<Status> Statuses = new List<Status>();
+        
 
         public Company()
         {
             this.getDepartments();
             this.getContracts();
+            this.getStatuses();
         }
 
         public Department GetDepartmentByID(int ID)
@@ -37,6 +40,15 @@ namespace MediaBazaarApp.Classes
             {
                 if (c.ID == ID)
                     return c;
+            }
+            return null;
+        }
+        public Status GetStatusByID(int ID)
+        {
+            foreach (Status s in this.Statuses)
+            {
+                if (s.ID == ID)
+                    return s;
             }
             return null;
         }
@@ -85,5 +97,29 @@ namespace MediaBazaarApp.Classes
                 this.CloseExecuteReader(reader);
             }
         }
+        private void getStatuses()
+        {
+            string sql = "SELECT * FROM employeeStatus";
+            MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
+            MySqlDataReader reader = null;
+            try
+            {
+                reader = this.OpenExecuteReader(cmd);
+                this.Statuses.Clear();
+                while (reader.Read())
+                {
+                    Status status = new Status(Convert.ToInt32(reader["ID"]),
+                                                Convert.ToString(reader["Status"]));
+
+                    this.Statuses.Add(status);
+                }
+            }
+            finally
+            {
+                this.CloseExecuteReader(reader);
+            }
+        }
     }
+    
+
 }

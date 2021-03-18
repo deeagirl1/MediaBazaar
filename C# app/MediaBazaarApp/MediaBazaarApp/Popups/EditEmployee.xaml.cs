@@ -23,31 +23,51 @@ namespace MediaBazaarApp.Popups
         private ShopWorker worker;
         private Company company;
 
-        public EditEmployee(Company company)
+        public EditEmployee(Company company, ShopWorker worker)
         {
             InitializeComponent();
+            this.company = company;
+            this.worker = worker;
+            this.cbx_Department.ItemsSource = this.company.Departments;
+            this.cbx_Contract.ItemsSource = this.company.Contracts;
+            this.cbx_Status.ItemsSource = this.company.Statuses;
+            fillFields();
+        }
+
+        private void fillFields()
+        {
+            this.tb_Country.Text = this.worker.HomeAddress.Country;
+            this.tb_City.Text = this.worker.HomeAddress.City;
+            this.tb_Street.Text = this.worker.HomeAddress.Street;
+            this.tb_AddressAddition.Text = this.worker.HomeAddress.Addition;
+            this.tb_ZipCode.Text = this.worker.HomeAddress.ZipCode;
+            this.tb_StreetNumber.Text = this.worker.HomeAddress.StreetNumber;
+            this.tb_Email.Text = this.worker.Email;
+            this.dp_LastHireDate.SelectedDate = this.worker.LastWorkingDay;
+            this.tb_HourlyWage.Text = Convert.ToString(this.worker.HourlyWage);
+            this.tb_AccountNumber.Text = this.worker.BankAccount;
+            this.cbx_Department.SelectedItem = this.company.GetDepartmentByID(this.worker.WorksAt.ID);
+            this.cbx_Contract.SelectedItem = this.company.GetContractByID(this.worker.Contract.ID);
+            this.cbx_Status.SelectedItem = this.company.GetStatusByID(this.worker.Status.ID);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string firstName = tb_FirstName.Text;
-            string lastName = tb_LastName.Text;
-            string email = tb_Email.Text;
-            int year = Convert.ToInt32(tb_year.Text);
-            int month = Convert.ToInt32(tb_month.Text);
-            int day = Convert.ToInt32(tb_day.Text);
-            Address address = new Address(tb_Country.Text, tb_City.Text, tb_Street.Text, tb_StreetNumber.Text, tb_ZipCode.Text,"");
-            Department department = (Department)cbx_Department.SelectedItem;
-            Contract contract = (Contract)cbx_Contract.SelectedItem;
-            DateTime birthDate = new DateTime(year, month, day);
-            DateTime hireDate = dp_HireDate.DisplayDate;
-            DateTime lastHireDate = dp_LastHireDate.DisplayDate;
+            this.worker.HomeAddress.Country = this.tb_Country.Text;
+            this.worker.HomeAddress.City = this.tb_City.Text;
+            this.worker.HomeAddress.Street = this.tb_Street.Text;
+            this.worker.HomeAddress.Addition = this.tb_AddressAddition.Text;
+            this.worker.HomeAddress.ZipCode = this.tb_ZipCode.Text;
+            this.worker.HomeAddress.StreetNumber = this.tb_StreetNumber.Text;
+            this.worker.Email = this.tb_Email.Text;
+            this.worker.LastWorkingDay = Convert.ToDateTime(this.dp_LastHireDate.SelectedDate);
+            this.worker.HourlyWage = Convert.ToDecimal(this.tb_HourlyWage.Text);
+            this.worker.BankAccount = this.tb_AccountNumber.Text;
+            this.worker.WorksAt = ((Department)this.cbx_Department.SelectedItem);
+            this.worker.Contract = ((Contract)this.cbx_Contract.SelectedItem);
+            this.worker.Status = ((Status)this.cbx_Status.SelectedItem);
 
-
-
-            //worker = new ShopWorker(1, firstName, lastName, email, birthDate, hireDate, lastHireDate, address);
-            //company.ShopWorkers.Add(worker);
-            MessageBox.Show("Succesfully edited!");
+            this.company.ShopWorkers.Edit(worker);
             this.Close();
         }
     }

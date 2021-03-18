@@ -106,8 +106,12 @@ namespace MediaBazaarApp
 
         private void Button_Edit_Click(object sender, RoutedEventArgs e)
         {
-            //this.editEmployeeForm = new EditEmployee(this.company);
-            //new Form2().Show();
+            if (this.lvShopWorkers.SelectedItem != null)
+            {
+                ShopWorker worker = ((ShopWorker)this.lvShopWorkers.SelectedItem);
+                this.editEmployeeForm = new EditEmployee(this.company,worker);
+                this.editEmployeeForm.Show();
+            }
         }
     }
 }

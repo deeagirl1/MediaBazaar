@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaBazaarApp.Popups"
         mc:Ignorable="d"
-        Title="Edit Employee" Height="386.587" Width="757.152">
+        Title="Edit Employee" Height="386.587" Width="757.152" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="79*"/>
-            <ColumnDefinition Width="400*"/>
-            <ColumnDefinition Width="270*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Grid Background="LightGray" Grid.ColumnSpan="3">
+        <Grid Background="LightGray" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="187*" />
@@ -22,56 +22,48 @@
                 <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="30"/>
+                <RowDefinition/>
+                <RowDefinition Height="0"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Column="1" Grid.ColumnSpan="2" >
-                <Label>First name</Label>
-                <TextBox x:Name="tb_FirstName" Margin="0,0,25,0">
-                </TextBox>
-                <Label>Last name</Label>
-                <TextBox x:Name="tb_LastName" Margin="0,0,25,0"></TextBox>
                 <Label>Country</Label>
-                <TextBox x:Name="tb_Country" Margin="0,0,25,0"></TextBox>
+                <TextBox x:Name="tb_Country" Margin="0,0,25,0" Height="25"/>
                 <Label>City</Label>
-                <TextBox x:Name="tb_City" Margin="0,0,25,0"></TextBox>
+                <TextBox x:Name="tb_City" Margin="0,0,25,0" Height="25"/>
                 <Label>Street</Label>
-                <TextBox x:Name="tb_Street" Margin="0,0,143,0"></TextBox>
-                <Label>Addition</Label>
-                <TextBox x:Name="tb_Addition" Margin="2,0,33,0"/>
+                <TextBox x:Name="tb_Street" Margin="0,0,141,0" Height="25"/>
                 <Label>Zip-code</Label>
-                <TextBox x:Name="tb_ZipCode" Margin="2,0,141,0"/>
+                <TextBox x:Name="tb_ZipCode" Margin="2,0,141,0" Height="25"/>
+                <Label>Street Nr.</Label>
+                <TextBox x:Name ="tb_StreetNumber" Height="25" Margin="0,0,141,0"/>
+                <Label Content="Address Addition"/>
+                <TextBox x:Name="tb_AddressAddition" Margin="2,0,33,0" Height="25"/>
 
             </StackPanel>
 
             <StackPanel Grid.Column="4">
                 <Label>Account number</Label>
-                <TextBox x:Name="tb_AccountNumber" Margin="0,0,25,0"></TextBox>
+                <TextBox x:Name="tb_AccountNumber" Margin="0,0,25,0" Height="25"/>
                 <Label>Department</Label>
-                <ComboBox x:Name="cbx_Department" Height="18" Margin="0,0,25,0"/>
+                <ComboBox x:Name="cbx_Department" Margin="0,0,25,0" Height="25"/>
                 <Label>Contract</Label>
-                <ComboBox x:Name="cbx_Contract" Height="18" Margin="0,0,25,0"/>
+                <ComboBox x:Name="cbx_Contract" Margin="0,0,25,0" Height="25"/>
+                <Label Content="Status"/>
+                <ComboBox x:Name="cbx_Status"  Margin="0,0,25,0" Height="25"/>
 
 
             </StackPanel>
             <StackPanel Grid.Column="3">
                 <Label>Email</Label>
-                <TextBox x:Name="tb_Email" Margin="0,0,25,0"></TextBox>
-                <Label Content="Date of birth (YYYY-MM-DD)"/>
-                <TextBox x:Name="tb_year" Margin="0,0,179,0"/>
-                <Label>Date of first working day</Label>
-                <DatePicker x:Name="dp_HireDate" Margin="0,0,10,0"/>
+                <TextBox x:Name="tb_Email" Margin="0,0,25,0" Height="25"/>
                 <Label Content="Date of last working day"/>
-                <DatePicker x:Name="dp_LastHireDate" Margin="0,0,10,0"/>
+                <DatePicker x:Name="dp_LastHireDate" Margin="0,0,10,0" Height="25"/>
                 <Label Content="Hourly wage"/>
-                <TextBox x:Name="tb_HourlyWage" Margin="0,0,25,0"/>
+                <TextBox x:Name="tb_HourlyWage" Margin="0,0,25,0" Height="25"/>
 
             </StackPanel>
-            <Button x:Name="btnAdd" MaxHeight="25" MaxWidth="100" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="4" Content="Add employee" Height="20" Click="Button_Click" Margin="0,307,0,0" Grid.RowSpan="2"/>
-            <TextBox x:Name="tb_month" Margin="76,70,103,239" Grid.Column="3"/>
-            <TextBox x:Name="tb_day" Margin="153,70,26,239" Grid.Column="3" RenderTransformOrigin="0.568,0.528"/>
-            <Label  Grid.Column="1" Margin="118,179,6,100">Street Nr.</Label>
-            <TextBox x:Name ="tb_StreetNumber" Margin="118,202,0,106" Grid.Column="1"/>
+            <Button x:Name="btnAdd"  VerticalAlignment="Top" Grid.Column="3" Content="Edit employee" Height="40" Click="Button_Click" Margin="0,306,15,0"/>
+
 
 
 
