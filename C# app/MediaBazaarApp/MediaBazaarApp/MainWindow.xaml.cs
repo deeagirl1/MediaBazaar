@@ -34,14 +34,16 @@ namespace MediaBazaarApp
             Loaded += OnLoad;
             InitializeComponent();
             this.company = company;
+            this.person = person;
             Loaded += OnLoad;
 
             this.employees = this.company.ShopWorkers.ToList();
             this.lvShopWorkers.ItemsSource = this.employees;
+            this.lblUserString.Content = $"Hello, {this.person.FirstName}";
 
-            this.person = person;
 
-            MessageBox.Show(person.LastName);
+
+            MessageBox.Show(person.Username);
 
             ShopWorker emp = new ShopWorker(33,
                                                     "A",
@@ -111,6 +113,24 @@ namespace MediaBazaarApp
                 ShopWorker worker = ((ShopWorker)this.lvShopWorkers.SelectedItem);
                 this.editEmployeeForm = new EditEmployee(this.company,worker);
                 this.editEmployeeForm.Show();
+            }
+        }
+
+        private void btnChangePassword_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (this.tbNewPassRepeat.Text == this.tbNewPass.Text)
+                {
+                    this.company.AccountManager.ChangePassword(this.person.Username,
+                                        this.tbCurrentPass.Text, this.tbNewPass.Text);
+                    MessageBox.Show("Suucessfully changed");
+                }
+                else throw new ArgumentException("Passwords do not match");    
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

@@ -64,16 +64,17 @@ namespace MediaBazaarApp.Classes
             throw new ArgumentException("Invalid credentials supplied");
         }
 
-        public void ChangePassword(Person person)
+        public void ChangePassword(string username, string currentPass, string newPass)
         {
-            string sql = " UPDATE person SET Password=@Password, WHERE ID = @ID; ";
+            string sql = " UPDATE person SET Password=@Password WHERE Username = @Username; ";
 
             MySqlParameter[] prms = new MySqlParameter[2];
 
-            prms[0] = new MySqlParameter("@Password", person.Password);
-            prms[1] = new MySqlParameter("@ID",person.ID);
+            prms[0] = new MySqlParameter("@Password", newPass);
+            prms[1] = new MySqlParameter("@Username",username);
 
-            this.ExecuteQuery(sql, prms);
+            if(this.IsValid(username,currentPass)!=null)
+                this.ExecuteQuery(sql, prms);
         }
 
         public void Add(Person person)
