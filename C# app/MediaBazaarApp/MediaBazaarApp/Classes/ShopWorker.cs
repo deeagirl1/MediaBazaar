@@ -13,6 +13,7 @@ namespace MediaBazaarApp.Classes
         public DateTime BirthDate { get; set; }
         public string BankAccount { get; set; }
         public DateTime HireTime { get; set; }  
+        public DateTime LastWorkingDay { get; set; }
         public Contract Contract { get; set; }
         public Status Status { get; set; }
         public decimal HourlyWage { get; set; }
@@ -33,7 +34,7 @@ namespace MediaBazaarApp.Classes
 
         public ShopWorker(int id, string firstName, string lastName, string email,string username, string password,
             Department Department, Address HomeAddress, DateTime BirthDate,
-            string BankAccount,Status status, DateTime HireTime, Contract Contract,  decimal HourlyWage) :
+            string BankAccount,Status status, DateTime HireTime,DateTime LastWorkingDay, Contract Contract,  decimal HourlyWage) :
             base(id, firstName, lastName, email,username, password)
         {
             this.WorksAt = Department;
@@ -41,6 +42,7 @@ namespace MediaBazaarApp.Classes
             this.BirthDate = BirthDate;
             this.BankAccount = BankAccount;
             this.HireTime = HireTime;
+            this.LastWorkingDay = LastWorkingDay;
             this.Contract = Contract;
             this.HourlyWage = HourlyWage;
             this.Status = status;

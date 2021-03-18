@@ -43,23 +43,24 @@ namespace MediaBazaarApp
 
             MessageBox.Show(person.LastName);
 
-            ShopWorker emp = new ShopWorker(25,
+            ShopWorker emp = new ShopWorker(33,
                                                     "A",
                                                     "A",
-                                                    "A334",
-                                                    "B314",
+                                                    "A7fdsf74",
+                                                    "B37fsdf74",
                                                     "C",
                                                     new Department(2, "Electronics"),
                                                     new Address("S", "S", "S", "S", "S", ""),
                                                     new DateTime(1990, 05, 30),
                                                     "VBMN321321",
-                                                    new Status(1,""),
+                                                    new Status(2, ""),
                                                     new DateTime(2020, 05, 30),
+                                                    new DateTime(),
                                                     new Contract(2, true, 32),
                                                     Convert.ToDecimal(15.55));
 
             //this.company.ShopWorkers.Edit(emp);
-            this.company.ShopWorkers.Add(emp);
+            //this.company.ShopWorkers.Add(emp);
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)
@@ -105,8 +106,8 @@ namespace MediaBazaarApp
 
         private void Button_Edit_Click(object sender, RoutedEventArgs e)
         {
-            this.editEmployeeForm = new EditEmployee(this.company);
-
+            //this.editEmployeeForm = new EditEmployee(this.company);
+            //new Form2().Show();
         }
     }
 }

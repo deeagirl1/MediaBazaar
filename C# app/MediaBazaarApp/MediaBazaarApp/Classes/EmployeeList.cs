@@ -13,7 +13,7 @@ namespace MediaBazaarApp.Classes
         public List<ShopWorker> ToList()
         {
             string sql = $"SELECT p.ID, p.FirstName, p. LastName, p.Email, " +
-                $" p.Username, p.Password, p.AccessLevel, e.BirthDate, e.HireDate, " +
+                $" p.Username, p.Password, p.AccessLevel, e.BirthDate, e.HireDate, e.LastWorkingDay, " +
                 $" e.Country, e.City,e.Street,e.StreetNumber,e.AddressAddition,e.ZipCode, " +
                 $" e.Wage, e.AccountNumber, s.ID as StatusID, s.Status as StatusName, " +
                 $" d.ID as DepartmentID, d.Name as Department, " +
@@ -48,6 +48,12 @@ namespace MediaBazaarApp.Classes
                     Status status = new Status(Convert.ToInt32(reader["StatusID"]),
                                                Convert.ToString(reader["StatusName"]));
 
+                    DateTime lastWorkingDay;
+
+                    if (reader["LastWorkingDay"] != DBNull.Value)
+                        lastWorkingDay = Convert.ToDateTime(reader["LastWorkingDay"]);
+                    else lastWorkingDay = new DateTime();
+
                     ShopWorker emp = new ShopWorker(Convert.ToInt32(reader["ID"]),
                                                     Convert.ToString(reader["FirstName"]),
                                                     Convert.ToString(reader["LastName"]),
@@ -60,6 +66,7 @@ namespace MediaBazaarApp.Classes
                                                     Convert.ToString(reader["AccountNumber"]),
                                                     status,
                                                     Convert.ToDateTime(reader["HireDate"]),
+                                                    lastWorkingDay,
                                                     contract,
                                                     Convert.ToDecimal(reader["Wage"]));
 
@@ -76,7 +83,7 @@ namespace MediaBazaarApp.Classes
         public void Edit(ShopWorker shopWorker)
         {
             string sql = " UPDATE person SET Email=@Email WHERE ID = @ID; " +
-                         " UPDATE employee SET HireDate=@HireDate, Country=@Country, " +
+                         " UPDATE employee SET LastWorkingDay=@LastWorkingDay, Country=@Country, " +
                          " City=@City, Street=@Street, StreetNumber=@StreetNumber, AddressAddition=@AddressAddition, " +
                          " ZipCode=@ZipCode,Wage=@Wage,AccountNumber=@AccountNumber,Status = @Status,DepartmentID=@DepartmentID, " +
                          " ContractID=@ContractID WHERE ID = @ID; ";
@@ -84,19 +91,22 @@ namespace MediaBazaarApp.Classes
             MySqlParameter[] prms = new MySqlParameter[14];
 
             prms[0] = new MySqlParameter("@Email", shopWorker.Email);
-            prms[1] = new MySqlParameter("@HireDate", shopWorker.HireTime.Date);
-            prms[2] = new MySqlParameter("@Country", shopWorker.HomeAddress.Country);
-            prms[3] = new MySqlParameter("@City", shopWorker.HomeAddress.City);
-            prms[4] = new MySqlParameter("@Street", shopWorker.HomeAddress.Street);
-            prms[5] = new MySqlParameter("@StreetNumber", shopWorker.HomeAddress.StreetNumber);
-            prms[6] = new MySqlParameter("@AddressAddition", shopWorker.HomeAddress.Addition);
-            prms[7] = new MySqlParameter("@ZipCode", shopWorker.HomeAddress.ZipCode);
-            prms[8] = new MySqlParameter("@Wage", shopWorker.HourlyWage);
-            prms[9] = new MySqlParameter("@AccountNumber", shopWorker.BankAccount);
-            prms[10] = new MySqlParameter("@DepartmentID", shopWorker.WorksAt.ID);
-            prms[11] = new MySqlParameter("@ContractID", shopWorker.Contract.ID);
-            prms[12] = new MySqlParameter("@ID", shopWorker.ID);
-            prms[13] = new MySqlParameter("@Status", shopWorker.Status.ID);
+            prms[1] = new MySqlParameter("@Country", shopWorker.HomeAddress.Country);
+            prms[2] = new MySqlParameter("@City", shopWorker.HomeAddress.City);
+            prms[3] = new MySqlParameter("@Street", shopWorker.HomeAddress.Street);
+            prms[4] = new MySqlParameter("@StreetNumber", shopWorker.HomeAddress.StreetNumber);
+            prms[5] = new MySqlParameter("@AddressAddition", shopWorker.HomeAddress.Addition);
+            prms[6] = new MySqlParameter("@ZipCode", shopWorker.HomeAddress.ZipCode);
+            prms[7] = new MySqlParameter("@Wage", shopWorker.HourlyWage);
+            prms[8] = new MySqlParameter("@AccountNumber", shopWorker.BankAccount);
+            prms[9] = new MySqlParameter("@DepartmentID", shopWorker.WorksAt.ID);
+            prms[10] = new MySqlParameter("@ContractID", shopWorker.Contract.ID);
+            prms[11] = new MySqlParameter("@ID", shopWorker.ID);
+            prms[12] = new MySqlParameter("@Status", shopWorker.Status.ID);
+
+            if (shopWorker.LastWorkingDay.Date < DateTime.Now)
+                prms[13] = new MySqlParameter("@LastWorkingDay", null);
+            else prms[13] = new MySqlParameter("@LastWorkingDay", shopWorker.LastWorkingDay);
 
             this.ExecuteQuery(sql, prms);
         }
@@ -107,12 +117,12 @@ namespace MediaBazaarApp.Classes
             string sql = " INSERT INTO person(FirstName, LastName, Email, Username, Password, AccessLevel) " +
                          " VALUES (@FirstName, @LastName, @Email, @Username, @Password, @AccessLevel); " +
                          " SET @last_id_in_table1 = LAST_INSERT_ID(); " +
-                         " INSERT INTO employee(ID, BirthDate, HireDate, Country, City, Street, StreetNumber, " +
+                         " INSERT INTO employee(ID, BirthDate, HireDate, LastWorkingDay, Country, City, Street, StreetNumber, " +
                          " AddressAddition, ZipCode, Wage, AccountNumber,Status, DepartmentID, ContractID) " +
-                         " VALUES (@last_id_in_table1, @BirthDate, @HireDate, @Country, @City, @Street, @StreetNumber, " +
+                         " VALUES (@last_id_in_table1, @BirthDate, @HireDate, @LastWorkingDay, @Country, @City, @Street, @StreetNumber, " +
                          " @AddressAddition, @ZipCode, @Wage, @AccountNumber,@Status, @DepartmentID, @ContractID )";
 
-            MySqlParameter[] prms = new MySqlParameter[19];
+            MySqlParameter[] prms = new MySqlParameter[20];
 
             prms[0] = new MySqlParameter("@FirstName", shopWorker.FirstName);
             prms[1] = new MySqlParameter("@LastName", shopWorker.LastName);
@@ -133,6 +143,10 @@ namespace MediaBazaarApp.Classes
             prms[16] = new MySqlParameter("@DepartmentID", shopWorker.WorksAt.ID);
             prms[17] = new MySqlParameter("@ContractID", shopWorker.Contract.ID);
             prms[18] = new MySqlParameter("@Status", shopWorker.Status.ID);
+
+            if (shopWorker.LastWorkingDay.Date < DateTime.Now)
+                prms[19] = new MySqlParameter("@LastWorkingDay", null);
+            else prms[19] = new MySqlParameter("@LastWorkingDay", shopWorker.LastWorkingDay);
 
             this.ExecuteQuery(sql,prms);
         }

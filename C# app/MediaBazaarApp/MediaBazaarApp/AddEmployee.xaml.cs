@@ -27,6 +27,8 @@ namespace MediaBazaarApp
         {
             InitializeComponent();
             this.company = company;
+            //this.cbx_Department.DataContext = this.company.Departments;
+            this.cbx_Department.ItemsSource = this.company.Departments;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

@@ -37,8 +37,10 @@
                 <TextBox x:Name="tb_City" Margin="0,0,25,0"></TextBox>
                 <Label>Street</Label>
                 <TextBox x:Name="tb_Street" Margin="0,0,143,0"></TextBox>
+                <Label>Addition</Label>
+                <TextBox x:Name="tb_Addition" Margin="2,0,33,0"/>
                 <Label>Zip-code</Label>
-                <TextBox x:Name="tb_ZipCode" Margin="0,0,143,0"></TextBox>
+                <TextBox x:Name="tb_ZipCode" Margin="2,0,141,0"/>
 
             </StackPanel>
 
@@ -69,7 +71,7 @@
             <TextBox x:Name="tb_month" Margin="76,70,103,239" Grid.Column="3"/>
             <TextBox x:Name="tb_day" Margin="153,70,26,239" Grid.Column="3" RenderTransformOrigin="0.568,0.528"/>
             <Label  Grid.Column="1" Margin="118,179,6,100">Street Nr.</Label>
-            <TextBox x:Name ="tb_StreetNumber" Margin="118,202,3,106" Grid.Column="1"/>
+            <TextBox x:Name ="tb_StreetNumber" Margin="118,202,0,106" Grid.Column="1"/>
 
 
 

@@ -46,6 +46,7 @@
                                 <GridViewColumn DisplayMemberBinding="{Binding Email}" Width="70">Email</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding BirthDate}" Width="60">Birthday</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding HireTime}" Width="70">Hire date</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding LastWorkingDay}" Width="70">End of contract</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding HomeAddress}" Width="90">Address</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Contract}" Width="90">Contract</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding WorksAt}" Width="90">Department</GridViewColumn>
