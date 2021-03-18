@@ -43,21 +43,22 @@ namespace MediaBazaarApp
 
             MessageBox.Show(person.LastName);
 
-            ShopWorker emp = new ShopWorker(25,
-                                                    "A",
-                                                    "A",
-                                                    "A",
-                                                    "B",
-                                                    "C",
-                                                    new Department(2, "Electronics"),
-                                                    new Address("S", "S", "S", "S", "S", ""),
-                                                    new DateTime(1990, 05, 30),
-                                                    "VBMN321321",
-                                                    new DateTime(2020, 05, 30),
-                                                    new Contract(2, true, 32),
-                                                    Convert.ToDecimal(15.55));
+            //ShopWorker emp = new ShopWorker(25,
+            //                                        "A",
+            //                                        "A",
+            //                                        "A35",
+            //                                        "B33",
+            //                                        "C",
+            //                                        new Department(2, "Electronics"),
+            //                                        new Address("S", "S", "S", "S", "S", ""),
+            //                                        new DateTime(1990, 05, 30),
+            //                                        "VBMN321321",
+            //                                        new DateTime(2020, 05, 30),
+            //                                        new Contract(2, true, 32),
+            //                                        Convert.ToDecimal(15.55));
 
-            this.company.ShopWorkers.Edit(emp);
+            //this.company.ShopWorkers.Edit(emp);
+            //this.company.ShopWorkers.Add(emp);
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)
@@ -91,8 +92,8 @@ namespace MediaBazaarApp
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
-            //this.window = new AddEmployee(company);
-            //this.window.Show();
+            this.addEmployeeForm = new AddEmployee(company);
+            this.addEmployeeForm.Show();
         }
 
         private void btn_Refresh_Click(object sender, RoutedEventArgs e)

@@ -15,6 +15,8 @@ namespace MediaBazaarApp.Classes
         public string Password { get; set; }
         public string Username { get; set; }
         public int AccessLevel { get; set; }
+
+        
         public Person() { }
         public Person(int id, string firstName, string lastName,string email) 
         {

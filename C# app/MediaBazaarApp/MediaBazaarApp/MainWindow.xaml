@@ -51,6 +51,7 @@
                                 <GridViewColumn DisplayMemberBinding="{Binding WorksAt}" Width="90">Department</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding HourlyWage}" Width="90">Wage</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding BankAccount}" Width="90">BankAccount</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Status}" Width="90">Status</GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>

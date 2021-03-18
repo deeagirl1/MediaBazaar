@@ -81,7 +81,7 @@ namespace MediaBazaarApp.Classes
             string sql = " INSERT INTO person(FirstName, LastName, Email, Username, Password, AccessLevel) " +
                          " VALUES (@FirstName, @LastName, @Email, @Username, @Password, @AccessLevel); ";
 
-            MySqlParameter[] prms = new MySqlParameter[4];
+            MySqlParameter[] prms = new MySqlParameter[6];
 
             int accessLevel = 0;
             if (person is Administrator)

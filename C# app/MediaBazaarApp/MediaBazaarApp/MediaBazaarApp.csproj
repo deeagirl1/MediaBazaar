@@ -128,6 +128,7 @@
     <Compile Include="Classes\IAccount.cs" />
     <Compile Include="Classes\Manager.cs" />
     <Compile Include="Classes\Person.cs" />
+    <Compile Include="Classes\Status.cs" />
     <Compile Include="Classes\WorkShift.cs" />
     <Page Include="AddEmployee.xaml">
       <Generator>MSBuild:Compile</Generator>

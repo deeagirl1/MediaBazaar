@@ -15,18 +15,20 @@ namespace MediaBazaarApp.Classes
             string sql = $"SELECT p.ID, p.FirstName, p. LastName, p.Email, " +
                 $" p.Username, p.Password, p.AccessLevel, e.BirthDate, e.HireDate, " +
                 $" e.Country, e.City,e.Street,e.StreetNumber,e.AddressAddition,e.ZipCode, " +
-                $" e.Wage, e.AccountNumber,d.ID as DepartmentID, d.Name as Department, " +
+                $" e.Wage, e.AccountNumber, s.ID as StatusID, s.Status as StatusName, " +
+                $" d.ID as DepartmentID, d.Name as Department, " +
                 $" c.ID as ContractID, c.Fixed as ContractFixed,c.Hours as ContractHours " +
                 $" FROM PERSON p INNER JOIN EMPLOYEE e ON p.ID = e.ID " +
                 $" INNER JOIN department d ON e.DepartmentID = d.ID " +
+                $" INNER JOIN employeeStatus s ON e.Status = s.ID " +
                 $" INNER JOIN contract c on e.ContractID = c.ID WHERE ACCESSLEVEL = 1";
+
             MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
             MySqlDataReader reader = null;
             List<ShopWorker> employees = new List<ShopWorker>();
             try
             {
                 reader = this.OpenExecuteReader(cmd);
-
                 while (reader.Read())
                 {
                     Address address = new Address(Convert.ToString(reader["Country"]),
@@ -41,7 +43,10 @@ namespace MediaBazaarApp.Classes
                                                      Convert.ToInt32(reader["ContractHours"]));
 
                     Department department = new Department(Convert.ToInt32(reader["DepartmentID"]),
-                                                     Convert.ToString(reader["Department"]));
+                                                           Convert.ToString(reader["Department"]));
+
+                    Status status = new Status(Convert.ToInt32(reader["StatusID"]),
+                                               Convert.ToString(reader["StatusName"]));
 
                     ShopWorker emp = new ShopWorker(Convert.ToInt32(reader["ID"]),
                                                     Convert.ToString(reader["FirstName"]),
@@ -53,6 +58,7 @@ namespace MediaBazaarApp.Classes
                                                     address,
                                                     Convert.ToDateTime(reader["BirthDate"]),
                                                     Convert.ToString(reader["AccountNumber"]),
+                                                    status,
                                                     Convert.ToDateTime(reader["HireDate"]),
                                                     contract,
                                                     Convert.ToDecimal(reader["Wage"]));
@@ -69,15 +75,15 @@ namespace MediaBazaarApp.Classes
 
         public void Edit(ShopWorker shopWorker)
         {
-            string sql = " UPDATE person SET Email=@Email, WHERE ID = @ID; " +
+            string sql = " UPDATE person SET Email=@Email WHERE ID = @ID; " +
                          " UPDATE employee SET HireDate=@HireDate, Country=@Country, " +
                          " City=@City, Street=@Street, StreetNumber=@StreetNumber, AddressAddition=@AddressAddition, " +
-                         " ZipCode=@ZipCode,Wage=@Wage,AccountNumber=@AccountNumber,DepartmentID=@DepartmentID, " +
+                         " ZipCode=@ZipCode,Wage=@Wage,AccountNumber=@AccountNumber,Status = @Status,DepartmentID=@DepartmentID, " +
                          " ContractID=@ContractID WHERE ID = @ID; ";
 
-            MySqlParameter[] prms = new MySqlParameter[13];
+            MySqlParameter[] prms = new MySqlParameter[14];
 
-            prms[0] = new MySqlParameter("@Email", "helloWorld2");
+            prms[0] = new MySqlParameter("@Email", shopWorker.Email);
             prms[1] = new MySqlParameter("@HireDate", shopWorker.HireTime.Date);
             prms[2] = new MySqlParameter("@Country", shopWorker.HomeAddress.Country);
             prms[3] = new MySqlParameter("@City", shopWorker.HomeAddress.City);
