@@ -8,37 +8,39 @@
         Title="Edit Employee" Height="386.587" Width="757.152">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="79*"/>
-            <ColumnDefinition Width="400*"/>
-            <ColumnDefinition Width="270*"/>
+            <ColumnDefinition Width="236*"/>
+            <ColumnDefinition Width="259*"/>
+            <ColumnDefinition Width="254*"/>
         </Grid.ColumnDefinitions>
         <Grid Background="LightGray" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="187*" />
-                <ColumnDefinition Width="31*"/>
-                <ColumnDefinition Width="245"/>
-                <ColumnDefinition Width="218*" />
+                <ColumnDefinition Width="219*" />
+                <ColumnDefinition Width="23*"/>
+                <ColumnDefinition Width="252"/>
+                <ColumnDefinition Width="235*" />
                 <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="30"/>
+                <RowDefinition/>
+                <RowDefinition Height="14"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Column="1" Grid.ColumnSpan="2" >
                 <Label>First name</Label>
-                <TextBox x:Name="tb_FirstName" Margin="0,0,25,0" TextChanged="tb_FirstName_TextChanged">
+                <TextBox x:Name="tb_FirstName" Margin="0,0,25,0">
                 </TextBox>
                 <Label>Last name</Label>
                 <TextBox x:Name="tb_LastName" Margin="0,0,25,0"></TextBox>
                 <Label>Country</Label>
-                <TextBox x:Name="tb_Country" Margin="0,0,25,0" TextChanged="TextBox_TextChanged"></TextBox>
+                <TextBox x:Name="tb_Country" Margin="0,0,25,0"></TextBox>
                 <Label>City</Label>
                 <TextBox x:Name="tb_City" Margin="0,0,25,0"></TextBox>
                 <Label>Street</Label>
                 <TextBox x:Name="tb_Street" Margin="0,0,143,0"></TextBox>
                 <Label>Zip-code</Label>
                 <TextBox x:Name="tb_ZipCode" Margin="0,0,143,0"></TextBox>
+                <Label>Additional Info</Label>
+                <TextBox x:Name="tb_AdditionalInfo" Margin="0,0,25,0"></TextBox>
 
             </StackPanel>
 
@@ -49,7 +51,6 @@
                 <ComboBox x:Name="cbx_Department" Height="18" Margin="0,0,25,0"/>
                 <Label>Contract</Label>
                 <ComboBox x:Name="cbx_Contract" Height="18" Margin="0,0,25,0"/>
-
 
             </StackPanel>
             <StackPanel Grid.Column="3">
@@ -62,16 +63,14 @@
                 <Label Content="Date of last working day"/>
                 <DatePicker x:Name="dp_LastHireDate" Margin="0,0,10,0"/>
                 <Label Content="Hourly wage"/>
-                <TextBox x:Name="tb_HourlyWage" Margin="0,0,25,0"/>
+                <TextBox x:Name="tb_HourlyWage" Margin="0,0,25,0"/> 
 
+                <Button x:Name="btnAdd" MaxHeight="25" MaxWidth="100" VerticalAlignment="Top" Grid.Column="3" Grid.ColumnSpan="4" Content="Add employee" Height="50" Click="Button_Click" Margin="0,307,0,0" Grid.RowSpan="2"/>
             </StackPanel>
-            <Button x:Name="btnAdd" MaxHeight="25" MaxWidth="100" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="4" Content="Add employee" Height="20" Click="Button_Click" Margin="0,307,0,0" Grid.RowSpan="2"/>
-            <TextBox x:Name="tb_month" Margin="76,70,103,239" Grid.Column="3"/>
-            <TextBox x:Name="tb_day" Margin="153,70,26,239" Grid.Column="3" RenderTransformOrigin="0.568,0.528"/>
+            <TextBox x:Name="tb_month" Margin="78,70,101,255" Grid.Column="3"/>
+            <TextBox x:Name="tb_day" Margin="155,70,24,255" Grid.Column="3" RenderTransformOrigin="0.568,0.528"/>
             <Label  Grid.Column="1" Margin="118,179,6,100">Street Nr.</Label>
-            <TextBox x:Name ="tb_StreetNumber" Margin="118,202,3,106" Grid.Column="1"/>
-
-
+            <TextBox x:Name ="tb_StreetNumber" Margin="118,202,34,122" Grid.Column="1"/>
 
         </Grid>
     </Grid>

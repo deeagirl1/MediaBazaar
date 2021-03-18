@@ -26,6 +26,8 @@ namespace MediaBazaarApp.Popups
         public EditEmployee(Company company)
         {
             InitializeComponent();
+            this.cbx_Department.ItemsSource = this.company.Departments;
+            this.cbx_Contract.ItemsSource = this.company.Contracts;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

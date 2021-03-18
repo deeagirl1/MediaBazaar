@@ -24,7 +24,8 @@ namespace MediaBazaarApp
     {
         private Classes.Calendar calendar;
         private Company company;
-        private AddEmployee window;
+        private AddEmployee addWindow;
+        private EditEmployee editWindow;
 
         public ShopWorker[] employees { get; set; }
         public MainWindow(Company company)
@@ -78,14 +79,14 @@ namespace MediaBazaarApp
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            this.window = new EditEmployee(company);
-            this.window.Show();
+            this.editWindow = new EditEmployee(company);
+            this.editWindow.Show();
         }
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
-            this.window = new AddEmployee(company);
-            this.window.Show();
+            this.addWindow = new AddEmployee(company);
+            this.addWindow.Show();
 
         }
 

@@ -17,25 +17,25 @@ namespace MediaBazaarApp.Classes
             accounts = new List<IAccount>();
         }
 
-        public object CheckCredentials(IAccount account)
-        {
-           // string sql = $"SELECT *";
-            MySqlParameter[] prms = new MySqlParameter[2];
+        //public object CheckCredentials(IAccount account)
+        //{
+        //   // string sql = $"SELECT *";
+        //    MySqlParameter[] prms = new MySqlParameter[2];
 
-            string password = account.Password.GetHashCode().ToString();
-            prms[0] = new MySqlParameter("@login", account.Login);
-            prms[1] = new MySqlParameter("@password", password);
+        //    string password = account.Password.GetHashCode().ToString();
+        //    prms[0] = new MySqlParameter("@login", account.Login);
+        //    prms[1] = new MySqlParameter("@password", password);
 
-            return this.ReadScalar(sql, prms);
-        }
+        //    return this.ReadScalar(sql, prms);
+        //}
 
-        public Object GetStatus(IAccount account)
-        {
-           // string sql = "SELECT *";
-            MySqlParameter[] prms = new MySqlParameter[1];
-            prms[0] = new MySqlParameter("@id", account.ID);
-            return this.ReadScalar(sql, prms);
-        }
+        //public Object GetStatus(IAccount account)
+        //{
+        //   // string sql = "SELECT *";
+        //    MySqlParameter[] prms = new MySqlParameter[1];
+        //    prms[0] = new MySqlParameter("@id", account.ID);
+        //    return this.ReadScalar(sql, prms);
+        //}
 
         public bool Add(IAccount account)
         {
