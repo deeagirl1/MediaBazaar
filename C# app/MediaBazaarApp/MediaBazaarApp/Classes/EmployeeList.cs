@@ -96,6 +96,7 @@ namespace MediaBazaarApp.Classes
             prms[10] = new MySqlParameter("@DepartmentID", shopWorker.WorksAt.ID);
             prms[11] = new MySqlParameter("@ContractID", shopWorker.Contract.ID);
             prms[12] = new MySqlParameter("@ID", shopWorker.ID);
+            prms[13] = new MySqlParameter("@Status", shopWorker.Status.ID);
 
             this.ExecuteQuery(sql, prms);
         }
@@ -107,11 +108,11 @@ namespace MediaBazaarApp.Classes
                          " VALUES (@FirstName, @LastName, @Email, @Username, @Password, @AccessLevel); " +
                          " SET @last_id_in_table1 = LAST_INSERT_ID(); " +
                          " INSERT INTO employee(ID, BirthDate, HireDate, Country, City, Street, StreetNumber, " +
-                         " AddressAddition, ZipCode, Wage, AccountNumber, DepartmentID, ContractID) " +
+                         " AddressAddition, ZipCode, Wage, AccountNumber,Status, DepartmentID, ContractID) " +
                          " VALUES (@last_id_in_table1, @BirthDate, @HireDate, @Country, @City, @Street, @StreetNumber, " +
-                         " @AddressAddition, @ZipCode, @Wage, @AccountNumber, @DepartmentID, @ContractID )";
+                         " @AddressAddition, @ZipCode, @Wage, @AccountNumber,@Status, @DepartmentID, @ContractID )";
 
-            MySqlParameter[] prms = new MySqlParameter[18];
+            MySqlParameter[] prms = new MySqlParameter[19];
 
             prms[0] = new MySqlParameter("@FirstName", shopWorker.FirstName);
             prms[1] = new MySqlParameter("@LastName", shopWorker.LastName);
@@ -131,6 +132,7 @@ namespace MediaBazaarApp.Classes
             prms[15] = new MySqlParameter("@AccountNumber", shopWorker.BankAccount);
             prms[16] = new MySqlParameter("@DepartmentID", shopWorker.WorksAt.ID);
             prms[17] = new MySqlParameter("@ContractID", shopWorker.Contract.ID);
+            prms[18] = new MySqlParameter("@Status", shopWorker.Status.ID);
 
             this.ExecuteQuery(sql,prms);
         }

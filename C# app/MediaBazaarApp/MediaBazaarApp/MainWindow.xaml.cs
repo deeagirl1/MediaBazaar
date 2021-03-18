@@ -43,22 +43,23 @@ namespace MediaBazaarApp
 
             MessageBox.Show(person.LastName);
 
-            //ShopWorker emp = new ShopWorker(25,
-            //                                        "A",
-            //                                        "A",
-            //                                        "A35",
-            //                                        "B33",
-            //                                        "C",
-            //                                        new Department(2, "Electronics"),
-            //                                        new Address("S", "S", "S", "S", "S", ""),
-            //                                        new DateTime(1990, 05, 30),
-            //                                        "VBMN321321",
-            //                                        new DateTime(2020, 05, 30),
-            //                                        new Contract(2, true, 32),
-            //                                        Convert.ToDecimal(15.55));
+            ShopWorker emp = new ShopWorker(25,
+                                                    "A",
+                                                    "A",
+                                                    "A334",
+                                                    "B314",
+                                                    "C",
+                                                    new Department(2, "Electronics"),
+                                                    new Address("S", "S", "S", "S", "S", ""),
+                                                    new DateTime(1990, 05, 30),
+                                                    "VBMN321321",
+                                                    new Status(1,""),
+                                                    new DateTime(2020, 05, 30),
+                                                    new Contract(2, true, 32),
+                                                    Convert.ToDecimal(15.55));
 
             //this.company.ShopWorkers.Edit(emp);
-            //this.company.ShopWorkers.Add(emp);
+            this.company.ShopWorkers.Add(emp);
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)
