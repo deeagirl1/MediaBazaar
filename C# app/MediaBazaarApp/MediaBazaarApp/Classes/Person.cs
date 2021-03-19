@@ -32,6 +32,7 @@ namespace MediaBazaarApp.Classes
             this.LastName = lastName;
             this.Email = email;
             this.Password = password;
+            this.Username = username;
         }
         public override string ToString() => $"{this.ID} {this.FirstName} {this.LastName}";
     }

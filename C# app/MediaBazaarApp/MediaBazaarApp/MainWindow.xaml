@@ -130,11 +130,23 @@
                         <!--Here are inserted all the day grids for the calendar, procedurally generated-->
 
                     </Grid>
-
+                </Grid>
+            </TabItem>
+            
+            <TabItem Header="MyAccount">
+                <Grid Background="LightGray">
+                    <TextBox x:Name="tbCurrentPass" HorizontalAlignment="Left" Height="34" Margin="433,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+                    <TextBox x:Name="tbNewPass" HorizontalAlignment="Left" Height="34" Margin="433,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+                    <TextBox x:Name="tbNewPassRepeat" HorizontalAlignment="Left" Height="34" Margin="433,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+                    <Label x:Name="lblUserString" Content="Label" HorizontalAlignment="Left" Margin="457,117,0,0" VerticalAlignment="Top" Width="173" FontSize="24"/>
+                    <Label Content="Current password" HorizontalAlignment="Left" Margin="433,164,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.974,0.423"/>
+                    <Label Content="New password" HorizontalAlignment="Left" Margin="433,224,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.974,0.423"/>
+                    <Label Content="Repeat new password" HorizontalAlignment="Left" Margin="433,284,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.974,0.423"/>
+                    <Button x:Name="btnChangePassword" Content="Change password" HorizontalAlignment="Left" Margin="381,420,0,0" VerticalAlignment="Top" Width="324" Height="46" Click="btnChangePassword_Click"/>
 
                 </Grid>
             </TabItem>
-
+            
         </TabControl>
     </Grid>
 </Window>
