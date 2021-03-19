@@ -49,6 +49,7 @@ namespace MediaBazaarApp.Classes
                                                Convert.ToString(reader["StatusName"]));
 
                     DateTime lastWorkingDay;
+                    employees.Sort(new EmployeeSort());
 
                     if (reader["LastWorkingDay"] != DBNull.Value)
                         lastWorkingDay = Convert.ToDateTime(reader["LastWorkingDay"]);

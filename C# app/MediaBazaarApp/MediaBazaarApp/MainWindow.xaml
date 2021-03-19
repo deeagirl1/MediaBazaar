@@ -49,9 +49,9 @@
                                 <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Width="100">First Name</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding LastName}" Width="70">Last Name</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Email}" Width="70">Email</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding BirthDate}" Width="60">Birthday</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding HireTime}" Width="70">Hire date</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding LastWorkingDay}" Width="70">End of contract</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding BirthDate , StringFormat='yyyy-MM-dd'}" Width="60">Birthday</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding HireTime, StringFormat='yyyy-MM-dd'}" Width="70">Hire date</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding LastWorkingDay, StringFormat='yyyy-MM-dd'}" Width="70">End of contract</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding HomeAddress}" Width="90">Address</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Contract}" Width="90">Contract</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding WorksAt}" Width="90">Department</GridViewColumn>
@@ -132,21 +132,22 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            
-            <TabItem Header="MyAccount">
-                <Grid Background="LightGray">
-                    <TextBox x:Name="tbCurrentPass" HorizontalAlignment="Left" Height="34" Margin="433,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
-                    <TextBox x:Name="tbNewPass" HorizontalAlignment="Left" Height="34" Margin="433,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
-                    <TextBox x:Name="tbNewPassRepeat" HorizontalAlignment="Left" Height="34" Margin="433,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
-                    <Label x:Name="lblUserString" Content="Label" HorizontalAlignment="Left" Margin="457,117,0,0" VerticalAlignment="Top" Width="173" FontSize="24"/>
-                    <Label Content="Current password" HorizontalAlignment="Left" Margin="433,164,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.974,0.423"/>
-                    <Label Content="New password" HorizontalAlignment="Left" Margin="433,224,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.974,0.423"/>
-                    <Label Content="Repeat new password" HorizontalAlignment="Left" Margin="433,284,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.974,0.423"/>
-                    <Button x:Name="btnChangePassword" Content="Change password" HorizontalAlignment="Left" Margin="381,420,0,0" VerticalAlignment="Top" Width="324" Height="46" Click="btnChangePassword_Click"/>
+
+            <TabItem Header="MyAccount" >
+                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+
+                    <TextBox x:Name="tbCurrentPass" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="34" Margin="472,231,436,436" TextWrapping="Wrap"  Width="222"/>
+                    <TextBox x:Name="tbNewPass" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34" Margin="472,301,436,366" TextWrapping="Wrap"  Width="222"/>
+                    <TextBox x:Name="tbNewPassRepeat"   Margin="472,378,436,289" TextWrapping="Wrap" Width="222" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34"/>
+                    <Label x:Name="lblUserString" Content="Label" HorizontalAlignment="Center" Margin="472,128,436,0" VerticalAlignment="Top" Width="222" FontSize="24" RenderTransformOrigin="-2.043,0.833" HorizontalContentAlignment="Center"/>
+                    <Label Content="Current password" HorizontalAlignment="Center" Margin="472,200,555,475" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423"/>
+                    <Label Content="New password" HorizontalAlignment="Center" Margin="472,270,570,405" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423"/>
+                    <Label Content="Repeat new password" HorizontalAlignment="Center" Margin="472,347,533,328" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423"/>
+                    <Button x:Name="btnChangePassword" Content="Change password" HorizontalAlignment="Stretch" Margin="428,0,378,172" VerticalAlignment="Bottom" Width="324" Height="46" Click="btnChangePassword_Click"/>
 
                 </Grid>
             </TabItem>
-            
+
         </TabControl>
     </Grid>
 </Window>

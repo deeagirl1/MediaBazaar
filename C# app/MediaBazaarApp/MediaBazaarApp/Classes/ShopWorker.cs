@@ -24,7 +24,7 @@ namespace MediaBazaarApp.Classes
         {
 
             this.BirthDate = birthDate.Date;
-            this.HireTime = hireDate;
+            this.HireTime = hireDate.Date;
             this.HomeAddress = address;
         }
 

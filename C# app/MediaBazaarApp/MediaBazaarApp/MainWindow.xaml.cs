@@ -124,7 +124,7 @@ namespace MediaBazaarApp
                 {
                     this.company.AccountManager.ChangePassword(this.person.Username,
                                         this.tbCurrentPass.Text, this.tbNewPass.Text);
-                    MessageBox.Show("Suucessfully changed");
+                    MessageBox.Show("Sucessfully changed");
                 }
                 else throw new ArgumentException("Passwords do not match");    
             }
