@@ -112,8 +112,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddEmployee.xaml.cs">
-      <DependentUpon>AddEmployee.xaml</DependentUpon>
+    <Compile Include="Add_Employee.xaml.cs">
+      <DependentUpon>Add_Employee.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Address.cs" />
     <Compile Include="Classes\Calendar.cs" />
@@ -132,9 +132,9 @@
     <Compile Include="Classes\Person.cs" />
     <Compile Include="Classes\Status.cs" />
     <Compile Include="Classes\WorkShift.cs" />
-    <Page Include="AddEmployee.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Add_Employee.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

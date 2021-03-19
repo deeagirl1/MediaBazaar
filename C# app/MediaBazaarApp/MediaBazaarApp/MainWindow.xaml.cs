@@ -25,7 +25,7 @@ namespace MediaBazaarApp
         private Classes.Calendar calendar;
         private Person person;
         private Company company;
-        private AddEmployee addEmployeeForm;
+        private Add_Employee addEmployeeForm;
         private EditEmployee editEmployeeForm;
 
         private List<ShopWorker> employees;
@@ -94,7 +94,7 @@ namespace MediaBazaarApp
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
-            this.addEmployeeForm = new AddEmployee(company);
+            this.addEmployeeForm = new Add_Employee(this.company);
             this.addEmployeeForm.Show();
         }
 
