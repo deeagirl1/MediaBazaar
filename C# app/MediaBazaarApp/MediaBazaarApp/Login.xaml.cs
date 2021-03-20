@@ -38,22 +38,30 @@ namespace MediaBazaarApp.Popups
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
-            string login = this.tbEmail.Text;
-            string password = this.tbPassword.Text;
-
-            Person user = 
-                this.company.AccountManager.IsValid(login, password);
-
-            if (user is Administrator)
+            try
             {
-                this.mainWindow = new MainWindow(this.company, user);
-                this.mainWindow.Show();
+                string login = this.tbEmail.Text;
+                string password = this.tbPassword.Text;
+
+                Person user =
+                    this.company.AccountManager.IsValid(login, password);
+
+                if (user is Administrator)
+                {
+                    this.mainWindow = new MainWindow(this.company, user);
+                    this.mainWindow.Show();
+                }
+                if (user is Manager)
+                {
+                    this.managerWindow = new ManagerWindow(this.company, user);
+                    this.managerWindow.Show();
+                }
             }
-            if(user is Manager)
+            catch(Exception ex)
             {
-                this.managerWindow = new ManagerWindow(this.company,user);
-                this.managerWindow.Show();
+                MessageBox.Show(ex.Message);
             }
+           
         }
     }
 }

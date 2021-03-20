@@ -1,5 +1,4 @@
-﻿using MediaBazaarApp.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,47 +11,50 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MediaBazaarApp.Classes;
 
 namespace MediaBazaarApp
 {
+    
     /// <summary>
-    /// Interaction logic for NewWorkshiftWindow.xaml
+    /// Interaction logic for EditWorkShift.xaml
     /// </summary>
-    public partial class NewWorkshiftWindow : Window
+    public partial class EditWorkShift : Window
     {
-        private WorkShift shift;
-        private Company company;
-        public NewWorkshiftWindow(DateTime date)
+        Company company;
+        WorkShift shift;
+        public EditWorkShift(WorkShift shift)
         {
             try
             {
                 InitializeComponent();
-                this.InitializeComponent();
+
                 this.company = new Company();
-                int shiftType = 1;
+                this.shift = shift;
 
-                if (date.Hour == 7) { shiftType = 1; }
-                else if (date.Hour == 15) { shiftType = 2; }
-                else if (date.Hour == 23) { shiftType = 3; }
-
-                shift = new WorkShift(date, new Shift(shiftType));
-                //this.lvAvailableEmployees.ItemsSource = this.company.ShopWorkers.ToList();
-                //shift.AssignedEmployees.Add(new ShopWorker(26, "a", "a", "a", "a", "a"));
-                //shift.AssignedEmployees.Add(new ShopWorker(30, "a", "a", "a", "a", "a"));
-
-                //MessageBox.Show(this.company.ShiftSchedule.Add(shift).ToString());
-                //this.lvAssignedEmployees.ite
+                foreach (ShopWorker s in this.shift.AssignedEmployees)
+                {
+                    this.lvAssignedEmployees.Items.Add(s);
+                }
                 foreach (ShopWorker s in this.company.ShopWorkers.ToList())
                 {
-                    this.lvAvailableEmployees.Items.Add(s);
+                    if (this.shift.AssignedEmployees.Count > 0)
+                    {
+                        foreach (ShopWorker w in this.shift.AssignedEmployees)
+                        {
+                            if (s.ID != w.ID)
+                                this.lvAvailableEmployees.Items.Add(s);
+                        }
+                    }
+                    else this.lvAvailableEmployees.Items.Add(s);
                 }
-                this.lblWorkshift.Content = this.shift.ToString();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void btnAssign_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -74,6 +76,7 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void btnUndo_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -95,10 +98,12 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void btnProceed_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                this.shift.AssignedEmployees.Clear();
                 foreach (Object obj in this.lvAssignedEmployees.Items)
                 {
                     if (obj is ShopWorker)
@@ -107,7 +112,7 @@ namespace MediaBazaarApp
                         this.shift.AssignedEmployees.Add(worker);
                     }
                 }
-                this.company.ShiftSchedule.Add(shift);
+                this.company.ShiftSchedule.Update(shift);
                 this.Close();
             }
             catch (Exception ex)

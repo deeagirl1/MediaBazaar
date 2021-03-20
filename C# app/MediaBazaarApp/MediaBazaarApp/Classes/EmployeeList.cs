@@ -148,7 +148,6 @@ namespace MediaBazaarApp.Classes
             }
             return emp;
         }
-
         public void Edit(ShopWorker shopWorker)
         {
             string sql = " UPDATE person SET Email=@Email WHERE ID = @ID; " +
@@ -179,7 +178,6 @@ namespace MediaBazaarApp.Classes
 
             this.ExecuteQuery(sql, prms);
         }
-
         public void Add(ShopWorker shopWorker)
         {
             //INSERT INTO `person`(`FirstName`, `LastName`, `Email`, `Username`, `Password`, `AccessLevel`) VALUES('a', 'b', 'c', 'd', 'e', 1); SET @last_id_in_table1 = LAST_INSERT_ID(); INSERT INTO `employee`(`ID`, `BirthDate`, `HireDate`, `Country`, `City`, `Street`, `StreetNumber`, `ZipCode`, `Wage`, `AccountNumber`, `DepartmentID`, `ContractID`) VALUES(@last_id_in_table1, 2020 - 12 - 08, 2020 - 12 - 08, 's', 's', 'e', 75, 'asas', 10, 'dsadsa', 2, 1)

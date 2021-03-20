@@ -30,15 +30,10 @@ namespace MediaBazaarApp.Classes
             return shift.ID;
             
         }
-        public IEnumerable<WorkShift> GetShiftsInPerioad(DateTime start, DateTime end)
+        public void Update(WorkShift shift)
         {
-            foreach (WorkShift s in workShifts)
-            {
-                if(s.date >= start && s.date <= end)
-                {
-                    yield return s;
-                }
-            }
+            this.removeAssignedEmployees(shift.ID);
+            this.addAssignedEmployees(shift.ID, shift.AssignedEmployees);
         }
         private List<ShopWorker> getAssignedEmployees(int id)
         {
@@ -114,6 +109,16 @@ namespace MediaBazaarApp.Classes
 
             this.ExecuteQuery(sql, prms);
         }
-    
+        private void removeAssignedEmployees(int ShiftID)
+        {
+            string sql = "DELETE FROM employeeassignment WHERE shiftID = @ID";
+
+            MySqlParameter[] prms = new MySqlParameter[1];
+
+            prms[0] = new MySqlParameter("@ID", ShiftID);
+
+            this.ExecuteQuery(sql, prms);
+        }
+
     }
 }

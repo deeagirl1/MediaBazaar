@@ -474,7 +474,18 @@ namespace MediaBazaarApp.Classes
                 if (btn.DataContext is WorkShift)
                 {
                     WorkShift w = (WorkShift)btn.DataContext;
-                    new WorkShiftWindow(w).Show();
+                    if (w.date.Date < DateTime.Now.Date)
+                        new WorkShiftWindow(w).Show();
+                    else
+                    {
+                        if(DateTime.Now.Hour >= 7 && w.shift.ID == 1)
+                            new WorkShiftWindow(w).Show();
+                        else if(DateTime.Now.Hour >= 15 && w.shift.ID <= 2)
+                            new WorkShiftWindow(w).Show();
+                        else if (DateTime.Now.Hour >= 23 && w.shift.ID <= 3)
+                            new WorkShiftWindow(w).Show();
+                        else new EditWorkShift(w).Show();
+                    }
                 }
                 else if(btn.DataContext is DateTime)
                 {

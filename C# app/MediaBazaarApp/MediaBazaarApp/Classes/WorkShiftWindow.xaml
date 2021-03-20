@@ -5,17 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaBazaarApp.Classes"
         mc:Ignorable="d"
-        Title="WorkShiftWindow" Height="450" Width="800">
+        Title="WorkShiftWindow" Height="450" Width="475">
     <Grid>
-        <ListView x:Name="lvEmployees" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="218">
+        <ListView x:Name="lvEmployees" HorizontalAlignment="Left" Height="359" Margin="10,50,0,0" VerticalAlignment="Top" Width="446">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="40">ID</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Width="100">First Name</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding LastName}" Width="70">Last Name</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Width="200">First Name</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding LastName}" Width="200">Last Name</GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
+        <Label x:Name="lblWorkshift" Content="Label" HorizontalAlignment="Left" Margin="187,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.648,-0.002" FontSize="18"/>
 
     </Grid>
 </Window>

@@ -36,12 +36,7 @@ namespace MediaBazaarApp.Classes
         }
         public override string ToString()
         {
-            string a = "";
-            foreach (ShopWorker s in this.AssignedEmployees)
-            {
-                a = a + $"{s.ID} {s.FirstName}";
-            }
-            return ($"{this.ID}" + a);
+            return $"{this.date.ToShortDateString()}, {this.shift.Name}";
         }
     }
 }
