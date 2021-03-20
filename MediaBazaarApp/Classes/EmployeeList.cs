@@ -217,5 +217,78 @@ namespace MediaBazaarApp.Classes
 
             this.ExecuteQuery(sql,prms);
         }
+        public List<ShopWorker> GetAvailiableEmpployees(WorkShift shift)
+        {
+            List<ShopWorker> shopWorkers = new List<ShopWorker>();
+            foreach(ShopWorker s in this.ToList())
+            {
+                if (s.Status.ID == 2)
+                {
+                    if (s.LastWorkingDay > shift.date || s.LastWorkingDay < new DateTime(1900, 01, 01))
+                    {
+                        if (!this.isWeeklyWorkLimitСrossed(s))
+                        {
+                            if (!isDayliWorkLimitCrossed(s, shift))
+                                shopWorkers.Add(s);
+                        }
+                            
+                    }
+                }
+            }
+            return shopWorkers;
+        }
+        private bool isDayliWorkLimitCrossed(ShopWorker worker, WorkShift shift)
+        {
+            int shiftType = 1;
+            switch (shift.shift.ID)
+            {
+                case (1):
+                    shiftType = 3;
+                    break;
+                case (2):
+                    shiftType = 1;
+                    break;
+                case (3):
+                    shiftType = 2;
+                    break;
+            }
+
+
+            string sql = "select Count(*) from employeeassignment a " +
+                " inner join workshift w on a.ShiftID = w.ID inner join employee e " +
+                " on a.EmployeeID = e.ID where e.ID = @EmployeeID " +
+                " and w.Date = @Date and w.ShiftType = @ShiftType";
+
+            MySqlParameter[] prms = new MySqlParameter[3];
+
+            prms[0] = new MySqlParameter("@EmployeeID", worker.ID);
+            prms[1] = new MySqlParameter("@Date", shift.date);
+            prms[2] = new MySqlParameter("@ShiftType", shiftType);
+
+            int count = Convert.ToInt32(this.ReadScalar(sql, prms));
+            if (count == 0)
+                return false;
+            return true;
+        }
+        private bool isWeeklyWorkLimitСrossed(ShopWorker worker)
+        {
+            string sql = "select Count(*) from employeeassignment " +
+                " a inner join workshift w on a.ShiftID = w.ID " +
+                " inner join employee e on a.EmployeeID = e.ID " +
+                " where e.ID = @EmployeeID and w.Date > @StartDate and w.Date < @EndDate";
+
+            MySqlParameter[] prms = new MySqlParameter[3];
+
+            prms[0] = new MySqlParameter("@EmployeeID", worker.ID);
+            prms[1] = new MySqlParameter("@StartDate", DateTime.Now.AddDays(-7) );
+            prms[2] = new MySqlParameter("@EndDate", DateTime.Now);
+
+
+
+            int count = Convert.ToInt32(this.ReadScalar(sql, prms));
+            if (count < worker.Contract.ShiftsCount)
+                return false;
+            return true;
+        }
     }
 }

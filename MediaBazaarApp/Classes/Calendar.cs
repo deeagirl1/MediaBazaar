@@ -310,6 +310,10 @@ namespace MediaBazaarApp.Classes
             indexYear--;
             Reload();
         }
+        public void Refresh()
+        {
+            Reload();
+        }
         public void NextMonth()
         {
             if (indexMonth != 12)
@@ -476,21 +480,24 @@ namespace MediaBazaarApp.Classes
                     WorkShift w = (WorkShift)btn.DataContext;
                     if (w.date.Date < DateTime.Now.Date)
                         new WorkShiftWindow(w).Show();
-                    else
+                    else if (w.date.Date == DateTime.Now.Date)
                     {
-                        if(DateTime.Now.Hour >= 7 && w.shift.ID == 1)
+                        if (DateTime.Now.Hour >= 7 && w.shift.ID == 1)
                             new WorkShiftWindow(w).Show();
-                        else if(DateTime.Now.Hour >= 15 && w.shift.ID <= 2)
+                        else if (DateTime.Now.Hour >= 15 && w.shift.ID <= 2)
                             new WorkShiftWindow(w).Show();
                         else if (DateTime.Now.Hour >= 23 && w.shift.ID <= 3)
                             new WorkShiftWindow(w).Show();
-                        else new EditWorkShift(w).Show();
+                        else { new EditWorkShift(w).Show(); }
                     }
+                    else { new EditWorkShift(w).Show(); }
+                    
                 }
                 else if(btn.DataContext is DateTime)
                 {
                     DateTime dateTime = (DateTime)btn.DataContext;
-                    new NewWorkshiftWindow(dateTime).Show();
+                    if(dateTime > DateTime.Now)
+                        new NewWorkshiftWindow(dateTime).Show();
                 }
             }
             catch(Exception ex)

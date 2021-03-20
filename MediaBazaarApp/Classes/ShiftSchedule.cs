@@ -26,14 +26,14 @@ namespace MediaBazaarApp.Classes
             prms[1] = new MySqlParameter("@Date", shift.date);
 
             shift.ID = Convert.ToInt32(this.ReadScalar(sql, prms));
-            this.addAssignedEmployees(shift.ID, shift.AssignedEmployees);
+            this.addAssignedEmployees(shift);
             return shift.ID;
             
         }
         public void Update(WorkShift shift)
         {
             this.removeAssignedEmployees(shift.ID);
-            this.addAssignedEmployees(shift.ID, shift.AssignedEmployees);
+            this.addAssignedEmployees(shift);
         }
         private List<ShopWorker> getAssignedEmployees(int id)
         {
@@ -90,11 +90,11 @@ namespace MediaBazaarApp.Classes
             return shifts;
             throw new ArgumentException("No scheduled shifts founded");
         }
-        private void addAssignedEmployees(int ShiftID, List<ShopWorker> employees)
+        private void addAssignedEmployees(WorkShift shift)
         {
-            foreach(ShopWorker s in employees)
+            foreach(ShopWorker s in shift.AssignedEmployees)
             {
-                this.assignEmployee(ShiftID, s.ID);
+               this.assignEmployee(shift.ID, s.ID);
             }
         }
         private void assignEmployee(int ShiftID, int EmployeeID)
@@ -105,7 +105,6 @@ namespace MediaBazaarApp.Classes
 
             prms[0] = new MySqlParameter("@ShiftID", ShiftID);
             prms[1] = new MySqlParameter("@EmployeeID", EmployeeID);
-
 
             this.ExecuteQuery(sql, prms);
         }

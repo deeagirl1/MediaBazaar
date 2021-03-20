@@ -11,6 +11,10 @@ namespace MediaBazaarApp.Classes
         public int ID { get; set; }
         public bool Fixed { get; set; }
         private int hours;
+        public int ShiftsCount
+        {
+            get { return this.hours / 8; }
+        }
         public int Hours
         {
             get { return this.hours; }
