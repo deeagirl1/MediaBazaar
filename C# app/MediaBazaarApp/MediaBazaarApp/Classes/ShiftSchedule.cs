@@ -118,6 +118,5 @@ namespace MediaBazaarApp.Classes
 
             this.ExecuteQuery(sql, prms);
         }
-
     }
 }

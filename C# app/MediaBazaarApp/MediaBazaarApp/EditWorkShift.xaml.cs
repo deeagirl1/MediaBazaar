@@ -36,7 +36,7 @@ namespace MediaBazaarApp
                 {
                     this.lvAssignedEmployees.Items.Add(s);
                 }
-                foreach (ShopWorker s in this.company.ShopWorkers.ToList())
+                foreach (ShopWorker s in this.company.ShopWorkers.GetAvailiableEmployees(shift))
                 {
                     if (this.shift.AssignedEmployees.Count > 0)
                     {

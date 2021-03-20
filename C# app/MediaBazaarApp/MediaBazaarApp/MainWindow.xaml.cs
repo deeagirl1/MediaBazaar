@@ -39,10 +39,9 @@ namespace MediaBazaarApp
                 this.person = person;
                 Loaded += OnLoad;
 
-                this.employees = this.company.ShopWorkers.GetAvailiableEmpployees(new WorkShift(new DateTime(2021,03,22,15,0,0), new Shift(2, "Day")));
+                this.employees = this.company.ShopWorkers.ToList();
                 this.lvShopWorkers.ItemsSource = this.employees;
-                //this.employees.Sort(new EmployeeSort());
-                this.lblUserString.Content = $"Hello, {this.person.FirstName}";
+                MessageBox.Show(this.employees[5].Contract.ShiftsCount.ToString());
             }
             catch(Exception ex)
             {

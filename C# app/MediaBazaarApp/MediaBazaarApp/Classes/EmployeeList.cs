@@ -217,21 +217,21 @@ namespace MediaBazaarApp.Classes
 
             this.ExecuteQuery(sql,prms);
         }
-        public List<ShopWorker> GetAvailiableEmpployees(WorkShift shift)
+        public List<ShopWorker> GetAvailiableEmployees(WorkShift shift)
         {
             List<ShopWorker> shopWorkers = new List<ShopWorker>();
-            foreach(ShopWorker s in this.ToList())
+            foreach (ShopWorker s in this.ToList())
             {
                 if (s.Status.ID == 2)
                 {
                     if (s.LastWorkingDay > shift.date || s.LastWorkingDay < new DateTime(1900, 01, 01))
                     {
-                        if (!this.isWeeklyWorkLimitСrossed(s))
+                        if (!this.isWeeklyWorkLimitСrossed(s, shift.date))
                         {
                             if (!isDayliWorkLimitCrossed(s, shift))
                                 shopWorkers.Add(s);
                         }
-                            
+
                     }
                 }
             }
@@ -262,7 +262,7 @@ namespace MediaBazaarApp.Classes
             MySqlParameter[] prms = new MySqlParameter[3];
 
             prms[0] = new MySqlParameter("@EmployeeID", worker.ID);
-            prms[1] = new MySqlParameter("@Date", shift.date);
+            prms[1] = new MySqlParameter("@Date", shift.date.AddHours(-8));
             prms[2] = new MySqlParameter("@ShiftType", shiftType);
 
             int count = Convert.ToInt32(this.ReadScalar(sql, prms));
@@ -270,7 +270,7 @@ namespace MediaBazaarApp.Classes
                 return false;
             return true;
         }
-        private bool isWeeklyWorkLimitСrossed(ShopWorker worker)
+        private bool isWeeklyWorkLimitСrossed(ShopWorker worker, DateTime date)
         {
             string sql = "select Count(*) from employeeassignment " +
                 " a inner join workshift w on a.ShiftID = w.ID " +
@@ -280,8 +280,8 @@ namespace MediaBazaarApp.Classes
             MySqlParameter[] prms = new MySqlParameter[3];
 
             prms[0] = new MySqlParameter("@EmployeeID", worker.ID);
-            prms[1] = new MySqlParameter("@StartDate", DateTime.Now.AddDays(-7) );
-            prms[2] = new MySqlParameter("@EndDate", DateTime.Now);
+            prms[1] = new MySqlParameter("@StartDate", date.AddDays(-6));
+            prms[2] = new MySqlParameter("@EndDate", date);
 
 
 

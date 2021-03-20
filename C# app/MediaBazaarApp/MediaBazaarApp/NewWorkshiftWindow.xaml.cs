@@ -42,7 +42,7 @@ namespace MediaBazaarApp
 
                 //MessageBox.Show(this.company.ShiftSchedule.Add(shift).ToString());
                 //this.lvAssignedEmployees.ite
-                foreach (ShopWorker s in this.company.ShopWorkers.ToList())
+                foreach (ShopWorker s in this.company.ShopWorkers.GetAvailiableEmployees(shift))
                 {
                     this.lvAvailableEmployees.Items.Add(s);
                 }
