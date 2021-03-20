@@ -6,10 +6,19 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-    public enum Shift
+    public class Shift
     {
-        MORNING,
-        DAY,
-        NIGHT
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public Shift(int ID)
+        {
+            this.ID = ID;
+            this.Name = Name;
+        }
+        public Shift(int ID, string Name)
+        {
+            this.ID = ID;
+            this.Name = Name;
+        }
     }
 }

@@ -35,7 +35,7 @@ namespace MediaBazaarApp
 
         private void OnLoad(object sender, RoutedEventArgs e)
         {
-            calendar = new Classes.Calendar(this);
+            //calendar = new Classes.Calendar(this);
             this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
         }
 

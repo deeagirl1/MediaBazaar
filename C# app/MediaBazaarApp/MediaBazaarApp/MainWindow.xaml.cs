@@ -43,7 +43,7 @@ namespace MediaBazaarApp
 
 
 
-            MessageBox.Show(person.Username);
+            MessageBox.Show(this.company.ShiftSchedule.ToList()[0].date.ToString());
 
             ShopWorker emp = new ShopWorker(33,
                                                     "A",
@@ -67,7 +67,7 @@ namespace MediaBazaarApp
 
         private void OnLoad(object sender, RoutedEventArgs e)
         {
-            calendar = new Classes.Calendar(this);
+            calendar = new Classes.Calendar(this,company.ShiftSchedule.ToList());
             this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
         }
 
@@ -124,14 +124,19 @@ namespace MediaBazaarApp
                 {
                     this.company.AccountManager.ChangePassword(this.person.Username,
                                         this.tbCurrentPass.Text, this.tbNewPass.Text);
-                    MessageBox.Show("Sucessfully changed");
+                    MessageBox.Show("Suucessfully changed");
                 }
-                else throw new ArgumentException("Passwords do not match");    
+                else throw new ArgumentException("Passwords do not match");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnRefreshCalendar_Click(object sender, RoutedEventArgs e)
+        {
+            calendar = new Classes.Calendar(this, company.ShiftSchedule.ToList());
         }
     }
 }

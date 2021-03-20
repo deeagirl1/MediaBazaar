@@ -29,7 +29,6 @@ namespace MediaBazaarApp
             this.cbx_Contract.ItemsSource = this.company.Contracts;
             this.cbx_Department.ItemsSource = this.company.Departments;
             this.cbx_Status.ItemsSource = this.company.Statuses;
-
         }
 
         private void btn_AddEmployee_Click(object sender, RoutedEventArgs e)
@@ -44,22 +43,10 @@ namespace MediaBazaarApp
                     this.worker.FirstName = tb_FirstName.Text;
                     this.worker.LastName = tb_LastName.Text;
                     this.worker.Email = this.tb_Email.Text;
-                DateTime lastDay;
-
-                if (string.IsNullOrEmpty(tb_year_LastWorkingDay.Text) && string.IsNullOrEmpty(tb_month_LastWorkingDay.Text) && string.IsNullOrEmpty(tb_day_LastWorkingDay.Text))
-                {
-                    lastDay = new DateTime();
-                }
-                else
-                {
-                    lastDay = new DateTime(Convert.ToInt32(tb_year_LastWorkingDay.Text), Convert.ToInt32(tb_month_LastWorkingDay.Text), Convert.ToInt32(tb_day_LastWorkingDay.Text));
-                }
-
-                    DateTime birthDate  = new DateTime(Convert.ToInt32(tb_year.Text), Convert.ToInt32(tb_month.Text), Convert.ToInt32(tb_day.Text));
-                    DateTime firstDay = new DateTime(Convert.ToInt32(tb_year_FirstWorkingDay.Text), Convert.ToInt32(tb_month_FirstWorkingDay.Text), Convert.ToInt32(tb_day_FirstWorkingDay.Text));
+                    DateTime birthDate = new DateTime(Convert.ToInt32(tb_year.Text), Convert.ToInt32(tb_month.Text), Convert.ToInt32(tb_day.Text));
                     this.worker.BirthDate = birthDate;
-                    this.worker.HireTime = firstDay;
-                    this.worker.LastWorkingDay = lastDay;
+                    this.worker.HireTime = Convert.ToDateTime(dp_HireTme.SelectedDate);
+                    this.worker.LastWorkingDay = Convert.ToDateTime(this.dp_LastDay.SelectedDate);
                     this.worker.HourlyWage = Convert.ToDecimal(this.tb_HourlyWage.Text);
                     this.worker.BankAccount = this.tb_Accountumber.Text;
                     this.worker.WorksAt = ((Department)this.cbx_Department.SelectedItem);
@@ -67,8 +54,7 @@ namespace MediaBazaarApp
                     this.worker.Status = ((Status)this.cbx_Status.SelectedItem);
 
                     this.company.ShopWorkers.Add(worker);
-                    this.Close();
-            }
+                }
                 catch (Exception ex)
                 {
                     System.Windows.Forms.MessageBox.Show(ex.Message);
@@ -80,7 +66,7 @@ namespace MediaBazaarApp
                 //worker = new ShopWorker(1, firstName, lastName, email, birthDate, hireDate, lastHireDate, address);
                 //company.ShopWorkers.Add(worker);
 
-               
+                this.Close();
 
             }
         

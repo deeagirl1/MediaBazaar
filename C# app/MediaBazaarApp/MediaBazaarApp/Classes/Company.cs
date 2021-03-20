@@ -15,6 +15,8 @@ namespace MediaBazaarApp.Classes
         public readonly List<Department> Departments = new List<Department>();
         public readonly List<Contract> Contracts = new List<Contract>();
         public readonly List<Status> Statuses = new List<Status>();
+        public readonly List<Shift> Shifts = new List<Shift>();
+
         
 
         public Company()

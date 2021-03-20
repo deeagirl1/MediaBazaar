@@ -15,18 +15,17 @@
         <Grid Background="LightGray" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="240*" />
-                <ColumnDefinition Width="0*"/>
-                <ColumnDefinition Width="247"/>
-                <ColumnDefinition />
-                <ColumnDefinition Width="243*"/>
+                <ColumnDefinition Width="187*" />
+                <ColumnDefinition Width="31*"/>
+                <ColumnDefinition Width="245"/>
+                <ColumnDefinition Width="218*" />
                 <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="0"/>
             </Grid.RowDefinitions>
-            <StackPanel Grid.Column="1" >
+            <StackPanel Grid.Column="1" Grid.ColumnSpan="2" >
                 <Label>Country</Label>
                 <TextBox x:Name="tb_Country" Margin="0,0,25,0" Height="25"/>
                 <Label>City</Label>
@@ -42,7 +41,7 @@
 
             </StackPanel>
 
-            <StackPanel Grid.Column="4" Grid.ColumnSpan="2">
+            <StackPanel Grid.Column="4">
                 <Label>Account number</Label>
                 <TextBox x:Name="tb_AccountNumber" Margin="0,0,25,0" Height="25"/>
                 <Label>Department</Label>
@@ -57,15 +56,13 @@
             <StackPanel Grid.Column="3">
                 <Label>Email</Label>
                 <TextBox x:Name="tb_Email" Margin="0,0,25,0" Height="25"/>
+                <Label Content="Date of last working day"/>
+                <DatePicker x:Name="dp_LastHireDate" Margin="0,0,10,0" Height="25"/>
                 <Label Content="Hourly wage"/>
                 <TextBox x:Name="tb_HourlyWage" Margin="0,0,25,0" Height="25"/>
 
             </StackPanel>
             <Button x:Name="btnAdd"  VerticalAlignment="Top" Grid.Column="3" Content="Edit employee" Height="40" Click="Button_Click" Margin="0,306,15,0"/>
-            <Label Content="Date of last working day (YYYY-MM-DD)" HorizontalAlignment="Left" Margin="0,102,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.447,-0.423" Height="26" Width="226" Grid.Column="3"/>
-            <TextBox x:Name="tb_year_LastWorkingDay" HorizontalAlignment="Left" Height="24" Margin="5,133,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="72" Grid.Column="3"/>
-            <TextBox x:Name="tb_month_LastWorkingDay" HorizontalAlignment="Left" Height="24" Margin="82,133,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="72" Grid.Column="3"/>
-            <TextBox x:Name="tb_day_LastWorkingDay" HorizontalAlignment="Left" Height="24" Margin="159,133,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="72" Grid.Column="3"/>
 
 
 

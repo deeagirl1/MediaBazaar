@@ -21,7 +21,7 @@ namespace MediaBazaarApp.Classes
                 $" FROM PERSON p INNER JOIN EMPLOYEE e ON p.ID = e.ID " +
                 $" INNER JOIN department d ON e.DepartmentID = d.ID " +
                 $" INNER JOIN employeeStatus s ON e.Status = s.ID " +
-                $" INNER JOIN contract c on e.ContractID = c.ID WHERE ACCESSLEVEL = 1";
+                $" INNER JOIN contract c on e.ContractID = c.ID WHERE p.ACCESSLEVEL = 1";
 
             MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
             MySqlDataReader reader = null;
@@ -49,7 +49,6 @@ namespace MediaBazaarApp.Classes
                                                Convert.ToString(reader["StatusName"]));
 
                     DateTime lastWorkingDay;
-                    employees.Sort(new EmployeeSort());
 
                     if (reader["LastWorkingDay"] != DBNull.Value)
                         lastWorkingDay = Convert.ToDateTime(reader["LastWorkingDay"]);
@@ -79,6 +78,75 @@ namespace MediaBazaarApp.Classes
                 this.CloseExecuteReader(reader);
             }
             return employees;
+        }
+        public ShopWorker GetEmployeeById(int id)
+        {
+            ShopWorker emp = null;
+            string sql = $"SELECT p.ID, p.FirstName, p. LastName, p.Email, " +
+                $" p.Username, p.Password, p.AccessLevel, e.BirthDate, e.HireDate, e.LastWorkingDay, " +
+                $" e.Country, e.City,e.Street,e.StreetNumber,e.AddressAddition,e.ZipCode, " +
+                $" e.Wage, e.AccountNumber, s.ID as StatusID, s.Status as StatusName, " +
+                $" d.ID as DepartmentID, d.Name as Department, " +
+                $" c.ID as ContractID, c.Fixed as ContractFixed,c.Hours as ContractHours " +
+                $" FROM PERSON p INNER JOIN EMPLOYEE e ON p.ID = e.ID " +
+                $" INNER JOIN department d ON e.DepartmentID = d.ID " +
+                $" INNER JOIN employeeStatus s ON e.Status = s.ID " +
+                $" INNER JOIN contract c on e.ContractID = c.ID WHERE p.ID = @ID";
+
+            MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
+            MySqlDataReader reader = null;
+            cmd.Parameters.Add(new MySqlParameter("@ID", id));
+            try
+            {
+                reader = this.OpenExecuteReader(cmd);
+                while (reader.Read())
+                {
+                    Address address = new Address(Convert.ToString(reader["Country"]),
+                                                  Convert.ToString(reader["City"]),
+                                                  Convert.ToString(reader["Street"]),
+                                                  Convert.ToString(reader["StreetNumber"]),
+                                                  Convert.ToString(reader["ZipCode"]),
+                                                  Convert.ToString(reader["AddressAddition"]));
+
+                    Contract contract = new Contract(Convert.ToInt32(reader["ContractID"]),
+                                                     Convert.ToBoolean(reader["ContractFixed"]),
+                                                     Convert.ToInt32(reader["ContractHours"]));
+
+                    Department department = new Department(Convert.ToInt32(reader["DepartmentID"]),
+                                                           Convert.ToString(reader["Department"]));
+
+                    Status status = new Status(Convert.ToInt32(reader["StatusID"]),
+                                               Convert.ToString(reader["StatusName"]));
+
+                    DateTime lastWorkingDay;
+
+                    if (reader["LastWorkingDay"] != DBNull.Value)
+                        lastWorkingDay = Convert.ToDateTime(reader["LastWorkingDay"]);
+                    else lastWorkingDay = new DateTime();
+
+                    emp = new ShopWorker(Convert.ToInt32(reader["ID"]),
+                                                    Convert.ToString(reader["FirstName"]),
+                                                    Convert.ToString(reader["LastName"]),
+                                                    Convert.ToString(reader["Email"]),
+                                                    Convert.ToString(reader["Username"]),
+                                                    Convert.ToString(reader["Password"]),
+                                                    department,
+                                                    address,
+                                                    Convert.ToDateTime(reader["BirthDate"]),
+                                                    Convert.ToString(reader["AccountNumber"]),
+                                                    status,
+                                                    Convert.ToDateTime(reader["HireDate"]),
+                                                    lastWorkingDay,
+                                                    contract,
+                                                    Convert.ToDecimal(reader["Wage"]));
+
+                }
+            }
+            finally
+            {
+                this.CloseExecuteReader(reader);
+            }
+            return emp;
         }
 
         public void Edit(ShopWorker shopWorker)

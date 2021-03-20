@@ -42,16 +42,16 @@
                         </StackPanel>
                     </Grid>
 
-                    <ListView x:Name="lvShopWorkers" ItemsSource="{Binding employees}" Grid.Row="1"  Margin="19,10,0,0" Height="644" HorizontalAlignment="Stretch" VerticalAlignment="Top" >
+                    <ListView x:Name="lvShopWorkers" ItemsSource="{Binding employees}" Grid.Row="1" Margin="19,10,0,0" Height="644" HorizontalAlignment="Stretch" VerticalAlignment="Top" >
                         <ListView.View>
                             <GridView >
                                 <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="40">ID</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Width="100">First Name</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding LastName}" Width="70">Last Name</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Email}" Width="70">Email</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding BirthDate , StringFormat='yyyy-MM-dd'}" Width="60">Birthday</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding HireTime, StringFormat='yyyy-MM-dd'}" Width="70">Hire date</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding LastWorkingDay, StringFormat='yyyy-MM-dd'}" Width="70">End of contract</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding BirthDate}" Width="60">Birthday</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding HireTime, StringFormat='yyyy-MM-dd'}" Width="70" >Hire date</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding LastWorkingDay}" Width="70">End of contract</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding HomeAddress}" Width="90">Address</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Contract}" Width="90">Contract</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding WorksAt}" Width="90">Department</GridViewColumn>
@@ -87,7 +87,9 @@
                         <RowDefinition Height="80"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Border Grid.Column="1" Grid.RowSpan="6" BorderBrush="LightGray" Opacity="0.6" BorderThickness="1,0,0,0"/>
+                    <Border Grid.Column="1" Grid.RowSpan="6" BorderBrush="LightGray" Opacity="0.6" BorderThickness="1,0,0,0">
+                        <Button x:Name="btnRefreshCalendar" Content="Refresh" Margin="0,0,0,661" Click="btnRefreshCalendar_Click"/>
+                    </Border>
                     <Border Grid.Column="0" Grid.Row="0" BorderBrush="LightGray" Opacity="0.6" BorderThickness="0,0,0,1"/>
 
                     <Grid Grid.Column="0">
@@ -98,7 +100,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Button Grid.Row="0" Grid.Column="0" MaxWidth="120" MaxHeight="40" Click="Button_Click_1" Content="Previous"/>
-                        <Button Grid.Row="0" Grid.Column="2" MaxWidth="120" MaxHeight="40" Click="Button_Click" Content="Next"/>
+                        <Button Grid.Row="0" Grid.Column="2" MaxWidth="120" MaxHeight="40" Click="Button_Click" Content="Next" Margin="0,0,117,0"/>
                         <Label x:Name="lblMonthYear" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="137,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231"/>
                         <Label x:Name="lblMonthYear_Copy" Content="Monday" HorizontalAlignment="Left" Margin="194,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" FontWeight="Bold"/>
                         <Label x:Name="lblMonthYear_Copy1" Content="Tuesday" HorizontalAlignment="Left" Margin="331,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" FontWeight="Bold" Grid.ColumnSpan="2"/>
@@ -133,17 +135,16 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="MyAccount" >
-                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-
-                    <TextBox x:Name="tbCurrentPass" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="34" Margin="472,231,436,436" TextWrapping="Wrap"  Width="222"/>
-                    <TextBox x:Name="tbNewPass" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34" Margin="472,301,436,366" TextWrapping="Wrap"  Width="222"/>
-                    <TextBox x:Name="tbNewPassRepeat"   Margin="472,378,436,289" TextWrapping="Wrap" Width="222" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34"/>
-                    <Label x:Name="lblUserString" Content="Label" HorizontalAlignment="Center" Margin="472,128,436,0" VerticalAlignment="Top" Width="222" FontSize="24" RenderTransformOrigin="-2.043,0.833" HorizontalContentAlignment="Center"/>
-                    <Label Content="Current password" HorizontalAlignment="Center" Margin="472,200,555,475" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423"/>
-                    <Label Content="New password" HorizontalAlignment="Center" Margin="472,270,570,405" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423"/>
-                    <Label Content="Repeat new password" HorizontalAlignment="Center" Margin="472,347,533,328" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423"/>
-                    <Button x:Name="btnChangePassword" Content="Change password" HorizontalAlignment="Stretch" Margin="428,0,378,172" VerticalAlignment="Bottom" Width="324" Height="46" Click="btnChangePassword_Click"/>
+            <TabItem Header="MyAccount">
+                <Grid Background="LightGray">
+                    <TextBox x:Name="tbCurrentPass" HorizontalAlignment="Left" Height="34" Margin="433,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+                    <TextBox x:Name="tbNewPass" HorizontalAlignment="Left" Height="34" Margin="433,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+                    <TextBox x:Name="tbNewPassRepeat" HorizontalAlignment="Left" Height="34" Margin="433,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+                    <Label x:Name="lblUserString" Content="Label" HorizontalAlignment="Left" Margin="457,117,0,0" VerticalAlignment="Top" Width="173" FontSize="24"/>
+                    <Label Content="Current password" HorizontalAlignment="Left" Margin="433,164,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.974,0.423"/>
+                    <Label Content="New password" HorizontalAlignment="Left" Margin="433,224,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.974,0.423"/>
+                    <Label Content="Repeat new password" HorizontalAlignment="Left" Margin="433,284,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.974,0.423"/>
+                    <Button x:Name="btnChangePassword" Content="Change password" HorizontalAlignment="Left" Margin="381,420,0,0" VerticalAlignment="Top" Width="324" Height="46" Click="btnChangePassword_Click"/>
 
                 </Grid>
             </TabItem>
