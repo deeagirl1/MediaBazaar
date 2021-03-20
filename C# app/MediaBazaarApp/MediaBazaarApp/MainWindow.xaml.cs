@@ -31,56 +31,62 @@ namespace MediaBazaarApp
         private List<ShopWorker> employees;
         public MainWindow(Company company, Person person)
         {
-            Loaded += OnLoad;
-            InitializeComponent();
-            this.company = company;
-            this.person = person;
-            Loaded += OnLoad;
+            try
+            {
+                Loaded += OnLoad;
+                InitializeComponent();
+                this.company = company;
+                this.person = person;
+                Loaded += OnLoad;
 
-            this.employees = this.company.ShopWorkers.ToList();
-            this.lvShopWorkers.ItemsSource = this.employees;
-            this.lblUserString.Content = $"Hello, {this.person.FirstName}";
-
-
-
-            MessageBox.Show(this.company.ShiftSchedule.ToList()[0].date.ToString());
-
-            ShopWorker emp = new ShopWorker(33,
-                                                    "A",
-                                                    "A",
-                                                    "A7fdsf74",
-                                                    "B37fsdf74",
-                                                    "C",
-                                                    new Department(2, "Electronics"),
-                                                    new Address("S", "S", "S", "S", "S", ""),
-                                                    new DateTime(1990, 05, 30),
-                                                    "VBMN321321",
-                                                    new Status(2, ""),
-                                                    new DateTime(2020, 05, 30),
-                                                    new DateTime(),
-                                                    new Contract(2, true, 32),
-                                                    Convert.ToDecimal(15.55));
-
-            //this.company.ShopWorkers.Edit(emp);
-            //this.company.ShopWorkers.Add(emp);
+                this.employees = this.company.ShopWorkers.ToList();
+                this.lvShopWorkers.ItemsSource = this.employees;
+                //this.employees.Sort(new EmployeeSort());
+                this.lblUserString.Content = $"Hello, {this.person.FirstName}";
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)
         {
-            calendar = new Classes.Calendar(this,company.ShiftSchedule.ToList());
-            this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
+            try
+            {
+                calendar = new Classes.Calendar(this, company.ShiftSchedule.ToList());
+                this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            calendar.NextMonth();
-            this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
+            try
+            {
+                calendar.NextMonth();
+                this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            calendar.PreviousMonth();
-            this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
+            try
+            {
+                calendar.PreviousMonth();
+                this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -96,23 +102,44 @@ namespace MediaBazaarApp
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
-            this.addEmployeeForm = new Add_Employee(this.company);
-            this.addEmployeeForm.Show();
+            try
+            {
+                this.addEmployeeForm = new Add_Employee(this.company);
+                this.addEmployeeForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_Refresh_Click(object sender, RoutedEventArgs e)
         {
-            this.employees = this.company.ShopWorkers.ToList();
-            this.lvShopWorkers.ItemsSource = this.employees;
+            try
+            {
+                this.employees = this.company.ShopWorkers.ToList();
+                this.lvShopWorkers.ItemsSource = this.employees;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Button_Edit_Click(object sender, RoutedEventArgs e)
         {
-            if (this.lvShopWorkers.SelectedItem != null)
+            try
             {
-                ShopWorker worker = ((ShopWorker)this.lvShopWorkers.SelectedItem);
-                this.editEmployeeForm = new EditEmployee(this.company,worker);
-                this.editEmployeeForm.Show();
+                if (this.lvShopWorkers.SelectedItem != null)
+                {
+                    ShopWorker worker = ((ShopWorker)this.lvShopWorkers.SelectedItem);
+                    this.editEmployeeForm = new EditEmployee(this.company, worker);
+                    this.editEmployeeForm.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -136,7 +163,28 @@ namespace MediaBazaarApp
 
         private void btnRefreshCalendar_Click(object sender, RoutedEventArgs e)
         {
-            calendar = new Classes.Calendar(this, company.ShiftSchedule.ToList());
+            try
+            {
+                calendar = new Classes.Calendar(this, company.ShiftSchedule.ToList());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_Sort_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                this.employees = this.company.ShopWorkers.ToList();
+                this.employees.Sort(new EmployeeSort());
+                this.lvShopWorkers.ItemsSource = this.employees;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

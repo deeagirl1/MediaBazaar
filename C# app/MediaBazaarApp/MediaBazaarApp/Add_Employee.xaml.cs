@@ -23,52 +23,73 @@ namespace MediaBazaarApp
 
         public Add_Employee(Company company)
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
 
-            this.company = company;
-            this.cbx_Contract.ItemsSource = this.company.Contracts;
-            this.cbx_Department.ItemsSource = this.company.Departments;
-            this.cbx_Status.ItemsSource = this.company.Statuses;
+                this.company = company;
+                this.cbx_Contract.ItemsSource = this.company.Contracts;
+                this.cbx_Department.ItemsSource = this.company.Departments;
+                this.cbx_Status.ItemsSource = this.company.Statuses;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void btn_AddEmployee_Click(object sender, RoutedEventArgs e)
         {
-           
-                try
+
+            try
+            {
+
+                Address address = new Address(tb_Country.Text, tb_City.Text, tb_Street.Text, tb_StreetNr.Text, tb_AdditionalInfo.Text, "");
+                worker = new ShopWorker();
+                this.worker.HomeAddress = address;
+                this.worker.FirstName = tb_FirstName.Text;
+                this.worker.LastName = tb_LastName.Text;
+                this.worker.Email = this.tb_Email.Text;
+                DateTime lastDay;
+
+                if (string.IsNullOrEmpty(tb_year_LastWorkingDay.Text) && string.IsNullOrEmpty(tb_month_LastWorkingDay.Text) && string.IsNullOrEmpty(tb_day_LastWorkingDay.Text))
                 {
-
-                    Address address = new Address(tb_Country.Text, tb_City.Text, tb_Street.Text, tb_StreetNr.Text, tb_AdditionalInfo.Text, "");
-                    worker = new ShopWorker();
-                    this.worker.HomeAddress = address;
-                    this.worker.FirstName = tb_FirstName.Text;
-                    this.worker.LastName = tb_LastName.Text;
-                    this.worker.Email = this.tb_Email.Text;
-                    DateTime birthDate = new DateTime(Convert.ToInt32(tb_year.Text), Convert.ToInt32(tb_month.Text), Convert.ToInt32(tb_day.Text));
-                    this.worker.BirthDate = birthDate;
-                    this.worker.HireTime = Convert.ToDateTime(dp_HireTme.SelectedDate);
-                    this.worker.LastWorkingDay = Convert.ToDateTime(this.dp_LastDay.SelectedDate);
-                    this.worker.HourlyWage = Convert.ToDecimal(this.tb_HourlyWage.Text);
-                    this.worker.BankAccount = this.tb_Accountumber.Text;
-                    this.worker.WorksAt = ((Department)this.cbx_Department.SelectedItem);
-                    this.worker.Contract = ((Contract)this.cbx_Contract.SelectedItem);
-                    this.worker.Status = ((Status)this.cbx_Status.SelectedItem);
-
-                    this.company.ShopWorkers.Add(worker);
+                    lastDay = new DateTime();
                 }
-                catch (Exception ex)
+                else
                 {
-                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                    lastDay = new DateTime(Convert.ToInt32(tb_year_LastWorkingDay.Text), Convert.ToInt32(tb_month_LastWorkingDay.Text), Convert.ToInt32(tb_day_LastWorkingDay.Text));
                 }
 
+                DateTime birthDate = new DateTime(Convert.ToInt32(tb_year.Text), Convert.ToInt32(tb_month.Text), Convert.ToInt32(tb_day.Text));
+                DateTime firstDay = new DateTime(Convert.ToInt32(tb_year_FirstWorkingDay.Text), Convert.ToInt32(tb_month_FirstWorkingDay.Text), Convert.ToInt32(tb_day_FirstWorkingDay.Text));
+                this.worker.BirthDate = birthDate;
+                this.worker.HireTime = firstDay;
+                this.worker.LastWorkingDay = lastDay;
+                this.worker.HourlyWage = Convert.ToDecimal(this.tb_HourlyWage.Text);
+                this.worker.BankAccount = this.tb_Accountumber.Text;
+                this.worker.WorksAt = ((Department)this.cbx_Department.SelectedItem);
+                this.worker.Contract = ((Contract)this.cbx_Contract.SelectedItem);
+                this.worker.Status = ((Status)this.cbx_Status.SelectedItem);
 
-
-
-                //worker = new ShopWorker(1, firstName, lastName, email, birthDate, hireDate, lastHireDate, address);
-                //company.ShopWorkers.Add(worker);
-
+                this.company.ShopWorkers.Add(worker);
                 this.Close();
-
             }
-        
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+
+
+
+            //worker = new ShopWorker(1, firstName, lastName, email, birthDate, hireDate, lastHireDate, address);
+            //company.ShopWorkers.Add(worker);
+
+
+
+        }
+
     }
 }

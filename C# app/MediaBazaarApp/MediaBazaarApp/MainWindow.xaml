@@ -34,6 +34,8 @@
                         </StackPanel>
                         <StackPanel Grid.Row="1" VerticalAlignment="Center">
 
+                            <Button x:Name="btn_Sort" Content="Sort" VerticalAlignment="Top" Height="25" Click="btn_Sort_Click"/>
+
                             <Button x:Name="btn_Refresh" Content="Refresh" Grid.Column="3" Grid.Row="1" VerticalAlignment="Top" Height="25" Click="btn_Refresh_Click"/>
 
                             <Button x:Name ="btn_Edit" Content="Edit" Height="25" Click="Button_Edit_Click"/>
