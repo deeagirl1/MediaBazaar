@@ -26,37 +26,42 @@ namespace MediaBazaarApp.Popups
         public Login()
         {
             this.company = new Company();
-            this.managerWindow = new ManagerWindow(this.company);
             InitializeComponent();
-
-            this.company.AccountManager.Add(new Administrator(10, "John", "Brown", "admin", "pass"));
-            this.company.AccountManager.Add(new Manager(20, "a", "b", "manager", "pass"));
-            this.company.ShopWorkers.Add(new ShopWorker(01, "John", "Brown", "em1", new DateTime(1996, 06, 13), new DateTime(2020, 03, 2),new DateTime(2022,03,2), new Address("Netherlands", "Eindhoven", "Passtor", "59","5612")));
-           
-
+            //this.company.AccountManager.Add(new Administrator(10, "John", "Brown", "email","admin", "pass"));
+            //this.company.AccountManager.Add(new Manager(20, "a", "b", "manager","admin", "pass"));
+            //this.company.ShopWorkers.Add(new ShopWorker(01, "John", "Brown", "em1", new DateTime(1996, 06, 13), new DateTime(2020, 03, 2),new DateTime(2022,03,2), new Address("Netherlands", "Eindhoven", "Passtor", "59","5612")));
+            foreach (WorkShift w in this.company.ShiftSchedule.ToList())
+            {
+                Console.WriteLine(w);
+            }
         }
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
-            string login = this.tbEmail.Text;
-            string password = this.tbPassword.Text;
-
-            IAccount user = 
-                this.company.AccountManager.isValid(login, password);
-
-            if (user is Administrator)
+            try
             {
-                this.mainWindow = new MainWindow(this.company);
-                this.mainWindow.Show();
+                string login = this.tbEmail.Text;
+                string password = this.tbPassword.Text;
+
+                Person user =
+                    this.company.AccountManager.IsValid(login, password);
+
+                if (user is Administrator)
+                {
+                    this.mainWindow = new MainWindow(this.company, user);
+                    this.mainWindow.Show();
+                }
+                if (user is Manager)
+                {
+                    this.managerWindow = new ManagerWindow(this.company, user);
+                    this.managerWindow.Show();
+                }
             }
-            if(user is Manager)
+            catch(Exception ex)
             {
-                this.managerWindow = new ManagerWindow(this.company);
-                this.managerWindow.Show();
+                MessageBox.Show(ex.Message);
             }
-            
-                
-                
+           
         }
     }
 }

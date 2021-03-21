@@ -6,19 +6,20 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-    public class Shift
+    public class Status
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public Shift(int ID)
+
+        public Status(int ID, string Name)
         {
             this.ID = ID;
             this.Name = Name;
         }
-        public Shift(int ID, string Name)
+
+        public override string ToString()
         {
-            this.ID = ID;
-            this.Name = Name;
+            return this.Name;
         }
     }
 }

@@ -21,17 +21,21 @@ namespace MediaBazaarApp
     public partial class ManagerWindow : Window
     {
         private Classes.Calendar calendar;
+        private Person person;
         private Company company;
-        public ManagerWindow(Company company)
+        public ManagerWindow(Company company, Person person)
         {
             Loaded += OnLoad;
             InitializeComponent();
             this.company = company;
+
+            this.person = person;
+            //MessageBox.Show(person.LastName);
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)
         {
-            calendar = new Classes.Calendar(this);
+            //calendar = new Classes.Calendar(this);
             this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
         }
 

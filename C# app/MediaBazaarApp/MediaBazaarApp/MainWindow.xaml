@@ -5,57 +5,76 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaBazaarApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="756.466" Width="1143.534">
+        SizeToContent="WidthAndHeight"
+        Title="MainWindow" Height="760.466" Width="1143.534" ResizeMode="CanResize">
     <Grid>
         <TabControl SelectionChanged="TabControl_SelectionChanged">
             <TabItem Header="Employees">
-                <Grid Background="LightGray">
+                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="41"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="109*"/>
-                        <ColumnDefinition Width="6*"/>
-                        <ColumnDefinition Width="915*"/>
+                        <ColumnDefinition Width="112*"/>
+                        <ColumnDefinition Width="403*"/>
                         <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Search" Margin="913,7,2,661" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="2"/>
 
-                    <Grid Grid.Column="3" Grid.RowSpan="2">
+
+                    <Grid Grid.Column="2" Grid.RowSpan="2">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10"/>
                             <RowDefinition Height="100*"/>
                             <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="1" VerticalAlignment="Top" Height="27" Margin="6,0,4,0">
+                            <Button x:Name="btn_Search" Content="Search" VerticalAlignment="Top" HorizontalAlignment="Left" Height="25" Click="btn_Refresh_Click"  Width="90" Margin="2,0,-2,0"/>
+                        </StackPanel>
                         <StackPanel Grid.Row="1" VerticalAlignment="Center">
 
-                            <Button x:Name ="btn_Edit" Content="Edit" Height="25" Click="Button_Click_3"/>
+                            <Button x:Name="btn_Sort" Content="Sort" VerticalAlignment="Top" Height="25" Click="btn_Sort_Click"/>
 
+                            <Button x:Name="btn_Refresh" Content="Refresh" Grid.Column="3" Grid.Row="1" VerticalAlignment="Top" Height="25" Click="btn_Refresh_Click"/>
+
+                            <Button x:Name ="btn_Edit" Content="Edit" Height="25" Click="Button_Edit_Click"/>
                             <Button x:Name="btn_Add" Content="Add" Click="Button_Add_Click" Height="25"/>
+
                         </StackPanel>
                     </Grid>
-                    <ListView x:Name="lvShopWorkers" HorizontalAlignment="Left" Height="642" VerticalAlignment="Top" Width="1010" ItemsSource="{Binding employees}" Margin="10,16,0,0" Grid.Row="1" Grid.ColumnSpan="3">
+
+                    <ListView x:Name="lvShopWorkers" ItemsSource="{Binding employees}" Grid.Row="1"  Margin="19,10,0,0" Height="644" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.ColumnSpan="2" >
                         <ListView.View>
-                            <GridView>
+                            <GridView >
                                 <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="40">ID</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Width="100">First Name</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding LastName}" Width="70">Last Name</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Email}" Width="70">Email</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding BirthDate}" Width="60">Birthday</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding HireTime}" Width="70">Hire date</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding LastHireDate}" Width="90">Last hire date</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding HireTime, StringFormat='yyyy-MM-dd'}" Width="70" >Hire date</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding LastWorkingDay}" Width="70">End of contract</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding HomeAddress}" Width="90">Address</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Contract}" Width="90">Contract</GridViewColumn>
-                              
-
+                                <GridViewColumn DisplayMemberBinding="{Binding WorksAt}" Width="90">Department</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding HourlyWage}" Width="90">Wage</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding BankAccount}" Width="90">BankAccount</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Status}" Width="90">Status</GridViewColumn>
                             </GridView>
+
                         </ListView.View>
                     </ListView>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="10,11,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="1010" TextChanged="TextBox_TextChanged" Grid.ColumnSpan="3"/>
-                    <Button x:Name="btn_Refresh" Content="Refresh" Grid.Column="3" Margin="0,215,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Click="btn_Refresh_Click"/>
+
+
+                    <Grid Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Margin="-2,0,2,0">
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="20" TextWrapping="Wrap" Margin="19,10,101,0" />
+
+                    </Grid>
+
+
+
+
 
                 </Grid>
             </TabItem>
@@ -71,7 +90,9 @@
                         <RowDefinition Height="80"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Border Grid.Column="1" Grid.RowSpan="6" BorderBrush="LightGray" Opacity="0.6" BorderThickness="1,0,0,0"/>
+                    <Border Grid.Column="1" Grid.RowSpan="6" BorderBrush="LightGray" Opacity="0.6" BorderThickness="1,0,0,0">
+                        <Button x:Name="btnRefreshCalendar" Content="Refresh" Margin="0,0,0,661" Click="btnRefreshCalendar_Click"/>
+                    </Border>
                     <Border Grid.Column="0" Grid.Row="0" BorderBrush="LightGray" Opacity="0.6" BorderThickness="0,0,0,1"/>
 
                     <Grid Grid.Column="0">
@@ -82,15 +103,15 @@
                         </Grid.ColumnDefinitions>
 
                         <Button Grid.Row="0" Grid.Column="0" MaxWidth="120" MaxHeight="40" Click="Button_Click_1" Content="Previous"/>
-                        <Button Grid.Row="0" Grid.Column="2" MaxWidth="120" MaxHeight="40" Click="Button_Click" Content="Next"/>
+                        <Button Grid.Row="0" Grid.Column="2" MaxWidth="120" MaxHeight="40" Click="Button_Click" Content="Next" Margin="0,0,117,0"/>
                         <Label x:Name="lblMonthYear" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="137,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231"/>
-                        <Label x:Name="lblMonthYear_Copy" Content="Monday" HorizontalAlignment="Left" Margin="55,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" FontWeight="Bold"/>
-                        <Label x:Name="lblMonthYear_Copy1" Content="Tuesday" HorizontalAlignment="Left" Margin="192,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" FontWeight="Bold"/>
-                        <Label x:Name="lblMonthYear_Copy2" Content="Wednesday" HorizontalAlignment="Left" Margin="325,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.ColumnSpan="2" FontWeight="Bold"/>
-                        <Label x:Name="lblMonthYear_Copy3" Content="Thursday" Margin="158,80,112,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.Column="1" FontWeight="Bold"/>
-                        <Label x:Name="lblMonthYear_Copy4" Content="Friday" HorizontalAlignment="Left" Margin="299,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.Column="1" Width="52" FontWeight="Bold" Grid.ColumnSpan="2"/>
-                        <Label x:Name="lblMonthYear_Copy5" Content="Saturday" HorizontalAlignment="Left" Margin="92,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.Column="2" FontWeight="Bold"/>
-                        <Label x:Name="lblMonthYear_Copy6" Content="Sunday" HorizontalAlignment="Left" Margin="239,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.Column="2" FontWeight="Bold"/>
+                        <Label x:Name="lblMonthYear_Copy" Content="Monday" HorizontalAlignment="Left" Margin="184,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" FontWeight="Bold"/>
+                        <Label x:Name="lblMonthYear_Copy1" Content="Tuesday" HorizontalAlignment="Left" Margin="318,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" FontWeight="Bold" Grid.ColumnSpan="2"/>
+                        <Label x:Name="lblMonthYear_Copy2" Content="Wednesday" HorizontalAlignment="Left" Margin="128,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" FontWeight="Bold" Grid.Column="1"/>
+                        <Label x:Name="lblMonthYear_Copy3" Content="Thursday" Margin="309,85,304,-31" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.Column="1" FontWeight="Bold" Grid.ColumnSpan="2"/>
+                        <Label x:Name="lblMonthYear_Copy4" Content="Friday" HorizontalAlignment="Right" Margin="0,85,179,-31" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.Column="2" Width="52" FontWeight="Bold"/>
+                        <Label x:Name="lblMonthYear_Copy5" Content="Saturday" HorizontalAlignment="Left" Margin="254,85,0,-31" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.Column="2" FontWeight="Bold"/>
+                        <Label x:Name="lblMonthYear_Copy6" Content="Sunday" HorizontalAlignment="Left" Margin="52,80,0,-26" RenderTransformOrigin="1.289,-0.231" FontWeight="Bold"/>
                     </Grid>
 
 
@@ -114,10 +135,44 @@
                         <!--Here are inserted all the day grids for the calendar, procedurally generated-->
 
                     </Grid>
+                </Grid>
+            </TabItem>
 
+            <TabItem Header="MyAccount" >
+                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+
+                    <TextBox x:Name="tbCurrentPass" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="34" Margin="472,231,436,436" TextWrapping="Wrap"  Width="222"/>
+                    <TextBox x:Name="tbNewPass" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34" Margin="472,301,436,366" TextWrapping="Wrap"  Width="222"/>
+                    <TextBox x:Name="tbNewPassRepeat"   Margin="472,378,436,289" TextWrapping="Wrap" Width="222" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34"/>
+                    <Label x:Name="lblUserString" Content="Label" HorizontalAlignment="Center" Margin="472,128,436,0" VerticalAlignment="Top" Width="222" FontSize="24" RenderTransformOrigin="-2.043,0.833" HorizontalContentAlignment="Center"/>
+                    <Label Content="Current password" HorizontalAlignment="Center" Margin="472,200,555,475" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423"/>
+                    <Label Content="New password" HorizontalAlignment="Center" Margin="472,270,570,405" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423"/>
+                    <Label Content="Repeat new password" HorizontalAlignment="Center" Margin="472,347,533,328" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423"/>
+                    <Button x:Name="btnChangePassword" Content="Change password" HorizontalAlignment="Stretch" Margin="428,0,378,172" VerticalAlignment="Bottom" Width="324" Height="46" Click="btnChangePassword_Click"/>
 
                 </Grid>
             </TabItem>
+            <TabItem Header="Users">
+                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,-6,0,0">
+
+
+                    <TextBox x:Name="tb_FirstName"  HorizontalAlignment="Center" VerticalAlignment="Center"  Height="26" Margin="384,131,426,544" TextWrapping="Wrap"  Width="320" Grid.Column="3"/>
+                    <TextBox x:Name="tb_LastName"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Margin="384,242,426,435" TextWrapping="Wrap"  Width="320" Grid.Column="3"/>
+                    <TextBox x:Name="tb_Email"  Margin="384,347,426,330"  TextWrapping="Wrap" Width="320" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Grid.Column="3"/>
+                    <Label Content="First Name:" FontSize="20" HorizontalAlignment="Center" Margin="384,77,426,584" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320" Grid.Column="3"/>
+                    <Label Content="Last Name:" FontSize="20" HorizontalAlignment="Center" Margin="384,189,426,472" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320" Grid.Column="3"/>
+                    <Label Content="Email:" FontSize="20" HorizontalAlignment="Center" Margin="384,295,426,366" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320" Grid.Column="3"/>
+                    <RadioButton x:Name="rb_Adminstrator" FontSize="20" Margin="384,451,606,230" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.494,-0.93" Height="26" Width="140">Administrator</RadioButton>
+                    <RadioButton x:Name="rb_Manager" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="606,451,426,230" RenderTransformOrigin="0.43,-1.026" Height="26" Width="98">Manager</RadioButton>
+
+                    <Button  x:Name= "btn_AddNewUser" Content="Add" FontSize="20" HorizontalAlignment="Center" Margin="384,520,426,117" VerticalAlignment="Center" Height="70" Click="btnAddNewUser_Click" Width="320"/>
+                    <Label Content="Status:" FontSize="20" HorizontalAlignment="Center" Margin="384,400,426,261" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320" Grid.Column="3"/>
+
+                </Grid>
+
+            </TabItem>
+
+
 
         </TabControl>
     </Grid>

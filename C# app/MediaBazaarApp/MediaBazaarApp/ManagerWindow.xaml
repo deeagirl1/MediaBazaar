@@ -3,25 +3,48 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MediaBazaarApp"
+        xmlns:local="clr-namespace:MediaBazaarApp" 
         mc:Ignorable="d"
-        Title="ManagerWindow" Height="756.466" Width="1143.534">
+        Title="ManagerWindow"  Height="760.466" Width="1143.534" ResizeMode="CanResize">
     <Grid>
         <TabControl SelectionChanged="TabControl_SelectionChanged">
-            <TabItem Header="Statistics">
+            <TabItem Header="Employees-">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="82*"/>
                         <ColumnDefinition Width="1049*"/>
                     </Grid.ColumnDefinitions>
-                    <ListView x:Name="lvIndicators" HorizontalAlignment="Left" Height="534" Margin="10,10,0,0" VerticalAlignment="Top" Width="778" Grid.ColumnSpan="2">
+<<<<<<< HEAD
+                    <ListView x:Name="lvlEmployees" ItemsSource="{Binding employees}" Height="675" Margin="0,10,153,0" Width="967" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                         <ListView.View>
-                            <GridView>
-                                <GridViewColumn/>
+                            <GridView >
+                                <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="40">ID</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Width="100">First Name</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding LastName}" Width="70">Last Name</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Email}" Width="70">Email</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding BirthDate , StringFormat='yyyy-MM-dd'}" Width="60">Birthday</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding HireTime, StringFormat='yyyy-MM-dd'}" Width="70">Hire date</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding LastWorkingDay, StringFormat='yyyy-MM-dd'}" Width="70">End of contract</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding HomeAddress}" Width="90">Address</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Contract}" Width="90">Contract</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding WorksAt}" Width="90">Department</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding HourlyWage}" Width="90">Wage</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding BankAccount}" Width="90">BankAccount</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Status}" Width="90">Status</GridViewColumn>
                             </GridView>
+ 
                         </ListView.View>
                     </ListView>
+                
+=======
                     <Button x:Name="btnView" Content="View" HorizontalAlignment="Left" Margin="793.5,10,0,0" VerticalAlignment="Top" Width="100" Height="32" Click="btnView_Click" Grid.Column="1"/>
+                    <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="124,240,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="124,185,0,0" VerticalAlignment="Top"/>
+                    <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="110,127,0,0" VerticalAlignment="Top" Width="74"/>
+                    <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="667,245,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="667,190,0,0" VerticalAlignment="Top"/>
+                    <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="653,132,0,0" VerticalAlignment="Top" Width="74"/>
+>>>>>>> 85393258dfd3a9637bd360d469ece4dddfe385b5
                 </Grid>
             </TabItem>
 
@@ -80,10 +103,31 @@
 
                     </Grid>
 
+                </Grid>
 
+
+            </TabItem>
+
+            <TabItem Header="Statistics">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="82*"/>
+                        <ColumnDefinition Width="1049*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListView x:Name="lvIndicators" Height="675" Margin="0,10,153,0" Width="967" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Height="47" Margin="0,10,0,0" Width="153" Grid.Column="1">
+                        <Button x:Name="btnView" Content="View" Margin="2,5,10,10" Width="100" Height="32" Click="btnView_Click"/>
+                    </Grid>
                 </Grid>
             </TabItem>
         </TabControl>
+            
 
     </Grid>
 </Window>

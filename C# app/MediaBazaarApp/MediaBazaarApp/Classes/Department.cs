@@ -16,5 +16,9 @@ namespace MediaBazaarApp.Classes
             this.ID = ID;
             this.Name = Name;
         }
+        public override string ToString()
+        {
+            return $"{this.Name}";
+        }
     }
 }

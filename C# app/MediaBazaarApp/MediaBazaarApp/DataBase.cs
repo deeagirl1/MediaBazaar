@@ -15,15 +15,23 @@ namespace MediaBazaarApp
 
         public DataBase()
         {
-            server = "remotemysql.com";
-            dbi = "MLH3bTxlO7";
-            uid = "MLH3bTxlO7";
-            password = "JIOJd7bNCZ";
+            server = "localhost";
+            dbi = "MediaBazaar";
+            uid = "root";
+            password = "";
         }
+
+        //public DataBase()
+        //{
+        //    server = "studmysql01.fhict.local";
+        //    dbi = "dbi454066";
+        //    uid = "dbi454066";
+        //    password = "7j7eK4cg";
+        //}
 
         public override string ToString()
         {
-            return $"server={server};database={dbi};uid={uid};password={password};port=3306";
+            return $"server={server};database={dbi};uid={uid};password={password}; Allow User Variables=True; ";
         }
     }
 }

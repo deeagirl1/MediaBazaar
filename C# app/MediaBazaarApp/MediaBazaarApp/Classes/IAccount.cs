@@ -9,7 +9,9 @@ namespace MediaBazaarApp.Classes
     public interface IAccount
     {
         int ID { get; set; }
-        string Login { get; set; }
+        int AccessLevel { get; set; }
+        string Username { get; set; }
         string Password { get; set; }
+        
     }
 }

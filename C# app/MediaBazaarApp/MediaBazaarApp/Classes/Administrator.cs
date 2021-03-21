@@ -8,11 +8,12 @@ namespace MediaBazaarApp.Classes
 {
     public class Administrator : Person
     {
-        public Administrator(int id, string firstName, string lastName, string email, string password) :
-            base(id, firstName, lastName, email, password)
+        public Administrator( string firstName, string lastName, string email,string username, string password) :
+            base(firstName, lastName, email,username, password)
         { }
-
-
+        public Administrator(int id, string firstName, string lastName, string email, string username, string password) :
+           base(id, firstName, lastName, email, username, password)
+        { }
         public override string ToString()
         {
             return base.ToString();
