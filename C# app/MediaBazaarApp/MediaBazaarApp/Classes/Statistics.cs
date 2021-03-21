@@ -46,6 +46,21 @@ namespace MediaBazaarApp.Classes
             int amount = Convert.ToInt32(this.ReadScalar(sql, prms));
             return amount;
         }
+        public decimal GetAverageEmployeePerShiftForPeriod(DateTime start, DateTime end)
+        {
+            string sql = "select AVG(empCount) as a " +
+                " FROM (SELECT e.ShiftID, count(*) as empCount " +
+                " from employeeassignment e inner join workshift w on w.ID = e.ShiftID  " +
+                " where w.Date > @StartDate and w.Date < @EndDate group by e.ShiftID) as assignments";
+
+            MySqlParameter[] prms = new MySqlParameter[2];
+
+            prms[0] = new MySqlParameter("@StartDate", start);
+            prms[1] = new MySqlParameter("@EndDate", start);
+
+            decimal data = Convert.ToInt32(this.ReadScalar(sql, prms));
+            return data;
+        }
 
     }
 }
