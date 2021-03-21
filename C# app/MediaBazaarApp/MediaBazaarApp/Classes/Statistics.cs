@@ -65,7 +65,7 @@ namespace MediaBazaarApp.Classes
         public decimal GetAverageEmployeePerShiftForPeriod(DateTime start, DateTime end)
         {
             string sql = "select AVG(empCount) as a " +
-                " FROM (SELECT e.ShiftID, count(*) as empCount " +
+                " FROM (SELECT count(*) as empCount " +
                 " from employeeassignment e inner join workshift w on w.ID = e.ShiftID  " +
                 " where w.Date > @StartDate and w.Date < @EndDate group by e.ShiftID) as assignments";
 
@@ -83,5 +83,64 @@ namespace MediaBazaarApp.Classes
             else throw new ArgumentException("No data found for selected period");
         }
 
+        public decimal GetTotalSalaryPaidForPeriod(DateTime start, DateTime end)
+        {
+            string sql = "SELECT Sum(e.Wage * 8) from employeeassignment a " +
+                " INNER join employee e on a.EmployeeID = e.ID " +
+                " INNER join workshift w on a.ShiftID = w.ID " +
+                " where w.Date > @StartDate and w.Date < @EndDate ";
+
+            MySqlParameter[] prms = new MySqlParameter[2];
+
+            prms[0] = new MySqlParameter("@StartDate", start);
+            prms[1] = new MySqlParameter("@EndDate", end);
+
+            Object obj = this.ReadScalar(sql, prms);
+            if (obj != DBNull.Value)
+            {
+                decimal amount = Convert.ToDecimal(obj);
+                return amount;
+            }
+            else throw new ArgumentException("No data found for selected period");
+        }
+        public decimal GetAverageSalaryForPeriod(DateTime start, DateTime end)
+        {
+            string sql = "SELECT Sum(e.Wage * 8) from employeeassignment a " +
+                " INNER join employee e on a.EmployeeID = e.ID " +
+                " INNER join workshift w on a.ShiftID = w.ID " +
+                " where w.Date > @StartDate and w.Date < @EndDate ";
+
+            MySqlParameter[] prms = new MySqlParameter[2];
+
+            prms[0] = new MySqlParameter("@StartDate", start);
+            prms[1] = new MySqlParameter("@EndDate", end);
+
+            Object obj = this.ReadScalar(sql, prms);
+            if (obj != DBNull.Value)
+            {
+                decimal amount = Convert.ToDecimal(obj);
+                return amount;
+            }
+            else throw new ArgumentException("No data found for selected period");
+        }
+        public decimal GetHoursWorkedForPeriod(DateTime start, DateTime end)
+        {
+            string sql = "select sum(8) from employeeassignment a " +
+                " INNER JOIN workshift w on w.ID = a.ShiftID " +
+                " where w.Date >= @StartDate AND w.Date <= @EndDate";
+
+            MySqlParameter[] prms = new MySqlParameter[2];
+
+            prms[0] = new MySqlParameter("@StartDate", start);
+            prms[1] = new MySqlParameter("@EndDate", end);
+
+            Object obj = this.ReadScalar(sql, prms);
+            if (obj != DBNull.Value)
+            {
+                decimal amount = Convert.ToDecimal(obj);
+                return amount;
+            }
+            else throw new ArgumentException("No data found for selected period");
+        }
     }
 }

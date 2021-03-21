@@ -137,7 +137,10 @@ namespace MediaBazaarApp
             {
                 DateTime start = Convert.ToDateTime(this.dpStartDate.SelectedDate.Value.Date);
                 DateTime end = Convert.ToDateTime(this.dpEndDate.SelectedDate.Value.Date);
-                this.lblAverageEmployeesPerShiftForPeriod.Content = this.company.Statistics.GetAverageEmployeePerShiftForPeriod(start, end);    
+                this.lblAverageEmployeesPerShiftForPeriod.Content = this.company.Statistics.GetAverageEmployeePerShiftForPeriod(start, end);
+                this.lblTotalSalaryPaidForPeriod.Content = this.company.Statistics.GetTotalSalaryPaidForPeriod(start, end);
+                this.lblAverageSalaryForPeriod.Content = this.company.Statistics.GetAverageSalaryForPeriod(start, end);
+                this.lblHoursWorkedForPeriod.Content = this.company.Statistics.GetHoursWorkedForPeriod(start, end);
             }
             catch (Exception ex)
             {

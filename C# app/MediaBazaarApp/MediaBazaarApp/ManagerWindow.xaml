@@ -8,7 +8,7 @@
         Title="ManagerWindow"  Height="760.466" Width="1143.534" ResizeMode="CanResize">
     <Grid>
         <TabControl SelectionChanged="TabControl_SelectionChanged">
-            <TabItem Header="Employees-">
+            <TabItem Header="Employees">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="82*"/>
@@ -102,27 +102,34 @@
             <TabItem Header="Statistics" Margin="-3,0,-1,0">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="82*"/>
-                        <ColumnDefinition Width="1049*"/>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="76*"/>
+                        <ColumnDefinition Width="1048*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Height="47" Margin="0,10,0,0" Width="153" Grid.Column="1">
+                    <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Height="47" Margin="0,10,0,0" Width="153" Grid.Column="2">
 
                     </Grid>
-                    <DatePicker x:Name="dpDate" Grid.Column="1" HorizontalAlignment="Left" Margin="86,84,0,0" VerticalAlignment="Top"/>
-                    <DatePicker x:Name="dpStartDate" Grid.Column="1" HorizontalAlignment="Left" Margin="587,84,0,0" VerticalAlignment="Top"/>
-                    <DatePicker x:Name="dpEndDate" Grid.Column="1" HorizontalAlignment="Left" Margin="822,84,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="btnGetInfo1" Content="Proceed" Grid.Column="1" HorizontalAlignment="Left" Margin="69,142,0,0" VerticalAlignment="Top" Width="140" Height="48" Click="btnGetInfo1_Click"/>
-                    <Button x:Name="btnGetInfo2" Content="Proceed" Grid.Column="1" HorizontalAlignment="Left" Margin="693,142,0,0" VerticalAlignment="Top" Width="140" Height="48" Click="btnGetInfo2_Click"/>
-                    <Label Content="Total employees:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,236,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                    <Label Content="Total salary paid:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                    <Label Content="Totaly hours worked:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,364,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                    <Label x:Name="lblTotalEmployees" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="190,236,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661"/>
-                    <Label x:Name="lblTotalSalaryPaid" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="190,300,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.496,0.452"/>
-                    <Label x:Name="lblTotalHoursWorked" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="190,364,0,0" VerticalAlignment="Top" FontSize="16"/>
-                    <Label Content="Average employees per shift for period" Grid.Column="1" HorizontalAlignment="Left" Margin="532,236,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                    <Label x:Name="lblAverageEmployeesPerShiftForPeriod" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="858,236,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613"/>
-                    <Label Content="For a selected date:" Grid.Column="1" HorizontalAlignment="Left" Margin="24,23,0,0" VerticalAlignment="Top" FontSize="18"/>
-                    <Label Content="For a selected time period:" Grid.Column="1" HorizontalAlignment="Left" Margin="609,23,0,0" VerticalAlignment="Top" FontSize="18"/>
+                    <DatePicker x:Name="dpDate" Grid.Column="2" HorizontalAlignment="Left" Margin="86,84,0,0" VerticalAlignment="Top"/>
+                    <DatePicker x:Name="dpStartDate" Grid.Column="2" HorizontalAlignment="Left" Margin="587,84,0,0" VerticalAlignment="Top"/>
+                    <DatePicker x:Name="dpEndDate" Grid.Column="2" HorizontalAlignment="Left" Margin="822,84,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="btnGetInfo1" Content="Proceed" Grid.Column="2" HorizontalAlignment="Left" Margin="69,142,0,0" VerticalAlignment="Top" Width="140" Height="48" Click="btnGetInfo1_Click"/>
+                    <Button x:Name="btnGetInfo2" Content="Proceed" Grid.Column="2" HorizontalAlignment="Left" Margin="693,142,0,0" VerticalAlignment="Top" Width="140" Height="48" Click="btnGetInfo2_Click"/>
+                    <Label Content="Total employees:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,236,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <Label Content="Total salary paid:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <Label Content="Totaly hours worked:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,364,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <Label x:Name="lblTotalEmployees" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="190,236,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661"/>
+                    <Label x:Name="lblTotalSalaryPaid" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="190,300,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.496,0.452"/>
+                    <Label x:Name="lblTotalHoursWorked" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="190,364,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label Content="Average employees per shift for period" Grid.Column="2" HorizontalAlignment="Left" Margin="532,236,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <Label x:Name="lblAverageEmployeesPerShiftForPeriod" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="858,236,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613"/>
+                    <Label Content="For a selected date:" Grid.Column="2" HorizontalAlignment="Left" Margin="24,23,0,0" VerticalAlignment="Top" FontSize="18"/>
+                    <Label Content="For a selected time period:" Grid.Column="2" HorizontalAlignment="Left" Margin="609,23,0,0" VerticalAlignment="Top" FontSize="18"/>
+                    <Label Content="Total salary paid to employees for period" Grid.Column="2" HorizontalAlignment="Left" Margin="532,300,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <Label x:Name="lblTotalSalaryPaidForPeriod" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="858,300,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613"/>
+                    <Label Content="Average hourly wage for period" Grid.Column="2" HorizontalAlignment="Left" Margin="532,364,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <Label x:Name="lblAverageSalaryForPeriod" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="858,364,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613"/>
+                    <Label Content="Total hours worked by employees" Grid.Column="2" HorizontalAlignment="Left" Margin="532,433,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <Label x:Name="lblHoursWorkedForPeriod" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="858,433,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613"/>
                 </Grid>
             </TabItem>
 

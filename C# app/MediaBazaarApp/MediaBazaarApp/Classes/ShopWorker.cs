@@ -16,8 +16,19 @@ namespace MediaBazaarApp.Classes
         public DateTime LastWorkingDay { get; set; }
         public Contract Contract { get; set; }
         public Status Status { get; set; }
-        public decimal HourlyWage { get; set; }
+        private decimal hourlyWage;
+
         public ShopWorker() { }
+
+        public decimal HourlyWage 
+        {
+            get { return this.hourlyWage; }
+            set {
+                if (value > 0 && value <= 100) this.hourlyWage = value;
+                else throw new ArgumentException("Wage upper limit: 100");
+            }
+        }
+
 
         public ShopWorker(int id, string firstName, string lastName, string email, DateTime birthDate, DateTime hireDate,Address address) : base (id, firstName, lastName, email)
         {
