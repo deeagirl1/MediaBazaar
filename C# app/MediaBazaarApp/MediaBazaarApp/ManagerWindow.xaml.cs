@@ -23,25 +23,53 @@ namespace MediaBazaarApp
         private Classes.Calendar calendar;
         private Person person;
         private Company company;
+
+        private List<ShopWorker> employees;
         public ManagerWindow(Company company, Person person)
         {
-            Loaded += OnLoad;
-            InitializeComponent();
-            this.company = company;
+            try
+            {
+                Loaded += OnLoad;
+                InitializeComponent();
+                this.company = company;
+                this.person = person;
+                Loaded += OnLoad;
 
-            this.person = person;
-            //MessageBox.Show(person.LastName);
+                this.employees = this.company.ShopWorkers.ToList();
+                this.lvShopWorkers.ItemsSource = this.employees;
+                this.lblUserString.Content = $"Hello , {person.FirstName}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
+
 
         private void OnLoad(object sender, RoutedEventArgs e)
         {
-            //calendar = new Classes.Calendar(this);
-            this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
+            try
+            {
+                calendar = new Classes.Calendar(this, company.ShiftSchedule.ToList());
+                this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnView_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                this.employees = this.company.ShopWorkers.ToList();
+                this.lvShopWorkers.ItemsSource = this.employees;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -59,6 +87,24 @@ namespace MediaBazaarApp
         {
             calendar.PreviousMonth();
             this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
+        }
+
+        private void btnChangePassword_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (this.tbNewPassRepeat.Text == this.tbNewPass.Text)
+                {
+                    this.company.AccountManager.ChangePassword(this.person.Username,
+                                        this.tbCurrentPass.Text, this.tbNewPass.Text);
+                    MessageBox.Show("Suucessfully changed");
+                }
+                else throw new ArgumentException("Passwords do not match");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

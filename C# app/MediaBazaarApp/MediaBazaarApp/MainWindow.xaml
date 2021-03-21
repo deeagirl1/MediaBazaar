@@ -51,9 +51,9 @@
                                 <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Width="100">First Name</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding LastName}" Width="70">Last Name</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Email}" Width="70">Email</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding BirthDate}" Width="60">Birthday</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding BirthDate, StringFormat='yyyy-MM-dd'}" Width="60">Birthday</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding HireTime, StringFormat='yyyy-MM-dd'}" Width="70" >Hire date</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding LastWorkingDay}" Width="70">End of contract</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding LastWorkingDay, StringFormat='yyyy-MM-dd'}" Width="70">End of contract</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding HomeAddress}" Width="90">Address</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Contract}" Width="90">Contract</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding WorksAt}" Width="90">Department</GridViewColumn>
@@ -150,6 +150,26 @@
                     <Button x:Name="btnChangePassword" Content="Change password" HorizontalAlignment="Stretch" Margin="428,0,378,172" VerticalAlignment="Bottom" Width="324" Height="46" Click="btnChangePassword_Click"/>
 
                 </Grid>
+            </TabItem>
+
+            <TabItem Header="Users">
+                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,-6,0,0">
+
+
+                    <TextBox x:Name="tb_FirstName"  HorizontalAlignment="Center" VerticalAlignment="Center"  Height="26" Margin="384,131,426,544" TextWrapping="Wrap"  Width="320" Grid.Column="3"/>
+                    <TextBox x:Name="tb_LastName"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Margin="384,242,426,435" TextWrapping="Wrap"  Width="320" Grid.Column="3"/>
+                    <TextBox x:Name="tb_Email"  Margin="384,347,426,330"  TextWrapping="Wrap" Width="320" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Grid.Column="3"/>
+                    <Label Content="First Name:" FontSize="20" HorizontalAlignment="Center" Margin="384,77,426,584" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320" Grid.Column="3"/>
+                    <Label Content="Last Name:" FontSize="20" HorizontalAlignment="Center" Margin="384,189,426,472" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320" Grid.Column="3"/>
+                    <Label Content="Email:" FontSize="20" HorizontalAlignment="Center" Margin="384,295,426,366" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320" Grid.Column="3"/>
+                    <RadioButton x:Name="rb_Adminstrator" FontSize="20" Margin="384,451,606,230" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.494,-0.93" Height="26" Width="140">Administrator</RadioButton>
+                    <RadioButton x:Name="rb_Manager" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="606,451,426,230" RenderTransformOrigin="0.43,-1.026" Height="26" Width="98">Manager</RadioButton>
+
+                    <Button  x:Name= "btn_AddNewUser" Content="Add" FontSize="20" HorizontalAlignment="Center" Margin="384,520,426,117" VerticalAlignment="Center" Height="70" Click="btnAddNewUser_Click" Width="320"/>
+                    <Label Content="Status:" FontSize="20" HorizontalAlignment="Center" Margin="384,400,426,261" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320" Grid.Column="3"/>
+
+                </Grid>
+
             </TabItem>
 
 

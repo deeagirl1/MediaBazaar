@@ -186,5 +186,54 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnAddNewUser_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Random rnd = new Random();
+                string firstName = tb_FirstName.Text;
+                string lastName = tb_LastName.Text;
+                string email = tb_Email.Text;
+                string username = firstName.Substring(0, 3).ToLower() + lastName.Substring(0, 3).ToLower() + rnd.Next(10,99);
+                string password = GeneratePasswords();
+
+                AccountManager account = new AccountManager();
+
+
+                if ((bool)rb_Adminstrator.IsChecked)
+                {
+                    account.Add(new Administrator(firstName, lastName, email, username, password));
+                    System.Windows.Forms.MessageBox.Show($"Username: {username}, Password: {password}" + "\n Please note them down!");
+                }
+
+                else if ((bool)rb_Manager.IsChecked)
+                {
+                    account.Add(new Manager(firstName, lastName, email, username, password));
+                    System.Windows.Forms.MessageBox.Show($"Username: {username}, Password: {password}" + "\n Please note them down!");
+                }
+
+            }
+            catch (Exception)
+            {
+                System.Windows.Forms.MessageBox.Show("All fields must be completed");
+            }
+        }
+
+
+        private static string GeneratePasswords()
+        {
+            int lenght = 8;
+            char[] passwordGenerated = new char[lenght];
+            Random rand = new Random();
+
+            for (int i = 0; i < lenght; i++)
+            {
+                var passCharacter = rand.Next(65, 91);
+                passwordGenerated[i] = (char)passCharacter;
+            }
+            var finishedPassword = new String(passwordGenerated);
+            return finishedPassword;
+        }
     }
 }

@@ -86,9 +86,9 @@ namespace MediaBazaarApp.Classes
 
             int accessLevel = 0;
             if (person is Administrator)
-                accessLevel = 1;
-            if (person is Manager)
                 accessLevel = 2;
+            if (person is Manager)
+                accessLevel = 3;
 
             prms[0] = new MySqlParameter("@FirstName", person.FirstName);
             prms[1] = new MySqlParameter("@LastName", person.LastName);
