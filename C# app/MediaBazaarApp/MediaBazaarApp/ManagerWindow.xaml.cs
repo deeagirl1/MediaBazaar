@@ -38,6 +38,9 @@ namespace MediaBazaarApp
                 this.employees = this.company.ShopWorkers.ToList();
                 this.lvShopWorkers.ItemsSource = this.employees;
                 this.lblUserString.Content = $"Hello , {person.FirstName}";
+                this.dpDate.SelectedDate = DateTime.Now;
+                this.dpStartDate.SelectedDate = DateTime.Now;
+                this.dpEndDate.SelectedDate = DateTime.Now;
             }
             catch (Exception ex)
             {
@@ -97,7 +100,7 @@ namespace MediaBazaarApp
                 {
                     this.company.AccountManager.ChangePassword(this.person.Username,
                                         this.tbCurrentPass.Text, this.tbNewPass.Text);
-                    MessageBox.Show("Suucessfully changed");
+                    MessageBox.Show("Sucessfully changed");
                 }
                 else throw new ArgumentException("Passwords do not match");
             }
@@ -110,6 +113,36 @@ namespace MediaBazaarApp
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void btnGetInfo1_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DateTime date = Convert.ToDateTime(this.dpDate.SelectedDate.Value.Date);
+                this.lblTotalEmployees.Content = this.company.Statistics.GetTotalEmployeesForDate(date);
+                this.lblTotalSalaryPaid.Content = this.company.Statistics.GetTotalSalaryPaidForDate(date);
+                this.lblTotalHoursWorked.Content = this.company.Statistics.GetTotalHoursWorkedForDate(date);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
+        }
+
+        private void btnGetInfo2_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DateTime start = Convert.ToDateTime(this.dpStartDate.SelectedDate.Value.Date);
+                DateTime end = Convert.ToDateTime(this.dpEndDate.SelectedDate.Value.Date);
+                this.lblAverageEmployeesPerShiftForPeriod.Content = this.company.Statistics.GetAverageEmployeePerShiftForPeriod(start, end);    
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

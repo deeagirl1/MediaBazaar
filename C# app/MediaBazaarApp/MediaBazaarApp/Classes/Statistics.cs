@@ -11,14 +11,19 @@ namespace MediaBazaarApp.Classes
     {
         public int GetTotalEmployeesForDate(DateTime date)
         {
-            string sql = "select count(*) from employee where HireDate <= @date AND LastWorkingDay > @date";
+            string sql = "select count(*) from employee where HireDate <= @date AND status<>3";
 
             MySqlParameter[] prms = new MySqlParameter[1];
 
             prms[0] = new MySqlParameter("@date", date);
-
-            int count = Convert.ToInt32(this.ReadScalar(sql, prms));
-            return count;
+           
+            Object obj = this.ReadScalar(sql, prms);
+            if (obj != DBNull.Value)
+            {
+                int count = Convert.ToInt32(obj);
+                return count;
+            }
+           else throw new ArgumentException("No data found for selected date");
         }
         public decimal GetTotalSalaryPaidForDate(DateTime date)
         {
@@ -30,8 +35,14 @@ namespace MediaBazaarApp.Classes
 
             prms[0] = new MySqlParameter("@date", date);
 
-            decimal amount = Convert.ToDecimal(this.ReadScalar(sql, prms));
-            return amount;
+            Object obj = this.ReadScalar(sql, prms);
+            if (obj != DBNull.Value)
+            {
+                decimal amount = Convert.ToDecimal(obj);
+                return amount;
+            }
+            else throw new ArgumentException("No data found for selected date");
+
         }
         public int GetTotalHoursWorkedForDate(DateTime date)
         {
@@ -43,8 +54,13 @@ namespace MediaBazaarApp.Classes
 
             prms[0] = new MySqlParameter("@date", date);
 
-            int amount = Convert.ToInt32(this.ReadScalar(sql, prms));
-            return amount;
+            Object obj = this.ReadScalar(sql, prms);
+            if (obj != DBNull.Value)
+            {
+                int count = Convert.ToInt32(obj);
+                return count;
+            }
+            else throw new ArgumentException("No data found for selected date");
         }
         public decimal GetAverageEmployeePerShiftForPeriod(DateTime start, DateTime end)
         {
@@ -56,10 +72,15 @@ namespace MediaBazaarApp.Classes
             MySqlParameter[] prms = new MySqlParameter[2];
 
             prms[0] = new MySqlParameter("@StartDate", start);
-            prms[1] = new MySqlParameter("@EndDate", start);
+            prms[1] = new MySqlParameter("@EndDate", end);
 
-            decimal data = Convert.ToInt32(this.ReadScalar(sql, prms));
-            return data;
+            Object obj = this.ReadScalar(sql, prms);
+            if (obj != DBNull.Value)
+            {
+                decimal amount = Convert.ToDecimal(obj);
+                return amount;
+            }
+            else throw new ArgumentException("No data found for selected period");
         }
 
     }

@@ -23,6 +23,7 @@ namespace MediaBazaarApp.Classes
             {
                 if (Regex.IsMatch(value, @"^.*[a-zA-Z]$"))
                     this.firstName = value;
+                else throw new ArgumentException("Only letters allowed.");
             }
         }
         public string LastName
@@ -32,6 +33,7 @@ namespace MediaBazaarApp.Classes
             {
                 if (Regex.IsMatch(value, @"^.*[a-zA-Z]$"))
                     this.lastName = value;
+                else throw new ArgumentException("Only letters allowed.");
             }
         }
         public string Email
@@ -41,6 +43,7 @@ namespace MediaBazaarApp.Classes
             {
                 if (Regex.IsMatch(value, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
                     this.email = value;
+                else throw new ArgumentException("Invalid email format.");
             }
         }
         public Person() { }
