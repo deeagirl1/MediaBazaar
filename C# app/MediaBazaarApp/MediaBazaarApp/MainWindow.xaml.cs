@@ -32,7 +32,7 @@ namespace MediaBazaarApp
         private List<ShopWorker> employees;
         public MainWindow(Company company, Person person)
         {
-<<<<<<< HEAD
+
             Loaded += OnLoad;
             InitializeComponent();
             this.company = company;
@@ -62,9 +62,7 @@ namespace MediaBazaarApp
                                                     new Contract(2, true, 32),
                                                     Convert.ToDecimal(15.55));
 
-            //this.company.ShopWorkers.Edit(emp);
-            //this.company.ShopWorkers.Add(emp);
-=======
+
             try
             {
                 Loaded += OnLoad;
@@ -81,7 +79,7 @@ namespace MediaBazaarApp
             {
                 MessageBox.Show(ex.Message);
             }
->>>>>>> 85393258dfd3a9637bd360d469ece4dddfe385b5
+
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)

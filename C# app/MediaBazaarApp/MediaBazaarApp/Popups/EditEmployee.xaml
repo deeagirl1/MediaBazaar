@@ -27,37 +27,37 @@
                 <RowDefinition Height="0"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Column="1" >
-                <Label>Country</Label>
+                <Label>Country*</Label>
                 <TextBox x:Name="tb_Country" Margin="0,0,25,0" Height="25"/>
-                <Label>City</Label>
+                <Label>City*</Label>
                 <TextBox x:Name="tb_City" Margin="0,0,25,0" Height="25"/>
-                <Label>Street</Label>
+                <Label>Street*</Label>
                 <TextBox x:Name="tb_Street" Margin="0,0,141,0" Height="25"/>
-                <Label>Zip-code</Label>
+                <Label>Zip-code*</Label>
                 <TextBox x:Name="tb_ZipCode" Margin="2,0,141,0" Height="25"/>
-                <Label>Street Nr.</Label>
+                <Label>Street Nr.*</Label>
                 <TextBox x:Name ="tb_StreetNumber" Height="25" Margin="0,0,141,0"/>
-                <Label Content="Address Addition"/>
-                <TextBox x:Name="tb_AddressAddition" Margin="2,0,33,0" Height="25"/>
+                <Label Content="Address additional info"/>
+                <TextBox x:Name="tb_AddressAddition" Margin="2,0,25,0" Height="25"/>
 
             </StackPanel>
 
             <StackPanel Grid.Column="4" Grid.ColumnSpan="2">
-                <Label>Account number</Label>
+                <Label>Account number*</Label>
                 <TextBox x:Name="tb_AccountNumber" Margin="0,0,25,0" Height="25"/>
-                <Label>Department</Label>
+                <Label>Department*</Label>
                 <ComboBox x:Name="cbx_Department" Margin="0,0,25,0" Height="25"/>
-                <Label>Contract</Label>
+                <Label>Contract*</Label>
                 <ComboBox x:Name="cbx_Contract" Margin="0,0,25,0" Height="25"/>
-                <Label Content="Status"/>
+                <Label Content="Status*"/>
                 <ComboBox x:Name="cbx_Status"  Margin="0,0,25,0" Height="25"/>
 
 
             </StackPanel>
             <StackPanel Grid.Column="3">
-                <Label>Email</Label>
+                <Label>Email*</Label>
                 <TextBox x:Name="tb_Email" Margin="0,0,25,0" Height="25"/>
-                <Label Content="Hourly wage"/>
+                <Label Content="Hourly wage*"/>
                 <TextBox x:Name="tb_HourlyWage" Margin="0,0,25,0" Height="25"/>
 
             </StackPanel>

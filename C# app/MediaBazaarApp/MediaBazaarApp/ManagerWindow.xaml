@@ -14,8 +14,8 @@
                         <ColumnDefinition Width="82*"/>
                         <ColumnDefinition Width="1049*"/>
                     </Grid.ColumnDefinitions>
-<<<<<<< HEAD
-                    <ListView x:Name="lvlEmployees" ItemsSource="{Binding employees}" Height="675" Margin="0,10,153,0" Width="967" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+
+                    <ListView x:Name= "lvlEmployees" ItemsSource="{Binding employees}" Height="675" Margin="0,10,153,0" Width="967" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                         <ListView.View>
                             <GridView >
                                 <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="40">ID</GridViewColumn>
@@ -32,11 +32,9 @@
                                 <GridViewColumn DisplayMemberBinding="{Binding BankAccount}" Width="90">BankAccount</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Status}" Width="90">Status</GridViewColumn>
                             </GridView>
- 
+
                         </ListView.View>
                     </ListView>
-                
-=======
                     <Button x:Name="btnView" Content="View" HorizontalAlignment="Left" Margin="793.5,10,0,0" VerticalAlignment="Top" Width="100" Height="32" Click="btnView_Click" Grid.Column="1"/>
                     <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="124,240,0,0" VerticalAlignment="Top"/>
                     <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="124,185,0,0" VerticalAlignment="Top"/>
@@ -44,12 +42,9 @@
                     <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="667,245,0,0" VerticalAlignment="Top"/>
                     <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="667,190,0,0" VerticalAlignment="Top"/>
                     <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="653,132,0,0" VerticalAlignment="Top" Width="74"/>
->>>>>>> 85393258dfd3a9637bd360d469ece4dddfe385b5
                 </Grid>
             </TabItem>
-
-
-            <TabItem Header="Calendar" HorizontalAlignment="Left" Height="22" Margin="-2,-2,0,0" VerticalAlignment="Bottom">
+            <TabItem Header="Calendar" HorizontalAlignment="Left">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -59,30 +54,32 @@
                         <RowDefinition Height="80"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Border Grid.Column="1" Grid.RowSpan="6" BorderBrush="LightGray" Opacity="0.6" BorderThickness="1,0,0,0"/>
+
+                    <Border Grid.Column="1" Grid.RowSpan="6" BorderBrush="LightGray" Opacity="0.6" BorderThickness="1,0,0,0">
+                        <Button x:Name="btnRefreshCalendar" Content="Refresh" Margin="0,0,0,661 "/>
+                    </Border>
                     <Border Grid.Column="0" Grid.Row="0" BorderBrush="LightGray" Opacity="0.6" BorderThickness="0,0,0,1"/>
+
 
                     <Grid Grid.Column="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
+
                         </Grid.ColumnDefinitions>
 
-                        <Button x:Name="btnNextMonth" Grid.Row="0" Grid.Column="2" MaxWidth="120" MaxHeight="40" Click="btnNextMonthClick" Content="Next"/>
-                        <Button x:Name="btnPrevMonth" Grid.Row="0" Grid.Column="0" MaxWidth="120" MaxHeight="40" Click="btnPrevMonthClick" Content="Previous"/>
-                        <Label x:Name="lblMonthYear" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="137,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231"/>
-                        <Label x:Name="lblMonthYear_Copy" Content="Monday" HorizontalAlignment="Left" Margin="55,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" FontWeight="Bold"/>
-                        <Label x:Name="lblMonthYear_Copy1" Content="Tuesday" HorizontalAlignment="Left" Margin="192,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" FontWeight="Bold"/>
-                        <Label x:Name="lblMonthYear_Copy2" Content="Wednesday" HorizontalAlignment="Left" Margin="325,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.ColumnSpan="2" FontWeight="Bold"/>
-                        <Label x:Name="lblMonthYear_Copy3" Content="Thursday" Margin="158,80,112,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.Column="1" FontWeight="Bold"/>
-                        <Label x:Name="lblMonthYear_Copy4" Content="Friday" HorizontalAlignment="Left" Margin="299,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.Column="1" Width="52" FontWeight="Bold" Grid.ColumnSpan="2"/>
-                        <Label x:Name="lblMonthYear_Copy5" Content="Saturday" HorizontalAlignment="Left" Margin="92,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.Column="2" FontWeight="Bold"/>
-                        <Label x:Name="lblMonthYear_Copy6" Content="Sunday" HorizontalAlignment="Left" Margin="239,80,0,-26" VerticalAlignment="Top" RenderTransformOrigin="1.289,-0.231" Grid.Column="2" FontWeight="Bold"/>
+                        <Button Grid.Row="0" Grid.Column="0" MaxWidth="120" MaxHeight="40" Click="btnPrevMonthClick" Content="Previous"/>
+                        <Label x:Name="lblMonthYear" Grid.Column="1" Margin="84,21,84,23" HorizontalContentAlignment="Center">Label</Label>
+                        <Button Grid.Row="0" MaxWidth="120" MaxHeight="40" Click="btnNextMonthClick" Content="Next" Margin="0,0,117,0" Grid.Column="2"/>
                     </Grid>
 
 
-                    <Grid Grid.Row="1" Grid.Column="0" x:Name="calendarGrid" Margin="0,25,0,0">
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -92,20 +89,35 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <!--Here are inserted all the day grids for the calendar, procedurally generated-->
+                        <Label Content="Sunday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Margin="47,0,51,0" />
+                        <Label Content="Monday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" />
+                        <Label Content="Tuesday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" />
+                        <Label Content="Wednesday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" />
+                        <Label Content="Thursday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4" />
+                        <Label Content="Friday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="5" />
+                        <Label Content="Saturday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="6" />
+                        <Grid Grid.Row="1"  x:Name="calendarGrid" Grid.ColumnSpan="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <!--Here are inserted all the day grids for the calendar, procedurally generated-->
 
+                        </Grid>
                     </Grid>
-
                 </Grid>
-
-
             </TabItem>
 
             <TabItem Header="Statistics">
@@ -122,12 +134,10 @@
                         </ListView.View>
                     </ListView>
                     <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Height="47" Margin="0,10,0,0" Width="153" Grid.Column="1">
-                        <Button x:Name="btnView" Content="View" Margin="2,5,10,10" Width="100" Height="32" Click="btnView_Click"/>
+                        <Button x:Name="btnView1" Content="View" Margin="2,5,10,10" Width="100" Height="32" Click="btnView_Click"/>
                     </Grid>
                 </Grid>
             </TabItem>
         </TabControl>
-            
-
     </Grid>
 </Window>
