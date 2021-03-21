@@ -260,7 +260,7 @@ namespace MediaBazaarApp.Classes
 {
     class Calendar
     {
-        private Window window;
+        private Grid parentGrid;
         private int indexYear, indexMonth;
         private List<WorkShift> workShifts;
 
@@ -276,9 +276,9 @@ namespace MediaBazaarApp.Classes
         }
         private ViewMode _viewMode;
 
-        public Calendar(Window window, List<WorkShift> workShifts)
+        public Calendar(Grid grid, List<WorkShift> workShifts)
         {
-            this.window = window;
+            this.parentGrid = grid;
             this.workShifts = workShifts;
             DateTime currentTime = DateTime.Now;
             indexYear = currentTime.Year;
@@ -357,7 +357,7 @@ namespace MediaBazaarApp.Classes
         }
         private void LoadMonth()
         {
-            Grid mainGrid = (Grid)window.FindName("calendarGrid");
+            Grid mainGrid = parentGrid;
             mainGrid.Children.Clear();
             for (int i = 1; i < DateTime.DaysInMonth(indexYear, indexMonth) + 1; i++)
             {
@@ -416,12 +416,12 @@ namespace MediaBazaarApp.Classes
                                 else if (j == 1 && w.shift.ID == 2)
                                 {
                                     buttons[j].DataContext = w;
-                                    
+
                                     if (w.AssignedEmployees.Count > 0)
                                     {
                                         buttons[j].Content = $"Day  {w.AssignedEmployees.Count}";
                                         buttons[j].Background = Brushes.Yellow;
-                                    }  
+                                    }
                                 }
                                 else if (j == 2 && w.shift.ID == 3)
                                 {
@@ -437,7 +437,7 @@ namespace MediaBazaarApp.Classes
                     }
                 }
 
-                
+
                 Grid grid = new Grid();
                 grid.Margin = new Thickness(2);
                 grid.Background = Brushes.DarkGray;
@@ -491,16 +491,16 @@ namespace MediaBazaarApp.Classes
                         else { new EditWorkShift(w).Show(); }
                     }
                     else { new EditWorkShift(w).Show(); }
-                    
+
                 }
-                else if(btn.DataContext is DateTime)
+                else if (btn.DataContext is DateTime)
                 {
                     DateTime dateTime = (DateTime)btn.DataContext;
-                    if(dateTime > DateTime.Now)
+                    if (dateTime > DateTime.Now)
                         new NewWorkshiftWindow(dateTime).Show();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -512,5 +512,3 @@ namespace MediaBazaarApp.Classes
         }
     }
 }
-
-

@@ -53,7 +53,7 @@ namespace MediaBazaarApp
         {
             try
             {
-                calendar = new Classes.Calendar(this, company.ShiftSchedule.ToList());
+                calendar = new Classes.Calendar(calendarGrid, company.ShiftSchedule.ToList());
                 this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
             }
             catch (Exception ex)
@@ -164,7 +164,7 @@ namespace MediaBazaarApp
         {
             try
             {
-                calendar = new Classes.Calendar(this, company.ShiftSchedule.ToList());
+                calendar = new Classes.Calendar(calendarGrid, company.ShiftSchedule.ToList());
                 this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
             }
             catch (Exception ex)
