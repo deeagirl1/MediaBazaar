@@ -13,7 +13,7 @@ namespace MediaBazaarApp.Classes
         private int hours;
         public int ShiftsCount
         {
-            get { if (Fixed == true) return this.hours / 8; else {return 5 }; }
+            get { if (Fixed == true) return this.hours / 8; else { return 5; }; }
         }
         public int Hours
         {
