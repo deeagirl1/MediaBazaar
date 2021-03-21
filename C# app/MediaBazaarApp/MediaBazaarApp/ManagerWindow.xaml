@@ -120,15 +120,14 @@
 
             <TabItem Header="MyAccount" >
                 <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-
-                    <TextBox x:Name="tbCurrentPass" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="34" Margin="472,231,436,436" TextWrapping="Wrap"  Width="222"/>
-                    <TextBox x:Name="tbNewPass" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34" Margin="472,301,436,366" TextWrapping="Wrap"  Width="222"/>
-                    <TextBox x:Name="tbNewPassRepeat"   Margin="472,378,436,289" TextWrapping="Wrap" Width="222" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34"/>
                     <Label x:Name="lblUserString" Content="Label" HorizontalAlignment="Center" Margin="472,128,436,0" VerticalAlignment="Top" Width="222" FontSize="24" RenderTransformOrigin="-2.043,0.833" HorizontalContentAlignment="Center"/>
-                    <Label Content="Current password" HorizontalAlignment="Center" Margin="472,200,555,475" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423"/>
-                    <Label Content="New password" HorizontalAlignment="Center" Margin="472,270,570,405" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423"/>
-                    <Label Content="Repeat new password" HorizontalAlignment="Center" Margin="472,347,533,328" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423"/>
-                    <Button x:Name="btnChangePassword" Content="Change password" HorizontalAlignment="Stretch" Margin="428,0,378,172" VerticalAlignment="Bottom" Width="324" Height="46" Click="btnChangePassword_Click"/>
+                    <Label Content="Current password" HorizontalAlignment="Left" Margin="472,204,0,0" VerticalAlignment="Top"/>
+                    <Label Content="New password" HorizontalAlignment="Left" Margin="472,274,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Repeat new password" HorizontalAlignment="Left" Margin="472,346,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="btnChangePassword" Content="Change password" HorizontalAlignment="Left" Height="46" Margin="424,485,0,0" VerticalAlignment="Top" Width="324" Click="btnChangePassword_Click_1"/>
+                    <TextBox x:Name="tbCurrentPass" HorizontalAlignment="Left" Height="39" Margin="472,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" TextChanged="TextBox_TextChanged"/>
+                    <TextBox x:Name="tbNewPass" HorizontalAlignment="Left" Height="39" Margin="472,302,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+                    <TextBox x:Name="tbNewPassRepeat" HorizontalAlignment="Left" Height="39" Margin="472,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
 
                 </Grid>
             </TabItem>

@@ -89,7 +89,7 @@ namespace MediaBazaarApp
             this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
         }
 
-        private void btnChangePassword_Click(object sender, RoutedEventArgs e)
+        private void btnChangePassword_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -105,6 +105,11 @@ namespace MediaBazaarApp
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
