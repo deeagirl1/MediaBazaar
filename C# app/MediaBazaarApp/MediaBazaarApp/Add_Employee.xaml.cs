@@ -45,7 +45,7 @@ namespace MediaBazaarApp
             try
             {
 
-                Address address = new Address(tb_Country.Text, tb_City.Text, tb_Street.Text, tb_StreetNr.Text, tb_AdditionalInfo.Text, "");
+                Address address = new Address(tb_Country.Text, tb_City.Text, tb_Street.Text, tb_StreetNr.Text, tb_zipCode.Text, tb_AdditionalInfo.Text);
                 worker = new ShopWorker();
                 this.worker.HomeAddress = address;
                 this.worker.FirstName = tb_FirstName.Text;

@@ -131,6 +131,7 @@
     <Compile Include="Classes\IAccount.cs" />
     <Compile Include="Classes\Manager.cs" />
     <Compile Include="Classes\Person.cs" />
+    <Compile Include="Classes\Statistics.cs" />
     <Compile Include="Classes\Status.cs" />
     <Compile Include="Classes\WorkShift.cs" />
     <Page Include="Add_Employee.xaml">

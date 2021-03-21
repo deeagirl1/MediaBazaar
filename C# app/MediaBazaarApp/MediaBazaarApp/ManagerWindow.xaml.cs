@@ -30,7 +30,7 @@ namespace MediaBazaarApp
             this.company = company;
 
             this.person = person;
-            MessageBox.Show(person.LastName);
+            //MessageBox.Show(person.LastName);
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)

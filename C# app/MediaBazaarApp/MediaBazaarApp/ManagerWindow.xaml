@@ -14,14 +14,13 @@
                         <ColumnDefinition Width="82*"/>
                         <ColumnDefinition Width="1049*"/>
                     </Grid.ColumnDefinitions>
-                    <ListView x:Name="lvIndicators" HorizontalAlignment="Left" Height="534" Margin="10,10,0,0" VerticalAlignment="Top" Width="778" Grid.ColumnSpan="2">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn/>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
                     <Button x:Name="btnView" Content="View" HorizontalAlignment="Left" Margin="793.5,10,0,0" VerticalAlignment="Top" Width="100" Height="32" Click="btnView_Click" Grid.Column="1"/>
+                    <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="124,240,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="124,185,0,0" VerticalAlignment="Top"/>
+                    <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="110,127,0,0" VerticalAlignment="Top" Width="74"/>
+                    <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="667,245,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="667,190,0,0" VerticalAlignment="Top"/>
+                    <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="653,132,0,0" VerticalAlignment="Top" Width="74"/>
                 </Grid>
             </TabItem>
 

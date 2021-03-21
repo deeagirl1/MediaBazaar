@@ -222,7 +222,7 @@ namespace MediaBazaarApp.Classes
             List<ShopWorker> shopWorkers = new List<ShopWorker>();
             foreach (ShopWorker s in this.ToList())
             {
-                if (s.Status.ID == 2)
+                if (s.Status.ID != 3 && s.HireTime.Date<=shift.date.Date)
                 {
                     if (s.LastWorkingDay > shift.date || s.LastWorkingDay < new DateTime(1900, 01, 01))
                     {

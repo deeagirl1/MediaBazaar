@@ -58,6 +58,9 @@ namespace MediaBazaarApp.Popups
                 this.cbx_Department.SelectedItem = this.company.GetDepartmentByID(this.worker.WorksAt.ID);
                 this.cbx_Contract.SelectedItem = this.company.GetContractByID(this.worker.Contract.ID);
                 this.cbx_Status.SelectedItem = this.company.GetStatusByID(this.worker.Status.ID);
+                this.tb_day_LastWorkingDay.Text = Convert.ToString(this.worker.LastWorkingDay.Day);
+                this.tb_month_LastWorkingDay.Text = Convert.ToString(this.worker.LastWorkingDay.Month);
+                this.tb_year_LastWorkingDay.Text = Convert.ToString(this.worker.LastWorkingDay.Year);
             }
             catch (Exception ex)
             {
