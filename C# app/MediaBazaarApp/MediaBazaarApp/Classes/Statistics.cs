@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,21 +9,43 @@ namespace MediaBazaarApp.Classes
 {
     public class Statistics : DBmanager
     {
-        //public int getTotalEmployees(DateTime date)
-        //{
-        //    string sql = "select Count(*) from employeeassignment a " +
-        //        " inner join workshift w on a.ShiftID = w.ID inner join employee e " +
-        //        " on a.EmployeeID = e.ID where e.ID = @EmployeeID " +
-        //        " and w.Date = @Date and w.ShiftType = @ShiftType";
+        public int GetTotalEmployeesForDate(DateTime date)
+        {
+            string sql = "select count(*) from employee where HireDate <= @date AND LastWorkingDay > @date";
 
-        //    MySqlParameter[] prms = new MySqlParameter[3];
+            MySqlParameter[] prms = new MySqlParameter[1];
 
-        //    prms[0] = new MySqlParameter("@EmployeeID", worker.ID);
+            prms[0] = new MySqlParameter("@date", date);
 
-        //    int count = Convert.ToInt32(this.ReadScalar(sql, prms));
-        //    if (count == 0)
-        //        return false;
-        //    return true;
-        //}
+            int count = Convert.ToInt32(this.ReadScalar(sql, prms));
+            return count;
+        }
+        public decimal GetTotalSalaryPaidForDate(DateTime date)
+        {
+            string sql = "SELECT Sum(e.Wage * 8) from employeeassignment a " +
+                " INNER join employee e on a.EmployeeID = e.ID " +
+                " INNER join workshift w on a.ShiftID = w.ID where w.Date < @date";
+
+            MySqlParameter[] prms = new MySqlParameter[1];
+
+            prms[0] = new MySqlParameter("@date", date);
+
+            decimal amount = Convert.ToDecimal(this.ReadScalar(sql, prms));
+            return amount;
+        }
+        public int GetTotalHoursWorkedForDate(DateTime date)
+        {
+            string sql = "SELECT Sum(1 * 8) from employeeassignment a " +
+                " INNER join employee e on a.EmployeeID = e.ID " +
+                " INNER join workshift w on a.ShiftID = w.ID where w.Date < @date";
+
+            MySqlParameter[] prms = new MySqlParameter[1];
+
+            prms[0] = new MySqlParameter("@date", date);
+
+            int amount = Convert.ToInt32(this.ReadScalar(sql, prms));
+            return amount;
+        }
+
     }
 }

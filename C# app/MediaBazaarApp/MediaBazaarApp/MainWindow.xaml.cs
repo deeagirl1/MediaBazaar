@@ -41,7 +41,7 @@ namespace MediaBazaarApp
 
                 this.employees = this.company.ShopWorkers.ToList();
                 this.lvShopWorkers.ItemsSource = this.employees;
-                //MessageBox.Show(this.employees[5].Contract.ShiftsCount.ToString());
+                this.lblUserString.Content = $"Hello , {person.FirstName}";
             }
             catch(Exception ex)
             {

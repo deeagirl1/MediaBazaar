@@ -9,12 +9,13 @@ namespace MediaBazaarApp.Classes
 {
     public class Company : DBmanager
     {
+        public readonly List<Department> Departments = new List<Department>();
         public readonly AccountManager AccountManager = new AccountManager();
         public readonly ShiftSchedule ShiftSchedule = new ShiftSchedule();
-        public readonly EmployeeList ShopWorkers= new EmployeeList();
-        public readonly List<Department> Departments = new List<Department>();
         public readonly List<Contract> Contracts = new List<Contract>();
+        public readonly EmployeeList ShopWorkers= new EmployeeList();
         public readonly List<Status> Statuses = new List<Status>();
+        public readonly Statistics Statistics = new Statistics();
         public readonly List<Shift> Shifts = new List<Shift>();
 
         
