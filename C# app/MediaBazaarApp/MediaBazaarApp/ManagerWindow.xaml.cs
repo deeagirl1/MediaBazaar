@@ -147,5 +147,44 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnRefreshCalendar_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                calendar = new Classes.Calendar(this, company.ShiftSchedule.ToList());
+                this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                calendar.NextMonth();
+                this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                calendar.PreviousMonth();
+                this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
