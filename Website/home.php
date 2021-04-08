@@ -75,6 +75,7 @@ $id = $_SESSION['id'];
 			// echo '<br/>';
 			// echo date_format($endDate,"Y-m-d");
 			// echo '<br/>';
+			
 		}
 
 		getTimeFrame($date, $startDate, $endDate);
