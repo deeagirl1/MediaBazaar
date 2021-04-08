@@ -52,43 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			<p>Your account details are below:</p>
 			<?php
 			$test = new UserView();
-			$show = $test->showUserDetails($_SESSION['name'], $_SESSION['password']);
+			$show = $test->showUserDetails($_SESSION['id']);
 			foreach ($show as $result) {
 
 				$username = $result['Username'];
 				$email = $result['Email'];
-				$firstname = $result['Fname'];
-				$lastname = $result['Lname'];
-				if ($result['Gender'] == 0) {
-					$gender = 'Male';
-				} else {
-					$gender = 'Female';
-				}
-				$birthplace = $result['Bplace'];
-				$nationality = $result['Nation'];
-				$city = $result['Town'];
-				$address = $result['Address'];
-				if ($result['Role'] == 0) {
-					$role = 'CEO';
-				} else if ($result['Role'] == 1) {
-					$role = 'Manager';
-				} else {
-					$role = 'Employee';
-				}
-				$bsn = $result['BsnNum'];
-				//$department = $result['Department'];
-				$salary = $result['Salary'];
-				$conStart = $result['contract_startdate'];
-				$conEnd = $result['contract_enddate'];
-				if ($result['Department'] == 0) {
-					$department = 'DEPOT';
-				} else if ($result['Department'] == 1) {
-					$department = 'HUMAN RESOURCES';
-				} else if ($result['Department'] == 2) {
-					$department = 'PR';
-				} else {
-					$department = 'SALES';
-				}
 			}
 			?>
 			<form action='edit-profile.php' method='POST'>

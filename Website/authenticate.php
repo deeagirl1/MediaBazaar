@@ -8,7 +8,7 @@ if ( !isset($_POST['username'], $_POST['password']) ) {
 	exit('Please fill both the username and password fields!');
 }
 
-$testlog = new User();
+$testlog = new UserController();
 if($testlog->login($_POST['username'], $_POST['password'])){
 	$results = $testlog->login($_POST['username'], $_POST['password']);
 	foreach ($results as $result) {
