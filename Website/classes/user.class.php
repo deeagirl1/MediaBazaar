@@ -1,187 +1,75 @@
 <?php
-class User
+//gets data from DB
+require_once 'dbh.class.php';
+
+class User extends Dbh
 {
-    private $id;
-    private $email;
-    private $username;
-    private $firstName;
-    private $lastName;
-    private $street;
-    private $streetNr;
-    private $zipcode;
-    private $city;
-    private $password;
 
-    private $birthDate;
-    private $hireDate;
-    private $lastWorkingDay;
-    private $wage;
-    private $accountNumber;
-    private $department;
-    private $contractFixed;
-    private $workHours;
-    private $nightShifts;
-    private $daysOff = array();
+  protected function getUserDetails($username, $password)
+  {
+    $sql = "SELECT * FROM person WHERE Username = ? AND Password = ?";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$username, $password]);
+    $results = $stmt->fetchAll();
+    return $results;
+  }
+
+  public function login($username, $password)
+  {
+    $sql = "SELECT * FROM person WHERE Username = :username AND Password = :password";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([':username'=>$username,':password'=> $password]);
+    $results = $stmt->fetchAll();
+    return $results;
+  }
+
+  public function getShifts($id, $startDate, $endDate)
+  {
+    $sql = "SELECT user_id, date, shift
+            FROM user_schedules
+            WHERE user_id = ?
+            AND date >= ?
+            AND date <= ?
+            ORDER BY date ASC
+  ";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$id, date_format($startDate, "Y-m-d"), date_format($endDate, "Y-m-d")]);
+    $results = $stmt->fetchAll();
+    return $results;
+  }
+
+  public function getManagers()
+  {
+    $sql = "SELECT id, Username
+            FROM users
+            WHERE Role = 1
+  ";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->fetchAll();
+    return $results;
+  }
+
+  public function editProfil($email, $city, $id)
+  {
+    $sql = "UPDATE users 
+    SET 
+        Email = ?,
+        Town = ?
+    WHERE
+        id = ?;";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$email, $city, $id]);
+  }
 
 
-    public function GetId() : int
-    {
-        return $this->id;
-    }
-    public function GetEmail() : string
-    {
-        return $this->email;
-    }
-    public function SetEmail(string $firstName)
-    {
-        $this->email = $email;
-    }
-    public function GetUsername() : string
-    {
-        return $this->username;
-    }
-    public function SetUsername(string $username)
-    {
-        $this->username = $username;
-    }
-    public function GetFirstName() : string
-    {
-        return $this->firstName;
-    }
-    public function SetFirstName(string $firstName)
-    {
-        $this->firstName = $firstName;
-    }
-    public function GetLastName() : string
-    {
-        return $this->lastName;
-    }
-    public function SetLastName(string $lastName)
-    {
-        $this->lastName = $lastName;
-    }
-    public function GetStreet() : string
-    {
-        return $this->street;
-    }
-    public function GetStreetNr() : string
-    {
-        return $this->streetNr;
-    }
-    public function GetZipcode() : string
-    {
-        return $this->zipcode;
-    }
-    public function GetCity() : string
-    {
-        return $this->city;
-    }
-    public function SetStreet(string $street)
-    {
-        $this->street = $street;
-    }
-    public function SetStreetNr(string $streetNr)
-    {
-        $this->streetNr = $streetNr;
-    }
-    public function SetZipcode(string $zipcode)
-    {
-        $this->zipcode = $zipcode;
-    }
-    public function SetCity(string $city)
-    {
-        $this->city = $city;
-    }
-    public function GetPassword() : string
-    {
-        return $this->password;
-    }
-    public function SetPassword(string $password)
-    {
-        $this->password = $password;
-    }
-    public function GetBirthDate()
-    {
-        return $this->birthDate;
-    }
-    public function GetHireDate()
-    {
-        return $this->hireDate;
-    }
-    public function GetLastWorkingDate()
-    {
-        return $this->lastWorkingDate;
-    }
-    public function GetWage() : Float
-    {
-        return $this->lastWorkingDate;
-    }
-    public function GetAccountNr() : string
-    {
-        return $this->accountNumber;
-    }
-    public function SetAccountNr($accountNumber)
-    {
-        $this->accountNumber = $accountNumber;
-    }
-    public function GetDepartment() : string
-    {
-        return $this->department;
-    }
-    public function IsContractFixed() : bool
-    {
-        return $this->contractFixed;
-    }
-    public function GetContractHours() : int
-    {
-        return $this->workHours;
-    }
-    public function IsOnNightShifts() : bool
-    {
-        return $this->nightShifts;
-    }
-    public function SetNightShifts(bool $nightShifts) : bool
-    {
-        $this->nightShifts = $nightShifts;
-    }
-    public function GetDaysOff()
-    {
-        return $this->daysOff;
-    }
-    public function SetDaysOff($daysOff)
-    {
-        $this->daysOff = $daysOff;
-    }
 
-    public function __construct(int $id = 0,string $email,string $username,string $firstName,
-     string $lastName, string $street, int $streetNr, string $zipcode,
-      string $city ,string $password, $birthDate, $hireDate, $lastWorkingDay, 
-      float $wage, string $accountNumber, string $department, bool $contractFixed,
-      int $workHours, bool $nightShifts,array $daysOff)
-    {
-        $this->id = $id;
-        $this->email = $email;
-        $this->username = $username;
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->street = $street;
-        $this->streetNr = $streetNr;
-        $this->zipcode = $zipcode;
-        $this->city = $city;
-        $this->password= $password;
-        $this->$birthDate = $birthDate;
-        $this->$hireDate = $hireDate;
-        $this->$lastWorkingDay = $lastWorkingDay;
-        $this->$wage = $wage;
-        $this->$accountNumber = $accountNumber;
-        $this->$department = $department;
-        $this->$contractFixed = $contractFixed;
-        $this->$workHours = $workHours;
-        $this->$nightShifts = $nightShifts;
-        foreach($daysOff as $var){
-            array_push($this->daysOff,$var);
-        }
-    }
+  // protected function setUser($username) {
+  //
+  //   $sql = "INSERT INTO users(username) VALUES (?)";
+  //   $stmt = $this->connect()->prepare($sql);
+  //   $stmt->execute([$username]);
+  // }
+
 
 }
-?>

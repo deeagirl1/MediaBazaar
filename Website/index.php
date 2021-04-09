@@ -1,78 +1,50 @@
-<!-- <?php
-  include 'includes/class-autoload.inc.php';
- ?>
- <!DOCTYPE html>
- <html lang="en">
- <head>
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-slcae=1.0">
-   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title> Document</title>
- </head>
- <body>
-
-   <form method="POST" action="classes/usercontroller.class.php">
-     Username: <input type="text" name="username"><br>
-
-     <button type="submit", name="submit">
-       Submit
-     </button>
-
-   </form>
-
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Datepicker - Display multiple months</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#datepicker" ).datepicker({
-      numberOfMonths: 1,
-      showButtonPanel: true
-    });
-  } );
-  </script>
-</head>
-<body>
-
-<p>Date: <input type="text" id="datepicker"></p>
-
-
-
-
-</body>
-</html>
-
- </body>
- </html> -->
-
- <!DOCTYPE html>
-<html>
-	<head>
-
-		<meta charset="utf-8">
-		<title>Login</title>
-		<link href="style.css" rel="stylesheet" type="text/css">
-	</head>
-	<body>
-		<div class="login">
-			<h1>Login</h1>
-			<form action="authenticate.php" method="post">
-				<label for="username">
-					<i class="fas fa-user"></i>
-				</label>
-				<input type="text" name="username" placeholder="Username" id="username" required>
-				<label for="password">
-					<i class="fas fa-lock"></i>
-				</label>
-				<input type="password" name="password" placeholder="Password" id="password" required>
-				<input type="submit" value="Login">
-			</form>
-		</div>
-	</body>
+<?php
+require('phpScripts/isSessionValid.php');
+?>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/homepage.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </head>
+  <body>
+    <nav>
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <label class="logo"><a href= "index.php" style = "text-decoration: none; color: white">Media Bazaar</a></label>
+      <ul>
+        <li><a class="active" href="index.php?page=announcements">Announcements</a></li>
+        <li><a href="index.php?page=myaccount">My Account</a></li>
+        <li><a href="index.php?page=calendar">Your Schedule</a></li>
+        <li><a href="index.php?page=contact">Contact</a></li>
+        <li><a href="index.php?page=logout">Logout</a></li>
+      </ul>
+    </nav>
+    <?php 
+            $requestedPage = 'views/annoucements.php';
+            if(isset($_GET['page']))
+            {
+                switch ($_GET['page']) {
+                    case 'myaccount':
+                        $requestedPage = 'views/myaccount.php';
+                        break;
+                    case 'calendar':
+                        $requestedPage = 'views/calendar.php';
+                        break;   
+                    case 'contact':
+                          $requestedPage = 'views/contact.php';
+                          break;    
+                    case 'logout':
+                        $requestedPage = 'phpScripts/logout.php';
+                        break;         
+                }
+            } 
+            require $requestedPage;   
+?>        
+  </body>
 </html>
