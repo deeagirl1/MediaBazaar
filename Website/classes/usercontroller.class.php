@@ -38,8 +38,12 @@ class UserController extends Dbh{
     $sql = "SELECT * FROM person WHERE Username = :username AND Password = :password";
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute([':username'=>$username,':password'=> $password]);
-    $results = $stmt->fetchAll();
-    return $results;
+    if( $stmt->rowCount() == 1 ){
+      $results = $stmt->fetchAll();
+      return $results;
+    }
+    else return null;  
+    
   }
 
 }

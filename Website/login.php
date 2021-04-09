@@ -15,10 +15,10 @@
 <div class="container">
   <form method="post" action="phpScripts/authenticate.php">
     <label for="username">Username</label>
-    <input type="text" id="username" name="username">
+    <input type="text" id="username" name="username" required>
 
     <label for="password">Password</label>
-    <input type="password" id="password" name="password">
+    <input type="password" id="password" name="password" required>
 
     <input type="submit" value="Submit">
   </form>

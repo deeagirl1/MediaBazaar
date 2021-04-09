@@ -11,24 +11,19 @@ if ( !isset($_POST['username'], $_POST['password']) ) {
 $testlog = new UserController();
 if($testlog->login($_POST['username'], $_POST['password'])){
 	$results = $testlog->login($_POST['username'], $_POST['password']);
-	foreach ($results as $result) {
-
-	// store password for session and id for displaying shifts
-	$password = $result['Password'];
-	$id = $result['ID'];
-	$email = $result['Email'];
-	}
-}
-
-	if ($_POST['password'] === $password) {
-		// Verification success! User has loggedin!
-		// Create sessions so we know the user is logged in
-		session_regenerate_id();
+    if($results!=null){
+        // store password for session and id for displaying shifts
+        $password = $results['Password'];
+        $id = $results['ID'];
+        $email = $results['Email'];
+        session_regenerate_id();
 		$_SESSION['loggedin'] = TRUE;
 		$_SESSION['name'] = $_POST['username'];
 		$_SESSION['password'] = $password;
 		$_SESSION['id'] = $id;
 		$_SESSION['email'] = $email;
 		header('Location: ../index.php');
-	}
+        }
+    }
+    else echo "<script>alert('Invalid credentials supplied'); document.location='../login.php'; </script>";    	
 ?>
