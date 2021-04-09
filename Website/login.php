@@ -13,12 +13,12 @@
 </div>
 
 <div class="container">
-  <form action="phpScripts/authenticate.php">
+  <form method="post" action="phpScripts/authenticate.php">
     <label for="username">Username</label>
-    <input type="text" id="username" name="username" placeholder="Username">
+    <input type="text" id="username" name="username">
 
-    <label for="psw">Password</label>
-    <input type="password" id="psw" name="psw" placeholder="Password">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password">
 
     <input type="submit" value="Submit">
   </form>
