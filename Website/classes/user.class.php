@@ -13,8 +13,7 @@ class User
     private $password;
 
     private $birthDate;
-    private $hireDate;
-    private $lastWorkingDay;
+  
     private $wage;
     private $accountNumber;
     private $department;
@@ -32,33 +31,17 @@ class User
     {
         return $this->email;
     }
-    public function SetEmail(string $firstName)
-    {
-        $this->email = $email;
-    }
     public function GetUsername() : string
     {
         return $this->username;
-    }
-    public function SetUsername(string $username)
-    {
-        $this->username = $username;
     }
     public function GetFirstName() : string
     {
         return $this->firstName;
     }
-    public function SetFirstName(string $firstName)
-    {
-        $this->firstName = $firstName;
-    }
     public function GetLastName() : string
     {
         return $this->lastName;
-    }
-    public function SetLastName(string $lastName)
-    {
-        $this->lastName = $lastName;
     }
     public function GetStreet() : string
     {
@@ -103,14 +86,6 @@ class User
     public function GetBirthDate()
     {
         return $this->birthDate;
-    }
-    public function GetHireDate()
-    {
-        return $this->hireDate;
-    }
-    public function GetLastWorkingDate()
-    {
-        return $this->lastWorkingDate;
     }
     public function GetWage() : Float
     {

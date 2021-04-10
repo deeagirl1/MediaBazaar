@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+.header {
+  padding: 28px;
+  margin: auto;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 28px; 
+}
+
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: #1abc9c;
+  z-index: -1;
+  width: 100%;
+  text-align: center;
+}
+.content .header{
+  font-size: 45px;
+  font-weight: 700;
+}
+.content p{
+  font-size: 40px;
+  font-weight: 700;
+}
+
+input[type=text], input[type=password], input[type=date]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 12px;
+  
+}
+.custom-select{
+ 
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 12px;
+}
+.checkbox{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 12px;
+}
+
+button {
+  background-color: #11589b;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 12px;
+  
+}
+
+hr {
+  border: 0.5px solid #f1f1f1;
+  margin: 20px;
+  
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.container{
+  max-width: 1000px;
+  padding-top: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin: auto;
+  z-index: -1;
+}
+

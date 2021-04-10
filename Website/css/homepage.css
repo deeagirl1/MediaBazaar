@@ -43,7 +43,7 @@ nav ul li a{
 .checkbtn{
   font-size: 30px;
   color: white;
-  float: right;
+  float: left;
   line-height: 80px;
   margin-right: 40px;
   cursor: pointer;
@@ -54,8 +54,8 @@ nav ul li a{
 }
 @media (max-width: 952px){
   label.logo{
-    font-size: 24px;
-    padding-left: 20px;
+    font-size: 23px;
+    padding-left: 40px;
   }
   nav ul li a{
     font-size: 16px;
@@ -64,7 +64,7 @@ nav ul li a{
 @media (max-width: 858px){
   .checkbtn{
     display: block;
-    margin-right: 20px;
+    margin-left: 12px;
   }
   ul{
     position: fixed;
