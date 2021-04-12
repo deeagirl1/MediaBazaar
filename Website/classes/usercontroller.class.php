@@ -47,4 +47,25 @@ class UserController extends Dbh{
     
   }
 
+  public function getShifts($id, $startDate, $endDate)
+  {
+      $sql = "SELECT 
+        ea.EmployeeID AS user_id,
+        ws.Date AS date,
+        ws.ShiftType AS shift
+      FROM employeeassignment AS ea
+        INNER JOIN workshift AS ws 
+        ON ws.ID = ea.ShiftID 
+      WHERE ea.EmployeeID = ?
+        AND ws.Date >= ?
+        AND ws.Date <= ?
+      ORDER BY ws.Date ASC";
+
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$id, date_format($startDate, "Y-m-d"), date_format($endDate, "Y-m-d")]);
+    $results = $stmt->fetchAll();
+    return $results;
+  }
+
+
 }
