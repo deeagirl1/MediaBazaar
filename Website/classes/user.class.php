@@ -10,10 +10,9 @@ class User
     private $streetNr;
     private $zipcode;
     private $city;
+    private $country;
     private $password;
-
     private $birthDate;
-  
     private $wage;
     private $accountNumber;
     private $department;
@@ -59,6 +58,10 @@ class User
     {
         return $this->city;
     }
+    public function GetCountry() : string
+    {
+        return $this->country;
+    }
     public function SetStreet(string $street)
     {
         $this->street = $street;
@@ -87,9 +90,9 @@ class User
     {
         return $this->birthDate;
     }
-    public function GetWage() : Float
+    public function GetWage()
     {
-        return $this->lastWorkingDate;
+        return $this->wage;
     }
     public function GetAccountNr() : string
     {
@@ -115,6 +118,14 @@ class User
     {
         return $this->nightShifts;
     }
+    public function GetContract()
+    {
+        if($this->IsContractFixed()==true){
+            return "FIXED   " . "".$this->GetContractHours()."";
+        }
+        else return "ZERO HOUR";
+    }
+
     public function SetNightShifts(bool $nightShifts) : bool
     {
         $this->nightShifts = $nightShifts;
@@ -130,7 +141,7 @@ class User
 
     public function __construct(int $id = 0,string $email,string $username,string $firstName,
      string $lastName, string $street, int $streetNr, string $zipcode,
-      string $city ,string $password, $birthDate, $hireDate, $lastWorkingDay, 
+      string $city,string $country ,string $password, $birthDate, $hireDate, $lastWorkingDay, 
       float $wage, string $accountNumber, string $department, bool $contractFixed,
       int $workHours, bool $nightShifts,array $daysOff)
     {
@@ -143,16 +154,17 @@ class User
         $this->streetNr = $streetNr;
         $this->zipcode = $zipcode;
         $this->city = $city;
+        $this->country = $country;
         $this->password= $password;
-        $this->$birthDate = $birthDate;
-        $this->$hireDate = $hireDate;
-        $this->$lastWorkingDay = $lastWorkingDay;
-        $this->$wage = $wage;
-        $this->$accountNumber = $accountNumber;
-        $this->$department = $department;
-        $this->$contractFixed = $contractFixed;
-        $this->$workHours = $workHours;
-        $this->$nightShifts = $nightShifts;
+        $this->birthDate = $birthDate;
+        $this->hireDate = $hireDate;
+        $this->lastWorkingDay = $lastWorkingDay;
+        $this->wage = $wage;
+        $this->accountNumber = $accountNumber;
+        $this->department = $department;
+        $this->contractFixed = $contractFixed;
+        $this->workHours = $workHours;
+        $this->nightShifts = $nightShifts;
         foreach($daysOff as $var){
             array_push($this->daysOff,$var);
         }
