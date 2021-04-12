@@ -7,7 +7,16 @@ require_once('classes/usercontroller.class.php');
     $userController = new UserController();
     $user = $userController->GetUserDetails($_SESSION['ID']);
 
-    $mode = "";
+    $mode = "readonly";
+    if(!isset($_SESSION['MyAccountReadonly'])){
+      $mode = "readonly";
+    }
+    else{
+      if($_SESSION['MyAccountReadonly'] == true){
+        $mode = "readonly";
+      }
+      else $mode = "";
+    }
 
     echo "<form method='POST' action='action.php'>
     <hr>

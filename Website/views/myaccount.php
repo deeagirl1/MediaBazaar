@@ -23,8 +23,8 @@ require('phpScripts/isSessionValid.php');
 </form>
 <hr>
 <h1>Change personal details</h1><br>
+<h3><a href = 'phpScripts/changeMyAccountState.php'>Edit</a></h3>
 <?php
 require('phpScripts/showAccountDetails.php');
 ?>
-
 </section>
