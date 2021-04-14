@@ -35,11 +35,38 @@ nav ul li a{
   border-radius: 3px;
   text-transform: uppercase;
 }
+.header{
+    text-align: center;
+    margin: 20px;
+
+}
+
+.display-date{
+  text-align: center;
+  margin-left: 10px;
+}
+
+
 /*a:hover{
   background: #2696ff;
   transition: .5s;
 }*/
 
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 5%;
+  padding-top: 20%;
+  
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  border-radius: 5%;
+}
 .checkbtn{
   font-size: 30px;
   color: white;
@@ -49,13 +76,27 @@ nav ul li a{
   cursor: pointer;
   display: none;
 }
+hr {
+  border: 0.5px solid #f1f1f1;
+  margin: 20px;
+  
+}
+.container {
+  max-width: 1000px;
+  padding-top: 0%;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin: auto;
+  z-index: -1;
+  
+  }
 #check{
   display: none;
 }
 @media (max-width: 952px){
   label.logo{
     font-size: 25px;
-    padding-left: 35px;
+    padding-left: 43px;
     text-align: center;
   }
   nav{
@@ -97,4 +138,30 @@ nav ul li a{
   #check:checked ~ ul{
     left: 0;
   }
+  
+.header{
+  text-align: center;
+  margin: 22px;
+  margin-left: 43px;
 }
+
+.display-date{
+  text-align: center;
+  margin-left: 9px;
+}
+.container {
+  text-align: center;
+  margin: 22px;
+  margin-left: 21px;
+  }
+
+.content{
+  padding: 0px;
+}
+.table {
+  padding: 6%;
+  margin: 10%;
+  margin-left: 8px
+}
+}
+

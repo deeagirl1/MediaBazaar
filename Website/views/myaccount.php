@@ -11,19 +11,22 @@ require('phpScripts/isSessionValid.php');
     <hr>
     <label for="psw"><b>Current Password</b></label>
     <input type="password" placeholder="Current Password" name="psw" id="psw" required>
-    <br></br>
+  
     <label for="new-psw"><b>New Password</b></label>
     <input type="password" placeholder="New Password" name="new-psw" id="new-psw" required>
 
     <label for="psw-repeat"><b>Repeat New Password</b></label>
     <input type="password" placeholder="Repeat New Password" name="psw-repeat" id="psw-repeat" required>
-    <hr>
+  
 
     <button type="Change" class="passwordbtn">Change your password</button>
 </form>
 <hr>
 <h1>Change personal details</h1><br>
-<h3><a href = 'phpScripts/changeMyAccountState.php'>Edit</a></h3>
+
+<form action="phpScripts/changeMyAccountState.php" method="post">
+<h3><button type ="Edit">Edit</button></h3>
+</form>
 <?php
 require('phpScripts/showAccountDetails.php');
 ?>

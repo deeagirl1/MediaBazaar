@@ -19,7 +19,6 @@ require_once('classes/usercontroller.class.php');
     }
 
     echo "<form method='POST' action='action.php'>
-    <hr>
     <label for='firstName'><b>First Name</b></label>
     <input type='text' placeholder='First Name' name='firstName' id='firstName' value ='".$user->GetFirstName()."' $mode>
     <label for='lastName'><b>Last Name</b></label>
@@ -46,10 +45,10 @@ require_once('classes/usercontroller.class.php');
     <input type='text' placeholder='Department' name='department' id='department' value ='".$user->GetDepartment()."' $mode>
     <label for='accountNumber'><b>Account Number</b></label>
     <input type='text' placeholder='Account Number' name='accountNumber' id='accountNumber' value ='".$user->GetAccountNr()."' $mode>
-    <label for='daysPreference'>Days Off</label>
+    <label for='daysPreference'><b>Days Off</b></label>
     <div class ='custom-select'>
  
-  <select name='daysPreference' id='daysPreference'>
+  <select name= 'daysPreference' id='daysPreference'>
     <option value='Monday'>Monday</option>
     <option value='Tuesday'>Tuesday</option>
     <option value='Wednesday'>Wednesday</option>
@@ -70,7 +69,7 @@ require_once('classes/usercontroller.class.php');
   </select>
 </div>
   <br>
-  <label for='nightShits'>Night Shifts</label>
+  <label for='nightShits'><b>Availability  for night shifts</b></label>
   <div class = 'checkbox' >
  
   <input type='radio' id='yes' name='nghtshift' value='Yes'>
@@ -78,6 +77,7 @@ require_once('classes/usercontroller.class.php');
   <input type='radio' id='no' name='nghtshift' value='no'>
   <label for='no'>NO</label>
 </div>
+<hr>
 <button type='Change' class='passwordbtn'>Save</button>
 </form>";
 ?>

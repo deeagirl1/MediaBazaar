@@ -5,27 +5,28 @@ include 'classes/userview.class.php';
 
 $id = $_SESSION['ID'];
 ?>
-<link href="style.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-<div class="content">
-    <h2>Welcome back!</h2>
+<section>
+<link rel="stylesheet" href="css/calendar.css">
+    <div class ="header">
+    <h2><b>Your schedule</b></h2>
+    <hr>
     <?php
     if (isset($_SERVER['QUERY_STRING'])) {
         $queries = array();
         parse_str($_SERVER['QUERY_STRING'], $queries);
         if (isset($queries['date'])) {
             $date = $queries['date'];
-            echo 'displaying for week of ' . $date;
+            echo 'Displaying for week of ' . $date;
         } else {
             $date = date('Y-m-d');
-            echo 'no date provided, displaying for this week';
+            echo 'No date provided, displaying for this week';
         }
     } else {
         $date = date('Y-m-d');
-        echo 'no date provided, displaying for this week';
+        echo 'No date provided, displaying for this week';
     }
+    
+ 
     //$date = '2020-10-15'; //date('Y-m-d');
     $startDate = null;
     $endDate = null;
@@ -58,13 +59,14 @@ $id = $_SESSION['ID'];
     }
     $checked = '<i class="fas fa-check-circle"></i>';
     ?>
-    <div>
+      </div>
+    <div class= "display-date">
         <a href="index.php?page=calendar&date=
 				<?php
                 $prevDate = date_create($date);
                 date_add($prevDate, date_interval_create_from_date_string(-7 . " days"));
                 echo date_format($prevDate, "Y-m-d");
-                ?>">previous week</a>
+                ?>">Previous week</a>
         <span>
             <?php echo date_format($startDate, "Y-m-d"); ?> - <?php echo date_format($endDate, "Y-m-d"); ?>
         </span>
@@ -73,8 +75,10 @@ $id = $_SESSION['ID'];
                 $nextDate = date_create($date);
                 date_add($nextDate, date_interval_create_from_date_string(7 . " days"));
                 echo date_format($nextDate, "Y-m-d");
-                ?>">next week</a>
+                ?>">Next week</a>
     </div>
+    <hr>
+
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -105,4 +109,4 @@ $id = $_SESSION['ID'];
            
         </tbody>
     </table>
-</div>
+</section>
