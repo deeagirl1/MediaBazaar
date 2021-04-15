@@ -22,12 +22,23 @@ require('phpScripts/isSessionValid.php');
     <button type="Change" class="passwordbtn">Change your password</button>
 </form>
 <hr>
+
+
+<?php
+require('phpScripts/showReadonlyAccountDetails.php');
+?>
+
 <h1>Change personal details</h1><br>
 
 <form action="phpScripts/changeMyAccountState.php" method="post">
-<h3><button type ="Edit">Edit</button></h3>
-</form>
+<h3><button type ="Edit">Edit mode</button></h3>
+</form><br>
 <?php
 require('phpScripts/showAccountDetails.php');
 ?>
+
+<?php
+require('phpScripts/showShiftPreference.php');
+?>
+
 </section>
