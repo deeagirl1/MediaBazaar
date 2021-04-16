@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2021 at 07:19 PM
+-- Generation Time: Apr 16, 2021 at 03:02 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -44,6 +44,26 @@ INSERT INTO `accesslevel` (`ID`, `Name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `annoucements`
+--
+
+CREATE TABLE `annoucements` (
+  `ID` int(11) NOT NULL,
+  `Title` tinytext NOT NULL,
+  `Description` text NOT NULL,
+  `PostDate` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `annoucements`
+--
+
+INSERT INTO `annoucements` (`ID`, `Title`, `Description`, `PostDate`) VALUES
+(1, 'Test', 'Test', '2021-04-16 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `contactmessages`
 --
 
@@ -54,6 +74,14 @@ CREATE TABLE `contactmessages` (
   `Text` text NOT NULL,
   `DateTime` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contactmessages`
+--
+
+INSERT INTO `contactmessages` (`ID`, `Sender`, `Topic`, `Text`, `DateTime`) VALUES
+(1, 41, 'Test', 'test', '2021-04-15 20:57:52'),
+(2, 39, 'Text', 'text\r\n', '2021-04-15 21:40:45');
 
 -- --------------------------------------------------------
 
@@ -230,7 +258,8 @@ CREATE TABLE `shiftpreference` (
 --
 
 INSERT INTO `shiftpreference` (`ID`, `Employee`, `Day`) VALUES
-(3, 41, 3);
+(48, 41, 3),
+(49, 41, 6);
 
 -- --------------------------------------------------------
 
@@ -316,6 +345,12 @@ INSERT INTO `workshift` (`ID`, `ShiftType`, `Date`) VALUES
 ALTER TABLE `accesslevel`
   ADD PRIMARY KEY (`ID`),
   ADD UNIQUE KEY `Name` (`Name`);
+
+--
+-- Indexes for table `annoucements`
+--
+ALTER TABLE `annoucements`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `contactmessages`
@@ -410,10 +445,16 @@ ALTER TABLE `accesslevel`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `annoucements`
+--
+ALTER TABLE `annoucements`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `contactmessages`
 --
 ALTER TABLE `contactmessages`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `contract`
@@ -449,19 +490,13 @@ ALTER TABLE `person`
 -- AUTO_INCREMENT for table `shiftpreference`
 --
 ALTER TABLE `shiftpreference`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `shifttime`
 --
 ALTER TABLE `shifttime`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `weekday`
---
-ALTER TABLE `weekday`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `workshift`
@@ -500,13 +535,6 @@ ALTER TABLE `employeeassignment`
 --
 ALTER TABLE `person`
   ADD CONSTRAINT `person_ibfk_1` FOREIGN KEY (`AccessLevel`) REFERENCES `accesslevel` (`ID`);
-
---
--- Constraints for table `shiftpreference`
---
-ALTER TABLE `shiftpreference`
-  ADD CONSTRAINT `shiftpreference_ibfk_1` FOREIGN KEY (`Employee`) REFERENCES `employee` (`ID`),
-  ADD CONSTRAINT `shiftpreference_ibfk_2` FOREIGN KEY (`Day`) REFERENCES `weekday` (`ID`);
 
 --
 -- Constraints for table `workshift`
