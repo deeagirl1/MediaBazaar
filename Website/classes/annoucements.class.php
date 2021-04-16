@@ -12,7 +12,7 @@ class Annoucements
     }
     public function SetTitle(string $title)
     {
-        $this->$title = $title;
+        $this->title = $title;
     }
     public function GetDescription() 
     {
@@ -20,7 +20,7 @@ class Annoucements
     }
     public function SetDescription(string $description)
     {
-        $this->$description = $description;
+        $this->description = $description;
     }
     
     public function GetPostDate() 
@@ -29,14 +29,14 @@ class Annoucements
     }
     public function SetPostDate($postDate)
     {
-        $this->$postDate = $postDate;
+        $this->postDate = $postDate;
     }
 
-    public function __constructor(string $title, string $description, $postDate)
+    public function __construct(string $title, string $description, $postDate)
     {
-        $this->title = "sadsadasdsa";
-        $this->description = "sadsadasda";
-        $this->postDate = "asdsadas";
+        $this->title = $title;
+        $this->description = $description;
+        $this->postDate = $postDate;
     }
     
 }

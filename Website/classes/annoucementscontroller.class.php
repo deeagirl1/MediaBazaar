@@ -26,8 +26,9 @@ class AnnoucementsController extends dbh
          if ($sth->rowCount() > 0) {
            // output data of each row
            while($row = $sth->fetch(PDO::FETCH_ASSOC)) {
-            //array_push($annoucements, new Annoucements($row["Title"],$row["Description"],$row['PostDate']));
-            array_push($annoucements, new Annoucements("Title","Description",'PostDate')); 
+            //echo "".$row["Title"] . $row["Description"] . $row['PostDate']."";
+            array_push($annoucements, new Annoucements($row["Title"],$row["Description"],$row['PostDate']));
+            //array_push($annoucements, new Annoucements("Title","Description",'PostDate')); 
           }
            return $annoucements;
          } else {
