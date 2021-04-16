@@ -4,13 +4,12 @@
     private $sender;
     private $topic;
     private $text;
-    private $dateTime;
  
     public function GetSender() : string
   {
      return $this->sender;
   }
-    public function SetSender(string $name) 
+    public function SetSender(string $sender) 
   {
     $this->$sender = $sender;
   }
