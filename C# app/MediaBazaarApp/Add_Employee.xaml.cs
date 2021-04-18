@@ -31,6 +31,9 @@ namespace MediaBazaarApp
                 this.cbx_Contract.ItemsSource = this.company.Contracts;
                 this.cbx_Department.ItemsSource = this.company.Departments;
                 this.cbx_Status.ItemsSource = this.company.Statuses;
+                this.cbx_Status.SelectedIndex = 1;
+                this.cbx_Department.SelectedIndex = 0;
+                this.cbx_Contract.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -41,10 +44,9 @@ namespace MediaBazaarApp
 
         private void btn_AddEmployee_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
-
+                
                 Address address = new Address(tb_Country.Text, tb_City.Text, tb_Street.Text, tb_StreetNr.Text, tb_zipCode.Text, tb_AdditionalInfo.Text);
                 worker = new ShopWorker();
                 this.worker.HomeAddress = address;
@@ -73,13 +75,18 @@ namespace MediaBazaarApp
                 this.worker.Contract = ((Contract)this.cbx_Contract.SelectedItem);
                 this.worker.Status = ((Status)this.cbx_Status.SelectedItem);
 
-                this.company.ShopWorkers.Add(worker);
+                string password = this.company.ShopWorkers.Add(worker);
+
+                string username = this.worker.Email;
+
+                MessageBox.Show($"Username: {username}, Password: {password}" + "\n Please note them down!");
                 this.Close();
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+               MessageBox.Show(ex.Message);
             }
+
 
 
 

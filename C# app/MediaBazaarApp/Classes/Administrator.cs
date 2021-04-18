@@ -8,6 +8,9 @@ namespace MediaBazaarApp.Classes
 {
     public class Administrator : Person
     {
+        public Administrator(string firstName, string lastName, string email) :
+          base(firstName, lastName, email)
+        { }
         public Administrator(string firstName, string lastName, string email, string username, string password) :
           base(firstName, lastName, email, username, password)
         { }
