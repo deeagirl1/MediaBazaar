@@ -26,6 +26,7 @@ nav ul{
   float: right;
   margin-right: 20px;
 }
+
 nav ul li{
   display: inline-block;
   line-height: 80px;
@@ -123,14 +124,15 @@ nav ul li a{
       left: 0;
     }
     .container{
-        max-width: 1000px;
-        border-radius: 25px;
-        background: #9a9b9c;
-        padding: 3%;
-        margin: auto;
-        margin-top: 3%;
-        z-index: -1;
-        text-align: center;
+      max-width: 1000px;
+      border-radius: 25px;
+      background: #9a9b9c;
+      padding: 2%;
+      margin: auto;
+      margin-top: 3%;
+      z-index: -1;
+      text-align: center;
+   
       }
 
   }

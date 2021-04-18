@@ -35,6 +35,10 @@ nav ul li a{
   border-radius: 3px;
   text-transform: uppercase;
 }
+nav ul li a:hover{
+  background: #2696ff;
+  transition: .5s;
+}
 /*a:hover{
   background: #2696ff;
   transition: .5s;

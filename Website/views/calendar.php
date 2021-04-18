@@ -85,7 +85,7 @@ $id = $_SESSION['ID'];
                 <th style="text-align:center;" scope="col"></th>
                 <th style="text-align:center;" scope="col">Morning</th>
                 <th style="text-align:center;" scope="col">Afternoon</th>
-                <th style="text-align:center;" scope="col">Evening</th>
+                <th style="text-align:center;" scope="col">Night</th>
             </tr>
         </thead>
         <tbody>

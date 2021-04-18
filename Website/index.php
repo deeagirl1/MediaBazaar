@@ -22,8 +22,10 @@ require('phpScripts/isSessionValid.php');
         <li><a href="index.php?page=myaccount">My Account</a></li>
         <li><a href="index.php?page=calendar">Your Schedule</a></li>
         <li><a href="index.php?page=contact">Contact</a></li>
+        <li><a><?php require('phpScripts/showName.php')?></a></li>
         <li><a href="index.php?page=logout">Logout</a></li>
-      </ul>
+    </ul>
+  
     </nav>
     <?php 
             $requestedPage = 'views/annoucements.php';
