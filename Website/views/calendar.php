@@ -50,6 +50,11 @@ $id = $_SESSION['ID'];
     $test = new UserView();
     //echo $_SESSION['id'];
     $show = $test->getShifts($id, $startDate, $endDate);
+
+    foreach($show as $var){
+        echo "<br>".$var['date']."<br>";
+    }
+
     $result = array();
     for ($i = 0; $i < 7; $i++) {
         $result[$i] = array(false, false, false);

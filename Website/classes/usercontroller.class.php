@@ -28,12 +28,12 @@ class UserController extends Dbh{
          $result['LastName'] ,$result['Street'], $result['StreetNumber'],$result['ZipCode'],
          $result['City'],$result['Country'],$result['Password'], $result['BirthDate'],$result['HireDate'],
          $result['LastWorkingDay'],$result['Wage'], $result['AccountNumber'],$result['Department'],
-         $result['ContractFixed'] ,$result['ContractHours'], $result['NightShifts'],$this->GetShifhts($id));
+         $result['ContractFixed'] ,$result['ContractHours'], $result['NightShifts'],$this->GetShifhtPrefernces($id));
       }
       else {return null;}
   }
 
-  private function GetShifhts($id){
+  private function GetShifhtPrefernces($id){
     $sql = "SELECT s.Day FROM shiftpreference s INNER JOIN employee e ON s.Employee = e.ID WHERE e.ID = :id";
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute([':id' => $id ]);
@@ -73,12 +73,14 @@ class UserController extends Dbh{
         INNER JOIN workshift AS ws 
         ON ws.ID = ea.ShiftID 
       WHERE ea.EmployeeID = ?
-        AND ws.Date >= ?
-        AND ws.Date <= ?
-      ORDER BY ws.Date ASC";
+        AND (ws.Date BETWEEN ? AND ?)
+        ORDER BY ws.Date ASC";
+    
+    $begin = date_format($startDate, "Y-m-d 00:00:00");
+    $end = date_format($endDate, "Y-m-d 23:59:59");
 
     $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$id, date_format($startDate, "Y-m-d"), date_format($endDate, "Y-m-d")]);
+    $stmt->execute([$id, $begin , $end]);
     $results = $stmt->fetchAll();
     return $results;
   }
