@@ -8,8 +8,8 @@ namespace MediaBazaarApp.Classes
 {
     public class Manager : Person
     {
-        public Manager(string firstName, string lastName, string email, string username, string password) :
-           base(firstName, lastName, email, username, password)
+        public Manager(string firstName, string lastName, string email) :
+           base(firstName, lastName, email)
         { }
         public Manager(int id, string firstName, string lastName, string email,string username, string password) :
             base(id, firstName, lastName, email, username, password)

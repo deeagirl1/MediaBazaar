@@ -70,7 +70,7 @@ namespace MediaBazaarApp
             }
         }
 
-        public bool ExecuteQuery(string sql, MySqlParameter[] prms)
+        public void ExecuteQuery(string sql, MySqlParameter[] prms)
         {
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
@@ -83,9 +83,7 @@ namespace MediaBazaarApp
                         cmd.Parameters.Add(p);
                     }
                 }
-                if (cmd.ExecuteNonQuery() > 0)
-                    return true;
-                return false;
+                cmd.ExecuteNonQuery();
             }
         }
 

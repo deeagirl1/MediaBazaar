@@ -18,7 +18,7 @@ require_once("../classes/usercontroller.class.php");
       
       
       $messages->SendMessage(new Contact($sender->GetID(),$topic,$message));
-      echo "<script>alert('Succesfull!')</script>";
+      echo "<script>alert('Succesfull!'); document.location='../index.php?page=contact';</script>";
     }
     else 
     {

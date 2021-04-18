@@ -1,5 +1,7 @@
 <?php
 include '../includes/class-autoload.inc.php';
+require_once('../classes/usercontroller.class.php');
+
 
 //check if the data from the login form was submitted, isset() will check if the data exists.
 if ( !isset($_POST['username'], $_POST['password']) ) {
@@ -25,6 +27,9 @@ $controller = new UserController();
         else
         {
             echo "<script>alert('Invalid credentials supplied'); document.location='../login.php'; </script>";    
-        }
-    }     
+        } 
+       
+    } 
+    
+    
 ?>

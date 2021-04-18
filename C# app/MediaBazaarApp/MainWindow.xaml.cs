@@ -195,23 +195,23 @@ namespace MediaBazaarApp
                 string firstName = tb_FirstName.Text;
                 string lastName = tb_LastName.Text;
                 string email = tb_Email.Text;
-                string username = firstName.Substring(0, 3).ToLower() + lastName.Substring(0, 3).ToLower() + rnd.Next(10,99);
-                string password = GeneratePasswords();
+                string username = email;
+                string password = "";
+                
 
                 AccountManager account = new AccountManager();
 
 
                 if ((bool)rb_Adminstrator.IsChecked)
                 {
-                    account.Add(new Administrator(firstName, lastName, email, username, password));
-                    System.Windows.Forms.MessageBox.Show($"Username: {username}, Password: {password}" + "\n Please note them down!");
+                    password = account.Add(new Administrator(firstName, lastName, email));
                 }
-
                 else if ((bool)rb_Manager.IsChecked)
                 {
-                    account.Add(new Manager(firstName, lastName, email, username, password));
-                    System.Windows.Forms.MessageBox.Show($"Username: {username}, Password: {password}" + "\n Please note them down!");
+                    password = account.Add(new Manager(firstName, lastName, email));
                 }
+
+                MessageBox.Show($"Username: {username}, Password: {password}" + "\n Please note them down!");
 
             }
             catch (Exception)
@@ -221,19 +221,29 @@ namespace MediaBazaarApp
         }
 
 
-        private static string GeneratePasswords()
-        {
-            int lenght = 8;
-            char[] passwordGenerated = new char[lenght];
-            Random rand = new Random();
+       
 
-            for (int i = 0; i < lenght; i++)
+        private void btn_Search_Click(object sender, RoutedEventArgs e)
+        {
+            string name = tb_Search.Text;
+            this.employees = this.company.ShopWorkers.ToList();
+            this.employees = FindPattern(name,employees);
+            this.lvShopWorkers.ItemsSource = this.employees;
+
+        }
+
+        private List<ShopWorker> FindPattern(string name, List<ShopWorker> workers)
+        {
+            List<ShopWorker> temp = new List<ShopWorker>();
+            foreach (ShopWorker worker in workers)
             {
-                var passCharacter = rand.Next(65, 91);
-                passwordGenerated[i] = (char)passCharacter;
+                if (worker.ToString().Contains(name))
+                {
+                    temp.Add(worker);
+                    
+                }
             }
-            var finishedPassword = new String(passwordGenerated);
-            return finishedPassword;
+            return temp;
         }
     }
 }

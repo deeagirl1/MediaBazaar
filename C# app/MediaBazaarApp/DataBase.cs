@@ -13,21 +13,21 @@ namespace MediaBazaarApp
         private string uid;
         private string password;
 
-        //public DataBase()
-        //{
-        //    server = "localhost";
-        //    dbi = "MediaBazaar";
-        //    uid = "root";
-        //    password = "";
-        //}
-
         public DataBase()
         {
-            server = "studmysql01.fhict.local";
-            dbi = "dbi454066";
-            uid = "dbi454066";
-            password = "7j7eK4cg";
+            server = "localhost";
+            dbi = "MediaBazaar";
+            uid = "root";
+            password = "";
         }
+
+        //public DataBase()
+        //{
+        //    server = "studmysql01.fhict.local";
+        //    dbi = "dbi454066";
+        //    uid = "dbi454066";
+        //    password = "7j7eK4cg";
+        //}
 
         public override string ToString()
         {
