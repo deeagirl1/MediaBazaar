@@ -202,6 +202,33 @@
 
             </TabItem>
 
+            <TabItem Header="Messages">
+                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="41"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <ListView x:Name="lvMessages" ItemsSource="{Binding messages}" Grid.Row="1" Margin="19,10,54,0" Height="644" HorizontalAlignment="Stretch" VerticalAlignment="Top" MouseDoubleClick="lvMessages_MouseDoubleClick" >
+                        <ListView.View>
+                            <GridView >
+                                <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="100">ID</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Topic}" Width="200">Topic</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Sender.FullName}" Width="200">Sender</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding DateTime}" Width="200">Time</GridViewColumn>
+                            </GridView>
+
+                        </ListView.View>
+                    </ListView>
+                    <Button x:Name="btnRefreshMessages" Grid.ColumnSpan="2" Content="Refresh" HorizontalAlignment="Left" Margin="1020,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="39" Click="btnRefreshMessages_Click"/>
+
+                </Grid>
+            </TabItem>
 
         </TabControl>
     </Grid>

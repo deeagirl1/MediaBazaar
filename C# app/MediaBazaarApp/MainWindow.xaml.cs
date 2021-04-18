@@ -41,6 +41,7 @@ namespace MediaBazaarApp
 
                 this.employees = this.company.ShopWorkers.ToList();
                 this.lvShopWorkers.ItemsSource = this.employees;
+                this.lvMessages.ItemsSource = this.company.Messages.ToList();
                 this.lblUserString.Content = $"Hello , {person.FirstName}";
             }
             catch(Exception ex)
@@ -244,6 +245,31 @@ namespace MediaBazaarApp
                 }
             }
             return temp;
+        }
+
+        private void btnRefreshMessages_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                this.lvMessages.ItemsSource = this.company.Messages.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void lvMessages_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                Message message = (Message)this.lvMessages.SelectedItem;
+                MessageBox.Show(message.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

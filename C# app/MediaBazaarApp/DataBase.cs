@@ -24,9 +24,9 @@ namespace MediaBazaarApp
         //public DataBase()
         //{
         //    server = "studmysql01.fhict.local";
-        //    dbi = "dbi454066";
-        //    uid = "dbi454066";
-        //    password = "7j7eK4cg";
+        //    dbi = "dbi453277";
+        //    uid = "dbi453277";
+        //    password = "lazytown";
         //}
 
         public override string ToString()

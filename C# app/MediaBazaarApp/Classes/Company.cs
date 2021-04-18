@@ -11,22 +11,19 @@ namespace MediaBazaarApp.Classes
     {
         public readonly List<Department> Departments = new List<Department>();
         public readonly AccountManager AccountManager = new AccountManager();
+        public readonly MessageCollection Messages = new MessageCollection();
         public readonly ShiftSchedule ShiftSchedule = new ShiftSchedule();
         public readonly List<Contract> Contracts = new List<Contract>();
         public readonly EmployeeList ShopWorkers= new EmployeeList();
         public readonly List<Status> Statuses = new List<Status>();
         public readonly Statistics Statistics = new Statistics();
         public readonly List<Shift> Shifts = new List<Shift>();
-
-        
-
         public Company()
         {
             this.getDepartments();
             this.getContracts();
             this.getStatuses();
         }
-
         public Department GetDepartmentByID(int ID)
         {
             foreach(Department d in this.Departments)
@@ -36,7 +33,6 @@ namespace MediaBazaarApp.Classes
             }
             return null;
         }
-
         public Contract GetContractByID(int ID)
         {
             foreach (Contract c in this.Contracts)

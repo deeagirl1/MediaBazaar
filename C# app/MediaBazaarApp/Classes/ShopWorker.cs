@@ -29,6 +29,12 @@ namespace MediaBazaarApp.Classes
             }
         }
 
+        public string FullName 
+        {
+            get { return $"{this.FirstName} {this.LastName}"; }
+        }
+
+
 
         public ShopWorker(int id, string firstName, string lastName, string email, DateTime birthDate, DateTime hireDate,Address address) : base (id, firstName, lastName, email)
         {
