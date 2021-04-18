@@ -148,6 +148,7 @@ namespace MediaBazaarApp.Classes
             }
             return emp;
         }
+
         public void Edit(ShopWorker shopWorker)
         {
             string sql = " UPDATE person SET Email=@Email WHERE ID = @ID; " +
@@ -178,7 +179,7 @@ namespace MediaBazaarApp.Classes
 
             this.ExecuteQuery(sql, prms);
         }
-        public void Add(ShopWorker shopWorker)
+        public string Add(ShopWorker shopWorker)
         {
             //INSERT INTO `person`(`FirstName`, `LastName`, `Email`, `Username`, `Password`, `AccessLevel`) VALUES('a', 'b', 'c', 'd', 'e', 1); SET @last_id_in_table1 = LAST_INSERT_ID(); INSERT INTO `employee`(`ID`, `BirthDate`, `HireDate`, `Country`, `City`, `Street`, `StreetNumber`, `ZipCode`, `Wage`, `AccountNumber`, `DepartmentID`, `ContractID`) VALUES(@last_id_in_table1, 2020 - 12 - 08, 2020 - 12 - 08, 's', 's', 'e', 75, 'asas', 10, 'dsadsa', 2, 1)
             string sql = " INSERT INTO person(FirstName, LastName, Email, Username, Password, AccessLevel) " +
@@ -189,13 +190,15 @@ namespace MediaBazaarApp.Classes
                          " VALUES (@last_id_in_table1, @BirthDate, @HireDate, @LastWorkingDay, @Country, @City, @Street, @StreetNumber, " +
                          " @AddressAddition, @ZipCode, @Wage, @AccountNumber,@Status, @DepartmentID, @ContractID )";
 
+            string pass = PasswordGenerator.GeneratePassword();
+
             MySqlParameter[] prms = new MySqlParameter[20];
 
             prms[0] = new MySqlParameter("@FirstName", shopWorker.FirstName);
             prms[1] = new MySqlParameter("@LastName", shopWorker.LastName);
             prms[2] = new MySqlParameter("@Email", shopWorker.Email);
             prms[3] = new MySqlParameter("@Username", shopWorker.Email);
-            prms[4] = new MySqlParameter("@Password", "test");
+            prms[4] = new MySqlParameter("@Password", pass);
             prms[5] = new MySqlParameter("@AccessLevel", 1); 
             prms[6] = new MySqlParameter("@BirthDate", shopWorker.BirthDate.Date);
             prms[7] = new MySqlParameter("@HireDate", shopWorker.HireTime.Date);
@@ -215,7 +218,9 @@ namespace MediaBazaarApp.Classes
                 prms[19] = new MySqlParameter("@LastWorkingDay", null);
             else prms[19] = new MySqlParameter("@LastWorkingDay", shopWorker.LastWorkingDay);
 
-            this.ExecuteQuery(sql,prms);
+            this.ExecuteQuery(sql, prms);
+
+            return pass;
         }
         public List<ShopWorker> GetAvailiableEmployees(WorkShift shift)
         {
@@ -228,16 +233,72 @@ namespace MediaBazaarApp.Classes
                     {
                         if (!this.isWeeklyWorkLimitСrossed(s, shift.date))
                         {
-                            if (!isDayliWorkLimitCrossed(s, shift))
-                                shopWorkers.Add(s);
+                            if(!isOnDayOff(s.ID, Convert.ToInt32(shift.date.DayOfWeek)))
+                            {
+                                if(!isDailyWorkLimitCrossed(s, shift))
+                                {
+                                    if (shift.shift.ID == 3)
+                                    {
+                                        if (isAvailibleOnNight(s.ID))
+                                        {
+                                            shopWorkers.Add(s);
+                                        }
+                                    }
+                                    else shopWorkers.Add(s);
+                                }
+                                
+                            }
                         }
-
                     }
                 }
             }
             return shopWorkers;
         }
-        private bool isDayliWorkLimitCrossed(ShopWorker worker, WorkShift shift)
+        private bool isOnDayOff(int id, int day)
+        {
+            List<int> days = new List<int>();
+            string sql = "SELECT s.Day FROM shiftpreference s INNER JOIN " +
+                         " employee e ON s.Employee = e.ID WHERE e.ID = @ID";
+
+            MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
+            MySqlDataReader reader = null;
+            cmd.Parameters.Add(new MySqlParameter("@ID", id));
+            try
+            {
+                reader = this.OpenExecuteReader(cmd);
+                while (reader.Read())
+                {
+                    days.Add(Convert.ToInt32(reader["Day"]));
+                }
+            }
+            finally
+            {
+                this.CloseExecuteReader(reader);
+            }
+            foreach(int d in days)
+            {
+                if (d == day)
+                    return true;
+            }
+            return false;
+        }
+
+        private bool isAvailibleOnNight(int id)
+        {
+            string sql = "SELECT NightShifts FROM Employee WHERE ID = @ID";
+
+            MySqlParameter[] prms = new MySqlParameter[1];
+
+            prms[0] = new MySqlParameter("@ID", id);
+
+            int result = Convert.ToInt32(this.ReadScalar(sql, prms));
+
+            if (result == 0)
+                return false;
+            else return true;
+        }
+
+        private bool isDailyWorkLimitCrossed(ShopWorker worker, WorkShift shift)
         {
             int shiftType = 1;
             switch (shift.shift.ID)
@@ -270,6 +331,7 @@ namespace MediaBazaarApp.Classes
                 return false;
             return true;
         }
+
         private bool isWeeklyWorkLimitСrossed(ShopWorker worker, DateTime date)
         {
             string sql = "select Count(*) from employeeassignment " +

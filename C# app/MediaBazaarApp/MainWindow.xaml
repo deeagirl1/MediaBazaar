@@ -8,7 +8,11 @@
         SizeToContent="WidthAndHeight"
         Title="MainWindow" Height="760.466" Width="1143.534" ResizeMode="CanResize">
     <Grid>
-        <TabControl SelectionChanged="TabControl_SelectionChanged">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="397*"/>
+            <RowDefinition Height="332*"/>
+        </Grid.RowDefinitions>
+        <TabControl SelectionChanged="TabControl_SelectionChanged" Grid.RowSpan="2">
             <TabItem Header="Employees">
                 <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
@@ -30,7 +34,7 @@
                             <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="1" VerticalAlignment="Top" Height="27" Margin="6,0,4,0">
-                            <Button x:Name="btn_Search" Content="Search" VerticalAlignment="Top" HorizontalAlignment="Left" Height="25" Click="btn_Refresh_Click"  Width="90" Margin="2,0,-2,0"/>
+                            <Button x:Name="btn_Search" Content="Search" VerticalAlignment="Top" HorizontalAlignment="Left" Height="25" Click="btn_Search_Click"  Width="90" Margin="2,0,-2,0"/>
                         </StackPanel>
                         <StackPanel Grid.Row="1" VerticalAlignment="Center">
 
@@ -67,7 +71,7 @@
 
 
                     <Grid Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Margin="-2,0,2,0">
-                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="20" TextWrapping="Wrap" Margin="19,10,101,0" />
+                        <TextBox x:Name="tb_Search"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="20" TextWrapping="Wrap" Margin="19,10,101,0" />
 
                     </Grid>
 
@@ -133,13 +137,13 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Label Content="Sunday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"   />
-                        <Label Content="Monday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="49,0,48,0" />
-                        <Label Content="Tuesday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" />
-                        <Label Content="Wednesday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" />
-                        <Label Content="Thursday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4" />
-                        <Label Content="Friday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="5" />
-                        <Label Content="Saturday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="6" />
+                        <Label Content="Sunday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Visibility="Hidden"   />
+                        <Label Content="Monday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="49,0,48,0" Visibility="Hidden" />
+                        <Label Content="Tuesday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Visibility="Hidden" />
+                        <Label Content="Wednesday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Visibility="Hidden" />
+                        <Label Content="Thursday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4" Visibility="Hidden" />
+                        <Label Content="Friday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="5" Visibility="Hidden" />
+                        <Label Content="Saturday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="6" Visibility="Hidden" />
                         <Grid Grid.Row="1"  x:Name="calendarGrid" Grid.ColumnSpan="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -179,7 +183,7 @@
             </TabItem>
 
             <TabItem Header="Users">
-                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,-6,0,0">
+                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,1,2,-1">
 
 
                     <TextBox x:Name="tb_FirstName"  HorizontalAlignment="Center" VerticalAlignment="Center"  Height="26" Margin="384,131,426,544" TextWrapping="Wrap"  Width="320" Grid.Column="3"/>
@@ -188,10 +192,10 @@
                     <Label Content="First Name:" FontSize="20" HorizontalAlignment="Center" Margin="384,77,426,584" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320" Grid.Column="3"/>
                     <Label Content="Last Name:" FontSize="20" HorizontalAlignment="Center" Margin="384,189,426,472" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320" Grid.Column="3"/>
                     <Label Content="Email:" FontSize="20" HorizontalAlignment="Center" Margin="384,295,426,366" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320" Grid.Column="3"/>
-                    <RadioButton x:Name="rb_Adminstrator" FontSize="20" Margin="384,451,606,230" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.494,-0.93" Height="26" Width="140">Administrator</RadioButton>
+                    <RadioButton x:Name="rb_Adminstrator" FontSize="20" Margin="384,451,606,230" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.494,-0.93" Height="26" Width="140" IsChecked="True">Administrator</RadioButton>
                     <RadioButton x:Name="rb_Manager" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="606,451,426,230" RenderTransformOrigin="0.43,-1.026" Height="26" Width="98">Manager</RadioButton>
 
-                    <Button  x:Name= "btn_AddNewUser" Content="Add" FontSize="20" HorizontalAlignment="Center" Margin="384,520,426,117" VerticalAlignment="Center" Height="70" Click="btnAddNewUser_Click" Width="320"/>
+                    <Button  x:Name= "btn_AddNewUser" Content="Add" FontSize="20" HorizontalAlignment="Center" Margin="384,512,427,124" VerticalAlignment="Center" Height="70" Click="btnAddNewUser_Click" Width="320"/>
                     <Label Content="Status:" FontSize="20" HorizontalAlignment="Center" Margin="384,400,426,261" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320" Grid.Column="3"/>
 
                 </Grid>

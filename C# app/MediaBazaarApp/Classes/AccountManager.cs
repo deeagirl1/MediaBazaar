@@ -77,10 +77,12 @@ namespace MediaBazaarApp.Classes
                 this.ExecuteQuery(sql, prms);
         }
 
-        public void Add(Person person)
+        public string Add(Person person)
         {
             string sql = " INSERT INTO person(FirstName, LastName, Email, Username, Password, AccessLevel) " +
                          " VALUES (@FirstName, @LastName, @Email, @Username, @Password, @AccessLevel); ";
+
+            string pass = PasswordGenerator.GeneratePassword();
 
             MySqlParameter[] prms = new MySqlParameter[6];
 
@@ -93,11 +95,16 @@ namespace MediaBazaarApp.Classes
             prms[0] = new MySqlParameter("@FirstName", person.FirstName);
             prms[1] = new MySqlParameter("@LastName", person.LastName);
             prms[2] = new MySqlParameter("@Email", person.Email);
-            prms[3] = new MySqlParameter("@Username", person.Username);
-            prms[4] = new MySqlParameter("@Password", person.Password);
+            prms[3] = new MySqlParameter("@Username", person.Email);
+            prms[4] = new MySqlParameter("@Password", pass);
             prms[5] = new MySqlParameter("@AccessLevel", accessLevel);
 
             this.ExecuteQuery(sql, prms);
+
+            return pass;
         }
+
+
+        
     }
 }

@@ -131,7 +131,7 @@ namespace MediaBazaarApp.Classes
                             //DataContext = new WorkShift(new DateTime(indexYear, indexMonth, i))
                         };
                         buttons[j].Click += Calendar_Button_Click;
-                        buttons[j].Background = Brushes.LightGreen;
+                        buttons[j].Background = Brushes.Yellow;
                         switch (j)
                         {
                             case 0:
@@ -161,7 +161,7 @@ namespace MediaBazaarApp.Classes
                                     if (w.AssignedEmployees.Count > 0)
                                     {
                                         buttons[j].Content = $"Morning  {w.AssignedEmployees.Count}";
-                                        buttons[j].Background = Brushes.Yellow;
+                                        buttons[j].Background = Brushes.SpringGreen;
                                     }
                                 }
                                 else if (j == 1 && w.shift.ID == 2)
@@ -171,7 +171,7 @@ namespace MediaBazaarApp.Classes
                                     if (w.AssignedEmployees.Count > 0)
                                     {
                                         buttons[j].Content = $"Day  {w.AssignedEmployees.Count}";
-                                        buttons[j].Background = Brushes.Yellow;
+                                        buttons[j].Background = Brushes.SpringGreen;
                                     }  
                                 }
                                 else if (j == 2 && w.shift.ID == 3)
@@ -180,14 +180,15 @@ namespace MediaBazaarApp.Classes
                                     if (w.AssignedEmployees.Count > 0)
                                     {
                                         buttons[j].Content = $"Night  {w.AssignedEmployees.Count}";
-                                        buttons[j].Background = Brushes.Yellow;
+                                        buttons[j].Background = Brushes.SpringGreen;
                                     }
                                 }
                             }
                         }
                     }
                 }
-
+                DateTime dateValue = new DateTime(this.indexYear, this.indexMonth, i);
+                string dayOfWeek = dateValue.ToString("dddd");
                 
                 Grid grid = new Grid();
                 grid.Margin = new Thickness(2);
@@ -205,7 +206,14 @@ namespace MediaBazaarApp.Classes
                 lbl.FontSize = 15;
                 lbl.Padding = new Thickness(5);
                 lbl.Content = i;
+                Label weekday = new Label();
+                weekday.HorizontalContentAlignment = HorizontalAlignment.Center;
+                weekday.VerticalAlignment = VerticalAlignment.Top;
+                weekday.FontSize = 15;
+                weekday.Padding = new Thickness(5);
+                weekday.Content = dayOfWeek;
                 sPanel.Children.Add(lbl);
+                sPanel.Children.Add(weekday);
                 grid.Children.Add(sPanel);
                 Grid.SetRow(sPanel, 0);
 

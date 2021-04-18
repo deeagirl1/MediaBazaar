@@ -75,6 +75,12 @@ namespace MediaBazaarApp.Classes
             throw new NotImplementedException();
         }
 
-        
+        public override string ToString()
+        {
+            return $"{ID}, {FirstName}, {LastName}, {Email}, {BirthDate.ToShortDateString()}, {HireTime.ToShortDateString()}, {LastWorkingDay.ToShortDateString()}," +
+                   $"{HomeAddress}, {Contract.ToString()}, {WorksAt.Name}, {Status.Name}";
+        }
+
+
     }
 }

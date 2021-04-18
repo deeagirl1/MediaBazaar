@@ -23,7 +23,6 @@ namespace MediaBazaarApp
         private Classes.Calendar calendar;
         private Person person;
         private Company company;
-
         private List<ShopWorker> employees;
         public ManagerWindow(Company company, Person person)
         {
@@ -117,6 +116,7 @@ namespace MediaBazaarApp
 
         private void btnGetInfo1_Click(object sender, RoutedEventArgs e)
         {
+            
             try
             {
                 DateTime date = Convert.ToDateTime(this.dpDate.SelectedDate.Value.Date);

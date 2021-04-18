@@ -122,6 +122,7 @@
     <Compile Include="Classes\Department.cs" />
     <Compile Include="Classes\EmployeeSort.cs" />
     <Compile Include="Classes\ISalary.cs" />
+    <Compile Include="Classes\PasswordGenerator.cs" />
     <Compile Include="Classes\Shift.cs" />
     <Compile Include="Classes\ShiftSchedule.cs" />
     <Compile Include="Classes\ShopWorker.cs" />
