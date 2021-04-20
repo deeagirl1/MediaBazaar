@@ -142,6 +142,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Depot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditWorkShift.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -159,6 +163,9 @@
     </Compile>
     <Compile Include="DataBase.cs" />
     <Compile Include="DBManager.cs" />
+    <Compile Include="Depot.xaml.cs">
+      <DependentUpon>Depot.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditWorkShift.xaml.cs">
       <DependentUpon>EditWorkShift.xaml</DependentUpon>
     </Compile>
