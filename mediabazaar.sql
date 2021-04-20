@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2021 at 12:09 PM
+-- Generation Time: Apr 16, 2021 at 03:02 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -40,6 +40,48 @@ INSERT INTO `accesslevel` (`ID`, `Name`) VALUES
 (2, 'Admin'),
 (1, 'Employee'),
 (3, 'Manager');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `annoucements`
+--
+
+CREATE TABLE `annoucements` (
+  `ID` int(11) NOT NULL,
+  `Title` tinytext NOT NULL,
+  `Description` text NOT NULL,
+  `PostDate` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `annoucements`
+--
+
+INSERT INTO `annoucements` (`ID`, `Title`, `Description`, `PostDate`) VALUES
+(1, 'Test', 'Test', '2021-04-16 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contactmessages`
+--
+
+CREATE TABLE `contactmessages` (
+  `ID` int(11) NOT NULL,
+  `Sender` int(11) NOT NULL,
+  `Topic` tinytext NOT NULL,
+  `Text` text NOT NULL,
+  `DateTime` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contactmessages`
+--
+
+INSERT INTO `contactmessages` (`ID`, `Sender`, `Topic`, `Text`, `DateTime`) VALUES
+(1, 41, 'Test', 'test', '2021-04-15 20:57:52'),
+(2, 39, 'Text', 'text\r\n', '2021-04-15 21:40:45');
 
 -- --------------------------------------------------------
 
@@ -104,22 +146,19 @@ CREATE TABLE `employee` (
   `AccountNumber` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Status` int(11) NOT NULL,
   `DepartmentID` int(11) NOT NULL,
-  `ContractID` int(11) NOT NULL
+  `ContractID` int(11) NOT NULL,
+  `NightShifts` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `employee`
 --
 
-INSERT INTO `employee` (`ID`, `BirthDate`, `HireDate`, `LastWorkingDay`, `Country`, `City`, `Street`, `StreetNumber`, `AddressAddition`, `ZipCode`, `Wage`, `AccountNumber`, `Status`, `DepartmentID`, `ContractID`) VALUES
-(3, '1990-12-14 00:00:00', '2021-03-01 00:00:00', '2021-05-19 12:31:44', 'Netherlands', 'Amsterdam', 'Plateelplaats', 156, '', '2871JA', '12', 'ABN9493948252201', 1, 3, 1),
-(25, '1990-05-30 00:00:00', '2020-05-30 00:00:00', '2021-05-20 12:31:47', 'S', 'S', 'S', 0, '', 'S', '16', 'VBMN321321', 2, 2, 2),
-(26, '1990-05-30 00:00:00', '2020-05-30 00:00:00', '2021-06-25 00:00:00', 'SE', 'S', 'S', 0, '', 'S', '16', 'VBMN321321', 3, 2, 2),
-(30, '1990-05-30 00:00:00', '2020-05-30 00:00:00', '2021-07-15 12:31:22', 'S', 'S', 'S', 0, '', 'S', '16', 'VBMN321321', 1, 2, 2),
-(31, '1990-05-30 00:00:00', '2020-05-30 00:00:00', '0001-01-01 00:00:00', 'S', 'S', 'S', 0, '', 'S', '16', 'VBMN321321', 2, 2, 2),
-(32, '1990-05-30 00:00:00', '2020-05-30 00:00:00', NULL, 'S', 'S', 'S', 0, '', 'S', '16', 'VBMN321321', 2, 2, 2),
-(33, '1990-05-30 00:00:00', '2020-05-30 00:00:00', '2022-01-01 00:00:00', 'Sd', 'Sd', 'Sd', 10, 'sad', 'Sd', '19', 'VBMN321321', 2, 3, 3),
-(34, '1992-01-02 00:00:00', '2021-03-10 00:00:00', NULL, 'Netherlands', 'Eindhoven', 'Steet', 2, '', '', '10', 'sdasadsa', 2, 2, 2);
+INSERT INTO `employee` (`ID`, `BirthDate`, `HireDate`, `LastWorkingDay`, `Country`, `City`, `Street`, `StreetNumber`, `AddressAddition`, `ZipCode`, `Wage`, `AccountNumber`, `Status`, `DepartmentID`, `ContractID`, `NightShifts`) VALUES
+(39, '1995-04-18 00:00:00', '2020-10-14 00:00:00', NULL, 'Indonesia', 'Cibojong', 'Birch Street', 22, '', '23141', '13', '7872364832', 2, 2, 1, 1),
+(40, '1988-06-09 00:00:00', '2021-03-01 00:00:00', '2021-06-01 00:00:00', 'Czech Republic', 'Jablonné', 'Rowland Court', 7, '', '86776', '10', '0643387161', 2, 2, 1, 1),
+(41, '1994-09-23 00:00:00', '2021-04-01 00:00:00', NULL, 'USA', 'Detroit', 'Brookside', 4, 'Michigan', '42343', '5', '4532625841057', 1, 3, 2, 1),
+(42, '1990-12-04 00:00:00', '2020-12-20 00:00:00', '2022-12-31 00:00:00', 'UK', 'London', 'Brick Lane', 12, '', '98672', '16', '543254354235', 2, 2, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -138,21 +177,19 @@ CREATE TABLE `employeeassignment` (
 --
 
 INSERT INTO `employeeassignment` (`ID`, `ShiftID`, `EmployeeID`) VALUES
-(10, 4, 30),
-(6, 5, 25),
-(9, 5, 26),
-(8, 5, 32),
-(11, 8, 3),
-(13, 15, 30),
-(12, 15, 31),
-(14, 29, 34),
-(17, 36, 26),
-(18, 36, 30),
-(19, 37, 26),
-(20, 37, 30),
-(21, 38, 3),
-(23, 38, 33),
-(22, 38, 34);
+(108, 98, 41),
+(109, 99, 41),
+(110, 100, 41),
+(111, 101, 41),
+(112, 102, 39),
+(113, 102, 40),
+(114, 103, 40),
+(115, 104, 40),
+(116, 105, 41),
+(117, 106, 39),
+(118, 107, 39),
+(119, 108, 39),
+(120, 109, 39);
 
 -- --------------------------------------------------------
 
@@ -195,17 +232,34 @@ CREATE TABLE `person` (
 --
 
 INSERT INTO `person` (`ID`, `FirstName`, `LastName`, `Email`, `Username`, `Password`, `AccessLevel`) VALUES
-(1, 'Bohdan', 'Tymofieienko', 'a@b.com', 'bohtym05', 'test', 2),
-(2, 'John', 'Brown', 'jb@mb.com', 'johbro03', 'pass', 3),
-(3, 'Connor', 'Rube', 'cr@n.com', 'conrob08', 'test', 1),
-(25, 'A', 'A', 'A3434', 'A', 'test', 1),
-(26, 'A', 'A', 'A33', 'A33', 'test', 1),
-(28, 'A', 'A', 'A354', 'A354', 'test', 1),
-(30, 'A', 'A', 'A334', 'A334', 'test', 1),
-(31, 'A', 'A', 'A3242334', 'A3242334', 'test', 1),
-(32, 'A', 'A', 'A774', 'A774', 'test', 1),
-(33, 'A', 'A', 'A7fdsf745', 'A7fdsf74', 'test', 1),
-(34, 'George', 'Chan', 'adsa', 'adsa', 'test', 1);
+(35, 'Joyan', 'Jasper', 'jjasper2@mb.com', 'admin1', 'pass', 2),
+(36, 'Darill', 'Skatcher', 'dskatchern@mb.com', 'manager1', 'pass', 3),
+(39, 'Juana', 'Chiommienti', 'jchiommienti1@mb.com', 'jchiommienti1@mb.com', 'test', 1),
+(40, 'Farlay', 'Giamuzzo', 'fgiamuzzoj@mb.com', 'fgiamuzzoj@mb.com', 'test', 1),
+(41, 'Ryan', 'Branham', 'rbranham@mb.com', 'rbranham@mb.com', 'test', 1),
+(42, 'Ryan', 'Harris', 'rharris@mb.com', 'rharris@mb.com', 'test', 1),
+(44, 'John', 'Doe', 'jdoe@mb.com', 'johdoe', 'pass', 2),
+(47, 'John', 'Doe', 'jdoe1@mb.com', 'johdoe61', 'OYBVUJLN', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shiftpreference`
+--
+
+CREATE TABLE `shiftpreference` (
+  `ID` int(11) NOT NULL,
+  `Employee` int(11) NOT NULL,
+  `Day` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shiftpreference`
+--
+
+INSERT INTO `shiftpreference` (`ID`, `Employee`, `Day`) VALUES
+(48, 41, 3),
+(49, 41, 6);
 
 -- --------------------------------------------------------
 
@@ -230,6 +284,30 @@ INSERT INTO `shifttime` (`ID`, `Name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `weekday`
+--
+
+CREATE TABLE `weekday` (
+  `ID` int(11) NOT NULL,
+  `Day` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `weekday`
+--
+
+INSERT INTO `weekday` (`ID`, `Day`) VALUES
+(1, 'Monday'),
+(2, 'Tuesday'),
+(3, 'Wednesday'),
+(4, 'Thursday'),
+(5, 'Friday'),
+(6, 'Saturday'),
+(7, 'Sunday');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `workshift`
 --
 
@@ -244,35 +322,18 @@ CREATE TABLE `workshift` (
 --
 
 INSERT INTO `workshift` (`ID`, `ShiftType`, `Date`) VALUES
-(17, 1, '2021-03-02 07:00:00'),
-(8, 1, '2021-03-10 07:00:00'),
-(16, 1, '2021-03-13 07:00:00'),
-(13, 1, '2021-03-17 07:00:00'),
-(11, 1, '2021-03-21 07:00:00'),
-(4, 1, '2021-03-22 07:00:00'),
-(34, 1, '2021-03-27 07:00:00'),
-(33, 1, '2021-04-09 07:00:00'),
-(23, 1, '2021-05-18 07:00:00'),
-(32, 1, '2021-07-14 07:00:00'),
-(27, 2, '2021-03-02 15:00:00'),
-(28, 2, '2021-03-13 15:00:00'),
-(5, 2, '2021-03-15 15:00:00'),
-(15, 2, '2021-03-18 15:00:00'),
-(36, 2, '2021-03-20 15:00:00'),
-(22, 2, '2021-03-31 10:05:26'),
-(18, 2, '2021-04-03 15:00:00'),
-(19, 2, '2021-04-04 15:00:00'),
-(30, 2, '2021-07-10 15:00:00'),
-(37, 2, '2021-08-10 15:00:00'),
-(38, 2, '2021-12-10 15:00:00'),
-(12, 3, '2021-03-12 23:00:00'),
-(24, 3, '2021-03-17 23:00:00'),
-(26, 3, '2021-03-24 23:00:00'),
-(14, 3, '2021-03-25 23:00:00'),
-(29, 3, '2021-03-26 23:00:00'),
-(20, 3, '2021-03-31 10:05:26'),
-(25, 3, '2021-05-17 23:00:00'),
-(31, 3, '2021-07-16 23:00:00');
+(102, 1, '2021-03-01 07:00:00'),
+(105, 1, '2021-04-12 07:00:00'),
+(98, 1, '2021-04-14 07:00:00'),
+(101, 1, '2021-04-16 07:00:00'),
+(108, 1, '2021-04-28 07:00:00'),
+(104, 2, '2021-04-10 15:00:00'),
+(100, 2, '2021-04-15 15:00:00'),
+(106, 2, '2021-04-23 15:00:00'),
+(107, 2, '2021-04-26 15:00:00'),
+(103, 2, '2021-05-09 15:00:00'),
+(99, 3, '2021-04-14 23:00:00'),
+(109, 3, '2021-04-29 23:00:00');
 
 --
 -- Indexes for dumped tables
@@ -284,6 +345,19 @@ INSERT INTO `workshift` (`ID`, `ShiftType`, `Date`) VALUES
 ALTER TABLE `accesslevel`
   ADD PRIMARY KEY (`ID`),
   ADD UNIQUE KEY `Name` (`Name`);
+
+--
+-- Indexes for table `annoucements`
+--
+ALTER TABLE `annoucements`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `contactmessages`
+--
+ALTER TABLE `contactmessages`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `Sender` (`Sender`);
 
 --
 -- Indexes for table `contract`
@@ -332,11 +406,25 @@ ALTER TABLE `person`
   ADD KEY `AccessLevel` (`AccessLevel`);
 
 --
+-- Indexes for table `shiftpreference`
+--
+ALTER TABLE `shiftpreference`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `Employee` (`Employee`),
+  ADD KEY `Day` (`Day`);
+
+--
 -- Indexes for table `shifttime`
 --
 ALTER TABLE `shifttime`
   ADD PRIMARY KEY (`ID`),
   ADD UNIQUE KEY `Name` (`Name`);
+
+--
+-- Indexes for table `weekday`
+--
+ALTER TABLE `weekday`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `workshift`
@@ -357,6 +445,18 @@ ALTER TABLE `accesslevel`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `annoucements`
+--
+ALTER TABLE `annoucements`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `contactmessages`
+--
+ALTER TABLE `contactmessages`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `contract`
 --
 ALTER TABLE `contract`
@@ -372,7 +472,7 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `employeeassignment`
 --
 ALTER TABLE `employeeassignment`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `employeestatus`
@@ -384,7 +484,13 @@ ALTER TABLE `employeestatus`
 -- AUTO_INCREMENT for table `person`
 --
 ALTER TABLE `person`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `shiftpreference`
+--
+ALTER TABLE `shiftpreference`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `shifttime`
@@ -396,11 +502,17 @@ ALTER TABLE `shifttime`
 -- AUTO_INCREMENT for table `workshift`
 --
 ALTER TABLE `workshift`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `contactmessages`
+--
+ALTER TABLE `contactmessages`
+  ADD CONSTRAINT `contactmessages_ibfk_1` FOREIGN KEY (`Sender`) REFERENCES `person` (`ID`);
 
 --
 -- Constraints for table `employee`
