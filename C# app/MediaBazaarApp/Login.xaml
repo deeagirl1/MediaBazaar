@@ -12,16 +12,16 @@
             <RowDefinition Height="250"/>
             <RowDefinition Height="200*"/>
         </Grid.RowDefinitions>
-        <Label HorizontalAlignment="Center"  FontSize="25" VerticalAlignment="Center">
+        <Label HorizontalAlignment="Center"  FontSize="30" VerticalAlignment="Center" FontFamily="Airstrike" Height="41" Margin="83,19,36,10" Width="273">
             Media Bazaar</Label>
 
-        <StackPanel Grid.Row="1" VerticalAlignment="Center" MaxWidth="200">
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" MaxWidth="200" Height="105" Margin="0,81,0,64">
             <Label>Username</Label>
             <TextBox x:Name="tbEmail"/>
             <Label>Password</Label>
             <TextBox x:Name="tbPassword"/>
         </StackPanel>
 
-        <Button x:Name="btn_login" Grid.Row="2" VerticalAlignment="Bottom" MaxHeight="25" MaxWidth="100" Content="Login" RenderTransformOrigin="0.872,0.5" Click="btn_login_Click" Margin="0,0,0,55" Height="44"></Button>
+        <Button x:Name="btn_login" Grid.Row="2" VerticalAlignment="Bottom" MaxHeight="25" MaxWidth="100" Content="Login" RenderTransformOrigin="0.502,0.745" Click="btn_login_Click" Margin="0,0,0,52" Height="47"></Button>
     </Grid>
 </Window>

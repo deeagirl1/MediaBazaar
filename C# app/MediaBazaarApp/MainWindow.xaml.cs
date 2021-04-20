@@ -27,6 +27,9 @@ namespace MediaBazaarApp
         private Company company;
         private Add_Employee addEmployeeForm;
         private EditEmployee editEmployeeForm;
+        private AddAnnouncement addAnnouncementForm;
+        private EditAnnouncement editAnnouncementForm;
+   
 
         private List<ShopWorker> employees;
         public MainWindow(Company company, Person person)
@@ -42,6 +45,7 @@ namespace MediaBazaarApp
                 this.employees = this.company.ShopWorkers.ToList();
                 this.lvShopWorkers.ItemsSource = this.employees;
                 this.lvMessages.ItemsSource = this.company.Messages.ToList();
+                this.lvAnnouncements.ItemsSource = this.company.Announcements.ToList();
                 this.lblUserString.Content = $"Hello , {person.FirstName}";
             }
             catch(Exception ex)
@@ -265,6 +269,49 @@ namespace MediaBazaarApp
             {
                 Message message = (Message)this.lvMessages.SelectedItem;
                 MessageBox.Show(message.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnRefreshAnnouncements_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                this.lvAnnouncements.ItemsSource = this.company.Announcements.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_AddAnnouncement_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                this.addAnnouncementForm = new AddAnnouncement(this.company);
+                this.addAnnouncementForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void btn_EditAnnouncement_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (this.lvAnnouncements.SelectedItem != null)
+                {
+                    Announcement announcement = ((Announcement)this.lvAnnouncements.SelectedItem);
+                    this.editAnnouncementForm = new EditAnnouncement(this.company, announcement);
+                    this.editAnnouncementForm.Show();
+                }
             }
             catch (Exception ex)
             {
