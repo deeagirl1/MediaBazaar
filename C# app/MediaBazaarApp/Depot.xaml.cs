@@ -23,5 +23,43 @@ namespace MediaBazaarApp
         {
             InitializeComponent();
         }
+
+
+        List<Item> items = new List<Item>();
+        public void AddItem()
+        {
+            items.Add(new Item("item1", "dept1", 100, 200, 3));
+             inventoryListView.ItemsSource = items;
+
+            //Also update database
+        }
+
+
+
+        //Load items from database
+        public void LoadItems()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public class Item
+        {
+            public string Name { get; set; }
+
+            public string Department { get; set; }
+
+            public double CostPrice { get; set; }
+            public double SellingPrice { get; set; }
+            public int Stock { get; set; }
+            public Item(string name, string dept, double cost, double sellingPrice, int stock)
+            {
+                Name = name;
+                Department = dept;
+                CostPrice = cost;
+                SellingPrice = sellingPrice;
+                Stock = stock;
+            }
+        }
     }
 }

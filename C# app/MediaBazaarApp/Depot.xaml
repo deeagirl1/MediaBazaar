@@ -6,7 +6,31 @@
         xmlns:local="clr-namespace:MediaBazaarApp"
         mc:Ignorable="d"
         Title="Depot" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <TabControl>
+        <TabItem Header="Main">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label>Inventory</Label>
+                
+                <!--This is the grid for the inventory Listbox-->
+                <Grid Grid.Row="1">
+                    <ListView Margin="10" x:Name="inventoryListView">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name" Width="230" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="Department" Width="220" DisplayMemberBinding="{Binding Department}" />
+                                <GridViewColumn Header="Cost price" Width="100" DisplayMemberBinding="{Binding CostPrice}" />
+                                <GridViewColumn Header="Selling Price" Width="100" DisplayMemberBinding="{Binding SellingPrice}" />
+                                <GridViewColumn Header="Stock" Width="100" DisplayMemberBinding="{Binding Stock}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Grid>
+        </TabItem>
+    </TabControl>
+    
 </Window>
