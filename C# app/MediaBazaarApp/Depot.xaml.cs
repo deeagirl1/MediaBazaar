@@ -19,22 +19,30 @@ namespace MediaBazaarApp
     /// </summary>
     public partial class Depot : Window
     {
+        List<Item> InventoryItems = new List<Item>();
+
         public Depot()
         {
             InitializeComponent();
         }
 
+        public void Clear()
+        {
+            inventoryListView.Items.Clear();
+        }
 
-        List<Item> items = new List<Item>();
         public void AddItem()
         {
-            items.Add(new Item("item1", "dept1", 100, 200, 3));
-             inventoryListView.ItemsSource = items;
+            InventoryItems.Add(new Item("item1", "dept1", 100, 200, 3));
+            inventoryListView.ItemsSource = InventoryItems;
 
             //Also update database
         }
 
-
+        public void SetItems(Item[] items)
+        {
+            inventoryListView.ItemsSource = items;
+        }
 
         //Load items from database
         public void LoadItems()
