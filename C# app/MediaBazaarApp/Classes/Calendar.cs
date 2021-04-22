@@ -138,22 +138,22 @@ namespace MediaBazaarApp.Classes
                             case 0:
                                 buttons[j].Content = "Morning";
                                 //buttons[j].Background = Brushes.Yellow;
-                                buttons[j].DataContext = new DateTime(indexYear, indexMonth, day, 7, 0, 0);
+                                buttons[j].DataContext = new DateTime(indexYear, indexMonth, i - (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek) + 1, 7, 0, 0);
                                 break;
                             case 1:
                                 buttons[j].Content = "Afternoon";
                                 //buttons[j].Background = Brushes.White;
-                                buttons[j].DataContext = new DateTime(indexYear, indexMonth, day, 15, 0, 0);
+                                buttons[j].DataContext = new DateTime(indexYear, indexMonth, i - (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek) + 1, 15, 0, 0);
                                 break;
                             case 2:
                                 buttons[j].Content = "Night";
                                 //buttons[j].Background = Brushes.RosyBrown;
-                                buttons[j].DataContext = new DateTime(indexYear, indexMonth, day, 23, 0, 0);
+                                buttons[j].DataContext = new DateTime(indexYear, indexMonth, i - (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek) + 1, 23, 0, 0);
                                 break;
                         }
                         foreach (WorkShift w in this.workShifts)
                         {
-                            if (w.date.Year == indexYear && w.date.Month == indexMonth && w.date.Day == i)
+                            if (w.date.Year == indexYear && w.date.Month == indexMonth && w.date.Day == day)
                             {
 
                                 if (j == 0 && w.shift.ID == 1)
