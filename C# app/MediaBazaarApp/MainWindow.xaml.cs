@@ -31,8 +31,8 @@ namespace MediaBazaarApp
         private List<ShopWorker> employees;
         public MainWindow(Company company, Person person)
         {
-            try
-            {
+            /*try
+            {*/
                 Loaded += OnLoad;
                 InitializeComponent();
                 this.company = company;
@@ -43,24 +43,24 @@ namespace MediaBazaarApp
                 this.lvShopWorkers.ItemsSource = this.employees;
                 this.lvMessages.ItemsSource = this.company.Messages.ToList();
                 this.lblUserString.Content = $"Hello , {person.FirstName}";
-            }
+            /*}
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
+            }*/
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)
         {
-            try
-            {
+            /*try
+            {*/
                 calendar = new Classes.Calendar(this, company.ShiftSchedule.ToList());
                 this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
-            }
+            /*}
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
+            }*/
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

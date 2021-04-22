@@ -110,7 +110,8 @@ namespace MediaBazaarApp.Classes
         {
             Grid mainGrid = (Grid)window.FindName("calendarGrid");
             mainGrid.Children.Clear();
-            for (int i = 1; i < DateTime.DaysInMonth(indexYear, indexMonth) + 1; i++)
+                int day = 1;
+            for (int i = (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek); day < DateTime.DaysInMonth(indexYear, indexMonth) + 1; i++)
             {
                 Button[] buttons = new Button[] { null, null, null };
                 WorkShift[] todaysWorkShifts = new WorkShift[] { null, null, null };
@@ -137,17 +138,17 @@ namespace MediaBazaarApp.Classes
                             case 0:
                                 buttons[j].Content = "Morning";
                                 //buttons[j].Background = Brushes.Yellow;
-                                buttons[j].DataContext = new DateTime(indexYear, indexMonth, i, 7, 0, 0);
+                                buttons[j].DataContext = new DateTime(indexYear, indexMonth, day, 7, 0, 0);
                                 break;
                             case 1:
                                 buttons[j].Content = "Afternoon";
                                 //buttons[j].Background = Brushes.White;
-                                buttons[j].DataContext = new DateTime(indexYear, indexMonth, i, 15, 0, 0);
+                                buttons[j].DataContext = new DateTime(indexYear, indexMonth, day, 15, 0, 0);
                                 break;
                             case 2:
                                 buttons[j].Content = "Night";
                                 //buttons[j].Background = Brushes.RosyBrown;
-                                buttons[j].DataContext = new DateTime(indexYear, indexMonth, i, 23, 0, 0);
+                                buttons[j].DataContext = new DateTime(indexYear, indexMonth, day, 23, 0, 0);
                                 break;
                         }
                         foreach (WorkShift w in this.workShifts)
@@ -187,7 +188,7 @@ namespace MediaBazaarApp.Classes
                         }
                     }
                 }
-                DateTime dateValue = new DateTime(this.indexYear, this.indexMonth, i);
+                DateTime dateValue = new DateTime(this.indexYear, this.indexMonth, i- (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek) +1);
                 string dayOfWeek = dateValue.ToString("dddd");
                 
                 Grid grid = new Grid();
@@ -205,7 +206,7 @@ namespace MediaBazaarApp.Classes
                 lbl.VerticalAlignment = VerticalAlignment.Top;
                 lbl.FontSize = 15;
                 lbl.Padding = new Thickness(5);
-                lbl.Content = i;
+                lbl.Content = day++;
                 Label weekday = new Label();
                 weekday.HorizontalContentAlignment = HorizontalAlignment.Center;
                 weekday.VerticalAlignment = VerticalAlignment.Top;
