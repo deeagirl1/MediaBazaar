@@ -112,6 +112,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Product.cs" />
+    <Compile Include="Classes\ProductCollection.cs" />
     <Compile Include="Popups\AddAnnouncement.xaml.cs">
       <DependentUpon>AddAnnouncement.xaml</DependentUpon>
     </Compile>
