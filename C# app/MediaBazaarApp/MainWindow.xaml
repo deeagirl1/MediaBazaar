@@ -231,6 +231,52 @@
                 </Grid>
             </TabItem>
 
+            <TabItem Header="Announcements">
+                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="41"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <ListView x:Name="lvAnnouncements" ItemsSource="{Binding announcements}" Grid.Row="1" Margin="19,10,10,0" Height="644" HorizontalAlignment="Stretch" VerticalAlignment="Top" >
+                        <ListView.View>
+                            <GridView >
+                                <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="100">ID</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="200">Title</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="200">Description</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding PostDate}" Width="200">DateTime</GridViewColumn>
+                            </GridView>
+
+                        </ListView.View>
+                    </ListView>
+                    <Grid Grid.Column="1" Grid.RowSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="100*"/>
+
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+
+
+
+                            <Button x:Name="btnRefreshAnnouncements" Content="Refresh" HorizontalAlignment="Left" Margin="0,9,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="25" Click="btnRefreshAnnouncements_Click" Grid.Column="1"/>
+
+                            <Button x:Name ="btn_EditAnnouncement" Content="Edit" Height="25" Click="btn_EditAnnouncement_Click"/>
+                            <Button x:Name="btn_AddAnnouncement" Content="Add" Height="25" Click="btn_AddAnnouncement_Click"/>
+
+                        </StackPanel>
+                    </Grid>
+
+
+                </Grid>
+            </TabItem>
+
         </TabControl>
     </Grid>
 </Window>
