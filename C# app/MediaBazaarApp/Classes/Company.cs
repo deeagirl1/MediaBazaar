@@ -9,7 +9,6 @@ namespace MediaBazaarApp.Classes
 {
     public class Company : DBmanager
     {
-        public readonly AnnouncementCollection Announcements = new AnnouncementCollection();
         public readonly List<Department> Departments = new List<Department>();
         public readonly AccountManager AccountManager = new AccountManager();
         public readonly MessageCollection Messages = new MessageCollection();

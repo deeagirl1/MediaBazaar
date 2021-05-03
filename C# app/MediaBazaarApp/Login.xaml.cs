@@ -30,10 +30,10 @@ namespace MediaBazaarApp.Popups
             //this.company.AccountManager.Add(new Administrator(10, "John", "Brown", "email","admin", "pass"));
             //this.company.AccountManager.Add(new Manager(20, "a", "b", "manager","admin", "pass"));
             //this.company.ShopWorkers.Add(new ShopWorker(01, "John", "Brown", "em1", new DateTime(1996, 06, 13), new DateTime(2020, 03, 2),new DateTime(2022,03,2), new Address("Netherlands", "Eindhoven", "Passtor", "59","5612")));
-            //foreach (WorkShift w in this.company.ShiftSchedule.ToList())
-            //{
-            //   // Console.WriteLine(w);
-            //}
+            foreach (WorkShift w in this.company.ShiftSchedule.ToList())
+            {
+                Console.WriteLine(w);
+            }
         }
 
         private void btn_login_Click(object sender, RoutedEventArgs e)

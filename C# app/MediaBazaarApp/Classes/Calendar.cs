@@ -36,15 +36,6 @@ namespace MediaBazaarApp.Classes
             indexMonth = currentTime.Month;
             CurrentViewMode = ViewMode.MONTH;
         }
-        public Calendar(Window window, List<WorkShift> workShifts, DateTime date)
-        {
-            this.window = window;
-            this.workShifts = workShifts;
-            DateTime currentTime = date;
-            indexYear = currentTime.Year;
-            indexMonth = currentTime.Month;
-            CurrentViewMode = ViewMode.MONTH;
-        }
         public int Year
         {
             get { return this.indexYear; }
@@ -119,13 +110,8 @@ namespace MediaBazaarApp.Classes
         {
             Grid mainGrid = (Grid)window.FindName("calendarGrid");
             mainGrid.Children.Clear();
-            int day = 1;
-            int weekDay = Convert.ToInt32(new DateTime(indexYear, indexMonth, 1).DayOfWeek);
-            if (weekDay != 0) weekDay--;
-            else weekDay = 6; 
-
-            //Console.WriteLine(+1);
-            for (int i = weekDay; day < DateTime.DaysInMonth(indexYear, indexMonth) + 1; i++)
+                int day = 1;
+            for (int i = (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek); day < DateTime.DaysInMonth(indexYear, indexMonth) + 1; i++)
             {
                 Button[] buttons = new Button[] { null, null, null };
                 WorkShift[] todaysWorkShifts = new WorkShift[] { null, null, null };
@@ -167,7 +153,7 @@ namespace MediaBazaarApp.Classes
                         }
                         foreach (WorkShift w in this.workShifts)
                         {
-                            if (w.date.Year == indexYear && w.date.Month == indexMonth && w.date.Day == day)
+                            if (w.date.Year == indexYear && w.date.Month == indexMonth && w.date.Day == i)
                             {
 
                                 if (j == 0 && w.shift.ID == 1)
@@ -202,7 +188,7 @@ namespace MediaBazaarApp.Classes
                         }
                     }
                 }
-                DateTime dateValue = new DateTime(this.indexYear, this.indexMonth, day);
+                DateTime dateValue = new DateTime(this.indexYear, this.indexMonth, i- (int)(new DateTime(indexYear, indexMonth, 1).DayOfWeek) +1);
                 string dayOfWeek = dateValue.ToString("dddd");
                 
                 Grid grid = new Grid();
@@ -241,8 +227,6 @@ namespace MediaBazaarApp.Classes
                 Grid.SetRow(sPanel, 1);
                 Grid.SetRow(grid, i / 7);
                 Grid.SetColumn(grid, i % 7);
-                //else Grid.SetColumn(grid, 7 % 8);
-
                 mainGrid.Children.Add(grid);
             }
         }
@@ -254,10 +238,6 @@ namespace MediaBazaarApp.Classes
                 if (btn.DataContext is WorkShift)
                 {
                     WorkShift w = (WorkShift)btn.DataContext;
-                    EditWorkShift editWindow = new EditWorkShift(w);
-                    var win = this.window as MainWindow;
-                    if (this.window is MainWindow)
-                        editWindow.RefreshCalendar += win.RefreshCalendar;
                     if (w.date.Date < DateTime.Now.Date)
                         new WorkShiftWindow(w).Show();
                     else if (w.date.Date == DateTime.Now.Date)
@@ -268,20 +248,16 @@ namespace MediaBazaarApp.Classes
                             new WorkShiftWindow(w).Show();
                         else if (DateTime.Now.Hour >= 23 && w.shift.ID <= 3)
                             new WorkShiftWindow(w).Show();
-                        else { editWindow.Show(); }
+                        else { new EditWorkShift(w).Show(); }
                     }
-                    else { editWindow.Show(); }
+                    else { new EditWorkShift(w).Show(); }
                     
                 }
                 else if(btn.DataContext is DateTime)
                 {
                     DateTime dateTime = (DateTime)btn.DataContext;
-                    NewWorkshiftWindow window = new NewWorkshiftWindow(dateTime);
-                    var win = this.window as MainWindow;
-                    if (this.window is MainWindow)
-                        window.RefreshCalendar += win.RefreshCalendar; 
-                    if (dateTime > DateTime.Now)
-                        window.Show();
+                    if(dateTime > DateTime.Now)
+                        new NewWorkshiftWindow(dateTime).Show();
                 }
             }
             catch(Exception ex)

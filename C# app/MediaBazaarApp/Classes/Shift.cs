@@ -13,10 +13,7 @@ namespace MediaBazaarApp.Classes
         public Shift(int ID)
         {
             this.ID = ID;
-            if(ID == 1) this.Name = "Morning";
-            else if(ID == 2) this.Name = "Day";
-            else if(ID == 3) this.Name = "Night";
-
+            this.Name = Name;
         }
         public Shift(int ID, string Name)
         {

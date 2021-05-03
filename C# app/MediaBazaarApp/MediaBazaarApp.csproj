@@ -116,8 +116,6 @@
       <DependentUpon>Add_Employee.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Address.cs" />
-    <Compile Include="Classes\Announcement.cs" />
-    <Compile Include="Classes\AnnouncementCollection.cs" />
     <Compile Include="Classes\Calendar.cs" />
     <Compile Include="Classes\Company.cs" />
     <Compile Include="Classes\Contract.cs" />
@@ -186,14 +184,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Popups\AddAnnouncement.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Popups\EditAnnouncement.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Popups\EditEmployee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -209,12 +199,6 @@
     </Compile>
     <Compile Include="NewWorkshiftWindow.xaml.cs">
       <DependentUpon>NewWorkshiftWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Popups\AddAnnouncement.xaml.cs">
-      <DependentUpon>AddAnnouncement.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Popups\EditAnnouncement.xaml.cs">
-      <DependentUpon>EditAnnouncement.xaml</DependentUpon>
     </Compile>
     <Compile Include="Popups\EditEmployee.xaml.cs">
       <DependentUpon>EditEmployee.xaml</DependentUpon>

@@ -18,15 +18,10 @@ namespace MediaBazaarApp
     /// <summary>
     /// Interaction logic for NewWorkshiftWindow.xaml
     /// </summary>
-
     public partial class NewWorkshiftWindow : Window
     {
         private WorkShift shift;
         private Company company;
-
-        public delegate void Refresh(DateTime date);
-        public event Refresh RefreshCalendar;
-
         public NewWorkshiftWindow(DateTime date)
         {
             try
@@ -40,8 +35,13 @@ namespace MediaBazaarApp
                 else if (date.Hour == 15) { shiftType = 2; }
                 else if (date.Hour == 23) { shiftType = 3; }
 
-                this.shift = new WorkShift(date, new Shift(shiftType));
+                shift = new WorkShift(date, new Shift(shiftType));
+                //this.lvAvailableEmployees.ItemsSource = this.company.ShopWorkers.ToList();
+                //shift.AssignedEmployees.Add(new ShopWorker(26, "a", "a", "a", "a", "a"));
+                //shift.AssignedEmployees.Add(new ShopWorker(30, "a", "a", "a", "a", "a"));
 
+                //MessageBox.Show(this.company.ShiftSchedule.Add(shift).ToString());
+                //this.lvAssignedEmployees.ite
                 foreach (ShopWorker s in this.company.ShopWorkers.GetAvailiableEmployees(shift))
                 {
                     this.lvAvailableEmployees.Items.Add(s);
@@ -108,8 +108,6 @@ namespace MediaBazaarApp
                     }
                 }
                 this.company.ShiftSchedule.Add(shift);
-                if (RefreshCalendar != null)
-                    RefreshCalendar(this.shift.date);
                 this.Close();
             }
             catch (Exception ex)
