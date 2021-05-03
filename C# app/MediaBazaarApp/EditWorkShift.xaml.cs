@@ -23,6 +23,9 @@ namespace MediaBazaarApp
     {
         Company company;
         WorkShift shift;
+
+        public delegate void Refresh(DateTime date);
+        public event Refresh RefreshCalendar;
         public EditWorkShift(WorkShift shift)
         {
             try
@@ -48,6 +51,7 @@ namespace MediaBazaarApp
                     }
                     else this.lvAvailableEmployees.Items.Add(s);
                 }
+                this.lblWorkshift.Content = this.shift.ToString();
             }
             catch (Exception ex)
             {
@@ -113,6 +117,8 @@ namespace MediaBazaarApp
                     }
                 }
                 this.company.ShiftSchedule.Update(shift);
+                if (RefreshCalendar != null)
+                    RefreshCalendar(this.shift.date);
                 this.Close();
             }
             catch (Exception ex)

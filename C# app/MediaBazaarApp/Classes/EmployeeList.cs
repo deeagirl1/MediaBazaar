@@ -341,16 +341,27 @@ namespace MediaBazaarApp.Classes
 
             MySqlParameter[] prms = new MySqlParameter[3];
 
+            DateTime begin = getDateOfMonday(date.Date);
+            DateTime end = getDateOfMonday(date.Date).AddDays(+6).AddHours(+23).AddMinutes(+59);
+
             prms[0] = new MySqlParameter("@EmployeeID", worker.ID);
-            prms[1] = new MySqlParameter("@StartDate", date.AddDays(-6));
-            prms[2] = new MySqlParameter("@EndDate", date);
-
-
+            prms[1] = new MySqlParameter("@StartDate", begin);
+            prms[2] = new MySqlParameter("@EndDate", end);
 
             int count = Convert.ToInt32(this.ReadScalar(sql, prms));
+            Console.WriteLine(count);
             if (count < worker.Contract.ShiftsCount)
                 return false;
             return true;
+        }
+
+        private DateTime getDateOfMonday(DateTime date)
+        {
+            while(date.DayOfWeek != DayOfWeek.Monday)
+            {
+               date = date.AddDays(-1);
+            }
+            return date;
         }
     }
 }

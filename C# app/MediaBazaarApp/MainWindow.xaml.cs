@@ -27,12 +27,14 @@ namespace MediaBazaarApp
         private Company company;
         private Add_Employee addEmployeeForm;
         private EditEmployee editEmployeeForm;
+        private AddAnnouncement addAnnouncementForm;
+        private EditAnnouncement editAnnouncementForm;
 
         private List<ShopWorker> employees;
         public MainWindow(Company company, Person person)
         {
-            /*try
-            {*/
+            try
+            {
                 Loaded += OnLoad;
                 InitializeComponent();
                 this.company = company;
@@ -43,24 +45,18 @@ namespace MediaBazaarApp
                 this.lvShopWorkers.ItemsSource = this.employees;
                 this.lvMessages.ItemsSource = this.company.Messages.ToList();
                 this.lblUserString.Content = $"Hello , {person.FirstName}";
-            /*}
+
+                this.showAnnouncements();
+            }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }*/
+            }
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)
         {
-            /*try
-            {*/
-                calendar = new Classes.Calendar(this, company.ShiftSchedule.ToList());
-                this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
-            /*}
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }*/
+            this.RefreshCalendar();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -163,15 +159,7 @@ namespace MediaBazaarApp
 
         private void btnRefreshCalendar_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                calendar = new Classes.Calendar(this, company.ShiftSchedule.ToList());
-                this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            this.RefreshCalendar();
         }
 
         private void btn_Sort_Click(object sender, RoutedEventArgs e)
@@ -265,6 +253,78 @@ namespace MediaBazaarApp
             {
                 Message message = (Message)this.lvMessages.SelectedItem;
                 MessageBox.Show(message.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void RefreshCalendar()
+        {
+            try
+            {
+                calendar = new Classes.Calendar(this, company.ShiftSchedule.ToList());
+                this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void RefreshCalendar(DateTime date)
+        {
+            try
+            {
+                calendar = new Classes.Calendar(this, company.ShiftSchedule.ToList(), date);
+                this.lblMonthYear.Content = $"{this.calendar.Year}, {this.calendar.Month}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnRefreshAnnouncements_Click(object sender, RoutedEventArgs e)
+        {
+            this.showAnnouncements();
+        }
+
+        private void btn_EditAnnouncement_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (this.lvAnnouncements.SelectedItem != null)
+                {
+                    Announcement announcement = ((Announcement)this.lvAnnouncements.SelectedItem);
+                    this.editAnnouncementForm = new EditAnnouncement(this.company, announcement);
+                    this.editAnnouncementForm.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_AddAnnouncement_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                this.addAnnouncementForm = new AddAnnouncement(this.company);
+                this.addAnnouncementForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void showAnnouncements()
+        {
+            try
+            {
+                this.lvAnnouncements.ItemsSource = this.company.Announcements.ToList();
             }
             catch (Exception ex)
             {
