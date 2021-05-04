@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2021 at 03:02 PM
+-- Generation Time: May 02, 2021 at 10:36 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -59,7 +59,9 @@ CREATE TABLE `annoucements` (
 --
 
 INSERT INTO `annoucements` (`ID`, `Title`, `Description`, `PostDate`) VALUES
-(1, 'Test', 'Test', '2021-04-16 00:00:00');
+(1, 'Delay', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', '2021-04-16 00:00:00'),
+(2, 'What is Lorem Ipsum?', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', '2021-04-20 17:23:39'),
+(3, 'Test', 'Test', '2021-04-29 09:03:04');
 
 -- --------------------------------------------------------
 
@@ -244,6 +246,44 @@ INSERT INTO `person` (`ID`, `FirstName`, `LastName`, `Email`, `Username`, `Passw
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+  `ID` int(11) NOT NULL,
+  `Name` text NOT NULL,
+  `Department` int(11) NOT NULL,
+  `CostPrice` int(11) NOT NULL,
+  `SellingPrice` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `productstock`
+--
+
+CREATE TABLE `productstock` (
+  `ID` int(11) NOT NULL,
+  `NrInStock` int(11) NOT NULL,
+  `MinThreshold` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `restock`
+--
+
+CREATE TABLE `restock` (
+  `ItemID` int(11) NOT NULL,
+  `AmountRequested` int(11) NOT NULL,
+  `Date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `shiftpreference`
 --
 
@@ -333,7 +373,8 @@ INSERT INTO `workshift` (`ID`, `ShiftType`, `Date`) VALUES
 (107, 2, '2021-04-26 15:00:00'),
 (103, 2, '2021-05-09 15:00:00'),
 (99, 3, '2021-04-14 23:00:00'),
-(109, 3, '2021-04-29 23:00:00');
+(109, 3, '2021-04-29 23:00:00'),
+(110, 3, '2021-04-30 23:00:00');
 
 --
 -- Indexes for dumped tables
@@ -406,6 +447,25 @@ ALTER TABLE `person`
   ADD KEY `AccessLevel` (`AccessLevel`);
 
 --
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `Department` (`Department`);
+
+--
+-- Indexes for table `productstock`
+--
+ALTER TABLE `productstock`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `restock`
+--
+ALTER TABLE `restock`
+  ADD PRIMARY KEY (`ItemID`);
+
+--
 -- Indexes for table `shiftpreference`
 --
 ALTER TABLE `shiftpreference`
@@ -448,7 +508,7 @@ ALTER TABLE `accesslevel`
 -- AUTO_INCREMENT for table `annoucements`
 --
 ALTER TABLE `annoucements`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `contactmessages`
@@ -472,7 +532,7 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `employeeassignment`
 --
 ALTER TABLE `employeeassignment`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT for table `employeestatus`
@@ -485,6 +545,12 @@ ALTER TABLE `employeestatus`
 --
 ALTER TABLE `person`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `shiftpreference`
@@ -502,7 +568,7 @@ ALTER TABLE `shifttime`
 -- AUTO_INCREMENT for table `workshift`
 --
 ALTER TABLE `workshift`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
 -- Constraints for dumped tables
@@ -535,6 +601,13 @@ ALTER TABLE `employeeassignment`
 --
 ALTER TABLE `person`
   ADD CONSTRAINT `person_ibfk_1` FOREIGN KEY (`AccessLevel`) REFERENCES `accesslevel` (`ID`);
+
+--
+-- Constraints for table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `productstock` (`ID`),
+  ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`Department`) REFERENCES `department` (`ID`);
 
 --
 -- Constraints for table `workshift`

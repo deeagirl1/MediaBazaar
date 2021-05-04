@@ -127,6 +127,8 @@
     <Compile Include="Classes\Message.cs" />
     <Compile Include="Classes\MessageCollection.cs" />
     <Compile Include="Classes\PasswordGenerator.cs" />
+    <Compile Include="Classes\Product.cs" />
+    <Compile Include="Classes\ProductCollection.cs" />
     <Compile Include="Classes\Shift.cs" />
     <Compile Include="Classes\ShiftSchedule.cs" />
     <Compile Include="Classes\ShopWorker.cs" />
