@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2021 at 10:36 PM
+-- Generation Time: May 05, 2021 at 01:54 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -253,9 +253,16 @@ CREATE TABLE `product` (
   `ID` int(11) NOT NULL,
   `Name` text NOT NULL,
   `Department` int(11) NOT NULL,
-  `CostPrice` int(11) NOT NULL,
-  `SellingPrice` int(11) NOT NULL
+  `CostPrice` decimal(11,0) NOT NULL,
+  `SellingPrice` decimal(11,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`ID`, `Name`, `Department`, `CostPrice`, `SellingPrice`) VALUES
+(2, 'Chair', 1, '10', '12');
 
 -- --------------------------------------------------------
 
@@ -269,6 +276,33 @@ CREATE TABLE `productstock` (
   `MinThreshold` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `productstock`
+--
+
+INSERT INTO `productstock` (`ID`, `NrInStock`, `MinThreshold`) VALUES
+(2, 10, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `requeststatus`
+--
+
+CREATE TABLE `requeststatus` (
+  `ID` int(11) NOT NULL,
+  `Name` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `requeststatus`
+--
+
+INSERT INTO `requeststatus` (`ID`, `Name`) VALUES
+(1, 'Pending'),
+(2, 'Accepted'),
+(3, 'Rejected');
+
 -- --------------------------------------------------------
 
 --
@@ -276,10 +310,18 @@ CREATE TABLE `productstock` (
 --
 
 CREATE TABLE `restock` (
+  `ID` int(11) NOT NULL,
   `ItemID` int(11) NOT NULL,
   `AmountRequested` int(11) NOT NULL,
-  `Date` date NOT NULL DEFAULT current_timestamp()
+  `Date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `restock`
+--
+
+INSERT INTO `restock` (`ID`, `ItemID`, `AmountRequested`, `Date`) VALUES
+(2, 2, 10, '2021-05-05 10:42:34');
 
 -- --------------------------------------------------------
 
@@ -460,10 +502,17 @@ ALTER TABLE `productstock`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `requeststatus`
+--
+ALTER TABLE `requeststatus`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `restock`
 --
 ALTER TABLE `restock`
-  ADD PRIMARY KEY (`ItemID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `ItemID` (`ItemID`);
 
 --
 -- Indexes for table `shiftpreference`
@@ -550,7 +599,19 @@ ALTER TABLE `person`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `requeststatus`
+--
+ALTER TABLE `requeststatus`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `restock`
+--
+ALTER TABLE `restock`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `shiftpreference`
@@ -606,8 +667,26 @@ ALTER TABLE `person`
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `productstock` (`ID`),
   ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`Department`) REFERENCES `department` (`ID`);
+
+--
+-- Constraints for table `productstock`
+--
+ALTER TABLE `productstock`
+  ADD CONSTRAINT `productstock_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `product` (`ID`);
+
+--
+-- Constraints for table `restock`
+--
+ALTER TABLE `restock`
+  ADD CONSTRAINT `restock_ibfk_1` FOREIGN KEY (`ItemID`) REFERENCES `product` (`ID`);
+
+--
+-- Constraints for table `shiftpreference`
+--
+ALTER TABLE `shiftpreference`
+  ADD CONSTRAINT `shiftpreference_ibfk_1` FOREIGN KEY (`Employee`) REFERENCES `employee` (`ID`),
+  ADD CONSTRAINT `shiftpreference_ibfk_2` FOREIGN KEY (`Day`) REFERENCES `weekday` (`ID`);
 
 --
 -- Constraints for table `workshift`

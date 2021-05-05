@@ -123,12 +123,18 @@
     <Compile Include="Classes\Contract.cs" />
     <Compile Include="Classes\Department.cs" />
     <Compile Include="Classes\EmployeeSort.cs" />
+    <Compile Include="Classes\IProductRequestStorage.cs" />
+    <Compile Include="Classes\IProductStorage.cs" />
     <Compile Include="Classes\ISalary.cs" />
     <Compile Include="Classes\Message.cs" />
     <Compile Include="Classes\MessageCollection.cs" />
     <Compile Include="Classes\PasswordGenerator.cs" />
     <Compile Include="Classes\Product.cs" />
     <Compile Include="Classes\ProductCollection.cs" />
+    <Compile Include="Classes\ProductDB.cs" />
+    <Compile Include="Classes\ProductRequest.cs" />
+    <Compile Include="Classes\ProductRequestDAL.cs" />
+    <Compile Include="Classes\ProductRequstMediator.cs" />
     <Compile Include="Classes\Shift.cs" />
     <Compile Include="Classes\ShiftSchedule.cs" />
     <Compile Include="Classes\ShopWorker.cs" />
@@ -153,6 +159,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DepotWorkerForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditWorkShift.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -172,6 +182,9 @@
     <Compile Include="DBManager.cs" />
     <Compile Include="Depot.xaml.cs">
       <DependentUpon>Depot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DepotWorkerForm.xaml.cs">
+      <DependentUpon>DepotWorkerForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="EditWorkShift.xaml.cs">
       <DependentUpon>EditWorkShift.xaml</DependentUpon>
