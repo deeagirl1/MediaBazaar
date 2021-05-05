@@ -277,6 +277,49 @@
                 </Grid>
             </TabItem>
 
+            <TabItem Header="Products">
+                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="41"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <ListView x:Name="lvProducts" ItemsSource="{Binding announcements}" Grid.Row="1" Margin="19,10,10,0" Height="644" HorizontalAlignment="Stretch" VerticalAlignment="Top" >
+                        <ListView.View>
+                            <GridView >
+                                <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="100">ID</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="200">Name</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding CostPrice}" Width="100">CostPrice</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding SellingPrice}" Width="100">SellingPrice</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Quantity}" Width="100">Quantity</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding MinTreshold}" Width="100">MinTreshold</GridViewColumn>
+                            </GridView>
+
+                        </ListView.View>
+                    </ListView>
+                    <Grid Grid.Column="1" Grid.RowSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="100*"/>
+
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                            <Button x:Name="btnRefreshProducts" Content="Refresh" HorizontalAlignment="Left" Margin="0,9,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="25" Click="btnRefreshProducts_Click" Grid.Column="1"/>
+                            <Button x:Name ="btn_EditProduct" Content="Edit" Height="25" Click="btn_EditProduct_Click"/>
+                            <Button x:Name="btn_AddProduct" Content="Add" Height="25" Click="btn_AddProduct_Click"/>
+                        </StackPanel>
+                    </Grid>
+
+
+                </Grid>
+            </TabItem>
+
         </TabControl>
     </Grid>
 </Window>

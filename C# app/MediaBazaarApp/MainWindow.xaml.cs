@@ -331,5 +331,27 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnRefreshProducts_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                this.lvProducts.ItemsSource = this.company.Products.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_EditProduct_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_AddProduct_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
