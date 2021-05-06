@@ -13,6 +13,7 @@ namespace MediaBazaarApp.Classes
         public int Quantity { get; }
         public DateTime DateTime { get; }
 
+        public RequestStatus RequestStatus { get; }
 
         public ProductRequest(int ID, Product product, int quantity, DateTime dateTime)
         {

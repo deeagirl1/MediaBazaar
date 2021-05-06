@@ -47,6 +47,7 @@ namespace MediaBazaarApp
                 this.lblUserString.Content = $"Hello , {person.FirstName}";
 
                 this.showAnnouncements();
+                this.showProducts();
             }
             catch(Exception ex)
             {
@@ -334,14 +335,7 @@ namespace MediaBazaarApp
 
         private void btnRefreshProducts_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                this.lvProducts.ItemsSource = this.company.Products.ToList();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            this.showProducts();
         }
 
         private void btn_EditProduct_Click(object sender, RoutedEventArgs e)
@@ -351,7 +345,26 @@ namespace MediaBazaarApp
 
         private void btn_AddProduct_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                new AddProduct().Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
+        private void showProducts()
+        {
+            try
+            {
+                this.lvProducts.ItemsSource = this.company.Products.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

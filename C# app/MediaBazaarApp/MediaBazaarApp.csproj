@@ -135,6 +135,8 @@
     <Compile Include="Classes\ProductRequest.cs" />
     <Compile Include="Classes\ProductRequestDAL.cs" />
     <Compile Include="Classes\ProductRequstMediator.cs" />
+    <Compile Include="Classes\RequestStatus.cs" />
+    <Compile Include="Classes\RequestStatusCollection.cs" />
     <Compile Include="Classes\Shift.cs" />
     <Compile Include="Classes\ShiftSchedule.cs" />
     <Compile Include="Classes\ShopWorker.cs" />
@@ -205,6 +207,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Popups\AddProduct.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Popups\EditAnnouncement.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -217,13 +223,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Popups\AddProduct.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Popups\EditProduct.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -236,6 +238,9 @@
     <Compile Include="Popups\AddAnnouncement.xaml.cs">
       <DependentUpon>AddAnnouncement.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Popups\AddProduct.xaml.cs">
+      <DependentUpon>AddProduct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Popups\EditAnnouncement.xaml.cs">
       <DependentUpon>EditAnnouncement.xaml</DependentUpon>
     </Compile>
@@ -244,9 +249,6 @@
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Popups\AddProduct.xaml.cs">
-      <DependentUpon>AddProduct.xaml</DependentUpon>
     </Compile>
     <Compile Include="Popups\EditProduct.xaml.cs">
       <DependentUpon>EditProduct.xaml</DependentUpon>

@@ -56,7 +56,6 @@ namespace MediaBazaarApp.Classes
             prms[2] = new MySqlParameter("@Description", announcement.Description);
 
             this.ExecuteQuery(sql, prms);
-
         }
     }
 }

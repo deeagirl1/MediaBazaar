@@ -289,15 +289,19 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <ListView x:Name="lvProducts" ItemsSource="{Binding announcements}" Grid.Row="1" Margin="19,10,10,0" Height="644" HorizontalAlignment="Stretch" VerticalAlignment="Top" >
+                    <ListView x:Name="lvProducts" ItemsSource="{Binding products}" Grid.Row="1" Margin="19,10,10,0" Height="644" HorizontalAlignment="Stretch" VerticalAlignment="Top" >
                         <ListView.View>
                             <GridView >
                                 <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="100">ID</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="200">Name</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="100">Name</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding CostPrice}" Width="100">CostPrice</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding SellingPrice}" Width="100">SellingPrice</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Department}" Width="100">Department</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Quantity}" Width="100">Quantity</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding MinTreshold}" Width="100">MinTreshold</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Length}" Width="100">Length</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Width}" Width="100">Width</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Height}" Width="100">Height</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding MinThreshold}" Width="100">MinThreshold</GridViewColumn>
                             </GridView>
 
                         </ListView.View>

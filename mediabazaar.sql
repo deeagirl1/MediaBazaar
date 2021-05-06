@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2021 at 01:54 PM
+-- Generation Time: May 06, 2021 at 11:52 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -254,15 +254,20 @@ CREATE TABLE `product` (
   `Name` text NOT NULL,
   `Department` int(11) NOT NULL,
   `CostPrice` decimal(11,0) NOT NULL,
-  `SellingPrice` decimal(11,0) NOT NULL
+  `SellingPrice` decimal(11,0) NOT NULL,
+  `Length` decimal(10,0) NOT NULL,
+  `Height` decimal(10,0) NOT NULL,
+  `Width` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`ID`, `Name`, `Department`, `CostPrice`, `SellingPrice`) VALUES
-(2, 'Chair', 1, '10', '12');
+INSERT INTO `product` (`ID`, `Name`, `Department`, `CostPrice`, `SellingPrice`, `Length`, `Height`, `Width`) VALUES
+(2, 'Chair', 1, '10', '12', '1', '2', '3'),
+(5, 'a', 2, '2', '3', '1', '3', '2'),
+(6, 'a', 2, '2', '3', '1', '3', '2');
 
 -- --------------------------------------------------------
 
@@ -281,7 +286,9 @@ CREATE TABLE `productstock` (
 --
 
 INSERT INTO `productstock` (`ID`, `NrInStock`, `MinThreshold`) VALUES
-(2, 10, 5);
+(2, 10, 5),
+(5, 0, 10),
+(6, 0, 4);
 
 -- --------------------------------------------------------
 
@@ -313,15 +320,16 @@ CREATE TABLE `restock` (
   `ID` int(11) NOT NULL,
   `ItemID` int(11) NOT NULL,
   `AmountRequested` int(11) NOT NULL,
-  `Date` datetime NOT NULL DEFAULT current_timestamp()
+  `Date` datetime NOT NULL DEFAULT current_timestamp(),
+  `Status` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `restock`
 --
 
-INSERT INTO `restock` (`ID`, `ItemID`, `AmountRequested`, `Date`) VALUES
-(2, 2, 10, '2021-05-05 10:42:34');
+INSERT INTO `restock` (`ID`, `ItemID`, `AmountRequested`, `Date`, `Status`) VALUES
+(2, 2, 10, '2021-05-05 10:42:34', 1);
 
 -- --------------------------------------------------------
 
@@ -512,7 +520,8 @@ ALTER TABLE `requeststatus`
 --
 ALTER TABLE `restock`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `ItemID` (`ItemID`);
+  ADD KEY `ItemID` (`ItemID`),
+  ADD KEY `Status` (`Status`);
 
 --
 -- Indexes for table `shiftpreference`
@@ -599,7 +608,7 @@ ALTER TABLE `person`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `requeststatus`
@@ -679,7 +688,8 @@ ALTER TABLE `productstock`
 -- Constraints for table `restock`
 --
 ALTER TABLE `restock`
-  ADD CONSTRAINT `restock_ibfk_1` FOREIGN KEY (`ItemID`) REFERENCES `product` (`ID`);
+  ADD CONSTRAINT `restock_ibfk_1` FOREIGN KEY (`ItemID`) REFERENCES `product` (`ID`),
+  ADD CONSTRAINT `restock_ibfk_2` FOREIGN KEY (`Status`) REFERENCES `requeststatus` (`ID`);
 
 --
 -- Constraints for table `shiftpreference`

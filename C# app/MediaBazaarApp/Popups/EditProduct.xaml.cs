@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaBazaarApp.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,14 @@ namespace MediaBazaarApp.Popups
     /// </summary>
     public partial class EditProduct : Window
     {
-        public EditProduct()
+        public EditProduct(Product product)
         {
             InitializeComponent();
+        }
+
+        private void btnEditProduct_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
