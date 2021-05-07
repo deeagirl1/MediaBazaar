@@ -4,7 +4,7 @@ We are aiming to create an administrative system that allows **Media Bazaar**'s 
 ## Who are we?
 We are **Tree**, a 4-person group of students that focuses on fixing other companies' logistical problems.
 
-## The team
+## Team
 |Members|
 |-------------------|
 |Bohdan Tymofieienko|
@@ -15,8 +15,8 @@ We are **Tree**, a 4-person group of students that focuses on fixing other compa
 ## Documentation
 
 ### Analysis
-- [Project plan](https://git.fhict.nl/I454066/prj-cb07-group1/-/blob/master/Documentation/Project_plan.pdf)
-- [User Requirments Specifications](https://git.fhict.nl/I454066/prj-cb07-group1/-/blob/master/Documentation/URS.pdf)
+- [Project plan](https://git.fhict.nl/I454066/prj-cb07-group1/-/blob/master/Documentation/Project_plan_v1.4.docx)
+- [User Requirments Specifications](https://git.fhict.nl/I454066/prj-cb07-group1/-/blob/master/Documentation/URS_Group1_v1.5.docx)
 
 ### Design
 - [Wireframes](https://git.fhict.nl/I454066/prj-cb07-group1/-/tree/master/Documentation/Wireframes.pdf)
