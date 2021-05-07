@@ -23,19 +23,21 @@
             <TextBox x:Name="tb_Name" HorizontalAlignment="Left" Height="20" Margin="56,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="290"/>
             <TextBox x:Name="tb_SellingPrice" HorizontalAlignment="Left" Height="21" Margin="56,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="290" Grid.Row="1"/>
             <Label Content="Selling price" HorizontalAlignment="Left" Margin="56,123,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.029,0.413" Grid.RowSpan="2" Height="26"/>
-            <TextBox x:Name="tb_Lenght" HorizontalAlignment="Left" Height="20" Margin="56,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
-            <Label Content="Size" HorizontalAlignment="Left" Margin="56,28,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="26"/>
-            <Label Content="Lenght" HorizontalAlignment="Left" Margin="68,46,0,0" VerticalAlignment="Top" Width="47" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
-            <TextBox x:Name="tb_Width" HorizontalAlignment="Left" Height="20" Margin="167,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
-            <Label Content="Width" HorizontalAlignment="Left" Margin="177,46,0,0" VerticalAlignment="Top" Width="47" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
-            <TextBox x:Name="tb_Height" HorizontalAlignment="Left" Height="20" Margin="275,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
-            <Label Content="Height&#xD;&#xA;" HorizontalAlignment="Left" Margin="288,46,0,0" VerticalAlignment="Top" Width="47" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
-            <TextBox x:Name="tb_Department" HorizontalAlignment="Left" Height="20" Margin="56,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="290" Grid.Row="1"/>
-            <Label Content="Department" HorizontalAlignment="Left" Margin="56,102,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
-            <TextBox x:Name="tb_Restock" HorizontalAlignment="Left" Height="20" Margin="56,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="290" Grid.Row="1"/>
-            <Label Content="Restock threshhold" HorizontalAlignment="Left" Margin="56,156,0,0" VerticalAlignment="Top" Width="119" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
+            <TextBox x:Name="tb_Lenght" HorizontalAlignment="Left" Height="20" Margin="56,65.8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
+            <Label Content="Size" HorizontalAlignment="Left" Margin="56,25.8,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="26"/>
+            <Label Content="Lenght" HorizontalAlignment="Left" Margin="68,38.8,0,0" VerticalAlignment="Top" Width="47" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
+            <TextBox x:Name="tb_Width" HorizontalAlignment="Left" Height="20" Margin="167,65.8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
+            <Label Content="Width" HorizontalAlignment="Left" Margin="177,38.8,0,0" VerticalAlignment="Top" Width="47" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
+            <TextBox x:Name="tb_Height" HorizontalAlignment="Left" Height="20" Margin="275,65.8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
+            <Label Content="Height&#xD;&#xA;" HorizontalAlignment="Left" Margin="288,38.8,0,0" VerticalAlignment="Top" Width="47" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
+            <Label Content="Department" HorizontalAlignment="Left" Margin="57,123.8,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
+            <TextBox x:Name="tb_Restock" HorizontalAlignment="Left" Height="20" Margin="56,199.8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="290" Grid.Row="1"/>
+            <Label Content="Restock threshhold" HorizontalAlignment="Left" Margin="56,172.8,0,0" VerticalAlignment="Top" Width="119" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
+            <TextBox x:Name="tb_Quantity" HorizontalAlignment="Left" Height="16" Margin="56,110.8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="119" Grid.Row="1"/>
+            <Label Content="Quantity" HorizontalAlignment="Left" Margin="56,85.8,0,0" VerticalAlignment="Top" Width="119" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="25"/>
 
         </Grid>
+        <ComboBox x:Name="cmbDepartment" HorizontalAlignment="Left" Margin="57,113.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="290"/>
 
     </Grid>
 </Window>

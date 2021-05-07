@@ -18,6 +18,7 @@ namespace MediaBazaarApp.Classes
         public decimal Length{ get; set; }
         public decimal Width{ get; set; }
         public int MinThreshold { get; set; }
+        public bool RequestNeeded { get { return true; } }
         public string FullName
         {
             get { return this.ID + " -- " + this.Name; }
@@ -54,5 +55,6 @@ namespace MediaBazaarApp.Classes
             this.Width = width;
             this.MinThreshold = minThreshold;
         }
+        public Product() { }
     }
 }

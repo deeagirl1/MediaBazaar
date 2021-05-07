@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="DepotWorkerForm" Height="450" Width="800">
     <Grid>
-        <ListView HorizontalAlignment="Left" Height="361" Margin="34,33,0,0" VerticalAlignment="Top" Width="605">
+        <ListView HorizontalAlignment="Left" Height="372" Margin="34,22,0,0" VerticalAlignment="Top" Width="631">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>

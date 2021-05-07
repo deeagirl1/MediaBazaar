@@ -29,6 +29,7 @@ namespace MediaBazaarApp
         private EditEmployee editEmployeeForm;
         private AddAnnouncement addAnnouncementForm;
         private EditAnnouncement editAnnouncementForm;
+        private EditProduct editProductForm;
 
         private List<ShopWorker> employees;
         public MainWindow(Company company, Person person)
@@ -340,7 +341,19 @@ namespace MediaBazaarApp
 
         private void btn_EditProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                if (this.lvProducts.SelectedItem != null)
+                {
+                    Product product = ((Product)this.lvProducts.SelectedItem);
+                    this.editProductForm = new EditProduct(this.company, product);
+                    this.editProductForm.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_AddProduct_Click(object sender, RoutedEventArgs e)
@@ -359,12 +372,31 @@ namespace MediaBazaarApp
         {
             try
             {
-                this.lvProducts.ItemsSource = this.company.Products.ToList();
+                List<ListViewItem> items = new List<ListViewItem>();
+
+                foreach (Product item in this.company.Products.ToList())
+                {
+                    ListViewItem OneItem = new ListViewItem();
+                    if (item.Quantity < item.MinThreshold)
+                    {
+                        OneItem.Background = Brushes.IndianRed;
+                    }
+                    else
+                    {
+                        OneItem.Background = Brushes.LightGreen;
+                    }
+                    OneItem.Content = item;
+                    items.Add(OneItem);
+                    lvProducts.ItemsSource = items;
+                }
+                     lvProducts.Items.Refresh();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
+       
     }
 }

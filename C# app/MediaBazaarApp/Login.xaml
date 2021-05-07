@@ -19,7 +19,7 @@
             <Label>Username</Label>
             <TextBox x:Name="tbEmail"/>
             <Label>Password</Label>
-            <TextBox x:Name="tbPassword"/>
+            <PasswordBox x:Name="tbPassword"/>
         </StackPanel>
 
         <Button x:Name="btn_login" Grid.Row="2" VerticalAlignment="Bottom" MaxHeight="25" MaxWidth="100" Content="Login" RenderTransformOrigin="0.872,0.5" Click="btn_login_Click" Margin="0,0,0,55" Height="44"></Button>

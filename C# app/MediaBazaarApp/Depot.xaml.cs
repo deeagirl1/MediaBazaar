@@ -69,5 +69,7 @@ namespace MediaBazaarApp
                 Stock = stock;
             }
         }
+
+       
     }
 }

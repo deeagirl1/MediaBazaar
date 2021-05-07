@@ -9,14 +9,18 @@
     <TabControl>
         <TabItem Header="Main">
             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="11*"/>
+                    <ColumnDefinition Width="775*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Label>Inventory</Label>
-                
+                <Label Grid.ColumnSpan="2">Inventory</Label>
+
                 <!--This is the grid for the inventory Listbox-->
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="1" Grid.ColumnSpan="2">
                     <ListView Margin="10" x:Name="inventoryListView">
                         <ListView.View>
                             <GridView>
@@ -32,5 +36,5 @@
             </Grid>
         </TabItem>
     </TabControl>
-    
+
 </Window>

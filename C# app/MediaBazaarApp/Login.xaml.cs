@@ -41,7 +41,7 @@ namespace MediaBazaarApp.Popups
             try
             {
                 string login = this.tbEmail.Text;
-                string password = this.tbPassword.Text;
+                string password = this.tbPassword.Password;
 
                 Person user =
                     this.company.AccountManager.IsValid(login, password);

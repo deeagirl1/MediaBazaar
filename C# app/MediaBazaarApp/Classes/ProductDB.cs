@@ -115,7 +115,7 @@ namespace MediaBazaarApp.Classes
         public void Update(Product product)
         {
             string sql = "UPDATE product SET Name=@Name, Department = @Department, " +
-                " CostPrice = @CostPrice, SellingPrice = @SellingPrice WHERE ID = @ID; " +
+                "CostPrice = @CostPrice, SellingPrice = @SellingPrice, Height = @Height, Length = @Length, Width = @Width WHERE ID = @ID; " +
                 " UPDATE productStock SET NrInStock = @NrInStock , " +
                 " MinThreshold = @MinThreshold WHERE ID = @ID; ";
 
@@ -126,10 +126,10 @@ namespace MediaBazaarApp.Classes
             prms[3] = new MySqlParameter("@SellingPrice", product.SellingPrice);
             prms[4] = new MySqlParameter("@NrInStock", product.Quantity);
             prms[5] = new MySqlParameter("@MinThreshold", product.MinThreshold);
-            prms[7] = new MySqlParameter("@ID", product.ID);
-            prms[8] = new MySqlParameter("@Height", product.Height);
-            prms[9] = new MySqlParameter("@Length", product.Length);
-            prms[8] = new MySqlParameter("@Width", product.Width);
+            prms[6] = new MySqlParameter("@ID", product.ID);
+            prms[7] = new MySqlParameter("@Height", product.Height);
+            prms[8] = new MySqlParameter("@Length", product.Length);
+            prms[9] = new MySqlParameter("@Width", product.Width);
 
             this.ExecuteQuery(sql, prms);
         }
