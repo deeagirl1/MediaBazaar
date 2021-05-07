@@ -22,5 +22,6 @@ namespace MediaBazaarApp.Classes
             this.Quantity = quantity;
             this.DateTime = dateTime;
         }
+       
     }
 }

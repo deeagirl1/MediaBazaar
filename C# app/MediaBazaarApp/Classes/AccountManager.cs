@@ -60,6 +60,8 @@ namespace MediaBazaarApp.Classes
                     return new Administrator(ID, FirstName, LastName, Email, Username, Password);
                 case 3:
                     return new Manager(ID, FirstName, LastName, Email, Username, Password);
+                case 4:
+                    return new DepotWorker(ID, FirstName, LastName, Email, username, Password);
             }
             throw new ArgumentException("Invalid credentials supplied");
         }

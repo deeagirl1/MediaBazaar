@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MediaBazaarApp.Classes;
 
 namespace MediaBazaarApp
 {
@@ -19,30 +20,33 @@ namespace MediaBazaarApp
     /// </summary>
     public partial class Depot : Window
     {
-        List<Item> InventoryItems = new List<Item>();
+        private Company company;
+        private Person person;
 
-        public Depot()
+        public Depot(Company company,Person person)
         {
-            InitializeComponent();
+            try
+            {
+                
+                InitializeComponent();
+                this.company = company;
+                this.person = person;
+                showRequest();
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
+        
 
         public void Clear()
         {
-            inventoryListView.Items.Clear();
+            lvRequests.Items.Clear();
         }
 
-        public void AddItem()
-        {
-            InventoryItems.Add(new Item("item1", "dept1", 100, 200, 3));
-            inventoryListView.ItemsSource = InventoryItems;
-
-            //Also update database
-        }
-
-        public void SetItems(Item[] items)
-        {
-            inventoryListView.ItemsSource = items;
-        }
+       
 
         //Load items from database
         public void LoadItems()
@@ -50,26 +54,17 @@ namespace MediaBazaarApp
             throw new NotImplementedException();
         }
 
-
-        public class Item
+        private void showRequest()
         {
-            public string Name { get; set; }
-
-            public string Department { get; set; }
-
-            public double CostPrice { get; set; }
-            public double SellingPrice { get; set; }
-            public int Stock { get; set; }
-            public Item(string name, string dept, double cost, double sellingPrice, int stock)
+            try
             {
-                Name = name;
-                Department = dept;
-                CostPrice = cost;
-                SellingPrice = sellingPrice;
-                Stock = stock;
+                this.lvRequests.ItemsSource = this.company.Requests.GetAll();
+            }
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
 
-       
     }
 }

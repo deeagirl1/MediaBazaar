@@ -122,6 +122,7 @@
     <Compile Include="Classes\Company.cs" />
     <Compile Include="Classes\Contract.cs" />
     <Compile Include="Classes\Department.cs" />
+    <Compile Include="Classes\DepotWorker.cs" />
     <Compile Include="Classes\EmployeeSort.cs" />
     <Compile Include="Classes\IProductRequestStorage.cs" />
     <Compile Include="Classes\IProductStorage.cs" />
@@ -161,10 +162,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DepotWorkerForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="EditWorkShift.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -184,9 +181,6 @@
     <Compile Include="DBManager.cs" />
     <Compile Include="Depot.xaml.cs">
       <DependentUpon>Depot.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="DepotWorkerForm.xaml.cs">
-      <DependentUpon>DepotWorkerForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="EditWorkShift.xaml.cs">
       <DependentUpon>EditWorkShift.xaml</DependentUpon>
