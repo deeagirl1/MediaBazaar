@@ -326,6 +326,7 @@
                             <Button x:Name="btnRefreshProducts" Content="Refresh" HorizontalAlignment="Left" Margin="-4,9,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="25" Click="btnRefreshProducts_Click" Grid.Column="1"/>
                             <Button x:Name ="btn_EditProduct" Content="Edit" Height="25" Click="btn_EditProduct_Click" Margin="-4,0,4,0"/>
                             <Button x:Name="btn_AddProduct" Content="Add" Height="25" Click="btn_AddProduct_Click" Margin="-4,0,4,0"/>
+                            <Button x:Name="btnRequest" Content="Request" Height="25"  Margin="-4,0,4,0" Click="btnRequest_Click"/>
                         </StackPanel>
                     </Grid>
 

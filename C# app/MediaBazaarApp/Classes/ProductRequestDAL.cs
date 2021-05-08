@@ -11,7 +11,7 @@ namespace MediaBazaarApp.Classes
     {
         public void Create(ProductRequest productRequest)
         {
-            string sql = "INSER INTO restock(ItemID, AmountRequested, Status) values(@ItemID, @AmountRequested, 1)";
+            string sql = "INSERT INTO restock(ItemID, AmountRequested, Status) values(@ItemID, @AmountRequested, 1)";
 
             MySqlParameter[] prms = new MySqlParameter[2];
             prms[0] = new MySqlParameter("@ItemID", productRequest.Product.ID);
@@ -64,7 +64,7 @@ namespace MediaBazaarApp.Classes
 
             MySqlParameter[] prms = new MySqlParameter[2];
             prms[0] = new MySqlParameter("@amount", request.Quantity);
-            prms[1] = new MySqlParameter("@id", request.ID);
+            prms[1] = new MySqlParameter("@id", request.Product.ID);
 
             this.ExecuteQuery(sql, prms);
         }

@@ -345,7 +345,8 @@ namespace MediaBazaarApp
             {
                 if (this.lvProducts.SelectedItem != null)
                 {
-                    Product product = ((Product)this.lvProducts.SelectedItem);
+                    ListViewItem item = ((ListViewItem)this.lvProducts.SelectedItem);
+                    Product product = (Product)item.Content;
                     this.editProductForm = new EditProduct(this.company, product);
                     this.editProductForm.Show();
                 }
@@ -397,6 +398,21 @@ namespace MediaBazaarApp
             }
         }
 
-       
+        private void btnRequest_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (this.lvProducts.SelectedItem != null)
+                {
+                    ListViewItem item = ((ListViewItem)this.lvProducts.SelectedItem);
+                    Product product = (Product)item.Content;
+                    new RequestAmountForm(product).Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
