@@ -11,7 +11,7 @@ namespace MediaBazaarApp.Classes
     {
         public void Create(ProductRequest productRequest)
         {
-            string sql = "INSER INTO restock(ItemID, AmountRequested) values(@ItemID, @AmountRequested)";
+            string sql = "INSERT INTO restock(ItemID, AmountRequested) values(@ItemID, @AmountRequested)";
 
             MySqlParameter[] prms = new MySqlParameter[4];
             prms[0] = new MySqlParameter("@ItemID", productRequest.Product.ID);

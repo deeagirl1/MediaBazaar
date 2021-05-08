@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2021 at 11:52 AM
+-- Generation Time: May 08, 2021 at 12:06 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -38,6 +38,7 @@ CREATE TABLE `accesslevel` (
 
 INSERT INTO `accesslevel` (`ID`, `Name`) VALUES
 (2, 'Admin'),
+(4, 'DepotWorker'),
 (1, 'Employee'),
 (3, 'Manager');
 
@@ -234,6 +235,7 @@ CREATE TABLE `person` (
 --
 
 INSERT INTO `person` (`ID`, `FirstName`, `LastName`, `Email`, `Username`, `Password`, `AccessLevel`) VALUES
+(6, 'Johnny', 'Deep', 'jdeep@mb.com', 'jdeep', '123', 4),
 (35, 'Joyan', 'Jasper', 'jjasper2@mb.com', 'admin1', 'pass', 2),
 (36, 'Darill', 'Skatcher', 'dskatchern@mb.com', 'manager1', 'pass', 3),
 (39, 'Juana', 'Chiommienti', 'jchiommienti1@mb.com', 'jchiommienti1@mb.com', 'test', 1),
@@ -266,7 +268,7 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`ID`, `Name`, `Department`, `CostPrice`, `SellingPrice`, `Length`, `Height`, `Width`) VALUES
 (2, 'Chair', 1, '10', '12', '1', '2', '3'),
-(5, 'a', 2, '2', '3', '1', '3', '2'),
+(5, 'a', 3, '2', '3', '1', '3', '2'),
 (6, 'a', 2, '2', '3', '1', '3', '2');
 
 -- --------------------------------------------------------
@@ -287,7 +289,7 @@ CREATE TABLE `productstock` (
 
 INSERT INTO `productstock` (`ID`, `NrInStock`, `MinThreshold`) VALUES
 (2, 10, 5),
-(5, 0, 10),
+(5, 5, 10),
 (6, 0, 4);
 
 -- --------------------------------------------------------
@@ -560,7 +562,7 @@ ALTER TABLE `workshift`
 -- AUTO_INCREMENT for table `accesslevel`
 --
 ALTER TABLE `accesslevel`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `annoucements`
