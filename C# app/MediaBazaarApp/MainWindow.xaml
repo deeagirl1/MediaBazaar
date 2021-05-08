@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:MediaBazaarApp"
         mc:Ignorable="d"
         SizeToContent="WidthAndHeight"
-        Title="MainWindow" Height="760.466" Width="1143.534" ResizeMode="CanResize">
+        Title="Admin" Height="760.466" Width="1143.534" ResizeMode="CanResizeWithGrip">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="397*"/>
-            <RowDefinition Height="332*"/>
+            <RowDefinition Height="133*"/>
+            <RowDefinition Height="110*"/>
         </Grid.RowDefinitions>
         <TabControl SelectionChanged="TabControl_SelectionChanged" Grid.RowSpan="2">
             <TabItem Header="Employees">
@@ -187,9 +187,9 @@
                 <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,1,2,-1">
 
 
-                    <TextBox x:Name="tb_FirstName"  HorizontalAlignment="Center" VerticalAlignment="Center"  Height="26" Margin="420,248,388,427" TextWrapping="Wrap"  Width="320"/>
-                    <TextBox x:Name="tb_LastName"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Margin="420,138,388,539" TextWrapping="Wrap"  Width="320"/>
-                    <TextBox x:Name="tb_Email"  Margin="420,354,388,323"  TextWrapping="Wrap" Width="320" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24"/>
+                    <TextBox x:Name="tb_FirstName"  HorizontalAlignment="Center" VerticalAlignment="Center"  Height="18" Margin="420,248,388,427" TextWrapping="Wrap"  Width="320"/>
+                    <TextBox x:Name="tb_LastName"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="18" Margin="420,138,388,544" TextWrapping="Wrap"  Width="320"/>
+                    <TextBox x:Name="tb_Email"  Margin="420,354,388,323"  TextWrapping="Wrap" Width="320" HorizontalAlignment="Center" VerticalAlignment="Center" Height="18"/>
                     <Label Content="First Name:" FontSize="20" HorizontalAlignment="Center" Margin="420,84,388,577" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320"/>
                     <Label Content="Last Name:" FontSize="20" HorizontalAlignment="Center" Margin="420,196,388,465" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320"/>
                     <Label Content="Email:" FontSize="20" HorizontalAlignment="Center" Margin="420,302,388,359" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320"/>
@@ -215,8 +215,10 @@
                     </Grid.ColumnDefinitions>
 
 
+
                     <ListView x:Name="lvMessages" ItemsSource="{Binding messages}" Grid.Row="1" Margin="19,10,37,0" Height="644" HorizontalAlignment="Stretch" VerticalAlignment="Top" MouseDoubleClick="lvMessages_MouseDoubleClick" >
                         <ListView.View>
+
                             <GridView >
                                 <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="100">ID</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Topic}" Width="200">Topic</GridViewColumn>
@@ -226,7 +228,10 @@
 
                         </ListView.View>
                     </ListView>
-                    <Button x:Name="btnRefreshMessages" Grid.ColumnSpan="2" Content="Refresh" HorizontalAlignment="Left" Margin="1007,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="39" Click="btnRefreshMessages_Click"/>
+                    <StackPanel Grid.Row="2" VerticalAlignment="Center">
+                        <Button x:Name="btnRefreshMessages" Content="Refresh" HorizontalAlignment="Right" Margin="0,9,-80,0" VerticalAlignment="Top" Width="98" Height="25" Click="btnRefreshMessages_Click"/>
+
+                    </StackPanel>
 
                 </Grid>
             </TabItem>
@@ -287,16 +292,7 @@
 
 
                     <ListView x:Name="lvProducts" Grid.Row="1" Margin="19,10,10,0" Height="644" HorizontalAlignment="Stretch" VerticalAlignment="Top" >
-                        <!--<Style TargetType="{x:Type ListViewItem}">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding RequestNeeded}" Value="True">
-                                    <Setter Property="Background" Value="Red" />
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding RequestNeeded}" Value="False">
-                                    <Setter Property="Background" Value="Green" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>-->
+
                         <ListView.View>
 
                             <GridView >
@@ -333,6 +329,51 @@
 
                 </Grid>
             </TabItem>
+            <TabItem Header="Requests">
+                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="41"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <ListView x:Name="lvRequests" Grid.Row="1" Margin="19,10,10,0" Height="640" HorizontalAlignment="Stretch" VerticalAlignment="Top" >
+
+                        <ListView.View>
+
+                            <GridView >
+                                <GridViewColumn Header="ID" Width="80" DisplayMemberBinding="{Binding ID}" />
+                                <GridViewColumn Header="ItemID" Width="150" DisplayMemberBinding="{Binding Product.ID}" />
+                                <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Product.Name}" />
+                                <GridViewColumn Header="AmountRequested" Width="150" DisplayMemberBinding="{Binding Quantity}" />
+                                <GridViewColumn Header="Date" Width="150" DisplayMemberBinding="{Binding DateTime}" />
+                                <GridViewColumn Header="Status" Width="150" DisplayMemberBinding="{Binding RequestStatus.Name}" />
+                                <GridViewColumn Header="Reason" Width="200" DisplayMemberBinding="{Binding RequestStatus.Reason}" />
+                            </GridView>
+
+                        </ListView.View>
+                    </ListView>
+                    <Grid Grid.Column="1" Grid.RowSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="100*"/>
+
+                        </Grid.RowDefinitions>
+
+
+                    </Grid>
+                    <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                        <Button x:Name="btnRefreshRequests" Content="Refresh" HorizontalAlignment="Right" Margin="0,9,-96,0" VerticalAlignment="Top" Width="100" Height="25"/>
+
+                    </StackPanel>
+
+                </Grid>
+            </TabItem>
+
 
         </TabControl>
     </Grid>

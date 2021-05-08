@@ -73,6 +73,7 @@ namespace MediaBazaarApp
                 ProductRequest req = (ProductRequest)this.lvRequests.SelectedItem;
                 this.company.Requests.Reject(req);
                 MessageBox.Show("Succesfully");
+
             }
             catch (Exception ex)
             {

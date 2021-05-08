@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaBazaarApp" 
         mc:Ignorable="d"
-        Title="ManagerWindow"  Height="760.466" Width="1143.534" ResizeMode="CanResize">
+        Title="Manager"  Height="760.466" Width="1143.534" ResizeMode="CanResize">
     <Grid>
         <TabControl SelectionChanged="TabControl_SelectionChanged">
             <TabItem Header="Employees">
@@ -35,7 +35,8 @@
                         </ListView.View>
                     </ListView>
 
-                    <Button x:Name="btnView" Content="Refresh" HorizontalAlignment="Left" Margin="948,296,0,0" VerticalAlignment="Top" Width="100" Height="32" Click="btnView_Click" Grid.Column="1"/>
+                    <Button x:Name="btnView" Content="Refresh" HorizontalAlignment="Left" Margin="949,296,-1,0" VerticalAlignment="Top" Width="100" Height="25" Click="btnView_Click" Grid.Column="1"/>
+                    
                 </Grid>
             </TabItem>
 
@@ -51,9 +52,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Border Grid.Column="1" Grid.RowSpan="6" BorderBrush="LightGray" Opacity="0.6" BorderThickness="1,0,0,0">
-                        <Grid>
-                            <Button x:Name="btnRefreshCalendar" Content="Refresh" Click="btnRefreshCalendar_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Width="99" Height="31" />
-                        </Grid>
+                        <Grid/>
 
                     </Border>
                     <Border Grid.Column="0" Grid.Row="0" BorderBrush="LightGray" Opacity="0.6" BorderThickness="0,0,0,1">
@@ -165,10 +164,10 @@
                     <Label Content="Current password" HorizontalAlignment="Left" Margin="472,204,0,0" VerticalAlignment="Top"/>
                     <Label Content="New password" HorizontalAlignment="Left" Margin="472,274,0,0" VerticalAlignment="Top"/>
                     <Label Content="Repeat new password" HorizontalAlignment="Left" Margin="472,346,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="btnChangePassword" Content="Change password" HorizontalAlignment="Left" Height="46" Margin="424,485,0,0" VerticalAlignment="Top" Width="324" Click="btnChangePassword_Click_1"/>
-                    <TextBox x:Name="tbCurrentPass" HorizontalAlignment="Left" Height="39" Margin="472,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" TextChanged="TextBox_TextChanged"/>
-                    <TextBox x:Name="tbNewPass" HorizontalAlignment="Left" Height="39" Margin="472,302,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
-                    <TextBox x:Name="tbNewPassRepeat" HorizontalAlignment="Left" Height="39" Margin="472,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+                    <Button x:Name="btnChangePassword" Content="Change password" HorizontalAlignment="Left" Height="46" Margin="424,486,0,0" VerticalAlignment="Top" Width="324" Click="btnChangePassword_Click_1"/>
+                    <TextBox x:Name="tbCurrentPass" HorizontalAlignment="Left" Height="18" Margin="472,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" TextChanged="TextBox_TextChanged"/>
+                    <TextBox x:Name="tbNewPass" HorizontalAlignment="Left" Height="18" Margin="472,302,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+                    <TextBox x:Name="tbNewPassRepeat" HorizontalAlignment="Left"  Height="18" Margin="472,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
 
                 </Grid>
             </TabItem>

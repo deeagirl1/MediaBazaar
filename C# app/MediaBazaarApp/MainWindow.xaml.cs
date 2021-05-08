@@ -49,6 +49,7 @@ namespace MediaBazaarApp
 
                 this.showAnnouncements();
                 this.showProducts();
+                this.showRequests();
             }
             catch(Exception ex)
             {
@@ -331,6 +332,18 @@ namespace MediaBazaarApp
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void showRequests()
+        {
+            try
+            {
+                this.lvRequests.ItemsSource = this.company.Requests.GetAll();
+            }
+            catch(Exception ex)
+            {
+               MessageBox.Show(ex.Message);
             }
         }
 

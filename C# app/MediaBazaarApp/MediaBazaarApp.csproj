@@ -115,10 +115,14 @@
     <Compile Include="Add_Employee.xaml.cs">
       <DependentUpon>Add_Employee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CashierWindow.xaml.cs">
+      <DependentUpon>CashierWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Address.cs" />
     <Compile Include="Classes\Announcement.cs" />
     <Compile Include="Classes\AnnouncementCollection.cs" />
     <Compile Include="Classes\Calendar.cs" />
+    <Compile Include="Classes\Cashier.cs" />
     <Compile Include="Classes\Company.cs" />
     <Compile Include="Classes\Contract.cs" />
     <Compile Include="Classes\Department.cs" />
@@ -151,6 +155,10 @@
     <Compile Include="Classes\Status.cs" />
     <Compile Include="Classes\WorkShift.cs" />
     <Page Include="Add_Employee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CashierWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -221,6 +229,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Popups\ProductSubstraction.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\RejectReason.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Popups\RequestAmountForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -250,6 +266,12 @@
     </Compile>
     <Compile Include="Popups\EditProduct.xaml.cs">
       <DependentUpon>EditProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\ProductSubstraction.xaml.cs">
+      <DependentUpon>ProductSubstraction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\RejectReason.xaml.cs">
+      <DependentUpon>RejectReason.xaml</DependentUpon>
     </Compile>
     <Compile Include="Popups\RequestAmountForm.xaml.cs">
       <DependentUpon>RequestAmountForm.xaml</DependentUpon>
