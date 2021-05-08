@@ -9,19 +9,19 @@ namespace MediaBazaarApp.Classes
     public class ProductRequest
     {
         public int ID { get; }
-        public Product Product{ get; }
+        public Product Product { get; }
         public int Quantity { get; }
         public DateTime DateTime { get; }
 
         public RequestStatus RequestStatus { get; }
 
-        public ProductRequest(int ID, Product product, int quantity, DateTime dateTime)
+        public ProductRequest(int ID, Product product, int quantity, DateTime dateTime, RequestStatus status)
         {
             this.ID = ID;
             this.Product = product;
             this.Quantity = quantity;
             this.DateTime = dateTime;
+            this.RequestStatus = status;
         }
-       
     }
 }

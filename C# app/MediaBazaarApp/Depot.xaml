@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaBazaarApp"
         mc:Ignorable="d"
-        Title="Depot" Height="450" Width="800">
+        Title="Depot" Height="450" Width="933.836">
     <TabControl>
         <TabItem Header="Restock requests">
             <Grid>
@@ -20,21 +20,23 @@
                 <Label Grid.ColumnSpan="2" Margin="10,0,0,0">Inventory</Label>
 
                 <!--This is the grid for the inventory Listbox-->
-                <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                    <ListView Margin="33,10,195,10" x:Name="lvRequests">
+                <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,10,0">
+                    <ListView Margin="33,10,178,10" x:Name="lvRequests">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="ID" Width="100" DisplayMemberBinding="{Binding ID}" />
-                                <GridViewColumn Header="ItemID" Width="150" DisplayMemberBinding="{Binding ItemID}" />
-                                <GridViewColumn Header="AmountRequested" Width="150" DisplayMemberBinding="{Binding AmountRequested}" />
-                                <GridViewColumn Header="Date" Width="150" DisplayMemberBinding="{Binding Date}" />
-                                <GridViewColumn Header="Status" Width="150" DisplayMemberBinding="{Binding Status}" />
+                                <GridViewColumn Header="ItemID" Width="50" DisplayMemberBinding="{Binding Product.ID}" />
+                                <GridViewColumn Header="ItemID" Width="100" DisplayMemberBinding="{Binding Product.Name}" />
+                                <GridViewColumn Header="AmountRequested" Width="150" DisplayMemberBinding="{Binding Quantity}" />
+                                <GridViewColumn Header="Date" Width="150" DisplayMemberBinding="{Binding DateTime}" />
+                                <GridViewColumn Header="Status" Width="150" DisplayMemberBinding="{Binding RequestStatus.Name}" />
 
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <Button Content="Accept" HorizontalAlignment="Left" Margin="611,218,0,0" VerticalAlignment="Top" Width="119" Height="42"/>
-                    <Button Content="Reject" HorizontalAlignment="Left" Margin="611,302,0,0" VerticalAlignment="Top" Width="119" Height="42"/>
+                    <Button x:Name="btnAccept" Content="Accept" HorizontalAlignment="Left" Margin="756,213,0,0" VerticalAlignment="Top" Width="119" Height="42" Click="btnAccept_Click"/>
+                    <Button x:Name="btnReject" Content="Reject" HorizontalAlignment="Left" Margin="756,314,0,0" VerticalAlignment="Top" Width="119" Height="42" Click="btnReject_Click"/>
+                    <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="756,10,0,0" VerticalAlignment="Top" Width="119" Height="42" Click="btnRefresh_Click"/>
                 </Grid>
             </Grid>
         </TabItem>

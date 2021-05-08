@@ -31,7 +31,7 @@ namespace MediaBazaarApp
                 InitializeComponent();
                 this.company = company;
                 this.person = person;
-                showRequest();
+                showRequests();
                
             }
             catch (Exception ex)
@@ -39,22 +39,8 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-        
 
-        public void Clear()
-        {
-            lvRequests.Items.Clear();
-        }
-
-       
-
-        //Load items from database
-        public void LoadItems()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void showRequest()
+        private void showRequests()
         {
             try
             {
@@ -66,5 +52,37 @@ namespace MediaBazaarApp
             }
         }
 
+        private void btnAccept_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ProductRequest req = (ProductRequest)this.lvRequests.SelectedItem;
+                this.company.Requests.Accept(req);
+                MessageBox.Show("Succesfully");
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnReject_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ProductRequest req = (ProductRequest)this.lvRequests.SelectedItem;
+                this.company.Requests.Reject(req);
+                MessageBox.Show("Succesfully");
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            this.showRequests();
+        }
     }
 }

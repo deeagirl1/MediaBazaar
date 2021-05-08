@@ -11,9 +11,9 @@ namespace MediaBazaarApp.Classes
     {
         public void Create(ProductRequest productRequest)
         {
-            string sql = "INSERT INTO restock(ItemID, AmountRequested) values(@ItemID, @AmountRequested)";
+            string sql = "INSER INTO restock(ItemID, AmountRequested, Status) values(@ItemID, @AmountRequested, 1)";
 
-            MySqlParameter[] prms = new MySqlParameter[4];
+            MySqlParameter[] prms = new MySqlParameter[2];
             prms[0] = new MySqlParameter("@ItemID", productRequest.Product.ID);
             prms[1] = new MySqlParameter("@AmountRequested", productRequest.Quantity);
 
@@ -21,8 +21,9 @@ namespace MediaBazaarApp.Classes
         }
         public List<ProductRequest> GetAll()
         {
-            string sql = $" SELECT r.ID, r.ItemID, p.ID as PrID, p.Name, r.AmountRequested, r.Date" +
-                $" FROM restock r INNER JOIN product p on r.ItemID = p.ID ";
+            string sql = $" SELECT r.ID, r.ItemID, p.ID as PrID, p.Name, r.AmountRequested, r.Date, s.ID as StID, s.Name as stName" +
+                $" FROM restock r INNER JOIN product p on r.ItemID = p.ID " +
+                $" INNER JOIN requestStatus s on r.Status = s.ID ";
 
             MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
             MySqlDataReader reader = null;
@@ -36,11 +37,16 @@ namespace MediaBazaarApp.Classes
                          = new Product(Convert.ToInt32(reader["PrID"]),
                                Convert.ToString(reader["Name"]));
 
+                    RequestStatus status
+                        = new RequestStatus(Convert.ToInt32(reader["StID"]),
+                               Convert.ToString(reader["stName"]));
+
                     ProductRequest request
                          = new ProductRequest(Convert.ToInt32(reader["ID"]),
                                               product,
                                               Convert.ToInt32(reader["AmountRequested"]),
-                                              Convert.ToDateTime(reader["Date"]));
+                                              Convert.ToDateTime(reader["Date"]),
+                                              status);
 
                     requests.Add(request);
                 }
@@ -51,6 +57,27 @@ namespace MediaBazaarApp.Classes
             }
             return requests;
         }
-       
+
+        public void UpdateQuantity(ProductRequest request)
+        {
+            string sql = "UPDATE productStock SET NrInStock=NrInStock + @amount WHERE ID = @id";
+
+            MySqlParameter[] prms = new MySqlParameter[2];
+            prms[0] = new MySqlParameter("@amount", request.Quantity);
+            prms[1] = new MySqlParameter("@id", request.ID);
+
+            this.ExecuteQuery(sql, prms);
+        }
+
+        public void UpdateStatus(ProductRequest request, int Status)
+        {
+            string sql = "UPDATE restock SET Status = @Status WHERE ID = @id";
+
+            MySqlParameter[] prms = new MySqlParameter[2];
+            prms[0] = new MySqlParameter("@Status", Status);
+            prms[1] = new MySqlParameter("@id", request.ID);
+
+            this.ExecuteQuery(sql, prms);
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace MediaBazaarApp.Classes
     {
         public readonly ProductCollection Products = new ProductCollection(new ProductDB());
         public readonly AnnouncementCollection Announcements = new AnnouncementCollection();
-        public readonly ProductRequestDAL Requests = new ProductRequestDAL();
+        public readonly ProductRequestMediator Requests = new ProductRequestMediator(new ProductRequestDAL());
         public readonly List<Department> Departments = new List<Department>();
         public readonly AccountManager AccountManager = new AccountManager();
         public readonly MessageCollection Messages = new MessageCollection();

@@ -135,7 +135,7 @@
     <Compile Include="Classes\ProductDB.cs" />
     <Compile Include="Classes\ProductRequest.cs" />
     <Compile Include="Classes\ProductRequestDAL.cs" />
-    <Compile Include="Classes\ProductRequstMediator.cs" />
+    <Compile Include="Classes\ProductRequestMediator.cs" />
     <Compile Include="Classes\RequestStatus.cs" />
     <Compile Include="Classes\RequestStatusCollection.cs" />
     <Compile Include="Classes\Shift.cs" />
