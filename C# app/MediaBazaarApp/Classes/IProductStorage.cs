@@ -12,5 +12,6 @@ namespace MediaBazaarApp.Classes
         Product GetByID(int id);
         void Create(Product product);
         void Update(Product product);
+        void SubtractAmount(Product product, int difference);
     }
 }

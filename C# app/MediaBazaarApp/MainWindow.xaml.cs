@@ -30,7 +30,6 @@ namespace MediaBazaarApp
         private AddAnnouncement addAnnouncementForm;
         private EditAnnouncement editAnnouncementForm;
         private EditProduct editProductForm;
-
         private List<ShopWorker> employees;
         public MainWindow(Company company, Person person)
         {
@@ -55,12 +54,10 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void OnLoad(object sender, RoutedEventArgs e)
         {
             this.RefreshCalendar();
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -73,7 +70,6 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             try
@@ -86,18 +82,14 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
-
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
-
-
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -110,7 +102,6 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void btn_Refresh_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -123,7 +114,6 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void Button_Edit_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -140,7 +130,6 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void btnChangePassword_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -158,12 +147,10 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void btnRefreshCalendar_Click(object sender, RoutedEventArgs e)
         {
             this.RefreshCalendar();
         }
-
         private void btn_Sort_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -177,7 +164,6 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void btnAddNewUser_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -210,10 +196,6 @@ namespace MediaBazaarApp
                 System.Windows.Forms.MessageBox.Show("All fields must be completed");
             }
         }
-
-
-       
-
         private void btn_Search_Click(object sender, RoutedEventArgs e)
         {
             string name = tb_Search.Text;
@@ -222,7 +204,6 @@ namespace MediaBazaarApp
             this.lvShopWorkers.ItemsSource = this.employees;
 
         }
-
         private List<ShopWorker> FindPattern(string name, List<ShopWorker> workers)
         {
             List<ShopWorker> temp = new List<ShopWorker>();
@@ -231,12 +212,10 @@ namespace MediaBazaarApp
                 if (worker.ToString().Contains(name))
                 {
                     temp.Add(worker);
-                    
                 }
             }
             return temp;
         }
-
         private void btnRefreshMessages_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -248,7 +227,6 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void lvMessages_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             try
@@ -261,7 +239,6 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         public void RefreshCalendar()
         {
             try
@@ -286,12 +263,10 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void btnRefreshAnnouncements_Click(object sender, RoutedEventArgs e)
         {
             this.showAnnouncements();
         }
-
         private void btn_EditAnnouncement_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -308,7 +283,6 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void btn_AddAnnouncement_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -321,7 +295,6 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void showAnnouncements()
         {
             try
@@ -333,19 +306,18 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void btnRefreshProducts_Click(object sender, RoutedEventArgs e)
         {
             this.showProducts();
         }
-
         private void btn_EditProduct_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 if (this.lvProducts.SelectedItem != null)
                 {
-                    Product product = ((Product)this.lvProducts.SelectedItem);
+                    ListViewItem item = ((ListViewItem)this.lvProducts.SelectedItem);
+                    Product product = (Product)item.Content;
                     this.editProductForm = new EditProduct(this.company, product);
                     this.editProductForm.Show();
                 }
@@ -355,7 +327,6 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void btn_AddProduct_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -367,13 +338,11 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void showProducts()
         {
             try
             {
                 List<ListViewItem> items = new List<ListViewItem>();
-
                 foreach (Product item in this.company.Products.ToList())
                 {
                     ListViewItem OneItem = new ListViewItem();
@@ -389,7 +358,23 @@ namespace MediaBazaarApp
                     items.Add(OneItem);
                     lvProducts.ItemsSource = items;
                 }
-                     lvProducts.Items.Refresh();
+                lvProducts.Items.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void btnRequest_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (this.lvProducts.SelectedItem != null)
+                {
+                    ListViewItem item = ((ListViewItem)this.lvProducts.SelectedItem);
+                    Product product = (Product)item.Content;
+                    new RequestAmountForm(product).Show();
+                }
             }
             catch (Exception ex)
             {
@@ -397,6 +382,36 @@ namespace MediaBazaarApp
             }
         }
 
-       
+        private void showRequests()
+        {
+            try
+            {
+                this.lvRequests.ItemsSource = this.company.Requests.GetAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnRefreshRequests1_Click(object sender, RoutedEventArgs e)
+        {
+            this.showRequests();
+        }
+
+        private void lvProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void lvProducts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void btnRefreshRequests_Click(object sender, RoutedEventArgs e)
+        {
+            this.showRequests();
+        }
     }
 }

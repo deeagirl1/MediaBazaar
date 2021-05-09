@@ -8,6 +8,8 @@ namespace MediaBazaarApp.Classes
 {
     public interface IProductRequestStorage
     {
+        void UpdateStatus(ProductRequest request, int Status);
+        void UpdateQuantity(ProductRequest request);
         void Create(ProductRequest productRequest);
         List<ProductRequest> GetAll();
     }

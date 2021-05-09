@@ -36,5 +36,11 @@ namespace MediaBazaarApp.Classes
             if (this.warningThresholdEvent != null)
             { this.warningThresholdEvent(product); }
         }
+        public void SubtractAmount(Product product, int difference)
+        {
+            if (product.Quantity > 0 && product.Quantity - difference >= 0 && difference > 0)
+                this.DAL.SubtractAmount(product, difference);
+            else throw new ArgumentException("Not enough products");
+        }
     }
 }

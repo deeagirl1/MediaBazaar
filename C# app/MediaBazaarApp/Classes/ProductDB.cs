@@ -133,5 +133,14 @@ namespace MediaBazaarApp.Classes
 
             this.ExecuteQuery(sql, prms);
         }
+
+        public void SubtractAmount(Product product, int difference)
+        {
+            string sql = "UPDATE productstock SET NrInStock = NrInStock - @Amount WHERE ID = @ID";
+            MySqlParameter[] prms = new MySqlParameter[2];
+            prms[0] = new MySqlParameter("@Amount", difference);
+            prms[1] = new MySqlParameter("@ID", product.ID);
+            this.ExecuteQuery(sql, prms);
+        }
     }
 }

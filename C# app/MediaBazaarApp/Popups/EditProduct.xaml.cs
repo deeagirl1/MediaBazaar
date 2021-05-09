@@ -40,6 +40,7 @@ namespace MediaBazaarApp.Popups
                 this.tb_SellingPrice.Text = this.product.SellingPrice.ToString();
                 this.cmbDepartment.SelectedItem = this.product.Department;
                 this.tb_Lenght.Text = this.product.Length.ToString();
+                this.tb_Quantity.Text = this.product.Quantity.ToString();
                 this.tb_Width.Text = this.product.Width.ToString();
                 this.tb_Height.Text = this.product.Height.ToString();
                 this.tb_Restock.Text = this.product.MinThreshold.ToString();
@@ -54,7 +55,8 @@ namespace MediaBazaarApp.Popups
 
         private void btnEditProduct_Click(object sender, RoutedEventArgs e)
         {
-            
+            try
+            {
                 this.product.Name = tb_Name.Text;
                 this.product.CostPrice = Convert.ToDecimal(tb_CostPrice.Text);
                 this.product.SellingPrice = Convert.ToDecimal(tb_SellingPrice.Text);
@@ -66,8 +68,12 @@ namespace MediaBazaarApp.Popups
                 this.product.Quantity = Convert.ToInt32(tb_Quantity.Text);
                 this.company.Products.Update(product);
                 this.Close();
+            }
+            catch (ArgumentException ex)
+            {
+               MessageBox.Show(ex.Message);
+            }
 
-           
         }
     }
 }

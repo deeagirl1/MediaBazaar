@@ -13,12 +13,61 @@ namespace MediaBazaarApp.Classes
         public Department Department { get; set; }
         public decimal CostPrice { get; set; }
         public decimal SellingPrice { get; set; }
-        public int Quantity { get; set; }
-        public decimal Height{ get; set; }
-        public decimal Length{ get; set; }
-        public decimal Width{ get; set; }
-        public int MinThreshold { get; set; }
-        public bool RequestNeeded { get { return true; } }
+        private int quantity;
+        private decimal height;
+        private decimal length;
+        private decimal width;
+        private int minThreshold;
+        public int Quantity
+        {
+            get { return this.quantity; }
+            set
+            {
+                if (value >= 0)
+                    this.quantity = value;
+                else throw new ArgumentException("Value must be greater than zero");
+            }
+        }
+        public decimal Height
+        {
+            get {return this.height; }
+            set
+            {
+                if (value > 0)
+                    this.height = value;
+                else throw new ArgumentException("Value must be greater than zero");
+            }
+        }
+        public decimal Length 
+        {
+            get { return this.length; }
+            set
+            {
+                if (value > 0)
+                    this.length = value;
+                else throw new ArgumentException("Value must be greater than zero");
+            }
+        }
+        public decimal Width
+        {
+            get { return this.width; }
+            set
+            {
+                if (value > 0)
+                    this.width = value;
+                else throw new ArgumentException("Value must be greater than zero");
+            }
+        }
+        public int MinThreshold
+        {
+            get { return this.minThreshold; }
+            set
+            {
+                if (value > 0)
+                    this.minThreshold = value;
+                else throw new ArgumentException("Value must be greater than zero");
+            }
+        }
         public string FullName
         {
             get { return this.ID + " -- " + this.Name; }
@@ -40,7 +89,6 @@ namespace MediaBazaarApp.Classes
             this.Width = width;
             this.MinThreshold = minThreshold;
         }
-
         public Product(int iD, string name, Department department, decimal costPrice, decimal sellingPrice,
             int quantity, decimal height, decimal length, decimal width, int minThreshold)
         {

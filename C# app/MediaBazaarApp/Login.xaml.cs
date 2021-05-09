@@ -23,6 +23,7 @@ namespace MediaBazaarApp.Popups
         private Company company;
         private MainWindow mainWindow;
         private ManagerWindow managerWindow;
+        private Depot depotWindow;
         public Login()
         {
             this.company = new Company();
@@ -55,6 +56,15 @@ namespace MediaBazaarApp.Popups
                 {
                     this.managerWindow = new ManagerWindow(this.company, user);
                     this.managerWindow.Show();
+                }
+                if(user is DepotWorker)
+                {
+                    this.depotWindow = new Depot(this.company, user);
+                    this.depotWindow.Show();
+                }
+                if (user is Cashier)
+                {
+                    new CashierWindow(this.company, user).Show();
                 }
             }
             catch(Exception ex)
