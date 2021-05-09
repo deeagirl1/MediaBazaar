@@ -48,6 +48,7 @@ namespace MediaBazaarApp
 
                 this.showAnnouncements();
                 this.showProducts();
+                this.showRequests();
             }
             catch(Exception ex)
             {
@@ -412,6 +413,23 @@ namespace MediaBazaarApp
         private void btnRefreshRequests_Click(object sender, RoutedEventArgs e)
         {
             this.showRequests();
+        }
+
+        private void lvRequests_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                if (this.lvRequests.SelectedItem != null)
+                {
+                    ProductRequest req = (ProductRequest)this.lvRequests.SelectedItem;
+                    if(req.RequestStatus.ID == 3)
+                        MessageBox.Show(req.Comment);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -83,10 +83,10 @@ namespace MediaBazaarApp.Classes
 
         public void CreateComment(ProductRequest request, string comment)
         {
-            string sql = "INSERT INTO restock(ItemID, Comment) values(@ItemID, @Comment)";
+            string sql = "Update restock SET COMMENT = @Comment WHERE ID = @ID";
 
             MySqlParameter[] prms = new MySqlParameter[2];
-            prms[0] = new MySqlParameter("@ItemID", request.ID);
+            prms[0] = new MySqlParameter("@ID", request.ID);
             prms[1] = new MySqlParameter("@Comment",comment);
 
             this.ExecuteQuery(sql, prms);

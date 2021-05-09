@@ -347,7 +347,7 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <ListView x:Name="lvRequests" Grid.Row="1" Margin="19,10,10,0" Height="640" HorizontalAlignment="Stretch" VerticalAlignment="Top" >
+                    <ListView x:Name="lvRequests" Grid.Row="1" Margin="19,10,10,0" Height="640" HorizontalAlignment="Stretch" VerticalAlignment="Top" MouseDoubleClick="lvRequests_MouseDoubleClick" >
 
                         <ListView.View>
 
@@ -358,7 +358,6 @@
                                 <GridViewColumn Header="AmountRequested" Width="150" DisplayMemberBinding="{Binding Quantity}" />
                                 <GridViewColumn Header="Date" Width="150" DisplayMemberBinding="{Binding DateTime}" />
                                 <GridViewColumn Header="Status" Width="150" DisplayMemberBinding="{Binding RequestStatus.Name}" />
-                                <GridViewColumn Header="Comment" Width="200" DisplayMemberBinding="{Binding Comment}" />
                             </GridView>
 
                         </ListView.View>
