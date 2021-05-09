@@ -29,10 +29,7 @@ require('phpScripts/showReadonlyAccountDetails.php');
 ?>
 
 <h1>Change personal details</h1><br>
-
-<form action="phpScripts/changeMyAccountState.php" method="post">
-<h3><button type ="Edit">Edit mode</button></h3>
-</form><br>
+<br>
 <?php
 require('phpScripts/showAccountDetails.php');
 ?>

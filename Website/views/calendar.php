@@ -51,10 +51,6 @@ $id = $_SESSION['ID'];
     //echo $_SESSION['id'];
     $show = $test->getShifts($id, $startDate, $endDate);
 
-    foreach($show as $var){
-        echo "<br>".$var['date']."<br>";
-    }
-
     $result = array();
     for ($i = 0; $i < 7; $i++) {
         $result[$i] = array(false, false, false);
@@ -90,7 +86,7 @@ $id = $_SESSION['ID'];
                 <th style="text-align:center;" scope="col"></th>
                 <th style="text-align:center;" scope="col">Morning</th>
                 <th style="text-align:center;" scope="col">Afternoon</th>
-                <th style="text-align:center;" scope="col">Night</th>
+                <th style="text-align:center;" scope="col">Evening</th>
             </tr>
         </thead>
         <tbody>

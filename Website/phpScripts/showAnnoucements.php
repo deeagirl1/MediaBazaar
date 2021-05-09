@@ -10,7 +10,7 @@ require_once('classes/annoucementscontroller.class.php');
         $description = $value->GetDescription();
         
         echo '<div class="container">',
-        '<h2>',"$title",'</h2><br>',
+        '<h2>',"$title - ".$value->GetPostDate()."",'</h2><br>',
         '<h3>',"$description",'</h3>',
         '<h4></h4>',
         '</div>';

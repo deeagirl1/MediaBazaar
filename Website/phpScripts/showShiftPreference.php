@@ -31,7 +31,7 @@ require_once('classes/usercontroller.class.php');
     if($user->IsContractFixed()==true){
         echo "<h1>Change shift preferences</h1><br><hr>
         <form method='POST' action='phpScripts/updateShiftPreferences.php'>
-        <label for='daysPreference'><b>Days preference</b></label>
+        <label for='daysPreference'><b>Days off preference</b></label>
         <div class ='custom-select'>";
  
         echo "<select name= 'day1' id='day1'>";
