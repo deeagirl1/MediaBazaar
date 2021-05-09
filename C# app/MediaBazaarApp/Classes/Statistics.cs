@@ -142,5 +142,59 @@ namespace MediaBazaarApp.Classes
             }
             else throw new ArgumentException("No data found for selected period");
         }
+
+        public decimal GetAvgItemPerPurchase(Product product)
+        {
+            string sql = "SELECT AVG(Amount) as AverageAmount from purchase where product = @ItemId";
+
+            MySqlParameter[] prms = new MySqlParameter[1];
+
+            prms[0] = new MySqlParameter("@ItemId", product.ID);
+
+            Object obj = this.ReadScalar(sql, prms);
+            if (obj != DBNull.Value)
+            {
+                decimal amount = Convert.ToDecimal(obj);
+                return amount;
+            }
+            else throw new ArgumentException("No data found!");
+        }
+
+        public decimal GetProfitPerProduct(Product product)
+        {
+            string sql = "SELECT COUNT(Amount)*product.SellingPrice - " +
+                " COUNT(Amount)*product.CostPrice as TotalProfit from purchase " +
+                " INNER JOIN product ON purchase.Product = product.ID " +
+                " where product.ID = @ItemId; ";
+
+            MySqlParameter[] prms = new MySqlParameter[1];
+
+            prms[0] = new MySqlParameter("@ItemId", product.ID);
+
+            Object obj = this.ReadScalar(sql, prms);
+            if (obj != DBNull.Value)
+            {
+                decimal amount = Convert.ToDecimal(obj);
+                return amount;
+            }
+            else throw new ArgumentException("No data found!");
+        }
+
+        public decimal GetTotalSalesPerProduct(Product product)
+        {
+            string sql = "SELECT SUM(Amount) as SalesAmount from purchase where product = @ItemId";
+
+            MySqlParameter[] prms = new MySqlParameter[1];
+
+            prms[0] = new MySqlParameter("@ItemId", product.ID);
+
+            Object obj = this.ReadScalar(sql, prms);
+            if (obj != DBNull.Value)
+            {
+                decimal amount = Convert.ToDecimal(obj);
+                return amount;
+            }
+            else throw new ArgumentException("No data found!");
+        }
     }
 }

@@ -104,5 +104,10 @@ namespace MediaBazaarApp.Classes
             this.MinThreshold = minThreshold;
         }
         public Product() { }
+
+        public override string ToString()
+        {
+            return $"{this.Name} -- {this.ID}";
+        }
     }
 }

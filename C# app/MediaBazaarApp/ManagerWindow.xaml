@@ -156,6 +156,15 @@
                     <Label x:Name="lblAverageSalaryForPeriod" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="858,364,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613"/>
                     <Label Content="Total hours worked by employees" Grid.Column="2" HorizontalAlignment="Left" Margin="532,433,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
                     <Label x:Name="lblHoursWorkedForPeriod" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="858,433,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613"/>
+                    <Label Content="Product statistics" Grid.Column="2" HorizontalAlignment="Left" Margin="24,454,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label Content="Average amount per purchase:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,586,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <Label x:Name="lblAvgAmountPerPurchase" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="277,586,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661"/>
+                    <ComboBox x:Name="cmbProducts" Grid.Column="2" HorizontalAlignment="Left" Margin="24,537,0,0" VerticalAlignment="Top" Width="213"/>
+                    <Button x:Name="btnGetPRoductStat" Content="Proceed" Grid.Column="2" HorizontalAlignment="Left" Margin="277,537,0,0" VerticalAlignment="Top" Width="125" Height="22" Click="btnGetPRoductStat_Click"/>
+                    <Label x:Name="lbl" Content="Total profit per product" Grid.Column="2" HorizontalAlignment="Left" Margin="10,637,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <Label x:Name="lblTotalProfit" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="277,637,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661"/>
+                    <Label Content="Total sales per product" Grid.Column="2" HorizontalAlignment="Left" Margin="532,586,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <Label x:Name="lblTotalSalesPerProduct" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="822,586,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661"/>
                 </Grid>
             </TabItem>
 

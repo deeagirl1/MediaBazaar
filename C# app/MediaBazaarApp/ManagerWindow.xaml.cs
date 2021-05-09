@@ -40,11 +40,18 @@ namespace MediaBazaarApp
                 this.dpDate.SelectedDate = DateTime.Now;
                 this.dpStartDate.SelectedDate = DateTime.Now;
                 this.dpEndDate.SelectedDate = DateTime.Now;
+
+                this.loadProducts();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void loadProducts()
+        {
+            this.cmbProducts.ItemsSource = this.company.Products.ToList();
         }
 
 
@@ -185,6 +192,26 @@ namespace MediaBazaarApp
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnGetPRoductStat_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Product prd = (Product)this.cmbProducts.SelectedItem;
+                this.lblAvgAmountPerPurchase.Content =
+                     this.company.Statistics.GetAvgItemPerPurchase(prd);
+                this.lblTotalProfit.Content =
+                     this.company.Statistics.GetProfitPerProduct(prd) + " €";
+                this.lblTotalSalesPerProduct.Content =
+                    this.company.Statistics.GetTotalSalesPerProduct(prd);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }
