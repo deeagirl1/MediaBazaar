@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MediaBazaarApp.Classes;
-
+using MediaBazaarApp.Popups;
 namespace MediaBazaarApp
 {
     /// <summary>
@@ -22,6 +22,7 @@ namespace MediaBazaarApp
     {
         private Company company;
         private Person person;
+        private RejectReason window;
 
         public Depot(Company company,Person person)
         {
@@ -71,8 +72,9 @@ namespace MediaBazaarApp
             try
             {
                 ProductRequest req = (ProductRequest)this.lvRequests.SelectedItem;
-                this.company.Requests.Reject(req);
-                MessageBox.Show("Succesfully");
+                this.window = new RejectReason(req,company);
+                this.window.Show();
+               
             }
             catch (Exception ex)
             {

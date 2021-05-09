@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MediaBazaarApp"
         mc:Ignorable="d"
         SizeToContent="WidthAndHeight"
-        Title="MainWindow" Height="760.466" Width="1143.534" ResizeMode="CanResize">
+        Title="Admin" Height="760.466" Width="1143.534" ResizeMode="CanResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="397*"/>

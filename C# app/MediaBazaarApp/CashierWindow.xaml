@@ -18,17 +18,17 @@
         </Grid.ColumnDefinitions>
 
 
-        <ListView x:Name="lvProducts" Margin="19,10,10,0" Height="644" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.RowSpan="2" MouseDoubleClick="lvProducts_MouseDoubleClick" >
+        <ListView x:Name="lvProducts" Margin="19,10,144,0" Height="644" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.RowSpan="2" MouseDoubleClick="lvProducts_MouseDoubleClick" Grid.ColumnSpan="2" >
 
             <ListView.View>
 
                 <GridView >
 
                     <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="150">ID</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="150">Name</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding SellingPrice}" Width="150">Price</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Department}" Width="150">Department</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Quantity}" Width="100">Quantity</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="200">Name</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding SellingPrice}" Width="200">Price</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Department}" Width="200">Department</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Quantity}" Width="200">Quantity</GridViewColumn>
                 </GridView>
 
             </ListView.View>
@@ -43,8 +43,8 @@
             <StackPanel Grid.Row="1" VerticalAlignment="Center">
 
             </StackPanel>
-            <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="64,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="33" Click="btnRefresh_Click"/>
-            <Button x:Name="btnSell" Content="Sell" HorizontalAlignment="Left" Margin="64,309,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="33" Click="btnSell_Click"/>
+            <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="64,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="25" Click="btnRefresh_Click"/>
+            <Button x:Name="btnSell" Content="Sell" HorizontalAlignment="Left" Margin="64,309,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="25" Click="btnSell_Click"/>
         </Grid>
 
 

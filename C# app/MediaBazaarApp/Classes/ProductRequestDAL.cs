@@ -69,7 +69,7 @@ namespace MediaBazaarApp.Classes
 
             this.ExecuteQuery(sql, prms);
         }
-        public void UpdateStatus(ProductRequest request, int Status)
+        public void UpdateStatus(ProductRequest request, int Status, string comment)
         {
             string sql = "UPDATE restock SET Status = @Status, Comment = @Comment WHERE ID = @id";
 
@@ -77,6 +77,29 @@ namespace MediaBazaarApp.Classes
             prms[0] = new MySqlParameter("@Status", Status);
             prms[1] = new MySqlParameter("@id", request.ID);
             prms[2] = new MySqlParameter("@Comment", request.Comment);
+
+            this.ExecuteQuery(sql, prms);
+        }
+
+        public void CreateComment(ProductRequest request, string comment)
+        {
+            string sql = "INSERT INTO restock(ItemID, Comment) values(@ItemID, @Comment)";
+
+            MySqlParameter[] prms = new MySqlParameter[2];
+            prms[0] = new MySqlParameter("@ItemID", request.ID);
+            prms[1] = new MySqlParameter("@Comment",comment);
+
+            this.ExecuteQuery(sql, prms);
+        }
+
+        public void UpdateStatus(ProductRequest request, int Status)
+        {
+            string sql = "UPDATE restock SET Status = @Status WHERE ID = @id";
+
+            MySqlParameter[] prms = new MySqlParameter[2];
+            prms[0] = new MySqlParameter("@Status", Status);
+            prms[1] = new MySqlParameter("@id", request.ID);
+          
 
             this.ExecuteQuery(sql, prms);
         }

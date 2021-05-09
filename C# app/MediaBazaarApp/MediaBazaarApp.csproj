@@ -233,6 +233,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Popups\RejectReason.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Popups\RequestAmountForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -265,6 +269,9 @@
     </Compile>
     <Compile Include="Popups\ProductSubstraction.xaml.cs">
       <DependentUpon>ProductSubstraction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\RejectReason.xaml.cs">
+      <DependentUpon>RejectReason.xaml</DependentUpon>
     </Compile>
     <Compile Include="Popups\RequestAmountForm.xaml.cs">
       <DependentUpon>RequestAmountForm.xaml</DependentUpon>

@@ -30,10 +30,13 @@ namespace MediaBazaarApp.Classes
             }
             else throw new ArgumentException("Cannot change completed request!");
         }
-        public void Reject(ProductRequest request)
+        public void Reject(ProductRequest request,string comment)
         {
             if (request.RequestStatus.ID == 1)
+            {
                 this.DAL.UpdateStatus(request, 3);
+                this.DAL.CreateComment(request, comment);
+            }
             else throw new ArgumentException("Cannot change completed request!");
         }
     }
