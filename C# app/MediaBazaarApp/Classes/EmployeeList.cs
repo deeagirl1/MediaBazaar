@@ -199,12 +199,12 @@ namespace MediaBazaarApp.Classes
             prms[2] = new MySqlParameter("@Email", shopWorker.Email);
             prms[3] = new MySqlParameter("@Username", shopWorker.Email);
             prms[4] = new MySqlParameter("@Password", pass);
-            prms[5] = new MySqlParameter("@AccessLevel", 1); 
+            prms[5] = new MySqlParameter("@AccessLevel", 1);
             prms[6] = new MySqlParameter("@BirthDate", shopWorker.BirthDate.Date);
             prms[7] = new MySqlParameter("@HireDate", shopWorker.HireTime.Date);
             prms[8] = new MySqlParameter("@Country", shopWorker.HomeAddress.Country);
             prms[9] = new MySqlParameter("@City", shopWorker.HomeAddress.City);
-            prms[10] = new MySqlParameter("@Street", shopWorker.HomeAddress.Street); 
+            prms[10] = new MySqlParameter("@Street", shopWorker.HomeAddress.Street);
             prms[11] = new MySqlParameter("@StreetNumber", shopWorker.HomeAddress.StreetNumber);
             prms[12] = new MySqlParameter("@AddressAddition", shopWorker.HomeAddress.Addition);
             prms[13] = new MySqlParameter("@ZipCode", shopWorker.HomeAddress.ZipCode);
@@ -227,15 +227,15 @@ namespace MediaBazaarApp.Classes
             List<ShopWorker> shopWorkers = new List<ShopWorker>();
             foreach (ShopWorker s in this.ToList())
             {
-                if (s.Status.ID != 3 && s.HireTime.Date<=shift.date.Date)
+                if (s.Status.ID != 3 && s.HireTime.Date <= shift.date.Date)
                 {
                     if (s.LastWorkingDay > shift.date || s.LastWorkingDay < new DateTime(1900, 01, 01))
                     {
                         if (!this.isWeeklyWorkLimitСrossed(s, shift.date))
                         {
-                            if(!isOnDayOff(s.ID, Convert.ToInt32(shift.date.DayOfWeek)))
+                            if (!isOnDayOff(s.ID, getDayOfWeek(shift.date)))
                             {
-                                if(!isDailyWorkLimitCrossed(s, shift))
+                                if (!isDailyWorkLimitCrossed(s, shift))
                                 {
                                     if (shift.shift.ID == 3)
                                     {
@@ -246,7 +246,7 @@ namespace MediaBazaarApp.Classes
                                     }
                                     else shopWorkers.Add(s);
                                 }
-                                
+
                             }
                         }
                     }
@@ -275,7 +275,7 @@ namespace MediaBazaarApp.Classes
             {
                 this.CloseExecuteReader(reader);
             }
-            foreach(int d in days)
+            foreach (int d in days)
             {
                 if (d == day)
                     return true;
@@ -357,11 +357,18 @@ namespace MediaBazaarApp.Classes
 
         private DateTime getDateOfMonday(DateTime date)
         {
-            while(date.DayOfWeek != DayOfWeek.Monday)
+            while (date.DayOfWeek != DayOfWeek.Monday)
             {
-               date = date.AddDays(-1);
+                date = date.AddDays(-1);
             }
             return date;
+        }
+
+        private int getDayOfWeek(DateTime date)
+        {
+            if (date.DayOfWeek == DayOfWeek.Sunday)
+                return 7;
+            else return Convert.ToInt32(date.DayOfWeek);
         }
     }
 }
