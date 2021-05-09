@@ -29,6 +29,8 @@
         <Button x:Name="btnUndo" Content="&lt;" HorizontalAlignment="Left" Margin="332,119,0,0" VerticalAlignment="Top" Width="115" Height="38" Click="btnUndo_Click"/>
         <Button x:Name="btnProceed" Content="Done" HorizontalAlignment="Left" Margin="332,362,0,0" VerticalAlignment="Top" Width="115" Height="38" Click="btnProceed_Click"/>
         <Label x:Name="lblWorkshift" Content="Label" HorizontalAlignment="Left" Margin="362,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.816,0.269"/>
+        <Label Content="Available employee" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top"/>
+        <Label Content="Assigned employee" HorizontalAlignment="Left" Margin="498,10,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

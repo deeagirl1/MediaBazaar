@@ -188,6 +188,14 @@ namespace MediaBazaarApp
                 {
                     password = account.Add(new Manager(firstName, lastName, email));
                 }
+                else if ((bool)rbDepotWorker.IsChecked)
+                {
+                    password = account.Add(new DepotWorker(firstName, lastName, email));
+                }
+                else if ((bool)rbCashier.IsChecked)
+                {
+                    password = account.Add(new Cashier(firstName, lastName, email));
+                }
 
                 MessageBox.Show($"Username: {username}, Password: {password}" + "\n Please note them down!");
 

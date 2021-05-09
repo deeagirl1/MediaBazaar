@@ -193,11 +193,14 @@
                     <Label Content="First Name:" FontSize="20" HorizontalAlignment="Center" Margin="420,84,388,577" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320"/>
                     <Label Content="Last Name:" FontSize="20" HorizontalAlignment="Center" Margin="420,196,388,465" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320"/>
                     <Label Content="Email:" FontSize="20" HorizontalAlignment="Center" Margin="420,302,388,359" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320"/>
-                    <RadioButton x:Name="rb_Adminstrator" FontSize="20" Margin="420,456,568,219" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.494,-0.93" Height="26" Width="140" IsChecked="True">Administrator</RadioButton>
-                    <RadioButton x:Name="rb_Manager" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="642,456,388,219" RenderTransformOrigin="0.43,-1.026" Height="26" Width="98">Manager</RadioButton>
+                    <Label Content="Email:" FontSize="20" HorizontalAlignment="Center" Margin="420,302,388,359" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320"/>
+                    <RadioButton x:Name="rb_Adminstrator" FontSize="20" Margin="420,435,568,240" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.494,-0.93" Height="26" Width="140" IsChecked="True">Administrator</RadioButton>
+                    <RadioButton x:Name="rb_Manager" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="642,440,388,235" RenderTransformOrigin="0.43,-1.026" Height="26" Width="98">Manager</RadioButton>
 
                     <Button  x:Name= "btn_AddNewUser" Content="Add" FontSize="20" HorizontalAlignment="Center" Margin="420,517,388,114" VerticalAlignment="Center" Height="70" Click="btnAddNewUser_Click" Width="320"/>
-                    <Label Content="Status:" FontSize="20" HorizontalAlignment="Center" Margin="420,408,388,253" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320"/>
+                    <Label Content="Status:" FontSize="20" HorizontalAlignment="Center" Margin="420,378,388,283" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320"/>
+                    <RadioButton x:Name="rbDepotWorker" FontSize="20" Margin="420,466,568,209" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.494,-0.93" Height="26" Width="140"  Content="Depot worker"/>
+                    <RadioButton x:Name="rbCashier" FontSize="20" Margin="642,466,346,209" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.494,-0.93" Height="26" Width="140" Content="Cashier"/>
 
                 </Grid>
 
@@ -375,6 +378,7 @@
                         <Button x:Name="btnRefreshRequests" Content="Refresh" HorizontalAlignment="Right" Margin="0,9,-96,0" VerticalAlignment="Top" Width="100" Height="25" Click="btnRefreshRequests_Click"/>
 
                     </StackPanel>
+                    <Label Content="Double click on (rejected) request to see more details" HorizontalAlignment="Left" Margin="35,10,0,0" VerticalAlignment="Top"/>
 
                 </Grid>
             </TabItem>
