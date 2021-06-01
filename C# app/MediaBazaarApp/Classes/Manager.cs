@@ -11,6 +11,9 @@ namespace MediaBazaarApp.Classes
         public Manager(string firstName, string lastName, string email) :
            base(firstName, lastName, email)
         { }
+        public Manager(int id,string firstName, string lastName) :
+         base(id,firstName, lastName)
+        { }
         public Manager(int id, string firstName, string lastName, string email,string username, string password) :
             base(id, firstName, lastName, email, username, password)
         { }

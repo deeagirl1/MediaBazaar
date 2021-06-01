@@ -12,7 +12,7 @@ namespace MediaBazaarApp.Classes
         public readonly ProductCollection Products = new ProductCollection(new ProductDB());
         public readonly AnnouncementCollection Announcements = new AnnouncementCollection();
         public readonly ProductRequestMediator Requests = new ProductRequestMediator(new ProductRequestDAL());
-        public readonly List<Department> Departments = new List<Department>();
+        public readonly DepartmentMediator Departments = new DepartmentMediator(new DepartmentDAL());
         public readonly AccountManager AccountManager = new AccountManager();
         public readonly MessageCollection Messages = new MessageCollection();
         public readonly ShiftSchedule ShiftSchedule = new ShiftSchedule();
@@ -23,13 +23,13 @@ namespace MediaBazaarApp.Classes
         public readonly List<Shift> Shifts = new List<Shift>();
         public Company()
         {
-            this.getDepartments();
+          
             this.getContracts();
             this.getStatuses();
         }
         public Department GetDepartmentByID(int ID)
         {
-            foreach(Department d in this.Departments)
+            foreach(Department d in this.Departments.GetDepartments())
             {
                 if (d.ID == ID)
                     return d;
@@ -55,27 +55,7 @@ namespace MediaBazaarApp.Classes
             return null;
         }
 
-        private void getDepartments()
-        {
-            string sql = "SELECT * FROM department";
-            MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
-            MySqlDataReader reader = null;
-            try
-            {
-                reader = this.OpenExecuteReader(cmd);
-                this.Departments.Clear();
-                while (reader.Read())
-                {
-                    Department dep = new Department(Convert.ToInt32(reader["ID"]),
-                                                    Convert.ToString(reader["Name"]));
-                    this.Departments.Add(dep);
-                }
-            }
-            finally
-            {
-                this.CloseExecuteReader(reader);
-            }
-        }
+      
         private void getContracts()
         {
             string sql = "SELECT * FROM contract";

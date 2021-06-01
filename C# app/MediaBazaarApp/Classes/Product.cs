@@ -103,7 +103,6 @@ namespace MediaBazaarApp.Classes
             this.Width = width;
             this.MinThreshold = minThreshold;
         }
-        public Product() { }
 
         public override string ToString()
         {

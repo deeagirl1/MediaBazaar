@@ -29,7 +29,7 @@ namespace MediaBazaarApp
 
                 this.company = company;
                 this.cbx_Contract.ItemsSource = this.company.Contracts;
-                this.cbx_Department.ItemsSource = this.company.Departments;
+                this.cbx_Department.ItemsSource = this.company.Departments.GetDepartments();
                 this.cbx_Status.ItemsSource = this.company.Statuses;
                 this.cbx_Status.SelectedIndex = 1;
                 this.cbx_Department.SelectedIndex = 0;

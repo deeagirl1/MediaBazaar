@@ -30,7 +30,7 @@ namespace MediaBazaarApp.Popups
                 InitializeComponent();
                 this.company = company;
                 this.worker = worker;
-                this.cbx_Department.ItemsSource = this.company.Departments;
+                this.cbx_Department.ItemsSource = this.company.Departments.GetDepartments();
                 this.cbx_Contract.ItemsSource = this.company.Contracts;
                 this.cbx_Status.ItemsSource = this.company.Statuses;
                 fillFields();

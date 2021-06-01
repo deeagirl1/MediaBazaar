@@ -30,7 +30,7 @@ namespace MediaBazaarApp.Popups
             {
                 this.company = company;
                 this.product = product;
-                foreach (Department d in this.company.Departments)
+                foreach (Department d in this.company.Departments.GetDepartments())
                 {
                     this.cmbDepartment.Items.Add(d);
                 }

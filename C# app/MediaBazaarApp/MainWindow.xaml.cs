@@ -403,6 +403,18 @@ namespace MediaBazaarApp
             }
         }
 
+        private void showDepartments()
+        {
+            try
+            {
+                this.lvDepartments.ItemsSource = this.company.Departments.GetAll();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
         private void btnRefreshRequests1_Click(object sender, RoutedEventArgs e)
         {
             this.showRequests();
@@ -438,6 +450,11 @@ namespace MediaBazaarApp
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnRefreshDepartments_Click(object sender, RoutedEventArgs e)
+        {
+            this.showDepartments();
         }
     }
 }
