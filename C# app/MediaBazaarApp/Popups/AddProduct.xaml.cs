@@ -28,7 +28,7 @@ namespace MediaBazaarApp.Popups
             try
             {
                 this.company = new Company();
-                foreach (Department d in this.company.Departments)
+                foreach (Department d in this.company.Departments.GetDepartments())
                 {
                     this.cmbDepartment.Items.Add(d);
                 }

@@ -124,7 +124,7 @@
 
 
 
-                    <Grid Grid.Row="1">
+                    <Grid Grid.Row="1" Margin="0,0,0,63">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="25"/>
                             <RowDefinition/>
@@ -164,6 +164,9 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <!--Here are inserted all the day grids for the calendar, procedurally generated-->
+
+                            <Label Content="Employees checked-in today:" HorizontalAlignment="Left" Margin="28,87,0,-34" VerticalAlignment="Top" Grid.Row="5" Grid.ColumnSpan="7" Width="1002" FontSize="16" Height="32"/>
+
                         </Grid>
                     </Grid>
                 </Grid>
@@ -225,7 +228,7 @@
                         <ListView.View>
                             <GridView >
                                 <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="100">ID</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Topic}" Width="200">Topic</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Topic}" Width="500">Topic</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Sender.FullName}" Width="200">Sender</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding DateTime}" Width="200">Time</GridViewColumn>
                             </GridView>
@@ -253,8 +256,8 @@
                         <ListView.View>
                             <GridView >
                                 <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="100">ID</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="200">Title</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="200">Description</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="300">Title</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="400">Description</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding PostDate}" Width="200">DateTime</GridViewColumn>
                             </GridView>
 
@@ -356,11 +359,11 @@
                         <ListView.View>
 
                             <GridView >
-                                <GridViewColumn Header="ID" Width="80" DisplayMemberBinding="{Binding ID}" />
+                                <GridViewColumn Header="Request ID" Width="100" DisplayMemberBinding="{Binding ID}" />
                                 <GridViewColumn Header="ItemID" Width="150" DisplayMemberBinding="{Binding Product.ID}" />
-                                <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Product.Name}" />
+                                <GridViewColumn Header="Name" Width="250" DisplayMemberBinding="{Binding Product.Name}" />
                                 <GridViewColumn Header="AmountRequested" Width="150" DisplayMemberBinding="{Binding Quantity}" />
-                                <GridViewColumn Header="Date" Width="150" DisplayMemberBinding="{Binding DateTime}" />
+                                <GridViewColumn Header="Date" Width="200" DisplayMemberBinding="{Binding DateTime}" />
                                 <GridViewColumn Header="Status" Width="150" DisplayMemberBinding="{Binding RequestStatus.Name}" />
                             </GridView>
 
@@ -379,7 +382,53 @@
                         <Button x:Name="btnRefreshRequests" Content="Refresh" HorizontalAlignment="Right" Margin="0,9,-96,0" VerticalAlignment="Top" Width="100" Height="25" Click="btnRefreshRequests_Click"/>
 
                     </StackPanel>
-                    <Label Content="Double click on (rejected) request to see more details" HorizontalAlignment="Left" Margin="35,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Double click on (rejected) request to see more details." HorizontalAlignment="Left" Margin="35,10,0,0" VerticalAlignment="Top"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Departments">
+                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="41"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <ListView x:Name="lvDepartments" Grid.Row="1" Margin="19,10,10,0" Height="640" HorizontalAlignment="Stretch" VerticalAlignment="Top" >
+
+                        <ListView.View>
+
+                            <GridView >
+                                <GridViewColumn Header="ID" Width="100" DisplayMemberBinding="{Binding Department.ID}" />
+                                <GridViewColumn Header="Name" Width="400" DisplayMemberBinding="{Binding Department.Name}" />
+                                <GridViewColumn Header="Department Manager" Width="300" DisplayMemberBinding="{Binding Department.DepartmentManager}" />
+                               <!--" <GridViewColumn Header="Number of employees" Width="200" DisplayMemberBinding="{Binding Department.Manager}" /> -->
+
+                            </GridView>
+
+                        </ListView.View>
+                    </ListView>
+                    <Grid Grid.Column="1" Grid.RowSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="100*"/>
+
+                        </Grid.RowDefinitions>
+
+
+                    </Grid>
+                    <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                        <Button x:Name="btnAddDepartment" Content="Add" HorizontalAlignment="Right" Margin="0,9,-96,0" VerticalAlignment="Top" Width="100" Height="25" />
+                        <Button x:Name="btnEditDepartment" Content="Edit" HorizontalAlignment="Right" Margin="0,9,-96,0" VerticalAlignment="Top" Width="100" Height="25" />
+                        <Button x:Name="btnDeleteDepartment" Content="Delete" HorizontalAlignment="Right" Margin="0,9,-96,0" VerticalAlignment="Top" Width="100" Height="25" />
+                        <Button x:Name="btnRefreshDepartments" Content="Refresh" HorizontalAlignment="Right" Margin="0,9,-96,0" VerticalAlignment="Top" Width="100" Height="25" Click="btnRefreshDepartments_Click"/>
+
+                    </StackPanel>
+                    <Label Content="Double click on department to see more details." HorizontalAlignment="Left" Margin="35,11,0,0" VerticalAlignment="Top"/>
 
                 </Grid>
             </TabItem>

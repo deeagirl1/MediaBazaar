@@ -49,8 +49,6 @@ namespace MediaBazaarApp
                 this.showAnnouncements();
                 this.showProducts();
                 this.showRequests();
-
-                //new AutoScheduler().Schedule(new DateTime(2021, 08, 10, 23, 00, 00), new DateTime(2021, 08, 20, 23, 00, 00), 1);
             }
             catch(Exception ex)
             {
@@ -405,6 +403,18 @@ namespace MediaBazaarApp
             }
         }
 
+        private void showDepartments()
+        {
+            try
+            {
+                this.lvDepartments.ItemsSource = this.company.Departments.GetAll();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
         private void btnRefreshRequests1_Click(object sender, RoutedEventArgs e)
         {
             this.showRequests();
@@ -440,6 +450,11 @@ namespace MediaBazaarApp
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnRefreshDepartments_Click(object sender, RoutedEventArgs e)
+        {
+            this.showDepartments();
         }
 
         private void btnAutoSchedule_Click(object sender, RoutedEventArgs e)
