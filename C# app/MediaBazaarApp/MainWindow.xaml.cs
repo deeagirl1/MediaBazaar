@@ -46,6 +46,13 @@ namespace MediaBazaarApp
                 this.lvMessages.ItemsSource = this.company.Messages.ToList();
                 this.lblUserString.Content = $"Hello , {person.FirstName}";
 
+                //EmployeeSorter sorter = new EmployeeSorter();
+                //foreach(ShopWorker s in sorter.GetAll(this.employees))
+                //{
+                //    Console.WriteLine(s.ID);
+                //}
+                //sorter.Incerement();
+
                 this.showAnnouncements();
                 this.showProducts();
                 this.showRequests();

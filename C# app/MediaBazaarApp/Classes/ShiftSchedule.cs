@@ -122,7 +122,7 @@ namespace MediaBazaarApp.Classes
         }
         private void assignEmployee(int ShiftID, int EmployeeID)
         {
-            string sql = "INSERT INTO employeeassignment (ShiftID, EmployeeID) VALUES (@ShiftID, @EmployeeID); ";
+            string sql = "INSERT INTO employeeassignment (ShiftID, EmployeeID) VALUES (@ShiftID, @EmployeeID);";
 
             MySqlParameter[] prms = new MySqlParameter[2];
 
@@ -130,6 +130,9 @@ namespace MediaBazaarApp.Classes
             prms[1] = new MySqlParameter("@EmployeeID", EmployeeID);
 
             this.ExecuteQuery(sql, prms);
+
+            EmployeeSorter sorter = new EmployeeSorter();
+            sorter.Incerement();
         }
         private void removeAssignedEmployees(int ShiftID)
         {

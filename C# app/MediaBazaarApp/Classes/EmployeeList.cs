@@ -21,7 +21,7 @@ namespace MediaBazaarApp.Classes
                 $" FROM PERSON p INNER JOIN EMPLOYEE e ON p.ID = e.ID " +
                 $" INNER JOIN department d ON e.DepartmentID = d.ID " +
                 $" INNER JOIN employeeStatus s ON e.Status = s.ID " +
-                $" INNER JOIN contract c on e.ContractID = c.ID WHERE p.ACCESSLEVEL = 1";
+                $" INNER JOIN contract c on e.ContractID = c.ID WHERE p.ACCESSLEVEL = 1 ORDER BY p.ID";
 
             MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
             MySqlDataReader reader = null;
@@ -69,7 +69,6 @@ namespace MediaBazaarApp.Classes
                                                     lastWorkingDay,
                                                     contract,
                                                     Convert.ToDecimal(reader["Wage"]));
-
                     employees.Add(emp);
                 }
             }
@@ -224,8 +223,9 @@ namespace MediaBazaarApp.Classes
         }
         public List<ShopWorker> GetAvailiableEmployees(WorkShift shift)
         {
+            EmployeeSorter sorter = new EmployeeSorter();
             List<ShopWorker> shopWorkers = new List<ShopWorker>();
-            foreach (ShopWorker s in this.ToList())
+            foreach (ShopWorker s in sorter.GetAll(this.ToList()))
             {
                 if (!isBusy(s, shift))
                 {

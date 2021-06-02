@@ -159,6 +159,7 @@
     <Compile Include="Classes\DepartmentMediator.cs" />
     <Compile Include="Classes\DepotWorker.cs" />
     <Compile Include="Classes\EmployeeSort.cs" />
+    <Compile Include="Classes\EmployeeSorter.cs" />
     <Compile Include="Classes\IDepartment.cs" />
     <Compile Include="Classes\IProductRequestStorage.cs" />
     <Compile Include="Classes\IProductStorage.cs" />
