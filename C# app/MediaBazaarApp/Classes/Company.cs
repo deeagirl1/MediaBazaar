@@ -15,6 +15,7 @@ namespace MediaBazaarApp.Classes
         public readonly List<Department> Departments = new List<Department>();
         public readonly AccountManager AccountManager = new AccountManager();
         public readonly MessageCollection Messages = new MessageCollection();
+        public readonly AutoScheduler AutoScheduler = new AutoScheduler();
         public readonly ShiftSchedule ShiftSchedule = new ShiftSchedule();
         public readonly List<Contract> Contracts = new List<Contract>();
         public readonly EmployeeList ShopWorkers= new EmployeeList();

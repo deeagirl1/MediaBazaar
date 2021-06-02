@@ -41,15 +41,7 @@ namespace MediaBazaarApp
                 }
                 foreach (ShopWorker s in this.company.ShopWorkers.GetAvailiableEmployees(shift))
                 {
-                    if (this.shift.AssignedEmployees.Count > 0)
-                    {
-                        foreach (ShopWorker w in this.shift.AssignedEmployees)
-                        {
-                            if (s.ID != w.ID)
-                                this.lvAvailableEmployees.Items.Add(s);
-                        }
-                    }
-                    else this.lvAvailableEmployees.Items.Add(s);
+                    this.lvAvailableEmployees.Items.Add(s);
                 }
                 this.lblWorkshift.Content = this.shift.ToString();
             }

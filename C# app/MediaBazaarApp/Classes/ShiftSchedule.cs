@@ -58,6 +58,29 @@ namespace MediaBazaarApp.Classes
             }
             return temp;
         }
+        public WorkShift GetWorkShift(DateTime date)
+        {
+            return new WorkShift(date, getShiftType(date));
+        }
+        public WorkShift ShiftExists(DateTime date)
+        {
+            foreach(WorkShift w in this.ToList())
+            {
+                if(w.date == date)
+                    return w;
+            }
+            return null;
+        }
+        private Shift getShiftType(DateTime date)
+        {
+            switch (date.Hour)
+            {
+                case 7 : return new Shift(1);
+                case 15 : return new Shift(2);
+                case 23 : return new Shift(3);
+                default: return null;
+            }
+        }
         public List<WorkShift> ToList()
         {
             string sql = $"SELECT w.id as ShiftID, w.Date, s.ID as timeID, s.Name from workshift w inner join shifttime s on w.ShiftType = s.ID";

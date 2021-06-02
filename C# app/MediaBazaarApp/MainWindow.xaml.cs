@@ -49,6 +49,8 @@ namespace MediaBazaarApp
                 this.showAnnouncements();
                 this.showProducts();
                 this.showRequests();
+
+                //new AutoScheduler().Schedule(new DateTime(2021, 08, 10, 23, 00, 00), new DateTime(2021, 08, 20, 23, 00, 00), 1);
             }
             catch(Exception ex)
             {
@@ -433,6 +435,20 @@ namespace MediaBazaarApp
                     if(req.RequestStatus.ID == 3)
                         MessageBox.Show(req.Comment);
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnAutoSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                AutoScheduleWindow window = new AutoScheduleWindow();
+                window.RefreshCalendar += this.RefreshCalendar;
+                window.Show();
             }
             catch (Exception ex)
             {

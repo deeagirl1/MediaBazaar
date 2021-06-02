@@ -227,32 +227,51 @@ namespace MediaBazaarApp.Classes
             List<ShopWorker> shopWorkers = new List<ShopWorker>();
             foreach (ShopWorker s in this.ToList())
             {
-                if (s.Status.ID != 3 && s.HireTime.Date <= shift.date.Date)
+                if (!isBusy(s, shift))
                 {
-                    if (s.LastWorkingDay > shift.date || s.LastWorkingDay < new DateTime(1900, 01, 01))
+                    if (s.Status.ID != 3 && s.HireTime.Date <= shift.date.Date)
                     {
-                        if (!this.isWeeklyWorkLimitСrossed(s, shift.date))
+                        if (s.LastWorkingDay > shift.date || s.LastWorkingDay < new DateTime(1900, 01, 01))
                         {
-                            if (!isOnDayOff(s.ID, getDayOfWeek(shift.date)))
+                            if (!this.isWeeklyWorkLimitСrossed(s, shift.date))
                             {
-                                if (!isDailyWorkLimitCrossed(s, shift))
+                                if (!isOnDayOff(s.ID, getDayOfWeek(shift.date)))
                                 {
-                                    if (shift.shift.ID == 3)
+                                    if (!isDailyWorkLimitCrossed(s, shift))
                                     {
-                                        if (isAvailibleOnNight(s.ID))
+                                        if (shift.shift.ID == 3)
                                         {
-                                            shopWorkers.Add(s);
+                                            if (isAvailibleOnNight(s.ID))
+                                            {
+                                                shopWorkers.Add(s);
+                                            }
                                         }
+                                        else shopWorkers.Add(s);
                                     }
-                                    else shopWorkers.Add(s);
-                                }
 
+                                }
                             }
                         }
                     }
                 }
+                
             }
             return shopWorkers;
+        }
+        public bool isBusy(ShopWorker s, WorkShift w)
+        {
+            string sql = "SELECT COUNT(*) FROM employeeassignment WHERE" +
+                " EmployeeID = @EmployeeID AND ShiftID = @ShiftID ";
+
+            MySqlParameter[] prms = new MySqlParameter[2];
+
+            prms[0] = new MySqlParameter("@EmployeeID", s.ID);
+            prms[1] = new MySqlParameter("@ShiftID", w.ID);
+
+            int count = Convert.ToInt32(this.ReadScalar(sql, prms));
+            if (count == 0)
+                return false;
+            return true;
         }
         private bool isOnDayOff(int id, int day)
         {
@@ -349,7 +368,6 @@ namespace MediaBazaarApp.Classes
             prms[2] = new MySqlParameter("@EndDate", end);
 
             int count = Convert.ToInt32(this.ReadScalar(sql, prms));
-            Console.WriteLine(count);
             if (count < worker.Contract.ShiftsCount)
                 return false;
             return true;

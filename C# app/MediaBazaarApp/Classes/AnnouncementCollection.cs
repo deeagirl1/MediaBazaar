@@ -9,7 +9,6 @@ namespace MediaBazaarApp.Classes
 {
     public class AnnouncementCollection : DBmanager
     {
-        
         public List<Announcement> ToList()
         {
             string sql = $"SELECT * FROM annoucements";
@@ -36,7 +35,6 @@ namespace MediaBazaarApp.Classes
             }
             return announcements;
         }
-
         public void AddAnnouncement(Announcement announcement)
         {
             string sql = "INSERT INTO annoucements(Title,Description) VALUES (@Title, @Description)";
@@ -45,7 +43,6 @@ namespace MediaBazaarApp.Classes
             prms[1] = new MySqlParameter("@Description", announcement.Description);
             this.ExecuteQuery(sql, prms);
         }
-
         public void EditAnnouncement(Announcement announcement)
         {
             string sql = "UPDATE annoucements SET Title=@Title, Description = @Description WHERE ID = @ID";

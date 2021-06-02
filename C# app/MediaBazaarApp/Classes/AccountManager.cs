@@ -11,7 +11,6 @@ namespace MediaBazaarApp.Classes
     public class AccountManager : DBmanager
     {
         private List<IAccount> accounts;
-
         public AccountManager()
         {
             accounts = new List<IAccount>();
@@ -95,6 +94,10 @@ namespace MediaBazaarApp.Classes
                 accessLevel = 2;
             if (person is Manager)
                 accessLevel = 3;
+            if (person is DepotWorker)
+                accessLevel = 4;
+            if (person is Cashier)
+                accessLevel = 5;
 
             prms[0] = new MySqlParameter("@FirstName", person.FirstName);
             prms[1] = new MySqlParameter("@LastName", person.LastName);
