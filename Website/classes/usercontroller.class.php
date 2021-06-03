@@ -164,6 +164,35 @@ private function removeShifts(int $UserID){
     ]);
 }
 
+public function checkInShift(int $UserID){
+  $sql = "UPDATE employeeassignment SET CheckIn = CURRENT_TIMESTAMP WHERE EmployeeID = :id";
+  $stmt = $this->connect()->prepare($sql);
+  $stmt->execute([
+      ':id' => $UserID
+  ]);
+}
+
+public function checkOutShift(int $UserID){
+  $sql = "UPDATE employeeassignment SET CheckOut = CURRENT_TIMESTAMP WHERE EmployeeID = :id";
+  $stmt = $this->connect()->prepare($sql);
+  $stmt->execute([
+      ':id' => $UserID
+  ]);
+}
+
+public function getShiftsForCheck($UserID){
+  $sql = "SELECT Date FROM employeeassignment AS ea
+  JOIN workshift AS ws 
+  ON ea.ID = ws.ID
+  WHERE ea.EmployeeID = :id";
+  $stmt = $this->connect()->prepare($sql);
+  $stmt->execute([
+    ':id' => $UserID
+  ]);
+  return $result = $stmt->fetchAll();
+  
+}
+
 }
 
 

@@ -47,7 +47,7 @@ nav ul li a{
   line-height: 80px;
   margin-right: 40px;
   cursor: pointer;
-  display: none;
+  display: inline;
 }
 #check{
   display: none;
@@ -75,6 +75,7 @@ textarea[type=text] {
     cursor: pointer;
     width: 100%;
     border-radius: 12px;
+    display: inline;
     
   }
   input[type=text]{
