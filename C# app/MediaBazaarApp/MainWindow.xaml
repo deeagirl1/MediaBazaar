@@ -192,24 +192,58 @@
             </TabItem>
 
             <TabItem Header="Users">
-                <Grid Background="#11589b" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,1,2,-1">
+                <Grid Background="#11589b" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                            <Label  Content="First Name:" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Height="40" Width="320"/>
+                        <TextBox Grid.Row="1" x:Name="tb_FirstName"  HorizontalAlignment="Center" VerticalAlignment="Top"  Height="26" TextWrapping="Wrap"  MinWidth="320"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Last Name:" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Height="40" Width="320"/>
+                        <TextBox Grid.Row="1" x:Name="tb_LastName"  HorizontalAlignment="Center" VerticalAlignment="Top" Height="24" TextWrapping="Wrap"  MinWidth="320"/>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Email:" FontSize="20" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Height="40" Width="320"/>
+                        <TextBox Grid.Row="1" x:Name="tb_Email"  TextWrapping="Wrap" MinWidth="320" HorizontalAlignment="Center" VerticalAlignment="Top" Height="24"/>
+                    </Grid>
+                    
 
-                    <TextBox x:Name="tb_FirstName"  HorizontalAlignment="Center" VerticalAlignment="Center"  Height="26" Margin="420,248,388,427" TextWrapping="Wrap"  Width="320"/>
-                    <TextBox x:Name="tb_LastName"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Margin="420,138,388,539" TextWrapping="Wrap"  Width="320"/>
-                    <TextBox x:Name="tb_Email"  Margin="420,354,388,323"  TextWrapping="Wrap" Width="320" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24"/>
-                    <Label Content="First Name:" FontSize="20" HorizontalAlignment="Center" Margin="420,84,388,577" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320"/>
-                    <Label Content="Last Name:" FontSize="20" HorizontalAlignment="Center" Margin="420,196,388,465" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320"/>
-                    <Label Content="Email:" FontSize="20" HorizontalAlignment="Center" Margin="420,302,388,359" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320"/>
-                    <Label Content="Email:" FontSize="20" HorizontalAlignment="Center" Margin="420,302,388,359" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320"/>
-                    <RadioButton x:Name="rb_Adminstrator" FontSize="20" Margin="420,435,568,240" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.494,-0.93" Height="26" Width="140" IsChecked="True">Administrator</RadioButton>
-                    <RadioButton x:Name="rb_Manager" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="642,440,388,235" RenderTransformOrigin="0.43,-1.026" Height="26" Width="98">Manager</RadioButton>
-
-                    <Button x:Name= "btn_AddNewUser" Content="Add" FontSize="20" HorizontalAlignment="Center" Margin="420,517,388,114" VerticalAlignment="Center" Height="70" Click="btnAddNewUser_Click" Width="320"/>
                     <Label Content="Status:" FontSize="20" HorizontalAlignment="Center" Margin="420,378,388,283" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320"/>
-                    <RadioButton x:Name="rbDepotWorker" FontSize="20" Margin="420,466,568,209" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.494,-0.93" Height="26" Width="140"  Content="Depot worker"/>
-                    <RadioButton x:Name="rbCashier" FontSize="20" Margin="642,466,346,209" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.494,-0.93" Height="26" Width="140" Content="Cashier"/>
 
+                    <Grid Grid.Row="3" Width="320">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton Grid.Row="0" Grid.Column="0" x:Name="rb_Adminstrator" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"  Height="26" Width="140" IsChecked="True">Administrator</RadioButton>
+                        <RadioButton Grid.Column="1" x:Name="rb_Manager" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"   Height="26" Width="98">Manager</RadioButton>
+                        <RadioButton Grid.Row="1" x:Name="rbDepotWorker" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"  Height="26" Width="140"  Content="Depot worker"/>
+                        <RadioButton Grid.Row="1" Grid.Column="1" x:Name="rbCashier" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"  Height="26" Width="140" Content="Cashier"/>
+                    </Grid>
+                    <Button Grid.Row="4" x:Name= "btn_AddNewUser" Content="Add" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="70" Click="btnAddNewUser_Click" Width="320"/>
                 </Grid>
 
             </TabItem>
