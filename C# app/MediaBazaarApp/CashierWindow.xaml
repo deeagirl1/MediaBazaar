@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="CashierWindow" Height="701.966" Width="1143.534" >
 
-    <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,1">
+    <Grid Background="#11589b" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,1">
         <Grid.RowDefinitions>
             <RowDefinition Height="41"/>
             <RowDefinition/>
@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <ListView x:Name="lvProducts" Margin="19,10,144,0" Height="644" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.RowSpan="2" MouseDoubleClick="lvProducts_MouseDoubleClick" Grid.ColumnSpan="2" >
+        <ListView x:Name="lvProducts" Height="644" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.RowSpan="2" MouseDoubleClick="lvProducts_MouseDoubleClick" >
 
             <ListView.View>
 
@@ -33,7 +33,7 @@
 
             </ListView.View>
         </ListView>
-        <Grid Grid.Column="1" Grid.RowSpan="2">
+        <Grid Background="#11589b" Grid.Column="1" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="100*"/>
