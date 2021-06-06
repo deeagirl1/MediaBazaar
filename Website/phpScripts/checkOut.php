@@ -8,10 +8,8 @@ require_once("../classes/usercontroller.class.php");
     
     $userController = new UserController();
     $test = $userController->getShiftsCheckInAndOut($_SESSION['ID']);
-    if( $userController->checkInShift($test) != null)
+    if( $userController->checkOutShift($test) != null)
     {
-    
-      echo "<script>alert('Successfully checked-in!'); document.location='../index.php?page=attendance'; </script>";  
+      echo "<script>alert('Successfully checked-out!'); document.location='../index.php?page=attendance'; </script>";  
     }
-
 ?>

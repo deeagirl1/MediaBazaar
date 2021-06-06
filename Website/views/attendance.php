@@ -1,43 +1,38 @@
 <?php
 require('phpScripts/isSessionValid.php');
-require_once('classes/usercontroller.class.php');
+
 ?>
-
-<script>
-const handleCheckIn =(e)=>{
-    e.preventDefault();
-const radios = document.querySelector(".shift-option[checked='']");
-console.log(radios);
-}
-</script>
-
 <section>
 <link rel="stylesheet" href="css/attendance.css">
 <div class="container">
-<form  method = "POST">
+
  
     <h1>Attendance</h1>
     <hr>
-    
+    <p>Next shift is going to be on: </p>
+    <br>
     <?php
-        $test = new UserController();
+    require('phpScripts/displayCurrentShift.php');
+    ?>
+    <br>
+    <form action="phpScripts/checkIn.php" method ="POST">
 
-        $result = $test->getShiftsForCheck($_SESSION['ID']);
+    <button type="submit" class="btn">Check in</button>
 
-        foreach($result as $shift){
-            
-            echo $shift['Date'];
-            echo "&nbsp;";
-            echo "<input class='shift-option' type='radio' name='shift' value={$shift['Date']} ></input>";
-            echo "<br>";
-        }
-        ?>
+    </form>
+
+    <form action="phpScripts/checkOut.php">
+
+    <button type="submit" class="btn">Check out</button>
+
+    </form>   
+     
+        
     <br>
     <br>
     
     <hr>
-    <button class="btn" onclick={handleCheckIn(e)}>Check in</button>
-    <button type="submit" class="btn">Check out</button>
-</form>
+    
+
 </div>
 </section>

@@ -41,15 +41,16 @@ require('phpScripts/isSessionValid.php');
                     case 'calendar':
                         $requestedPage = 'views/calendar.php';
                         break;   
+                    case 'attendance':
+                        $requestedPage = 'views/attendance.php';
+                        break; 
                     case 'contact':
                           $requestedPage = 'views/contact.php';
                           break;    
                     case 'logout':
                         $requestedPage = 'phpScripts/logout.php';
                         break;
-                    case 'attendance':
-                        $requestedPage = 'views/attendance.php';
-                        break;            
+                              
                 }
             } 
             require $requestedPage;   

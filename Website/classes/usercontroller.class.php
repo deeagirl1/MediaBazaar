@@ -73,12 +73,11 @@ class UserController extends Dbh{
         INNER JOIN workshift AS ws 
         ON ws.ID = ea.ShiftID 
       WHERE ea.EmployeeID = ?
-        AND (ws.Date BETWEEN ? AND ?)
+      AND (ws.Date BETWEEN ? AND ?)
         ORDER BY ws.Date ASC";
     
     $begin = date_format($startDate, "Y-m-d 00:00:00");
     $end = date_format($endDate, "Y-m-d 23:59:59");
-
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute([$id, $begin , $end]);
     $results = $stmt->fetchAll();
@@ -164,35 +163,57 @@ private function removeShifts(int $UserID){
     ]);
 }
 
-public function checkInShift(int $UserID){
-  $sql = "UPDATE employeeassignment SET CheckIn = CURRENT_TIMESTAMP WHERE EmployeeID = :id";
+public function checkInShift($UserID){
+  $sql = "UPDATE employeeassignment SET CheckIn = CURRENT_TIMESTAMP WHERE ID =  :id";
   $stmt = $this->connect()->prepare($sql);
   $stmt->execute([
       ':id' => $UserID
   ]);
+  return true;
 }
 
-public function checkOutShift(int $UserID){
-  $sql = "UPDATE employeeassignment SET CheckOut = CURRENT_TIMESTAMP WHERE EmployeeID = :id";
+public function checkOutShift($UserID){
+  $sql = "UPDATE employeeassignment SET CheckOut = CURRENT_TIMESTAMP WHERE ID =  :id";
   $stmt = $this->connect()->prepare($sql);
   $stmt->execute([
       ':id' => $UserID
   ]);
+  return true;
 }
 
-public function getShiftsForCheck($UserID){
-  $sql = "SELECT Date FROM employeeassignment AS ea
-  JOIN workshift AS ws 
-  ON ea.ID = ws.ID
-  WHERE ea.EmployeeID = :id";
+public function getShiftsCheckInAndOut($UserID) 
+{
+  $sql = "SELECT employeeassignment.ID FROM employeeassignment inner join workshift on employeeassignment.shiftID = workshift.ID
+          WHERE EmployeeID = :id and workshift.Date > CURRENT_TIMESTAMP ORDER by workshift.Date ASC ";
   $stmt = $this->connect()->prepare($sql);
   $stmt->execute([
     ':id' => $UserID
   ]);
-  return $result = $stmt->fetchAll();
-  
+  if ($stmt->rowCount() > 0) {
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+     return $row['ID'];
+     break;
+    }
+  }
 }
 
+  public function GetClosestShiftDetails($UserID)
+  {
+    $sql = "select * from workshift inner join employeeassignment on workshift.ID = employeeassignment.ShiftID 
+            where employeeassignment.ID = :id";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([
+      ':id' => $this->getShiftsCheckInAndOut($UserID)
+    ]);
+    if ($stmt->rowCount() > 0) {
+      while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+       return $row['Date'];
+       break;
+      }
+    }
+    
+  }
 }
+
 
 
