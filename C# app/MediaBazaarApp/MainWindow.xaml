@@ -341,6 +341,7 @@
                         </StackPanel>
                     </Grid>
                     <ComboBox x:Name="cmb_ProductDepartments" HorizontalAlignment="Left" Margin="120,18,0,0" VerticalAlignment="Top" Width="193" Height="23"/>
+
                     <Button x:Name="btn_ApplyFilterDepartment" Content="Apply" HorizontalAlignment="Left" Margin="326,18,0,0" VerticalAlignment="Top" Width="90" Height="23" Click="btn_ApplyFilterDepartment_Click"/>
                     <Label Foreground="White" FontSize="15" Content="Department" HorizontalAlignment="Left" Margin="29,15,0,0" VerticalAlignment="Top" Width="91" Height="31" Grid.RowSpan="2"/>
 
