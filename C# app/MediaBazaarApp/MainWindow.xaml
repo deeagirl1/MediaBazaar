@@ -340,6 +340,9 @@
                             <Button x:Name="btnRequest" Content="Request" Height="25"  Margin="-4,0,4,0" Click="btnRequest_Click"/>
                         </StackPanel>
                     </Grid>
+                    <ComboBox x:Name="cmb_ProductDepartments" HorizontalAlignment="Left" Margin="120,18,0,0" VerticalAlignment="Top" Width="193" Height="23"/>
+                    <Button x:Name="btn_ApplyFilterDepartment" Content="Apply" HorizontalAlignment="Left" Margin="337,18,0,0" VerticalAlignment="Top" Width="90" Height="23" Click="btn_ApplyFilterDepartment_Click"/>
+                    <Label Content="Department" HorizontalAlignment="Left" Margin="27,17,0,0" VerticalAlignment="Top" Width="74" Height="23"/>
 
 
                 </Grid>

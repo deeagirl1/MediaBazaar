@@ -48,13 +48,8 @@ namespace MediaBazaarApp
                 this.lvShopWorkers.ItemsSource = this.employees;
                 this.lvMessages.ItemsSource = this.company.Messages.ToList();
                 this.lblUserString.Content = $"Hello , {person.FirstName}";
-
-                //EmployeeSorter sorter = new EmployeeSorter();
-                //foreach(ShopWorker s in sorter.GetAll(this.employees))
-                //{
-                //    Console.WriteLine(s.ID);
-                //}
-                //sorter.Incerement();
+                this.cmb_ProductDepartments.ItemsSource = this.company.Departments.GetAll();
+                
 
                 this.showAnnouncements();
                 this.showProducts();
@@ -212,16 +207,22 @@ namespace MediaBazaarApp
             }
             catch (Exception)
             {
-                System.Windows.Forms.MessageBox.Show("All fields must be completed");
+                MessageBox.Show("All fields must be completed");
             }
         }
         private void btn_Search_Click(object sender, RoutedEventArgs e)
         {
-            string name = tb_Search.Text;
-            this.employees = this.company.ShopWorkers.ToList();
-            this.employees = FindPattern(name,employees);
-            this.lvShopWorkers.ItemsSource = this.employees;
-
+            try
+            {
+                string name = tb_Search.Text;
+                this.employees = this.company.ShopWorkers.ToList();
+                this.employees = FindPattern(name, employees);
+                this.lvShopWorkers.ItemsSource = this.employees;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private List<ShopWorker> FindPattern(string name, List<ShopWorker> workers)
         {
@@ -528,6 +529,25 @@ namespace MediaBazaarApp
             try
             {
                 this.showDepartments();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_ApplyFilterDepartment_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                List<Product> products = new List<Product>();
+                int id = ((Department)this.cmb_ProductDepartments.SelectedItem).ID;
+                foreach(Product product in this.company.Products.ToList())
+                {
+                    if (product.Department.ID == id)
+                        products.Add(product);
+                }
+                this.lvProducts.ItemsSource = products;
             }
             catch (Exception ex)
             {
