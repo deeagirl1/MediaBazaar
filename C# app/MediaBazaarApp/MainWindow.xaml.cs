@@ -488,6 +488,18 @@ namespace MediaBazaarApp
             this.viewDepartmentForm.Show();
         }
 
-       
+        private void btnAutoSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                AutoScheduleWindow window = new AutoScheduleWindow();
+                window.RefreshCalendar += this.RefreshCalendar;
+                window.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

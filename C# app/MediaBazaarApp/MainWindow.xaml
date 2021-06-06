@@ -96,7 +96,7 @@
                     <Border Grid.Column="1" Grid.RowSpan="6" BorderBrush="LightGray" Opacity="0.6" BorderThickness="1,0,0,0">
                         <Grid>
                             <Button x:Name="btnRefreshCalendar" Content="Refresh" Click="btnRefreshCalendar_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Width="99" Height="31" />
-                            <Button x:Name="btnAutoSchedule" Content="Auto-Schedule" HorizontalAlignment="Right" VerticalAlignment="Top" Width="99" Height="32" Margin="0,304,0,0" />
+                            <Button x:Name="btnAutoSchedule" Content="Auto-Schedule" HorizontalAlignment="Right" VerticalAlignment="Top" Width="99" Height="32" Margin="0,304,0,0" Click="btnAutoSchedule_Click" />
                         </Grid>
 
                     </Border>
