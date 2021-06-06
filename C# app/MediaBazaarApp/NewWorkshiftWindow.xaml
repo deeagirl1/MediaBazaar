@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaBazaarApp"
         mc:Ignorable="d"
-        Title="NewWorkshiftWindow" Height="450" Width="800">
-    <Grid>
+       Title="NewWorkshiftWindow" Height="450" Width="800"
+        Opacity=".9">
+    <Grid Background="#11589b">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="103*"/>
             <ColumnDefinition Width="161*"/>
