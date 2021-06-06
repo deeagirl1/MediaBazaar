@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MediaBazaarApp.Popups"
         mc:Ignorable="d"
         Title="RequestAmountForm" Height="195.905" Width="264.655">
-    <Grid Background="#11589b">
+    <Grid>
         <TextBox x:Name="tbAmount" HorizontalAlignment="Left" Height="23" Margin="27,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201"/>
         <Label Content="Amount" HorizontalAlignment="Left" Margin="27,28,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnRequest" Content="Request" HorizontalAlignment="Left" Margin="53,107,0,0" VerticalAlignment="Top" Width="151" Height="32" Click="btnRequest_Click"/>

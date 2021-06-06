@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MediaBazaarApp.Popups"
         mc:Ignorable="d"
         Title="Add new announcement" Height="450" Width="800">
-    <Grid Background="#11589b">
+    <Grid Background="LightGray">
         <TextBox x:Name="tbTitle" HorizontalAlignment="Left" Height="24" Margin="195,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="392"/>
         <TextBox x:Name="tbDescription" HorizontalAlignment="Left" Height="199" Margin="195,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="392"/>
         <Label Content="Title" HorizontalAlignment="Left" Margin="195,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.25,-0.154" Width="39"/>

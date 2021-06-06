@@ -5,9 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaBazaarApp"
         mc:Ignorable="d"
-        Title="EditWorkShift" Height="450" Width="800"
-        Opacity=".9">
-    <Grid Background="#11589b">
+        Title="EditWorkShift" Height="450" Width="800">
+    <Grid>
         <ListView x:Name="lvAvailableEmployees" ItemsSource="{Binding employees}" Height="364" Margin="10,45,493,0" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>

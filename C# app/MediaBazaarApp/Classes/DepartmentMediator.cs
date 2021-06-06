@@ -30,6 +30,16 @@ namespace MediaBazaarApp.Classes
         {
             return this.DAL.GetAll();
         }
+        public IReadOnlyList<Manager> GetManagers()
+        {
+            return this.DAL.GetManagers();
+        }
+        public IReadOnlyList<ShopWorker> GetEmployees(Department department)
+        {
+            return this.DAL.GetEmployees(department);
+        }
+
+
 
     }
 }
