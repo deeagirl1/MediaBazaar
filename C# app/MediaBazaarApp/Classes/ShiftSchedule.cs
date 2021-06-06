@@ -22,13 +22,13 @@ namespace MediaBazaarApp.Classes
 
             MySqlParameter[] prms = new MySqlParameter[2];
 
-            prms[0] = new MySqlParameter("@ShiftType",shift.shift.ID);
+            prms[0] = new MySqlParameter("@ShiftType", shift.shift.ID);
             prms[1] = new MySqlParameter("@Date", shift.date);
 
             shift.ID = Convert.ToInt32(this.ReadScalar(sql, prms));
             this.addAssignedEmployees(shift);
             return shift.ID;
-            
+
         }
         public void Update(WorkShift shift)
         {
@@ -64,9 +64,9 @@ namespace MediaBazaarApp.Classes
         }
         public WorkShift ShiftExists(DateTime date)
         {
-            foreach(WorkShift w in this.ToList())
+            foreach (WorkShift w in this.ToList())
             {
-                if(w.date == date)
+                if (w.date == date)
                     return w;
             }
             return null;
@@ -75,9 +75,9 @@ namespace MediaBazaarApp.Classes
         {
             switch (date.Hour)
             {
-                case 7 : return new Shift(1);
-                case 15 : return new Shift(2);
-                case 23 : return new Shift(3);
+                case 7: return new Shift(1);
+                case 15: return new Shift(2);
+                case 23: return new Shift(3);
                 default: return null;
             }
         }
@@ -115,9 +115,9 @@ namespace MediaBazaarApp.Classes
         }
         private void addAssignedEmployees(WorkShift shift)
         {
-            foreach(ShopWorker s in shift.AssignedEmployees)
+            foreach (ShopWorker s in shift.AssignedEmployees)
             {
-               this.assignEmployee(shift.ID, s.ID);
+                this.assignEmployee(shift.ID, s.ID);
             }
         }
         private void assignEmployee(int ShiftID, int EmployeeID)
@@ -143,6 +143,48 @@ namespace MediaBazaarApp.Classes
             prms[0] = new MySqlParameter("@ID", ShiftID);
 
             this.ExecuteQuery(sql, prms);
+        }
+        public IEnumerable<AttendenceModel> GetAttendence(WorkShift w)
+        {
+            foreach(ShopWorker s in w.AssignedEmployees)
+            {
+                yield return new AttendenceModel(s,
+                    this.getCheckInTime(w, s), this.getCheckOutTime(w, s));
+            } 
+        }
+        private Nullable<DateTime> getCheckInTime(WorkShift w, ShopWorker s)
+        {
+            string sql = "SELECT CheckIn FROM employeeassignment WHERE employeeassignment.ShiftID = @SHIFT AND employeeassignment.EmployeeID = @EMP";
+
+            MySqlParameter[] prms = new MySqlParameter[2];
+
+            prms[0] = new MySqlParameter("@SHIFT", w.ID);
+            prms[1] = new MySqlParameter("@EMP", s.ID);
+
+            Object obj = this.ReadScalar(sql, prms);
+            if (obj != DBNull.Value)
+            {
+                DateTime time = Convert.ToDateTime(obj);
+                return time;
+            }
+            else return null;
+        }
+        private Nullable<DateTime> getCheckOutTime(WorkShift w, ShopWorker s)
+        {
+            string sql = "SELECT CheckOut FROM employeeassignment WHERE employeeassignment.ShiftID = @SHIFT AND employeeassignment.EmployeeID = @EMP";
+
+            MySqlParameter[] prms = new MySqlParameter[2];
+
+            prms[0] = new MySqlParameter("@SHIFT", w.ID);
+            prms[1] = new MySqlParameter("@EMP", s.ID);
+
+            Object obj = this.ReadScalar(sql, prms);
+            if (obj != DBNull.Value)
+            {
+                DateTime time = Convert.ToDateTime(obj);
+                return time;
+            }
+            else return null;
         }
     }
 }

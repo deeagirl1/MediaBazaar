@@ -40,9 +40,7 @@ namespace MediaBazaarApp
                 this.dpDate.SelectedDate = DateTime.Now;
                 this.dpStartDate.SelectedDate = DateTime.Now;
                 this.dpEndDate.SelectedDate = DateTime.Now;
-                this.lbDate1.Content = this.dpDate.SelectedDate;
-                this.lbDate1_Copy.Content = this.dpStartDate.SelectedDate;
-                this.lbDate1_Copy1.Content = this.dpEndDate.SelectedDate;
+          
               
                 this.cmbDepartments.ItemsSource = this.company.Departments.GetDepartments();
                 this.cmbDepartments1.ItemsSource = this.company.Departments.GetDepartments();
@@ -133,6 +131,7 @@ namespace MediaBazaarApp
                 this.lblTotalEmployees.Content = this.company.Statistics.GetTotalEmployeesForDate(date);
                 this.lblTotalSalaryPaid.Content = this.company.Statistics.GetTotalSalaryPaidForDate(date);
                 this.lblTotalHoursWorked.Content = this.company.Statistics.GetTotalHoursWorkedForDate(date);
+            
                
             }
             catch(Exception ex)
@@ -152,6 +151,8 @@ namespace MediaBazaarApp
                 this.lblTotalSalaryPaidForPeriod.Content = this.company.Statistics.GetTotalSalaryPaidForPeriod(start, end);
                 this.lblAverageSalaryForPeriod.Content = this.company.Statistics.GetAverageSalaryForPeriod(start, end);
                 this.lblHoursWorkedForPeriod.Content = this.company.Statistics.GetHoursWorkedForPeriod(start, end);
+                this.lbPeoplePresentSpecificDates.Content = this.company.Statistics.PeoplePresentForSpecificDates(start, end);
+                this.lbAttendanceRateSpecificDate.Content = this.company.Statistics.GetAttendaceRateSpecificDate(start, end);
             }
             catch (Exception ex)
             {

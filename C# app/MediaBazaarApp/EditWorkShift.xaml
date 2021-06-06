@@ -30,7 +30,7 @@
         <Button x:Name="btnAssign" Content="&gt;" HorizontalAlignment="Left" Margin="332,45,0,0" VerticalAlignment="Top" Width="115" Height="38" Click="btnAssign_Click"/>
         <Button x:Name="btnUndo" Content="&lt;" HorizontalAlignment="Left" Margin="332,119,0,0" VerticalAlignment="Top" Width="115" Height="38" Click="btnUndo_Click"/>
         <Button x:Name="btnProceed" Content="Done" HorizontalAlignment="Left" Margin="332,362,0,0" VerticalAlignment="Top" Width="115" Height="38" Click="btnProceed_Click"/>
-        <Label x:Name="lblWorkshift" Content="Label" Foreground="White"  HorizontalAlignment="Left" Margin="362,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.816,0.269"/>
+        <Label x:Name="lblWorkshift" Content="Label" Foreground="White"  HorizontalAlignment="Left" Margin="371,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.816,0.269"/>
         <Label Content="Available employee" Foreground="White"  HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top"/>
         <Label Content="Assigned employee" Foreground="White"  HorizontalAlignment="Left" Margin="498,10,0,0" VerticalAlignment="Top"/>
 

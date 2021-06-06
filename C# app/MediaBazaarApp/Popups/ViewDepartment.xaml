@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MediaBazaarApp.Popups"
         mc:Ignorable="d"
         Title="View Department" Height="503.933" Width="486.067" ResizeMode="NoResize">
-    <Grid Margin="0,0,0,2" Background="#11589b">
+    <Grid Background="#11589b">
         <Label  Foreground="White" Content="Name" HorizontalAlignment="Left" Margin="45,3,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.25,-0.154" Width="43"/>
         <TextBox x:Name="tb_Name" HorizontalAlignment="Left" Height="24" Margin="45,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="392"/>
         <Label  Foreground="White" Content="Department Manager" HorizontalAlignment="Left" Margin="45,62,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.25,-0.154" Width="139"/>

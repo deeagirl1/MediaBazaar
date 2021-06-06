@@ -30,7 +30,7 @@
                                 <GridViewColumn Header="ItemID" Width="100" DisplayMemberBinding="{Binding Product.Name}" />
                                 <GridViewColumn Header="AmountRequested" Width="150" DisplayMemberBinding="{Binding Quantity}" />
                                 <GridViewColumn Header="Date" Width="150" DisplayMemberBinding="{Binding DateTime}" />
-                                <GridViewColumn Header="Status" Width="150" DisplayMemberBinding="{Binding RequestStatus.Name}" />
+                                <GridViewColumn Header="Status" Width="180" DisplayMemberBinding="{Binding RequestStatus.Name}" />
 
                             </GridView>
                         </ListView.View>

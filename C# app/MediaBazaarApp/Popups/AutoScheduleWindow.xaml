@@ -11,6 +11,9 @@
         <DatePicker x:Name="dtpEndDate" HorizontalAlignment="Left" Margin="426,55,0,0" VerticalAlignment="Top" Width="144"/>
         <TextBox x:Name="tbAmount" HorizontalAlignment="Left" Height="23" Margin="246,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btnProceed" Content="Proceed" HorizontalAlignment="Left" Margin="215,148,0,0" VerticalAlignment="Top" Width="174" Height="34" Click="btnProceed_Click"/>
+        <Label Content="From" HorizontalAlignment="Left" Margin="46,32,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="To" HorizontalAlignment="Left" Margin="426,32,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="People per shift" HorizontalAlignment="Left" Margin="246,32,0,0" VerticalAlignment="Top" Foreground="White"/>
 
     </Grid>
 </Window>

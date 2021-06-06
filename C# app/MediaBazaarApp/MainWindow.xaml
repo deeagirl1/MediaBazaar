@@ -231,13 +231,13 @@
                             <GridView >
                                 <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="100">ID</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Topic}" Width="500">Topic</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Sender.FullName}" Width="200">Sender</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding DateTime}" Width="200">Time</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Sender.FullName}" Width="250">Sender</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding DateTime}" Width="300">Time</GridViewColumn>
                             </GridView>
 
                         </ListView.View>
                     </ListView>
-                    <Button x:Name="btnRefreshMessages" Grid.ColumnSpan="2" Content="Refresh" HorizontalAlignment="Left" Margin="560,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="39" Click="btnRefreshMessages_Click" Grid.Column="2"/>
+                    <Button x:Name="btnRefreshMessages" Grid.ColumnSpan="2" Content="Refresh" HorizontalAlignment="Left" Margin="663,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="39" Click="btnRefreshMessages_Click" Grid.Column="2"/>
 
                 </Grid>
             </TabItem>
@@ -313,14 +313,14 @@
                             <GridView >
 
                                 <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="100">ID</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="100">Name</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="200">Name</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding CostPrice}" Width="100">CostPrice</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding SellingPrice}" Width="100">SellingPrice</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Department}" Width="100">Department</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Department}" Width="150">Department</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Quantity}" Width="100">Quantity</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Length}" Width="100">Length</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Width}" Width="100">Width</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Height}" Width="100">Height</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Length}" Width="110">Length</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Width}" Width="110">Width</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Height}" Width="110">Height</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding MinThreshold}" Width="100">MinThreshold</GridViewColumn>
                             </GridView>
 
@@ -340,6 +340,9 @@
                             <Button x:Name="btnRequest" Content="Request" Height="25"  Margin="-4,0,4,0" Click="btnRequest_Click"/>
                         </StackPanel>
                     </Grid>
+                    <ComboBox x:Name="cmb_ProductDepartments" HorizontalAlignment="Left" Margin="120,18,0,0" VerticalAlignment="Top" Width="193" Height="23"/>
+                    <Button x:Name="btn_ApplyFilterDepartment" Content="Apply" HorizontalAlignment="Left" Margin="326,18,0,0" VerticalAlignment="Top" Width="90" Height="23" Click="btn_ApplyFilterDepartment_Click"/>
+                    <Label Foreground="White" FontSize="15" Content="Department" HorizontalAlignment="Left" Margin="29,15,0,0" VerticalAlignment="Top" Width="91" Height="31" Grid.RowSpan="2"/>
 
 
                 </Grid>
@@ -362,11 +365,11 @@
 
                             <GridView >
                                 <GridViewColumn Header="Request ID" Width="100" DisplayMemberBinding="{Binding ID}" />
-                                <GridViewColumn Header="ItemID" Width="150" DisplayMemberBinding="{Binding Product.ID}" />
-                                <GridViewColumn Header="Name" Width="250" DisplayMemberBinding="{Binding Product.Name}" />
+                                <GridViewColumn Header="ItemID" Width="100" DisplayMemberBinding="{Binding Product.ID}" />
+                                <GridViewColumn Header="Name" Width="350" DisplayMemberBinding="{Binding Product.Name}" />
                                 <GridViewColumn Header="AmountRequested" Width="150" DisplayMemberBinding="{Binding Quantity}" />
-                                <GridViewColumn Header="Date" Width="200" DisplayMemberBinding="{Binding DateTime}" />
-                                <GridViewColumn Header="Status" Width="150" DisplayMemberBinding="{Binding RequestStatus.Name}" />
+                                <GridViewColumn Header="Date" Width="300" DisplayMemberBinding="{Binding DateTime}" />
+                                <GridViewColumn Header="Status" Width="200" DisplayMemberBinding="{Binding RequestStatus.Name}" />
                             </GridView>
 
                         </ListView.View>
@@ -406,8 +409,8 @@
 
                             <GridView >
                                 <GridViewColumn Header="ID" Width="100" DisplayMemberBinding="{Binding ID}" />
-                                <GridViewColumn Header="Name" Width="400" DisplayMemberBinding="{Binding Name}" />
-                                <GridViewColumn Header="Department Manager" Width="300" DisplayMemberBinding="{Binding DepartmentManager}" />
+                                <GridViewColumn Header="Name" Width="500" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="Department Manager" Width="599" DisplayMemberBinding="{Binding DepartmentManager}" />
                                 <!--" <GridViewColumn Header="Number of employees" Width="200" DisplayMemberBinding="{Binding Department.Manager}" /> -->
 
                             </GridView>

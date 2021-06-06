@@ -27,8 +27,10 @@ namespace MediaBazaarApp.Classes
             this.company = new Company();
             this.shift = shift;
             this.lblWorkshift.Content = this.shift.ToString();
-            this.lvEmployees.ItemsSource = this.shift.AssignedEmployees;
+            this.lvEmployees.ItemsSource = this.company.ShiftSchedule.GetAttendence(shift);
         }
+
+
 
     }
 }

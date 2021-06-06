@@ -82,6 +82,90 @@ namespace MediaBazaarApp.Classes
             else throw new ArgumentException("No employees found");
         }
 
+        public decimal GetAttendaceRate(DateTime date)
+        {
+            string sql = "select count(CheckIn)/ COUNT(1) * 100 as Percentage " +
+                         "from employeeassignment a " +
+                         "inner join workshift w on a.ShiftID = w.ID " +
+                         "where w.Date <= @date ";
+            MySqlParameter[] prms = new MySqlParameter[1];
+            date.AddHours(23);
+            date.AddMinutes(59);
+            prms[0] = new MySqlParameter("@date", date);
+
+            Object obj = this.ReadScalar(sql, prms);
+            if (obj != DBNull.Value)
+            {
+                decimal nr = Convert.ToDecimal(obj);
+                return nr;
+            }
+            else throw new ArgumentException("No data found for selected date");
+
+        }
+
+        public decimal GetAttendaceRateSpecificDate(DateTime startDate, DateTime endDate)
+        {
+            string sql = "select count(CheckIn)/ COUNT(1) * 100 as Percentage " +
+                         "from employeeassignment a " +
+                         "inner join workshift w on a.ShiftID = w.ID " +
+                         "where  w.Date >= @StartDate AND w.Date <= @EndDate ";
+            MySqlParameter[] prms = new MySqlParameter[2];
+
+            prms[0] = new MySqlParameter("@StartDate", startDate);
+
+            prms[1] = new MySqlParameter("@EndDate", endDate);
+
+            Object obj = this.ReadScalar(sql, prms);
+            if (obj != DBNull.Value)
+            {
+                decimal nr = Convert.ToDecimal(obj);
+                return nr;
+            }
+            else throw new ArgumentException("No data found for selected date");
+
+        }
+
+        public int PeoplePresent(DateTime date)
+        {
+            string sql = $"SELECT COUNT(CheckIn) as PeoplePresent " +
+                         "FROM employeeassignment a " +
+                         "INNER JOIN workshift w on a.ShiftID = w.ID " +
+                         "WHERE w.Date < @date ";
+            MySqlParameter[] prms = new MySqlParameter[1];
+
+            prms[0] = new MySqlParameter("@date", date);
+
+            Object obj = this.ReadScalar(sql, prms);
+            if (obj != DBNull.Value)
+            {
+                int nr = Convert.ToInt32(obj);
+                return nr;
+            }
+            else throw new ArgumentException("No data found for selected date");
+
+        }
+
+        public int PeoplePresentForSpecificDates(DateTime startDate, DateTime endDate)
+        {
+            string sql = $"SELECT COUNT(CheckIn) as PeoplePresent " +
+                         "FROM employeeassignment a " +
+                         "INNER JOIN workshift w on a.ShiftID = w.ID " +
+                         "WHERE  w.Date >= @StartDate AND w.Date <= @EndDate";
+            MySqlParameter[] prms = new MySqlParameter[2];
+
+            prms[0] = new MySqlParameter("@StartDate", startDate);
+            prms[1] = new MySqlParameter("@EndDate", endDate);
+
+            Object obj = this.ReadScalar(sql, prms);
+            if (obj != DBNull.Value)
+            {
+                int nr = Convert.ToInt32(obj);
+                return nr;
+            }
+            else throw new ArgumentException("No data found for selected date");
+
+        }
+
         public int GetTotalHoursWorkedForDate(DateTime date)
         {
             string sql = "SELECT Sum(1 * 8) from employeeassignment a " +
