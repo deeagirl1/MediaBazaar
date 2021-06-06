@@ -5,14 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaBazaarApp.Classes"
         mc:Ignorable="d"
-        Title="WorkShiftWindow" Height="450" Width="475">
+        Title="WorkShiftWindow" Height="450" Width="858.784">
     <Grid>
-        <ListView x:Name="lvEmployees" HorizontalAlignment="Left" Height="359" Margin="10,50,0,0" VerticalAlignment="Top" Width="446">
+        <ListView x:Name="lvEmployees" HorizontalAlignment="Left" Height="359" Margin="10,50,0,0" VerticalAlignment="Top" Width="831">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="40">ID</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Width="200">First Name</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding LastName}" Width="200">Last Name</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Employee.ID}" Width="40">ID</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Employee.FirstName}" Width="200">First Name</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Employee.LastName}" Width="200">Last Name</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding CheckIn}" Width="200">CheckIn</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding CheckOut}" Width="200">CheckOut</GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
