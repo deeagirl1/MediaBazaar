@@ -227,7 +227,7 @@
 
             <TabItem Header="MyAccount" >
                 <Grid Background="#11589b" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                    <Label x:Name="lblUserString" Content="Label"  Foreground="White"  HorizontalAlignment="Center" Margin="472,128,436,0" VerticalAlignment="Top" Width="222" FontSize="24" RenderTransformOrigin="-2.043,0.833" HorizontalContentAlignment="Center"/>
+                    <Label x:Name="lblUserString" Content="Label"  Foreground="White"  HorizontalAlignment="Center" Margin="472,132,438,0" VerticalAlignment="Top" Width="222" FontSize="24" RenderTransformOrigin="-2.043,0.833" HorizontalContentAlignment="Center"/>
                     <Label Content="Current password" HorizontalAlignment="Left" Foreground="White"  Margin="472,204,0,0" VerticalAlignment="Top"/>
                     <Label Content="New password" HorizontalAlignment="Left" Foreground="White"  Margin="472,274,0,0" VerticalAlignment="Top"/>
                     <Label Content="Repeat new password" HorizontalAlignment="Left" Foreground="White"  Margin="472,346,0,0" VerticalAlignment="Top"/>
