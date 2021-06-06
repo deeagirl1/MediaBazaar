@@ -32,7 +32,7 @@ namespace MediaBazaarApp.Popups
                 this.worker = worker;
                 this.cbx_Department.ItemsSource = this.company.Departments.GetDepartments();
                 this.cbx_Contract.ItemsSource = this.company.Contracts;
-                this.cbx_Status.ItemsSource = this.company.Statuses;
+                this.cbx_Status.ItemsSource = this.company.GetEditableStatuses();
                 fillFields();
             }
             catch(Exception ex)

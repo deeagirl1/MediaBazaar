@@ -55,7 +55,14 @@ namespace MediaBazaarApp.Classes
             }
             return null;
         }
-
+        public IEnumerable<Status> GetEditableStatuses() 
+        { 
+            foreach(Status s in this.Statuses)
+            {
+                if (s.ID != 1)
+                    yield return s;
+            }
+        }
       
         private void getContracts()
         {
