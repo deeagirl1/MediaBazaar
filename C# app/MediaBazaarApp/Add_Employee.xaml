@@ -12,7 +12,7 @@
             <ColumnDefinition Width="127*"/>
             <ColumnDefinition Width="134*"/>
         </Grid.ColumnDefinitions>
-        <Grid Background="#11589b" Grid.ColumnSpan="3">
+        <Grid Background="LightGray" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="9*"/>
                 <ColumnDefinition Width="246*"/>

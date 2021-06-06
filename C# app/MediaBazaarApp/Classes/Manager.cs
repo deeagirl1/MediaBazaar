@@ -17,6 +17,10 @@ namespace MediaBazaarApp.Classes
         public Manager(int id, string firstName, string lastName, string email,string username, string password) :
             base(id, firstName, lastName, email, username, password)
         { }
+        public Manager(string firstName, string lastName) :
+           base(firstName, lastName)
+        { }
+
         public override string ToString()
         {
             return base.ToString();

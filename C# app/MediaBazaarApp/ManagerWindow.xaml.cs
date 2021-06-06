@@ -40,6 +40,10 @@ namespace MediaBazaarApp
                 this.dpDate.SelectedDate = DateTime.Now;
                 this.dpStartDate.SelectedDate = DateTime.Now;
                 this.dpEndDate.SelectedDate = DateTime.Now;
+              
+                this.cmbDepartments.ItemsSource = this.company.Departments.GetDepartments();
+                this.cmbDepartments1.ItemsSource = this.company.Departments.GetDepartments();
+           
 
                 this.loadProducts();
             }
@@ -81,10 +85,6 @@ namespace MediaBazaarApp
             }
         }
 
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
         private void btnNextMonthClick(object sender, RoutedEventArgs e)
         {
@@ -198,6 +198,23 @@ namespace MediaBazaarApp
         {
             try
             {
+                Department department = (Department)this.cmbDepartments.SelectedItem;
+                this.lblTotalProfitProduct.Content =
+                    this.company.Statistics.GetAverageSalaryDepartment(department);
+                this.lbPeoplePerDepartment.Content =
+                    this.company.Statistics.NrOfEmployees(department);
+            }
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void btnGetProductStat_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
                 Product prd = (Product)this.cmbProducts.SelectedItem;
                 this.lblAvgAmountPerPurchase.Content =
                      this.company.Statistics.GetAvgItemPerPurchase(prd);
@@ -211,7 +228,22 @@ namespace MediaBazaarApp
             {
                 MessageBox.Show(ex.Message);
             }
+        }
 
+        private void btnGetInfoDepartments_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+             Department department = (Department)this.cmbDepartments1.SelectedItem;
+            DateTime start = Convert.ToDateTime(this.dpStartDateDepartment.SelectedDate.Value.Date);
+            DateTime end = Convert.ToDateTime(this.dpEndDateDepartment.SelectedDate.Value.Date);
+            this.lbSalesPerDepartment.Content = this.company.Statistics.GetTotalSalesPerDepartment(department, start, end);
+            this.lbTotalSalariesPaidPerDepartment.Content = this.company.Statistics.GetTotalSalariesPaidPerDepartment(department, start, end) + "€";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

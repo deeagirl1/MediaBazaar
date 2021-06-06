@@ -11,7 +11,11 @@ namespace MediaBazaarApp.Classes
         List<Department> GetAll();
         void Create(Department department);
         void Update(Department department);
-        List<Department> GetDepartmentName();
+        int NrOfEmployees(int depID);
+        List<ShopWorker> GetEmployees(Department department);
+
+        List<Manager> GetManagers();
+
 
     
     }
