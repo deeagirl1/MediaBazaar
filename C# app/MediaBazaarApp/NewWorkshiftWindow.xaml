@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MediaBazaarApp"
         mc:Ignorable="d"
        Title="NewWorkshiftWindow" Height="450" Width="800"
-        Opacity=".9">
+        Opacity=".9" ResizeMode="NoResize">
     <Grid Background="#11589b">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="103*"/>
@@ -33,9 +33,9 @@
         <Button x:Name="btnAssign" Content="&gt;" HorizontalAlignment="Left" Margin="22.908,45,0,0" VerticalAlignment="Top" Width="115" Height="38" Click="btnAssign_Click" Grid.Column="1"/>
         <Button x:Name="btnUndo" Content="&lt;" HorizontalAlignment="Left" Margin="22.908,119,0,0" VerticalAlignment="Top" Width="115" Height="38" Click="btnUndo_Click" Grid.Column="1"/>
         <Button x:Name="btnProceed" Content="Done" HorizontalAlignment="Left" Margin="22.908,362,0,0" VerticalAlignment="Top" Width="115" Height="38" Click="btnProceed_Click" Grid.Column="1"/>
-        <Label x:Name="lblWorkshift" Content="Label" HorizontalAlignment="Left" Margin="52.908,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.816,0.269" Grid.Column="1"/>
-        <Label Content="Available employee" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top"/>
-        <Label Content="Assigned employee" HorizontalAlignment="Left" Margin="189,10,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="lblWorkshift"  Foreground="White"  Content="Label" HorizontalAlignment="Left" Margin="60,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.816,0.269" Grid.Column="1"/>
+        <Label Content="Available employee"  Foreground="White"  HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top"/>
+        <Label Content="Assigned employee"  Foreground="White"  HorizontalAlignment="Left" Margin="189,10,0,0" VerticalAlignment="Top" Grid.Column="1"/>
 
     </Grid>
 </Window>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaBazaarApp.Popups"
         mc:Ignorable="d"
-        Title="Edit product" Height="450" Width="414.032">
+        Title="Edit product" Height="450" Width="414.032" ResizeMode="NoResize" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="182*"/>
@@ -17,24 +17,24 @@
                 <RowDefinition Height="23*"/>
             </Grid.RowDefinitions>
             <TextBox x:Name="tb_CostPrice" HorizontalAlignment="Left" Height="21" Margin="56,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="290"/>
-            <Label Content="Name" HorizontalAlignment="Left" Margin="56,13,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.25,-0.154" Width="78" Height="26"/>
-            <Label Content="Cost price" HorizontalAlignment="Left" Margin="56,68,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.029,0.413" Height="26"/>
+            <Label  Foreground="White" Content="Name" HorizontalAlignment="Left" Margin="56,13,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.25,-0.154" Width="78" Height="26"/>
+            <Label  Foreground="White" Content="Cost price" HorizontalAlignment="Left" Margin="56,68,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.029,0.413" Height="26"/>
             <Button x:Name="btnEditProduct" Content="Edit" HorizontalAlignment="Left" Margin="145,232,0,0" VerticalAlignment="Top" Width="103" Height="33" Click="btnEditProduct_Click" Grid.Row="1"/>
             <TextBox x:Name="tb_Name" HorizontalAlignment="Left" Height="20" Margin="56,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="290"/>
             <TextBox x:Name="tb_SellingPrice" HorizontalAlignment="Left" Height="21" Margin="56,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="290" Grid.Row="1"/>
-            <Label Content="Selling price" HorizontalAlignment="Left" Margin="56,123,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.029,0.413" Grid.RowSpan="2" Height="26"/>
+            <Label  Foreground="White" Content="Selling price" HorizontalAlignment="Left" Margin="56,123,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.029,0.413" Grid.RowSpan="2" Height="26"/>
             <TextBox x:Name="tb_Lenght" HorizontalAlignment="Left" Height="20" Margin="56,65.8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
-            <Label Content="Size" HorizontalAlignment="Left" Margin="56,25.8,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="26"/>
-            <Label Content="Lenght" HorizontalAlignment="Left" Margin="68,38.8,0,0" VerticalAlignment="Top" Width="47" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
+            <Label  Foreground="White" Content="Size" HorizontalAlignment="Left" Margin="56,25.8,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="26"/>
+            <Label  Foreground="White" Content="Lenght" HorizontalAlignment="Left" Margin="68,38.8,0,0" VerticalAlignment="Top" Width="47" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
             <TextBox x:Name="tb_Width" HorizontalAlignment="Left" Height="20" Margin="167,65.8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
-            <Label Content="Width" HorizontalAlignment="Left" Margin="177,38.8,0,0" VerticalAlignment="Top" Width="47" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
+            <Label  Foreground="White" Content="Width" HorizontalAlignment="Left" Margin="177,38.8,0,0" VerticalAlignment="Top" Width="47" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
             <TextBox x:Name="tb_Height" HorizontalAlignment="Left" Height="20" Margin="275,65.8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
-            <Label Content="Height&#xD;&#xA;" HorizontalAlignment="Left" Margin="288,38.8,0,0" VerticalAlignment="Top" Width="47" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
-            <Label Content="Department" HorizontalAlignment="Left" Margin="57,123.8,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
+            <Label  Foreground="White" Content="Height&#xD;&#xA;" HorizontalAlignment="Left" Margin="288,38.8,0,0" VerticalAlignment="Top" Width="47" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
+            <Label  Foreground="White" Content="Department" HorizontalAlignment="Left" Margin="57,123.8,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
             <TextBox x:Name="tb_Restock" HorizontalAlignment="Left" Height="20" Margin="56,199.8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="290" Grid.Row="1"/>
-            <Label Content="Restock threshhold" HorizontalAlignment="Left" Margin="56,172.8,0,0" VerticalAlignment="Top" Width="119" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
+            <Label  Foreground="White" Content="Restock threshhold" HorizontalAlignment="Left" Margin="56,172.8,0,0" VerticalAlignment="Top" Width="119" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="27"/>
             <TextBox x:Name="tb_Quantity" HorizontalAlignment="Left" Height="16" Margin="56,110.8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="119" Grid.Row="1"/>
-            <Label Content="Quantity" HorizontalAlignment="Left" Margin="56,85.8,0,0" VerticalAlignment="Top" Width="119" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="25"/>
+            <Label  Foreground="White" Content="Quantity" HorizontalAlignment="Left" Margin="56,85.8,0,0" VerticalAlignment="Top" Width="119" RenderTransformOrigin="0.029,0.413" Grid.Row="1" Height="25"/>
 
         </Grid>
         <ComboBox x:Name="cmbDepartment" HorizontalAlignment="Left" Margin="57,113.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="290"/>

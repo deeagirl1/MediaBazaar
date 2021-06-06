@@ -7,13 +7,13 @@
         mc:Ignorable="d"
         SizeToContent="WidthAndHeight"
         Background="#11589b"
-        Title="Admin" Height="760.466" Width="1143.534" ResizeMode="CanResize">
+        Title="Admin" Height="760.466" Width="1143.534"  ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="397*"/>
-            <RowDefinition Height="332*"/>
+            <RowDefinition Height="332*"/> 
         </Grid.RowDefinitions>
-        <TabControl SelectionChanged="TabControl_SelectionChanged" Grid.RowSpan="2">
+        <TabControl SelectionChanged="TabControl_SelectionChanged" Grid.RowSpan="2" >
             <TabItem Header="Employees">
                 <Grid Background="#11589b" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
@@ -72,7 +72,7 @@
 
 
                     <Grid Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Margin="-2,0,2,0">
-                        <TextBox x:Name="tb_Search"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="20" TextWrapping="Wrap" Margin="19,10,101,0" />
+                        <TextBox x:Name="tb_Search"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="20" TextWrapping="Wrap" Margin="21,10,103,0" />
 
                     </Grid>
 
@@ -182,10 +182,10 @@
                     <TextBox x:Name="tbCurrentPass" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="18" Margin="472,231,436,452" TextWrapping="Wrap"  Width="222"/>
                     <TextBox x:Name="tbNewPass" HorizontalAlignment="Center" VerticalAlignment="Center" Height="17" Margin="472,301,436,383" TextWrapping="Wrap"  Width="222"/>
                     <TextBox x:Name="tbNewPassRepeat"   Margin="472,378,436,306" TextWrapping="Wrap" Width="222" HorizontalAlignment="Center" VerticalAlignment="Center" Height="17"/>
-                    <Label x:Name="lblUserString" Content="Label" HorizontalAlignment="Center" Margin="472,128,436,0" VerticalAlignment="Top" Width="222" FontSize="24" RenderTransformOrigin="-2.043,0.833" HorizontalContentAlignment="Center"/>
-                    <Label Content="Current password" HorizontalAlignment="Center" Margin="472,200,555,475" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423"/>
-                    <Label Content="New password" HorizontalAlignment="Center" Margin="472,270,570,405" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423"/>
-                    <Label Content="Repeat new password" HorizontalAlignment="Center" Margin="472,347,533,328" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423"/>
+                    <Label x:Name="lblUserString" Foreground="White" Content="Label" HorizontalAlignment="Center" Margin="472,128,436,0" VerticalAlignment="Top" Width="222" FontSize="24" RenderTransformOrigin="-2.043,0.833" HorizontalContentAlignment="Center"/>
+                    <Label Content="Current password" Foreground="White"  HorizontalAlignment="Center" Margin="472,200,555,475" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423"/>
+                    <Label Content="New password" Foreground="White" HorizontalAlignment="Center" Margin="472,270,570,405" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423"/>
+                    <Label Content="Repeat new password" Foreground="White" HorizontalAlignment="Center" Margin="472,347,533,328" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423"/>
                     <Button x:Name="btnChangePassword" Content="Change password" HorizontalAlignment="Stretch" Margin="428,0,378,172" VerticalAlignment="Bottom" Width="324" Height="46" Click="btnChangePassword_Click"/>
 
                 </Grid>
@@ -206,7 +206,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                            <Label  Content="First Name:" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Height="40" Width="320"/>
+                        <Label  Content="First Name:"  Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Height="40" Width="320"/>
                         <TextBox Grid.Row="1" x:Name="tb_FirstName"  HorizontalAlignment="Center" VerticalAlignment="Top"  Height="26" TextWrapping="Wrap"  MinWidth="320"/>
                     </Grid>
                     <Grid Grid.Row="1">
@@ -214,7 +214,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Label Content="Last Name:" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Height="40" Width="320"/>
+                        <Label Content="Last Name:" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Height="40" Width="320"/>
                         <TextBox Grid.Row="1" x:Name="tb_LastName"  HorizontalAlignment="Center" VerticalAlignment="Top" Height="24" TextWrapping="Wrap"  MinWidth="320"/>
                     </Grid>
                     <Grid Grid.Row="2">
@@ -222,7 +222,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Label Content="Email:" FontSize="20" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Height="40" Width="320"/>
+                        <Label Content="Email:" Foreground="White" FontSize="20" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Height="40" Width="320"/>
                         <TextBox Grid.Row="1" x:Name="tb_Email"  TextWrapping="Wrap" MinWidth="320" HorizontalAlignment="Center" VerticalAlignment="Top" Height="24"/>
                     </Grid>
                     
@@ -238,10 +238,10 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <RadioButton Grid.Row="0" Grid.Column="0" x:Name="rb_Adminstrator" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"  Height="26" Width="140" IsChecked="True">Administrator</RadioButton>
-                        <RadioButton Grid.Column="1" x:Name="rb_Manager" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"   Height="26" Width="98">Manager</RadioButton>
-                        <RadioButton Grid.Row="1" x:Name="rbDepotWorker" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"  Height="26" Width="140"  Content="Depot worker"/>
-                        <RadioButton Grid.Row="1" Grid.Column="1" x:Name="rbCashier" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"  Height="26" Width="140" Content="Cashier"/>
+                        <RadioButton Grid.Row="0" Grid.Column="0" Foreground="White" x:Name="rb_Adminstrator" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"  Height="26" Width="140" IsChecked="True">Administrator</RadioButton>
+                        <RadioButton Grid.Column="1" x:Name="rb_Manager" Foreground="White" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"   Height="26" Width="98">Manager</RadioButton>
+                        <RadioButton Grid.Row="1" Foreground="White" x:Name="rbDepotWorker" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"  Height="26" Width="140"  Content="Depot worker"/>
+                        <RadioButton Grid.Row="1" Foreground="White" Grid.Column="1" x:Name="rbCashier" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"  Height="26" Width="140" Content="Cashier"/>
                     </Grid>
                     <Button Grid.Row="4" x:Name= "btn_AddNewUser" Content="Add" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="70" Click="btnAddNewUser_Click" Width="320"/>
                 </Grid>
@@ -420,7 +420,7 @@
                         <Button x:Name="btnRefreshRequests" Content="Refresh" HorizontalAlignment="Right" Margin="0,9,-96,0" VerticalAlignment="Top" Width="100" Height="25" Click="btnRefreshRequests_Click"/>
 
                     </StackPanel>
-                    <Label Content="Double click on (rejected) request to see more details." HorizontalAlignment="Left" Margin="35,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Double click on (rejected) request to see more details." Foreground="White" HorizontalAlignment="Left" Margin="35,10,0,0" VerticalAlignment="Top"/>
 
                 </Grid>
             </TabItem>
@@ -466,7 +466,7 @@
                         <Button x:Name="btnRefreshDepartments1" Content="Refresh" HorizontalAlignment="Right" Margin="0,9,-96,0" VerticalAlignment="Top" Width="100" Height="25" Click="btnRefreshDepartments1_Click"/>
 
                     </StackPanel>
-                    <Label Content="Double click on department to see more details." HorizontalAlignment="Left" Margin="35,11,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Double click on department to see more details." Foreground="White"  HorizontalAlignment="Left" Margin="35,11,0,0" VerticalAlignment="Top"/>
 
                 </Grid>
             </TabItem>

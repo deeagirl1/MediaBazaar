@@ -27,42 +27,42 @@
                 <RowDefinition Height="0"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Column="1" >
-                <Label>Country*</Label>
+                <Label Foreground="White" >Country*</Label>
                 <TextBox x:Name="tb_Country" Margin="0,0,25,0" Height="25"/>
-                <Label>City*</Label>
+                <Label Foreground="White" >City*</Label>
                 <TextBox x:Name="tb_City" Margin="0,0,25,0" Height="25"/>
-                <Label>Street*</Label>
+                <Label Foreground="White" >Street*</Label>
                 <TextBox x:Name="tb_Street" Margin="0,0,141,0" Height="25"/>
-                <Label>Zip-code*</Label>
+                <Label Foreground="White" >Zip-code*</Label>
                 <TextBox x:Name="tb_ZipCode" Margin="2,0,141,0" Height="25"/>
-                <Label>Street Nr.*</Label>
+                <Label Foreground="White" >Street Nr.*</Label>
                 <TextBox x:Name ="tb_StreetNumber" Height="25" Margin="0,0,141,0"/>
-                <Label Content="Address additional info"/>
+                <Label  Foreground="White" Content="Address additional info"/>
                 <TextBox x:Name="tb_AddressAddition" Margin="2,0,25,0" Height="25"/>
 
             </StackPanel>
 
             <StackPanel Grid.Column="4" Grid.ColumnSpan="2">
-                <Label>Account number*</Label>
+                <Label Foreground="White" >Account number*</Label>
                 <TextBox x:Name="tb_AccountNumber" Margin="0,0,25,0" Height="25"/>
-                <Label>Department*</Label>
+                <Label Foreground="White" >Department*</Label>
                 <ComboBox x:Name="cbx_Department" Margin="0,0,25,0" Height="25"/>
-                <Label>Contract*</Label>
+                <Label Foreground="White" >Contract*</Label>
                 <ComboBox x:Name="cbx_Contract" Margin="0,0,25,0" Height="25"/>
-                <Label Content="Status*"/>
+                <Label Foreground="White"  Content="Status*"/>
                 <ComboBox x:Name="cbx_Status"  Margin="0,0,25,0" Height="25"/>
 
 
             </StackPanel>
             <StackPanel Grid.Column="3">
-                <Label>Email*</Label>
+                <Label Foreground="White" >Email*</Label>
                 <TextBox x:Name="tb_Email" Margin="0,0,25,0" Height="25"/>
-                <Label Content="Hourly wage*"/>
+                <Label Foreground="White"  Content="Hourly wage*"/>
                 <TextBox x:Name="tb_HourlyWage" Margin="0,0,25,0" Height="25"/>
 
             </StackPanel>
             <Button x:Name="btnAdd"  VerticalAlignment="Top" Grid.Column="3" Content="Edit employee" Height="40" Click="Button_Click" Margin="0,306,15,0"/>
-            <Label Content="Date of last working day (YYYY-MM-DD)" HorizontalAlignment="Left" Margin="0,102,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.447,-0.423" Height="26" Width="226" Grid.Column="3"/>
+            <Label Foreground="White"  Content="Date of last working day (YYYY-MM-DD)" HorizontalAlignment="Left" Margin="0,102,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.447,-0.423" Height="26" Width="226" Grid.Column="3"/>
             <TextBox x:Name="tb_year_LastWorkingDay" HorizontalAlignment="Left" Height="24" Margin="5,133,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="72" Grid.Column="3"/>
             <TextBox x:Name="tb_month_LastWorkingDay" HorizontalAlignment="Left" Height="24" Margin="82,133,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="72" Grid.Column="3"/>
             <TextBox x:Name="tb_day_LastWorkingDay" HorizontalAlignment="Left" Height="24" Margin="159,133,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="72" Grid.Column="3"/>

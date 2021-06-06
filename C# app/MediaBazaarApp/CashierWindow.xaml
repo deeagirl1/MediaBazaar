@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaBazaarApp"
         mc:Ignorable="d"
-        Title="CashierWindow" Height="701.966" Width="1143.534" >
+        Title="CashierWindow" Height="701.966" Width="1143.534" ResizeMode="NoResize">
 
     <Grid Background="#11589b" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,1">
         <Grid.RowDefinitions>
@@ -14,11 +14,12 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="196"/>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="169"/>
         </Grid.ColumnDefinitions>
 
 
-        <ListView x:Name="lvProducts" Height="644" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.RowSpan="2" MouseDoubleClick="lvProducts_MouseDoubleClick" >
+        <ListView x:Name="lvProducts" Height="650" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.RowSpan="2" MouseDoubleClick="lvProducts_MouseDoubleClick" Margin="10,10,24,0" >
 
             <ListView.View>
 
@@ -33,18 +34,18 @@
 
             </ListView.View>
         </ListView>
-        <Grid Background="#11589b" Grid.Column="1" Grid.RowSpan="2">
+        <Grid Background="#11589b" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="10"/>
-                <RowDefinition Height="100*"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition/>
 
             </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="1" VerticalAlignment="Center">
+            <StackPanel Grid.Row="1" VerticalAlignment="Center" Height="0" Margin="0,330,0,326">
 
             </StackPanel>
-            <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="64,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="25" Click="btnRefresh_Click"/>
-            <Button x:Name="btnSell" Content="Sell" HorizontalAlignment="Left" Margin="64,309,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="25" Click="btnSell_Click"/>
+            <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="22,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="25" Click="btnRefresh_Click"/>
+            <Button x:Name="btnSell" Content="Sell" HorizontalAlignment="Left" Margin="22,330,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="25" Click="btnSell_Click"/>
         </Grid>
 
 

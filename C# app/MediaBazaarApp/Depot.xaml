@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MediaBazaarApp"
         mc:Ignorable="d"
         Title="Depot" Height="450" Width="933.836"
-        Background="#11589b">
+        Background="#11589b" ResizeMode="NoResize">
     <TabControl Background="#11589b">
         <TabItem Header="Restock requests">
             <Grid>
@@ -18,11 +18,11 @@
                     <RowDefinition Height="25"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Label Grid.ColumnSpan="2" Margin="10,0,0,0">Inventory</Label>
+                <Label Grid.ColumnSpan="2"  Foreground="White"  Margin="10,0,0,0">Inventory</Label>
 
                 <!--This is the grid for the inventory Listbox-->
                 <Grid Background="#11589b" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,10,0">
-                    <ListView Margin="33,10,178,10" x:Name="lvRequests">
+                    <ListView Margin="10,10,168,10" x:Name="lvRequests">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="ID" Width="100" DisplayMemberBinding="{Binding ID}" />

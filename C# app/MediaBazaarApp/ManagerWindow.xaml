@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaBazaarApp" 
         mc:Ignorable="d"
-        Title="ManagerWindow"  Height="760.466" Width="1143.534" ResizeMode="CanResize">
+        Title="ManagerWindow"  Height="760.466" Width="1143.534" ResizeMode="NoResize">
     <Grid>
         <TabControl>
             <TabItem Header="Employees">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background=" #11589b">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="82*"/>
                         <ColumnDefinition Width="1049*"/>
@@ -35,7 +35,7 @@
                         </ListView.View>
                     </ListView>
 
-                    <Button x:Name="btnView" Content="Refresh" HorizontalAlignment="Left" Margin="948,296,0,0" VerticalAlignment="Top" Width="100" Height="32" Click="btnView_Click" Grid.Column="1"/>
+                    <Button x:Name="btnView" Content="Refresh" HorizontalAlignment="Right" Margin="948,296,0,0" VerticalAlignment="Top" Width="100" Height="32" Click="btnView_Click" Grid.Column="1"/>
                 </Grid>
             </TabItem>
 
@@ -137,65 +137,66 @@
                     </Grid>
                     <TabControl HorizontalAlignment="Left" Height="701" VerticalAlignment="Top" Width="1130" Grid.ColumnSpan="3">
                         <TabItem Header="Employees">
-                            <Grid Background="#FFE5E5E5" Margin="0,-2,-2,-3" RenderTransformOrigin="0.504,1.008">
+                            <Grid Background="#11589b" Margin="0,-2,-3,-3" RenderTransformOrigin="0.504,1.008" HorizontalAlignment="Center" Width="1127">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="0*"/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <DatePicker x:Name="dpDate" HorizontalAlignment="Left" Margin="90,92,0,0" VerticalAlignment="Top" Grid.Column="1" Width="278" Height="27"/>
                                 <Button x:Name="btnGetInfo1" Content="Display" HorizontalAlignment="Left" Margin="148,157,0,0" VerticalAlignment="Top" Width="164" Height="55" Click="btnGetInfo1_Click" Grid.Column="1"/>
-                                <Label Content="Total employees:" HorizontalAlignment="Left" Margin="38,264,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="159"/>
-                                <Label Content="Total salary paid:" HorizontalAlignment="Left" Margin="38,336,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="161"/>
-                                <Label Content="Totaly hours worked:" HorizontalAlignment="Left" Margin="38,408,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="196"/>
-                                <Label x:Name="lblTotalEmployees" Content="Label" HorizontalAlignment="Left" Margin="248,264,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661" Grid.Column="1" Height="35" Width="55"/>
-                                <Label x:Name="lblTotalSalaryPaid" Content="Label" HorizontalAlignment="Left" Margin="248,336,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.496,0.452" Grid.Column="1" Height="35" Width="55"/>
-                                <Label x:Name="lblTotalHoursWorked" Content="Label" HorizontalAlignment="Left" Margin="248,408,0,0" VerticalAlignment="Top" FontSize="16" Grid.Column="1" Height="35" Width="55"/>
-                                <Label Content="For a selected date:" HorizontalAlignment="Left" Margin="148,23,0,0" VerticalAlignment="Top" FontSize="18" Grid.Column="1" Height="39" Width="191"/>
+                                <Label Content="Total employees:" Foreground="White" HorizontalAlignment="Left" Margin="38,264,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="159"/>
+                                <Label Content="Total salary paid:" Foreground="White" HorizontalAlignment="Left" Margin="38,336,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="161"/>
+                                <Label Content="Totaly hours worked:" Foreground="White" HorizontalAlignment="Left" Margin="38,408,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="196"/>
+                                <Label x:Name="lblTotalEmployees" Foreground="White" Content="Label" HorizontalAlignment="Left" Margin="444,264,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661" Grid.Column="1" Height="35" Width="72"/>
+                                <Label x:Name="lblTotalSalaryPaid" Foreground="White" Content="Label" HorizontalAlignment="Left" Margin="444,336,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.496,0.452" Grid.Column="1" Height="35" Width="84"/>
+                                <Label x:Name="lblTotalHoursWorked" Foreground="White" Content="Label" HorizontalAlignment="Left" Margin="444,408,0,0" VerticalAlignment="Top" FontSize="16" Grid.Column="1" Height="35" Width="55"/>
+                                <Label Content="For a selected date:" Foreground="White" HorizontalAlignment="Left" Margin="148,23,0,0" VerticalAlignment="Top" FontSize="18" Grid.Column="1" Height="39" Width="191"/>
                                 <DatePicker x:Name="dpStartDate" HorizontalAlignment="Left" Margin="608,92,0,0" VerticalAlignment="Top" Grid.Column="1" Height="27" Width="216"/>
                                 <DatePicker x:Name="dpEndDate" HorizontalAlignment="Left" Margin="870,92,0,0" VerticalAlignment="Top" Grid.Column="1" Height="27" Width="225"/>
                                 <Button x:Name="btnGetInfo2" Content="Display" HorizontalAlignment="Left" Margin="768,157,0,0" VerticalAlignment="Top" Width="164" Height="55" Click="btnGetInfo2_Click" Grid.Column="1"/>
-                                <Label Content="Average employees per shift for period" HorizontalAlignment="Left" Margin="641,264,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="355"/>
-                                <Label x:Name="lblAverageEmployeesPerShiftForPeriod" Content="Label" HorizontalAlignment="Left" Margin="1027,264,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="56"/>
-                                <Label Content="For a selected time period:" HorizontalAlignment="Left" Margin="738,23,0,0" VerticalAlignment="Top" FontSize="18" Grid.Column="1" Height="38" Width="258"/>
-                                <Label Content="Total salary paid to employees for period" HorizontalAlignment="Left" Margin="641,336,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="373"/>
-                                <Label x:Name="lblTotalSalaryPaidForPeriod" Content="Label" HorizontalAlignment="Left" Margin="1027,336,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="56"/>
-                                <Label Content="Average hourly wage for period" HorizontalAlignment="Left" Margin="641,408,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="291"/>
-                                <Label x:Name="lblAverageSalaryForPeriod" Content="Label" HorizontalAlignment="Left" Margin="1027,408,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="56"/>
-                                <Label Content="Total hours worked by employees" HorizontalAlignment="Left" Margin="641,471,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="306"/>
-                                <Label x:Name="lblHoursWorkedForPeriod" Content="Label" HorizontalAlignment="Left" Margin="1027,471,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="56"/>
-                                <Label Content="Attendance rate" HorizontalAlignment="Left" Margin="39,471,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="196"/>
-                                <Label x:Name="lblHoursWorkedForPeriod_Copy" Content="Label" HorizontalAlignment="Left" Margin="248,471,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="55"/>
-                                <Label Content="People present on" HorizontalAlignment="Left" Margin="39,537,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="196"/>
-                                <Label x:Name="lbDate1" Content="date" HorizontalAlignment="Left" Margin="197,537,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="46"/>
-                                <Label x:Name="lbPeoplePresent" Content="Label" HorizontalAlignment="Left" Margin="301,537,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="55"/>
-                                <Label Content="Attendance rate" HorizontalAlignment="Left" Margin="644,537,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="196"/>
-                                <Label x:Name="lblHoursWorkedForPeriod_Copy1" Content="Label" HorizontalAlignment="Left" Margin="1027,537,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="55"/>
-                                <Label Content="People present on" HorizontalAlignment="Left" Margin="644,599,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="196"/>
-                                <Label x:Name="lbDate1_Copy" Content="date" HorizontalAlignment="Left" Margin="802,599,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="55"/>
-                                <Label x:Name="lbPeoplePresent_Copy" Content="Label" HorizontalAlignment="Left" Margin="1027,599,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="55"/>
+                                <Label Content="Average employees per shift for period" Foreground="White" HorizontalAlignment="Left" Margin="605,264,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="355"/>
+                                <Label x:Name="lblAverageEmployeesPerShiftForPeriod" Foreground="White" Content="Label" HorizontalAlignment="Left" Margin="1027,264,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="56"/>
+                                <Label Content="For a selected time period:" Foreground="White" HorizontalAlignment="Left" Margin="738,23,0,0" VerticalAlignment="Top" FontSize="18" Grid.Column="1" Height="38" Width="258"/>
+                                <Label Content="Total salary paid to employees for period" Foreground="White" HorizontalAlignment="Left" Margin="605,336,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="373"/>
+                                <Label x:Name="lblTotalSalaryPaidForPeriod" Content="Label" Foreground="White" HorizontalAlignment="Left" Margin="1027,336,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="56"/>
+                                <Label Content="Average hourly wage for period" HorizontalAlignment="Left" Foreground="White" Margin="605,408,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="291"/>
+                                <Label x:Name="lblAverageSalaryForPeriod" Content="Label" Foreground="White" HorizontalAlignment="Left" Margin="1027,408,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="56"/>
+                                <Label Content="Total hours worked by employees" HorizontalAlignment="Left" Foreground="White" Margin="605,471,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="306"/>
+                                <Label x:Name="lblHoursWorkedForPeriod" Content="Label" Foreground="White" HorizontalAlignment="Left" Margin="1027,471,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="56"/>
+                                <Label Content="Attendance rate" HorizontalAlignment="Left" Foreground="White" Margin="39,471,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="196"/>
+                                <Label x:Name="lblHoursWorkedForPeriod_Copy" Content="Label" Foreground="White" HorizontalAlignment="Left" Margin="444,471,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="55"/>
+                                <Label Content="People present on" HorizontalAlignment="Left" Foreground="White" Margin="39,537,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="196"/>
+                                <Label x:Name="lbDate1" Content="date" HorizontalAlignment="Left" Foreground="White" Margin="197,537,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.017,0.533" Grid.Column="1" Height="35" Width="210"/>
+                                <Label x:Name="lbPeoplePresent" Content="Label" HorizontalAlignment="Left" Foreground="White" Margin="444,537,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="55"/>
+                                <Label Content="Attendance rate" HorizontalAlignment="Left"  Foreground="White" Margin="608,537,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="196"/>
+                                <Label x:Name="lblHoursWorkedForPeriod_Copy1" Content="Label" Foreground="White" HorizontalAlignment="Left" Margin="1027,537,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="55"/>
+                                <Label Content="People present on" HorizontalAlignment="Left" Foreground="White" Margin="608,599,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="35" Width="196"/>
+                                <Label x:Name="lbDate1_Copy" Content="date" HorizontalAlignment="Left" Foreground="White" Margin="768,599,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="128"/>
+                                <Label x:Name="lbPeoplePresent_Copy" Content="Label" HorizontalAlignment="Left" Foreground="White" Margin="1027,599,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="55"/>
+                                <Label x:Name="lbDate1_Copy1" Content="date" HorizontalAlignment="Left" Foreground="White" Margin="887,599,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.904,0.613" Grid.Column="1" Height="35" Width="125"/>
                             </Grid>
                         </TabItem>
                         <TabItem Header="Products">
-                            <Grid Background="#FFE5E5E5" >
+                            <Grid Background="#11589b" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="0*"/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <Label Content="Product statistics" Grid.Column="1" HorizontalAlignment="Left" Margin="82,30,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                                <Label Content="Average amount per purchase:" Grid.Column="1" HorizontalAlignment="Left" Margin="82,162,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                                <Label x:Name="lblAvgAmountPerPurchase" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="335,162,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661"/>
+                                <Label Content="Product statistics" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Margin="82,30,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                                <Label Content="Average amount per purchase:" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Margin="82,162,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                                <Label x:Name="lblAvgAmountPerPurchase" Content="Label" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Margin="335,162,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661"/>
                                 <ComboBox x:Name="cmbProducts" Grid.Column="1" HorizontalAlignment="Left" Margin="82,113,0,0" VerticalAlignment="Top" Width="213"/>
                                 <Button x:Name="btnGetProductStat" Content="Proceed" Grid.Column="1" HorizontalAlignment="Left" Margin="335,113,0,0" VerticalAlignment="Top" Width="125" Height="22" Click="btnGetProductStat_Click_1" />
-                                <Label x:Name="lbl" Content="Total profit per product" Grid.Column="1" HorizontalAlignment="Left" Margin="82,213,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                                <Label x:Name="lblTotalProfit" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="335,213,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661"/>
-                                <Label Content="Total sales per product" Grid.Column="1" HorizontalAlignment="Left" Margin="82,260,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                                <Label x:Name="lblTotalSalesPerProduct" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="335,260,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661"/>
+                                <Label x:Name="lbl" Content="Total profit per product" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Margin="82,213,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                                <Label x:Name="lblTotalProfit" Content="Label" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Margin="335,213,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661"/>
+                                <Label Content="Total sales per product" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Margin="82,260,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                                <Label x:Name="lblTotalSalesPerProduct" Foreground="White" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="335,260,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661"/>
                             </Grid>
 
 
                         </TabItem>
                         <TabItem Header="Departments">
-                            <Grid Background="#FFE5E5E5" >
+                            <Grid Background="#11589b" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="0*"/>
                                     <ColumnDefinition Width="101*"/>
@@ -203,20 +204,20 @@
                                 </Grid.ColumnDefinitions>
                                 <ComboBox x:Name="cmbDepartments" HorizontalAlignment="Left" Margin="87,169,0,0" VerticalAlignment="Top" Width="433" Grid.Column="1" Height="25" Grid.ColumnSpan="2"/>
                                 <Button x:Name="btnGetPRoductStat" Content="Display" Grid.Column="2" HorizontalAlignment="Left" Margin="125.328,221,0,0" VerticalAlignment="Top" Width="161" Height="51" Click="btnGetPRoductStat_Click"/>
-                                <Label x:Name="lblTotalProfitProduct" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="315.328,347,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661" Height="36" Width="54"/>
-                                <Label Content="Total sales per department" HorizontalAlignment="Left" Margin="547.328,347,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="2" Height="36" Width="210"/>
-                                <Label x:Name="lbPeoplePerDepartment" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="315.328,388,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661" Height="36" Width="54"/>
-                                <Label Content="Choose a department to see its statistics" HorizontalAlignment="Left" Margin="224.328,10,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Grid.Column="2" Height="49" Width="466"/>
-                                <Label Content="For a selected time period:" HorizontalAlignment="Left" Margin="619.328,86,0,0" VerticalAlignment="Top" FontSize="18" Grid.Column="2" Height="40" Width="217"/>
+                                <Label x:Name="lblTotalProfitProduct" Foreground="White"  Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="315,347,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661" Height="36" Width="93"/>
+                                <Label Content="Total sales per department" Foreground="White"  HorizontalAlignment="Left" Margin="547.328,347,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="2" Height="36" Width="210"/>
+                                <Label x:Name="lbPeoplePerDepartment" Foreground="White" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="315.328,388,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661" Height="36" Width="54"/>
+                                <Label Content="Choose a department to see its statistics" Foreground="White" HorizontalAlignment="Left" Margin="224,10,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Grid.Column="2" Height="49" Width="466"/>
+                                <Label Content="For a selected time period:" Foreground="White" HorizontalAlignment="Left" Margin="619.328,86,0,0" VerticalAlignment="Top" FontSize="18" Grid.Column="2" Height="40" Width="217"/>
                                 <DatePicker x:Name="dpStartDateDepartment" HorizontalAlignment="Left" Margin="510.328,132,0,0" VerticalAlignment="Top" Grid.Column="2" Height="28" Width="180"/>
                                 <DatePicker x:Name="dpEndDateDepartment" HorizontalAlignment="Left" Margin="769.328,132,0,0" VerticalAlignment="Top" Grid.Column="2" Height="28" Width="174"/>
                                 <Button x:Name="btnGetInfoDepartments" Content="Display" HorizontalAlignment="Left" Margin="665.328,221,0,0" VerticalAlignment="Top" Width="155" Height="51" Grid.Column="2" Click="btnGetInfoDepartments_Click"/>
                                 <ComboBox x:Name="cmbDepartments1" HorizontalAlignment="Left" Margin="510.328,169,0,0" VerticalAlignment="Top" Width="433" Grid.Column="2" Height="25"/>
-                                <Label x:Name="lbSalesPerDepartment" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="888.328,347,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661" Height="36" Width="55"/>
-                                <Label x:Name="lbTotalSalariesPaidPerDepartment" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="888.328,388,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661" Height="36" Width="55"/>
-                                <Label Content="Total salaries paid per department" HorizontalAlignment="Left" Margin="547.328,388,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="2" Height="36" Width="273"/>
-                                <Label Content="Average salary per department" HorizontalAlignment="Left" Margin="87,347,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="36" Width="273" Grid.ColumnSpan="2"/>
-                                <Label Content="People per department" HorizontalAlignment="Left" Margin="87,388,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="36" Width="273" Grid.ColumnSpan="2"/>
+                                <Label x:Name="lbSalesPerDepartment" Content="Label" Grid.Column="2" Foreground="White" HorizontalAlignment="Left" Margin="888.328,347,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661" Height="36" Width="55"/>
+                                <Label x:Name="lbTotalSalariesPaidPerDepartment" Foreground="White" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="888.328,388,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661" Height="36" Width="55"/>
+                                <Label Content="Total salaries paid per department" Foreground="White" HorizontalAlignment="Left" Margin="547.328,388,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="2" Height="36" Width="273"/>
+                                <Label Content="Average salary per department" Foreground="White" HorizontalAlignment="Left" Margin="87,347,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="36" Width="273" Grid.ColumnSpan="2"/>
+                                <Label Content="People per department" Foreground="White" HorizontalAlignment="Left" Margin="87,388,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Height="36" Width="273" Grid.ColumnSpan="2"/>
                             </Grid>
                         </TabItem>
                     </TabControl>
@@ -226,14 +227,14 @@
 
             <TabItem Header="MyAccount" >
                 <Grid Background="#11589b" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                    <Label x:Name="lblUserString" Content="Label" HorizontalAlignment="Center" Margin="472,128,436,0" VerticalAlignment="Top" Width="222" FontSize="24" RenderTransformOrigin="-2.043,0.833" HorizontalContentAlignment="Center"/>
-                    <Label Content="Current password" HorizontalAlignment="Left" Margin="472,204,0,0" VerticalAlignment="Top"/>
-                    <Label Content="New password" HorizontalAlignment="Left" Margin="472,274,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Repeat new password" HorizontalAlignment="Left" Margin="472,346,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblUserString" Content="Label"  Foreground="White"  HorizontalAlignment="Center" Margin="472,128,436,0" VerticalAlignment="Top" Width="222" FontSize="24" RenderTransformOrigin="-2.043,0.833" HorizontalContentAlignment="Center"/>
+                    <Label Content="Current password" HorizontalAlignment="Left" Foreground="White"  Margin="472,204,0,0" VerticalAlignment="Top"/>
+                    <Label Content="New password" HorizontalAlignment="Left" Foreground="White"  Margin="472,274,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Repeat new password" HorizontalAlignment="Left" Foreground="White"  Margin="472,346,0,0" VerticalAlignment="Top"/>
                     <Button x:Name="btnChangePassword" Content="Change password" HorizontalAlignment="Left" Height="46" Margin="424,485,0,0" VerticalAlignment="Top" Width="324" Click="btnChangePassword_Click_1"/>
-                    <TextBox x:Name="tbCurrentPass" HorizontalAlignment="Left" Height="39" Margin="472,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" TextChanged="TextBox_TextChanged"/>
-                    <TextBox x:Name="tbNewPass" HorizontalAlignment="Left" Height="39" Margin="472,302,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
-                    <TextBox x:Name="tbNewPassRepeat" HorizontalAlignment="Left" Height="39" Margin="472,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+                    <TextBox x:Name="tbCurrentPass" HorizontalAlignment="Left" Height="14" Margin="472,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" TextChanged="TextBox_TextChanged"/>
+                    <TextBox x:Name="tbNewPass" HorizontalAlignment="Left" Height="14" Margin="472,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+                    <TextBox x:Name="tbNewPassRepeat" HorizontalAlignment="Left" Height="14" Margin="472,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
 
                 </Grid>
             </TabItem>

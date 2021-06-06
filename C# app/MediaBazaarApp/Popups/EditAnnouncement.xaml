@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaBazaarApp.Popups"
         mc:Ignorable="d"
-        Title="Add new announcement" Height="450" Width="800">
+        Title="Add new announcement" Height="450" Width="800" ResizeMode="NoResize" >
     <Grid Background="#11589b">
         <TextBox x:Name="tbTitle" HorizontalAlignment="Left" Height="24" Margin="195,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="392"/>
         <TextBox x:Name="tbDescription" HorizontalAlignment="Left" Height="199" Margin="195,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="392"/>
-        <Label Content="Title" HorizontalAlignment="Left" Margin="195,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.25,-0.154" Width="39"/>
-        <Label Content="Description" HorizontalAlignment="Left" Margin="195,93,0,0" VerticalAlignment="Top" Width="79" RenderTransformOrigin="0.43,0.558"/>
+        <Label  Foreground="White" Content="Title" HorizontalAlignment="Left" Margin="195,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.25,-0.154" Width="39"/>
+        <Label  Foreground="White" Content="Description" HorizontalAlignment="Left" Margin="195,93,0,0" VerticalAlignment="Top" Width="79" RenderTransformOrigin="0.43,0.558"/>
         <Button x:Name="btnEditAnnouncement" Content="Edit" HorizontalAlignment="Left" Margin="343,367,0,0" VerticalAlignment="Top" Width="103" Height="31" Click="btnEditAnnouncement_Click"/>
 
     </Grid>

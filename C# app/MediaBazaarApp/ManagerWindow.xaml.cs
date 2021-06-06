@@ -40,6 +40,9 @@ namespace MediaBazaarApp
                 this.dpDate.SelectedDate = DateTime.Now;
                 this.dpStartDate.SelectedDate = DateTime.Now;
                 this.dpEndDate.SelectedDate = DateTime.Now;
+                this.lbDate1.Content = this.dpDate.SelectedDate;
+                this.lbDate1_Copy.Content = this.dpStartDate.SelectedDate;
+                this.lbDate1_Copy1.Content = this.dpEndDate.SelectedDate;
               
                 this.cmbDepartments.ItemsSource = this.company.Departments.GetDepartments();
                 this.cmbDepartments1.ItemsSource = this.company.Departments.GetDepartments();
@@ -130,6 +133,7 @@ namespace MediaBazaarApp
                 this.lblTotalEmployees.Content = this.company.Statistics.GetTotalEmployeesForDate(date);
                 this.lblTotalSalaryPaid.Content = this.company.Statistics.GetTotalSalaryPaidForDate(date);
                 this.lblTotalHoursWorked.Content = this.company.Statistics.GetTotalHoursWorkedForDate(date);
+               
             }
             catch(Exception ex)
             {

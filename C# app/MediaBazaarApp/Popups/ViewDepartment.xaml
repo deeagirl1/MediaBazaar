@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:MediaBazaarApp.Popups"
         mc:Ignorable="d"
         Title="View Department" Height="503.933" Width="486.067" ResizeMode="NoResize">
-    <Grid Margin="0,0,0,2">
-        <Label Content="Name" HorizontalAlignment="Left" Margin="45,3,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.25,-0.154" Width="43"/>
+    <Grid Margin="0,0,0,2" Background="#11589b">
+        <Label  Foreground="White" Content="Name" HorizontalAlignment="Left" Margin="45,3,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.25,-0.154" Width="43"/>
         <TextBox x:Name="tb_Name" HorizontalAlignment="Left" Height="24" Margin="45,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="392"/>
-        <Label Content="Department Manager" HorizontalAlignment="Left" Margin="45,62,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.25,-0.154" Width="139"/>
+        <Label  Foreground="White" Content="Department Manager" HorizontalAlignment="Left" Margin="45,62,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.25,-0.154" Width="139"/>
         <TextBox x:Name="tb_DepartmentManager" HorizontalAlignment="Left" Height="24" Margin="45,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="392"/>
         <ListView x:Name="lvDepartments" Height="254" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="14,138,13,0">
 
@@ -23,7 +23,7 @@
 
             </ListView.View>
         </ListView>
-        <Button Content="Done" HorizontalAlignment="Left" Margin="192,418,0,0" VerticalAlignment="Top" Width="100" Height="35" Click="Button_Click"/>
+        <Button Content="Done" HorizontalAlignment="Left" Margin="185,418,0,0" VerticalAlignment="Top" Width="100" Height="35" Click="Button_Click"/>
 
     </Grid>
 </Window>

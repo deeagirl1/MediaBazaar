@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaBazaarApp.Popups"
         mc:Ignorable="d"
-        Title="AutoScheduleWindow" Height="245.642" Width="592.546">
+        Title="AutoScheduleWindow" Height="245.642" Width="592.546" ResizeMode="NoResize">
     <Grid Background="#11589b">
         <DatePicker x:Name="dtpStartDate" HorizontalAlignment="Left" Margin="46,55,0,0" VerticalAlignment="Top" Width="144"/>
         <DatePicker x:Name="dtpEndDate" HorizontalAlignment="Left" Margin="426,55,0,0" VerticalAlignment="Top" Width="144"/>

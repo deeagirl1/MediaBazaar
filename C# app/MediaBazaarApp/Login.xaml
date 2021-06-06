@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MediaBazaarApp.Popups"
         mc:Ignorable="d"
         Title="Login" Height="450" Width="400"
-        Opacity=".9">
+        Opacity=".9" ResizeMode="NoResize">
     <Grid Background="#11589b">
 
         <Grid.RowDefinitions>
@@ -14,13 +14,13 @@
             <RowDefinition Height="250"/>
             <RowDefinition Height="200*"/>
         </Grid.RowDefinitions>
-        <Label HorizontalAlignment="Center"  FontSize="25" VerticalAlignment="Center">
+        <Label HorizontalAlignment="Center" FontSize="41" VerticalAlignment="Center" FontFamily="Agency FB" Foreground="White" FontStyle="Oblique"  BorderThickness="5" Margin="97,0,103,1" Width="192">
             Media Bazaar</Label>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center" MaxWidth="200">
-            <Label>Username</Label>
+            <Label Foreground="White" >Username </Label>
             <TextBox x:Name="tbEmail"/>
-            <Label>Password</Label>
+            <Label Foreground="White">Password</Label>
             <PasswordBox x:Name="tbPassword"/>
         </StackPanel>
 

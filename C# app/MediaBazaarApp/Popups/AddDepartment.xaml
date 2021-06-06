@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:MediaBazaarApp.Popups"
         mc:Ignorable="d"
         Title="Add Department" Height="257.905" Width="486.957" ResizeMode="NoResize">
-    <Grid>
-        <Label Content="Name" HorizontalAlignment="Left" Margin="44,20,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.25,-0.154" Width="43"/>
+    <Grid Background="#11589b">
+        <Label  Foreground="White" Content="Name" HorizontalAlignment="Left" Margin="44,20,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.25,-0.154" Width="43"/>
         <TextBox x:Name="tb_Name" HorizontalAlignment="Left" Height="24" Margin="44,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="392"/>
-        <Label Content="Department Manager" HorizontalAlignment="Left" Margin="44,87,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.25,-0.154" Width="127"/>
+        <Label  Foreground="White" Content="Department Manager" HorizontalAlignment="Left" Margin="44,87,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.25,-0.154" Width="127"/>
         <ComboBox x:Name="cmbDepartment" HorizontalAlignment="Left" Margin="44,113,0,0" VerticalAlignment="Top" Width="392"/>
         <Button x:Name="btnAddDepartment" Content="Add" HorizontalAlignment="Left" Margin="184,178,0,0" VerticalAlignment="Top" Width="103" Height="31" Click="btnAddDepartment_Click"/>
     </Grid>
