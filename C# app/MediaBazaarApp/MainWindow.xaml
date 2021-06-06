@@ -208,7 +208,6 @@
                     <RadioButton Foreground="White" x:Name="rbDepotWorker" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"  Height="26" Width="140"  Content="Depot worker" Margin="33,438,521,235" Grid.Column="1"/>
                     <RadioButton Foreground="White" x:Name="rbCashier" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"  Height="26" Width="140" Content="Cashier" Grid.ColumnSpan="2" Margin="484,438,687,235"/>
                     <Button x:Name= "btn_AddNewUser" Content="Add" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="70" Click="btnAddNewUser_Click" Width="320" Margin="484,570,507,59" Grid.ColumnSpan="2"/>
-
                 </Grid>
 
             </TabItem>
@@ -409,7 +408,7 @@
                                 <GridViewColumn Header="ID" Width="100" DisplayMemberBinding="{Binding ID}" />
                                 <GridViewColumn Header="Name" Width="400" DisplayMemberBinding="{Binding Name}" />
                                 <GridViewColumn Header="Department Manager" Width="300" DisplayMemberBinding="{Binding DepartmentManager}" />
-                               <!--" <GridViewColumn Header="Number of employees" Width="200" DisplayMemberBinding="{Binding Department.Manager}" /> -->
+                                <!--" <GridViewColumn Header="Number of employees" Width="200" DisplayMemberBinding="{Binding Department.Manager}" /> -->
 
                             </GridView>
 
@@ -427,7 +426,7 @@
                     <StackPanel Grid.Row="1" VerticalAlignment="Center">
                         <Button x:Name="btnAddDepartment" Content="Add" HorizontalAlignment="Right" Margin="0,9,-96,0" VerticalAlignment="Top" Width="100" Height="25" Click="btnAddDepartment_Click" />
                         <Button x:Name="btnEditDepartment" Content="Edit" HorizontalAlignment="Right" Margin="0,9,-96,0" VerticalAlignment="Top" Width="100" Height="25" Click="btnEditDepartment_Click" />
-                    
+
                         <Button x:Name="btnRefreshDepartments1" Content="Refresh" HorizontalAlignment="Right" Margin="0,9,-96,0" VerticalAlignment="Top" Width="100" Height="25" Click="btnRefreshDepartments1_Click"/>
 
                     </StackPanel>
