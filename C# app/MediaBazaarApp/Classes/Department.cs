@@ -10,9 +10,8 @@ namespace MediaBazaarApp.Classes
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        public int DepartmentManagerID { get; set; }
         public Manager DepartmentManager { get; set; }
-
-        public int NrOfEmployees { get; set; }
 
         public Department(int ID, string Name)
         {
@@ -24,23 +23,15 @@ namespace MediaBazaarApp.Classes
            
             this.Name = Name;
         }
-      
+        public Department(int ID, string Name, int managerID)
+        {
+            this.ID = ID;
+            this.Name = Name;
+            this.DepartmentManagerID = managerID;
+        }
         public Department(int ID, string Name, Manager manager)
         {
             this.ID = ID;
-            this.Name = Name;
-            this.DepartmentManager = manager;
-        }
-        public Department(int ID, string Name, Manager manager, int nrOfEmployees)
-        {
-            this.ID = ID;
-            this.Name = Name;
-            this.DepartmentManager = manager;
-            this.NrOfEmployees = nrOfEmployees;
-        }
-        public Department( string Name, Manager manager)
-        {
-        
             this.Name = Name;
             this.DepartmentManager = manager;
         }

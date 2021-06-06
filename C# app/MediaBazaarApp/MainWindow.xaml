@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:MediaBazaarApp"
         mc:Ignorable="d"
         SizeToContent="WidthAndHeight"
-        Title="Admin" Height="760.466" Width="1391.034" ResizeMode="CanResize">
+        Background="#11589b"
+        Title="Admin" Height="760.466" Width="1143.534" ResizeMode="CanResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="397*"/>
@@ -14,7 +15,7 @@
         </Grid.RowDefinitions>
         <TabControl SelectionChanged="TabControl_SelectionChanged" Grid.RowSpan="2">
             <TabItem Header="Employees">
-                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Grid Background="#11589b" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
 
                     <Grid.RowDefinitions>
@@ -38,7 +39,7 @@
                         </StackPanel>
                         <StackPanel Grid.Row="1" VerticalAlignment="Center">
 
-                            <Button x:Name="btn_Sort" Content="Sort" VerticalAlignment="Top" Height="25" Click="btn_Sort_Click"/>
+                            <Button  x:Name="btn_Sort" Content="Sort" VerticalAlignment="Top" Height="25" Click="btn_Sort_Click"/>
 
                             <Button x:Name="btn_Refresh" Content="Refresh" Grid.Column="3" Grid.Row="1" VerticalAlignment="Top" Height="25" Click="btn_Refresh_Click"/>
 
@@ -93,16 +94,19 @@
                         <RowDefinition Height="100"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Border Grid.Column="1" Grid.RowSpan="6" BorderBrush="LightGray" Opacity="0.6" BorderThickness="1,0,0,0">
-                        <Grid>
+
+                    <Border  Grid.Column="1" Grid.RowSpan="6" BorderBrush="#11589b" Opacity="1" BorderThickness="1,0,0,0" Background="#11589b">
+                        <Grid >
                             <Button x:Name="btnRefreshCalendar" Content="Refresh" Click="btnRefreshCalendar_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Width="99" Height="31" />
-                            <Button x:Name="btnAutoSchedule" Content="Auto-Schedule" HorizontalAlignment="Right" VerticalAlignment="Top" Width="99" Height="32" Margin="0,304,0,0" />
+                            <Button x:Name="btnAutoSchedule" Content="Auto-Schedule" HorizontalAlignment="Right" VerticalAlignment="Top" Width="99" Height="32" Margin="0,304,0,0" Click="btnAutoSchedule_Click" />
                         </Grid>
 
                     </Border>
-                    <Border Grid.Column="0" Grid.Row="0" BorderBrush="LightGray" Opacity="0.6" BorderThickness="0,0,0,1">
+                    <Grid Background="#11589b">
+                        <Border  Grid.Column="0" Grid.Row="0" BorderBrush="LightGray" Opacity="0.6" BorderThickness="0,0,0,1">
 
-                    </Border>
+                        </Border>
+                    </Grid>
 
                     <Grid Grid.Column="0">
                         <Grid.ColumnDefinitions>
@@ -173,7 +177,7 @@
             </TabItem>
 
             <TabItem Header="MyAccount" >
-                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Grid Background="#11589b" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
                     <TextBox x:Name="tbCurrentPass" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="18" Margin="472,231,436,452" TextWrapping="Wrap"  Width="222"/>
                     <TextBox x:Name="tbNewPass" HorizontalAlignment="Center" VerticalAlignment="Center" Height="17" Margin="472,301,436,383" TextWrapping="Wrap"  Width="222"/>
@@ -188,30 +192,64 @@
             </TabItem>
 
             <TabItem Header="Users">
-                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,1,2,-1">
+                <Grid Background="#11589b" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                            <Label  Content="First Name:" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Height="40" Width="320"/>
+                        <TextBox Grid.Row="1" x:Name="tb_FirstName"  HorizontalAlignment="Center" VerticalAlignment="Top"  Height="26" TextWrapping="Wrap"  MinWidth="320"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Last Name:" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Height="40" Width="320"/>
+                        <TextBox Grid.Row="1" x:Name="tb_LastName"  HorizontalAlignment="Center" VerticalAlignment="Top" Height="24" TextWrapping="Wrap"  MinWidth="320"/>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Email:" FontSize="20" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Height="40" Width="320"/>
+                        <TextBox Grid.Row="1" x:Name="tb_Email"  TextWrapping="Wrap" MinWidth="320" HorizontalAlignment="Center" VerticalAlignment="Top" Height="24"/>
+                    </Grid>
+                    
 
-                    <TextBox x:Name="tb_FirstName"  HorizontalAlignment="Center" VerticalAlignment="Center"  Height="26" Margin="420,248,388,427" TextWrapping="Wrap"  Width="320"/>
-                    <TextBox x:Name="tb_LastName"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Margin="420,138,388,539" TextWrapping="Wrap"  Width="320"/>
-                    <TextBox x:Name="tb_Email"  Margin="420,354,388,323"  TextWrapping="Wrap" Width="320" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24"/>
-                    <Label Content="First Name:" FontSize="20" HorizontalAlignment="Center" Margin="420,84,388,577" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320"/>
-                    <Label Content="Last Name:" FontSize="20" HorizontalAlignment="Center" Margin="420,196,388,465" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320"/>
-                    <Label Content="Email:" FontSize="20" HorizontalAlignment="Center" Margin="420,302,388,359" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320"/>
-                    <Label Content="Email:" FontSize="20" HorizontalAlignment="Center" Margin="420,302,388,359" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320"/>
-                    <RadioButton x:Name="rb_Adminstrator" FontSize="20" Margin="420,435,568,240" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.494,-0.93" Height="26" Width="140" IsChecked="True">Administrator</RadioButton>
-                    <RadioButton x:Name="rb_Manager" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="642,440,388,235" RenderTransformOrigin="0.43,-1.026" Height="26" Width="98">Manager</RadioButton>
-
-                    <Button  x:Name= "btn_AddNewUser" Content="Add" FontSize="20" HorizontalAlignment="Center" Margin="420,517,388,114" VerticalAlignment="Center" Height="70" Click="btnAddNewUser_Click" Width="320"/>
                     <Label Content="Status:" FontSize="20" HorizontalAlignment="Center" Margin="420,378,388,283" VerticalAlignment="Center" RenderTransformOrigin="1.974,0.423" Height="40" Width="320"/>
-                    <RadioButton x:Name="rbDepotWorker" FontSize="20" Margin="420,466,568,209" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.494,-0.93" Height="26" Width="140"  Content="Depot worker"/>
-                    <RadioButton x:Name="rbCashier" FontSize="20" Margin="642,466,346,209" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.494,-0.93" Height="26" Width="140" Content="Cashier"/>
 
+                    <Grid Grid.Row="3" Width="320">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton Grid.Row="0" Grid.Column="0" x:Name="rb_Adminstrator" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"  Height="26" Width="140" IsChecked="True">Administrator</RadioButton>
+                        <RadioButton Grid.Column="1" x:Name="rb_Manager" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"   Height="26" Width="98">Manager</RadioButton>
+                        <RadioButton Grid.Row="1" x:Name="rbDepotWorker" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"  Height="26" Width="140"  Content="Depot worker"/>
+                        <RadioButton Grid.Row="1" Grid.Column="1" x:Name="rbCashier" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"  Height="26" Width="140" Content="Cashier"/>
+                    </Grid>
+                    <Button Grid.Row="4" x:Name= "btn_AddNewUser" Content="Add" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="70" Click="btnAddNewUser_Click" Width="320"/>
                 </Grid>
 
             </TabItem>
 
             <TabItem Header="Messages">
-                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Grid Background="#11589b" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="41"/>
                         <RowDefinition/>
@@ -241,7 +279,7 @@
             </TabItem>
 
             <TabItem Header="Announcements">
-                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Grid Background="#11589b" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="41"/>
                         <RowDefinition/>
@@ -284,7 +322,7 @@
             </TabItem>
 
             <TabItem Header="Products">
-                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Grid Background="#11589b" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="41"/>
                         <RowDefinition/>
@@ -343,7 +381,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Requests">
-                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Grid Background="#11589b" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="41"/>
                         <RowDefinition/>
@@ -387,7 +425,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Departments">
-                <Grid Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Grid Background="#11589b" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="41"/>
                         <RowDefinition/>
@@ -398,16 +436,15 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <ListView x:Name="lvDepartments" Grid.Row="1" Margin="19,10,10,0" Height="640" HorizontalAlignment="Stretch" VerticalAlignment="Top" MouseDoubleClick="lvDepartments_MouseDoubleClick">
+                    <ListView x:Name="lvDepartments" Grid.Row="1" Margin="19,10,10,0" Height="640" HorizontalAlignment="Stretch" VerticalAlignment="Top" >
 
                         <ListView.View>
 
                             <GridView >
-                                <GridViewColumn Header="ID" Width="100" DisplayMemberBinding="{Binding ID}" />
-                                <GridViewColumn Header="Name" Width="400" DisplayMemberBinding="{Binding Name}" />
-                                <GridViewColumn Header="ManagerID" Width="400" DisplayMemberBinding="{Binding DepartmentManager}"/>
-                                <GridViewColumn Header="Number of Employees" Width="400" DisplayMemberBinding="{Binding NrOfEmployees}"/>
-                             
+                                <GridViewColumn Header="ID" Width="100" DisplayMemberBinding="{Binding Department.ID}" />
+                                <GridViewColumn Header="Name" Width="400" DisplayMemberBinding="{Binding Department.Name}" />
+                                <GridViewColumn Header="Department Manager" Width="300" DisplayMemberBinding="{Binding Department.DepartmentManager}" />
+                               <!--" <GridViewColumn Header="Number of employees" Width="200" DisplayMemberBinding="{Binding Department.Manager}" /> -->
 
                             </GridView>
 
@@ -423,8 +460,8 @@
 
                     </Grid>
                     <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                        <Button x:Name="btnAddDepartment" Content="Add" HorizontalAlignment="Right" Margin="0,9,-96,0" VerticalAlignment="Top" Width="100" Height="25" Click="btnAddDepartment_Click" />
-                        <Button x:Name="btnEditDepartment" Content="Edit" HorizontalAlignment="Right" Margin="0,9,-96,0" VerticalAlignment="Top" Width="100" Height="25" Click="btnEditDepartment_Click" />
+                        <Button x:Name="btnAddDepartment" Content="Add" HorizontalAlignment="Right" Margin="0,9,-96,0" VerticalAlignment="Top" Width="100" Height="25" />
+                        <Button x:Name="btnEditDepartment" Content="Edit" HorizontalAlignment="Right" Margin="0,9,-96,0" VerticalAlignment="Top" Width="100" Height="25" />
                         <Button x:Name="btnDeleteDepartment" Content="Delete" HorizontalAlignment="Right" Margin="0,9,-96,0" VerticalAlignment="Top" Width="100" Height="25" />
                         <Button x:Name="btnRefreshDepartments" Content="Refresh" HorizontalAlignment="Right" Margin="0,9,-96,0" VerticalAlignment="Top" Width="100" Height="25" Click="btnRefreshDepartments_Click"/>
 

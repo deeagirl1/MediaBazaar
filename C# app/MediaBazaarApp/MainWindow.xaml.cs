@@ -30,9 +30,6 @@ namespace MediaBazaarApp
         private AddAnnouncement addAnnouncementForm;
         private EditAnnouncement editAnnouncementForm;
         private EditProduct editProductForm;
-        private AddDepartment addDepartmentForm;
-        private EditDepartment editDepartmentForm;
-        private ViewDepartment viewDepartmentForm;
         private List<ShopWorker> employees;
         public MainWindow(Company company, Person person)
         {
@@ -47,7 +44,6 @@ namespace MediaBazaarApp
                 this.employees = this.company.ShopWorkers.ToList();
                 this.lvShopWorkers.ItemsSource = this.employees;
                 this.lvMessages.ItemsSource = this.company.Messages.ToList();
-                this.lvDepartments.ItemsSource = this.company.Departments.GetAll();
                 this.lblUserString.Content = $"Hello , {person.FirstName}";
 
                 //EmployeeSorter sorter = new EmployeeSorter();
@@ -61,7 +57,7 @@ namespace MediaBazaarApp
                 this.showProducts();
                 this.showRequests();
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -186,7 +182,7 @@ namespace MediaBazaarApp
                 string email = tb_Email.Text;
                 string username = email;
                 string password = "";
-
+                
 
                 AccountManager account = new AccountManager();
 
@@ -220,7 +216,7 @@ namespace MediaBazaarApp
         {
             string name = tb_Search.Text;
             this.employees = this.company.ShopWorkers.ToList();
-            this.employees = FindPattern(name, employees);
+            this.employees = FindPattern(name,employees);
             this.lvShopWorkers.ItemsSource = this.employees;
 
         }
@@ -453,7 +449,7 @@ namespace MediaBazaarApp
                 if (this.lvRequests.SelectedItem != null)
                 {
                     ProductRequest req = (ProductRequest)this.lvRequests.SelectedItem;
-                    if (req.RequestStatus.ID == 3)
+                    if(req.RequestStatus.ID == 3)
                         MessageBox.Show(req.Comment);
                 }
             }
@@ -468,26 +464,18 @@ namespace MediaBazaarApp
             this.showDepartments();
         }
 
-        private void btnAddDepartment_Click(object sender, RoutedEventArgs e)
+        private void btnAutoSchedule_Click(object sender, RoutedEventArgs e)
         {
-            addDepartmentForm = new AddDepartment(this.company);
-            this.addDepartmentForm.Show();
+            try
+            {
+                AutoScheduleWindow window = new AutoScheduleWindow();
+                window.RefreshCalendar += this.RefreshCalendar;
+                window.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
-
-        private void btnEditDepartment_Click(object sender, RoutedEventArgs e)
-        {
-            Department department = (Department)lvDepartments.SelectedItem;
-            editDepartmentForm = new EditDepartment(this.company, department);
-            this.editDepartmentForm.Show();
-        }
-
-        private void lvDepartments_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            Department department = (Department)this.lvDepartments.SelectedItem;
-            this.viewDepartmentForm = new ViewDepartment(this.company, department);
-            this.viewDepartmentForm.Show();
-        }
-
-       
     }
 }

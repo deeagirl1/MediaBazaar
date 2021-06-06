@@ -36,9 +36,6 @@ namespace MediaBazaarApp.Classes
 
 
 
-        public ShopWorker(int id,string firstName, string lastName) : base(id,firstName, lastName)
-        {
-        }
         public ShopWorker(int id, string firstName, string lastName, string email, DateTime birthDate, DateTime hireDate,Address address) : base (id, firstName, lastName, email)
         {
 
