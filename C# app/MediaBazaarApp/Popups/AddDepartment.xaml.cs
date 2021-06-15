@@ -42,7 +42,7 @@ namespace MediaBazaarApp.Popups
             try
             {
                 string name = tb_Name.Text;
-                Manager manager = ((Manager)this.cmbDepartment.SelectedItem);
+                DepartmentManager manager = ((DepartmentManager)this.cmbDepartment.SelectedItem);
 
                 this.company.Departments.Add(new Department(name, manager));
                 this.Close();

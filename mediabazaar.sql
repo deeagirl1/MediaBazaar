@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
+-- Generation Time: Jun 15, 2021 at 01:17 PM
+=======
 -- Generation Time: Jun 06, 2021 at 06:58 PM
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -39,6 +43,10 @@ CREATE TABLE `accesslevel` (
 INSERT INTO `accesslevel` (`ID`, `Name`) VALUES
 (2, 'Admin'),
 (5, 'Cashier'),
+<<<<<<< HEAD
+(6, 'DepartmentManager'),
+=======
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 (4, 'DepotWorker'),
 (1, 'Employee'),
 (3, 'Manager');
@@ -63,7 +71,7 @@ CREATE TABLE `annoucements` (
 INSERT INTO `annoucements` (`ID`, `Title`, `Description`, `PostDate`) VALUES
 (1, 'Delay', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', '2021-04-16 00:00:00'),
 (2, 'What is Lorem Ipsum?', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', '2021-04-20 17:23:39'),
-(3, 'Test', 'Test', '2021-04-29 09:03:04');
+(3, 'Test', 'Testing', '2021-04-29 09:03:04');
 
 -- --------------------------------------------------------
 
@@ -125,11 +133,20 @@ CREATE TABLE `department` (
 --
 
 INSERT INTO `department` (`ID`, `Name`, `Manager`) VALUES
+<<<<<<< HEAD
+(1, 'Household', 44),
+(2, 'Electronics', 40),
+(3, 'Cashier', 42),
+(4, 'Tools', 35),
+(5, 'asdasD', 35),
+(6, 'fdgdg', 35);
+=======
 (1, 'Household', 35),
 (2, 'Electronics', 35),
 (3, 'Cashier', 35),
 (4, 'Tools', 35),
 (5, 'sdafsadf', 40);
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 
 -- --------------------------------------------------------
 
@@ -153,13 +170,24 @@ CREATE TABLE `employee` (
   `Status` int(11) NOT NULL,
   `DepartmentID` int(11) NOT NULL,
   `ContractID` int(11) NOT NULL,
-  `NightShifts` tinyint(1) NOT NULL DEFAULT 1
+  `NightShifts` tinyint(1) NOT NULL DEFAULT 1,
+  `IsDepManager` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `employee`
 --
 
+<<<<<<< HEAD
+INSERT INTO `employee` (`ID`, `BirthDate`, `HireDate`, `LastWorkingDay`, `Country`, `City`, `Street`, `StreetNumber`, `AddressAddition`, `ZipCode`, `Wage`, `AccountNumber`, `Status`, `DepartmentID`, `ContractID`, `NightShifts`, `IsDepManager`) VALUES
+(39, '1995-04-18 00:00:00', '2020-10-14 00:00:00', NULL, 'Indonesia', 'Cibojong', 'Birch Street', 22, '', '23141', '13', '7872364832', 2, 2, 1, 1, 0),
+(40, '1988-06-09 00:00:00', '2021-03-01 00:00:00', '2021-06-01 00:00:00', 'Czech Republic', 'Jablonné', 'Rowland Court', 7, '', '86776', '10', '0643387161', 2, 2, 1, 1, 0),
+(41, '1994-09-23 00:00:00', '2021-04-01 00:00:00', NULL, 'USA', 'Detroit', 'Brookside', 4, 'Michigan', '42343', '5', '4532625841057', 1, 3, 2, 1, 0),
+(42, '1990-12-04 00:00:00', '2020-12-20 00:00:00', '2022-12-31 00:00:00', 'UK', 'London', 'Brick Lane', 12, '', '98672', '16', '543254354235', 2, 2, 3, 1, 0),
+(58, '1999-10-20 00:00:00', '2021-05-05 00:00:00', NULL, 'sdafsda', 'sdafsad', 'fdsaf', 213, 'fsdadsaf', '32432', '45', 'sdafsda', 2, 2, 1, 1, 0),
+(59, '2000-10-01 00:00:00', '2021-01-01 00:00:00', NULL, 'sdafdsa', 'sdafasd', 'fsdaf', 12, 'sdf', 'fasdfds', '10', 'fsdafds', 2, 3, 1, 1, 0),
+(60, '2000-01-01 00:00:00', '2021-01-01 00:00:00', NULL, 'asdfda', 'sdasdf', 'asdfs', 213, 'fsdafdsa', '4231423', '8', 'sadfsd', 2, 3, 1, 1, 0);
+=======
 INSERT INTO `employee` (`ID`, `BirthDate`, `HireDate`, `LastWorkingDay`, `Country`, `City`, `Street`, `StreetNumber`, `AddressAddition`, `ZipCode`, `Wage`, `AccountNumber`, `Status`, `DepartmentID`, `ContractID`, `NightShifts`) VALUES
 (39, '1995-04-18 00:00:00', '2020-10-14 00:00:00', NULL, 'Indonesia', 'Cibojong', 'Birch Street', 22, '', '23141', '13', '7872364832', 2, 2, 1, 1),
 (40, '1988-06-09 00:00:00', '2021-03-01 00:00:00', '2021-06-01 00:00:00', 'Czech Republic', 'Jablonné', 'Rowland Court', 7, '', '86776', '10', '0643387161', 2, 2, 1, 1),
@@ -168,6 +196,7 @@ INSERT INTO `employee` (`ID`, `BirthDate`, `HireDate`, `LastWorkingDay`, `Countr
 (58, '1999-10-20 00:00:00', '2021-05-05 00:00:00', NULL, 'sdafsda', 'sdafsad', 'fdsaf', 213, 'fsdadsaf', '32432', '45', 'sdafsda', 2, 2, 1, 1),
 (59, '2000-10-01 00:00:00', '2021-01-01 00:00:00', NULL, 'sdafdsa', 'sdafasd', 'fsdaf', 12, 'sdf', 'fasdfds', '10', 'fsdafds', 2, 3, 1, 1),
 (60, '2000-01-01 00:00:00', '2021-01-01 00:00:00', NULL, 'asdfda', 'sdasdf', 'asdfs', 213, 'fsdafdsa', '4231423', '8', 'sadfsd', 2, 3, 1, 1);
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 
 -- --------------------------------------------------------
 
@@ -188,7 +217,11 @@ CREATE TABLE `employeeassignment` (
 --
 
 INSERT INTO `employeeassignment` (`ID`, `ShiftID`, `EmployeeID`, `CheckIn`, `CheckOut`) VALUES
+<<<<<<< HEAD
+(198, 135, 39, '2021-06-04 18:29:33', NULL),
+=======
 (198, 135, 39, NULL, NULL),
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 (199, 135, 42, NULL, NULL),
 (200, 135, 58, NULL, NULL),
 (201, 135, 59, NULL, NULL),
@@ -231,8 +264,13 @@ INSERT INTO `employeeassignment` (`ID`, `ShiftID`, `EmployeeID`, `CheckIn`, `Che
 (238, 157, 58, NULL, NULL),
 (239, 157, 59, NULL, NULL),
 (240, 158, 60, NULL, NULL),
+<<<<<<< HEAD
+(241, 158, 41, '2021-06-04 18:53:29', '2021-06-04 18:55:32'),
+(242, 158, 42, NULL, NULL),
+=======
 (241, 158, 41, NULL, NULL),
 (242, 158, 42, '2021-06-05 10:55:36', NULL),
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 (243, 159, 39, NULL, NULL),
 (244, 159, 58, NULL, NULL),
 (245, 159, 59, NULL, NULL),
@@ -362,7 +400,11 @@ INSERT INTO `employeeassignment` (`ID`, `ShiftID`, `EmployeeID`, `CheckIn`, `Che
 (369, 247, 59, NULL, NULL),
 (370, 248, 60, NULL, NULL),
 (371, 249, 59, NULL, NULL),
+<<<<<<< HEAD
+(372, 250, 39, NULL, NULL),
+=======
 (372, 250, 39, '2021-05-27 07:08:19', NULL),
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 (373, 250, 40, NULL, NULL),
 (374, 251, 58, NULL, NULL),
 (375, 251, 59, NULL, NULL),
@@ -684,6 +726,9 @@ INSERT INTO `employeeassignment` (`ID`, `ShiftID`, `EmployeeID`, `CheckIn`, `Che
 (694, 458, 41, NULL, NULL),
 (695, 459, 42, NULL, NULL),
 (696, 460, 58, NULL, NULL),
+<<<<<<< HEAD
+(697, 461, 59, NULL, NULL);
+=======
 (697, 461, 59, NULL, NULL),
 (698, 462, 60, NULL, NULL),
 (699, 463, 39, NULL, NULL),
@@ -719,6 +764,7 @@ INSERT INTO `employeeassignment` (`ID`, `ShiftID`, `EmployeeID`, `CheckIn`, `Che
 (729, 495, 39, NULL, NULL),
 (730, 496, 42, NULL, NULL),
 (731, 497, 58, NULL, NULL);
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 
 -- --------------------------------------------------------
 
@@ -773,7 +819,12 @@ INSERT INTO `person` (`ID`, `FirstName`, `LastName`, `Email`, `Username`, `Passw
 (50, 'Lisa', 'Felix', 'lfelix@mb.com', 'lfelix', 'AAA', 5),
 (58, 'fdsfds', 'dsfds', 'sadsa@gg.vom', 'sadsa@gg.vom', 'HNOHCLRD', 1),
 (59, 'dsafds', 'dsfasdf', 'd@s.com', 'd@s.com', 'FVLFVKCX', 1),
+<<<<<<< HEAD
+(60, 'fdsaasd', 'sadfasd', 'eee@g.com', 'eee@g.com', 'SIAFRQHO', 1),
+(61, 'Charles', 'Potter', 'agav@mb.com', 'ablan', '123', 6);
+=======
 (60, 'fdsaasd', 'sadfasd', 'eee@g.com', 'eee@g.com', 'SIAFRQHO', 1);
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 
 -- --------------------------------------------------------
 
@@ -949,7 +1000,11 @@ CREATE TABLE `sorting` (
 --
 
 INSERT INTO `sorting` (`Counter`) VALUES
+<<<<<<< HEAD
+(60);
+=======
 (58);
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 
 -- --------------------------------------------------------
 
@@ -1050,7 +1105,10 @@ INSERT INTO `workshift` (`ID`, `ShiftType`, `Date`) VALUES
 (241, 1, '2021-08-18 07:00:00'),
 (244, 1, '2021-08-19 07:00:00'),
 (247, 1, '2021-08-20 07:00:00'),
+<<<<<<< HEAD
+=======
 (462, 1, '2021-09-10 07:00:00'),
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 (257, 1, '2021-09-16 07:00:00'),
 (260, 1, '2021-09-17 07:00:00'),
 (263, 1, '2021-09-18 07:00:00'),
@@ -1100,6 +1158,8 @@ INSERT INTO `workshift` (`ID`, `ShiftType`, `Date`) VALUES
 (416, 1, '2021-12-25 07:00:00'),
 (419, 1, '2021-12-26 07:00:00'),
 (422, 1, '2021-12-27 07:00:00'),
+<<<<<<< HEAD
+=======
 (477, 1, '2022-01-17 07:00:00'),
 (480, 1, '2022-01-18 07:00:00'),
 (483, 1, '2022-01-19 07:00:00'),
@@ -1107,6 +1167,7 @@ INSERT INTO `workshift` (`ID`, `ShiftType`, `Date`) VALUES
 (489, 1, '2022-01-21 07:00:00'),
 (492, 1, '2022-01-22 07:00:00'),
 (495, 1, '2022-01-23 07:00:00'),
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 (455, 1, '2022-06-16 07:00:00'),
 (251, 2, '2021-05-27 15:00:00'),
 (254, 2, '2021-05-28 15:00:00'),
@@ -1165,8 +1226,11 @@ INSERT INTO `workshift` (`ID`, `ShiftType`, `Date`) VALUES
 (242, 2, '2021-08-18 15:00:00'),
 (245, 2, '2021-08-19 15:00:00'),
 (248, 2, '2021-08-20 15:00:00'),
+<<<<<<< HEAD
+=======
 (464, 2, '2021-09-11 15:00:00'),
 (465, 2, '2021-09-12 15:00:00'),
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 (258, 2, '2021-09-16 15:00:00'),
 (261, 2, '2021-09-17 15:00:00'),
 (264, 2, '2021-09-18 15:00:00'),
@@ -1198,9 +1262,12 @@ INSERT INTO `workshift` (`ID`, `ShiftType`, `Date`) VALUES
 (360, 2, '2021-10-14 15:00:00'),
 (363, 2, '2021-10-15 15:00:00'),
 (458, 2, '2021-11-09 15:00:00'),
+<<<<<<< HEAD
+=======
 (471, 2, '2021-11-18 15:00:00'),
 (472, 2, '2021-11-19 15:00:00'),
 (473, 2, '2021-11-20 15:00:00'),
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 (426, 2, '2021-12-01 15:00:00'),
 (429, 2, '2021-12-02 15:00:00'),
 (432, 2, '2021-12-03 15:00:00'),
@@ -1221,6 +1288,9 @@ INSERT INTO `workshift` (`ID`, `ShiftType`, `Date`) VALUES
 (417, 2, '2021-12-25 15:00:00'),
 (420, 2, '2021-12-26 15:00:00'),
 (423, 2, '2021-12-27 15:00:00'),
+<<<<<<< HEAD
+(461, 2, '2022-02-09 15:00:00'),
+=======
 (478, 2, '2022-01-17 15:00:00'),
 (481, 2, '2022-01-18 15:00:00'),
 (484, 2, '2022-01-19 15:00:00'),
@@ -1237,6 +1307,7 @@ INSERT INTO `workshift` (`ID`, `ShiftType`, `Date`) VALUES
 (474, 2, '2022-02-18 15:00:00'),
 (475, 2, '2022-02-19 15:00:00'),
 (476, 2, '2022-02-20 15:00:00'),
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 (252, 3, '2021-05-27 23:00:00'),
 (255, 3, '2021-05-28 23:00:00'),
 (157, 3, '2021-06-10 23:00:00'),
@@ -1298,7 +1369,10 @@ INSERT INTO `workshift` (`ID`, `ShiftType`, `Date`) VALUES
 (243, 3, '2021-08-18 23:00:00'),
 (246, 3, '2021-08-19 23:00:00'),
 (249, 3, '2021-08-20 23:00:00'),
+<<<<<<< HEAD
+=======
 (463, 3, '2021-09-10 23:00:00'),
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 (259, 3, '2021-09-16 23:00:00'),
 (262, 3, '2021-09-17 23:00:00'),
 (265, 3, '2021-09-18 23:00:00'),
@@ -1347,6 +1421,9 @@ INSERT INTO `workshift` (`ID`, `ShiftType`, `Date`) VALUES
 (415, 3, '2021-12-24 23:00:00'),
 (418, 3, '2021-12-25 23:00:00'),
 (421, 3, '2021-12-26 23:00:00'),
+<<<<<<< HEAD
+(424, 3, '2021-12-27 23:00:00');
+=======
 (424, 3, '2021-12-27 23:00:00'),
 (479, 3, '2022-01-17 23:00:00'),
 (482, 3, '2022-01-18 23:00:00'),
@@ -1355,6 +1432,7 @@ INSERT INTO `workshift` (`ID`, `ShiftType`, `Date`) VALUES
 (491, 3, '2022-01-21 23:00:00'),
 (494, 3, '2022-01-22 23:00:00'),
 (497, 3, '2022-01-23 23:00:00');
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 
 --
 -- Indexes for dumped tables
@@ -1401,7 +1479,8 @@ ALTER TABLE `employee`
   ADD UNIQUE KEY `ID` (`ID`),
   ADD KEY `DepartmentID` (`DepartmentID`),
   ADD KEY `ContractID` (`ContractID`),
-  ADD KEY `Status` (`Status`);
+  ADD KEY `Status` (`Status`),
+  ADD KEY `IsDepManager` (`IsDepManager`);
 
 --
 -- Indexes for table `employeeassignment`
@@ -1504,7 +1583,11 @@ ALTER TABLE `workshift`
 -- AUTO_INCREMENT for table `accesslevel`
 --
 ALTER TABLE `accesslevel`
+<<<<<<< HEAD
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+=======
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 
 --
 -- AUTO_INCREMENT for table `annoucements`
@@ -1528,13 +1611,21 @@ ALTER TABLE `contract`
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
+<<<<<<< HEAD
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+=======
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 
 --
 -- AUTO_INCREMENT for table `employeeassignment`
 --
 ALTER TABLE `employeeassignment`
+<<<<<<< HEAD
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=698;
+=======
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=732;
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 
 --
 -- AUTO_INCREMENT for table `employeestatus`
@@ -1546,7 +1637,11 @@ ALTER TABLE `employeestatus`
 -- AUTO_INCREMENT for table `person`
 --
 ALTER TABLE `person`
+<<<<<<< HEAD
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+=======
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -1588,7 +1683,11 @@ ALTER TABLE `shifttime`
 -- AUTO_INCREMENT for table `workshift`
 --
 ALTER TABLE `workshift`
+<<<<<<< HEAD
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=462;
+=======
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=498;
+>>>>>>> 14a68a3774a05d66f3f00bd9ebfb48935f538a29
 
 --
 -- Constraints for dumped tables

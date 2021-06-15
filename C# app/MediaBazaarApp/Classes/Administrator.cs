@@ -21,5 +21,7 @@ namespace MediaBazaarApp.Classes
         {
             return base.ToString();
         }
+
+      
     }
 }

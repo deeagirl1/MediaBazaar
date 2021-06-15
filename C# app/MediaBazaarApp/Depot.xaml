@@ -22,7 +22,7 @@
 
                 <!--This is the grid for the inventory Listbox-->
                 <Grid Background="#11589b" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,10,0">
-                    <ListView Margin="10,10,168,10" x:Name="lvRequests">
+                    <ListView Margin="10,10,141,10" x:Name="lvRequests">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="ID" Width="100" DisplayMemberBinding="{Binding ID}" />
@@ -35,9 +35,9 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <Button x:Name="btnAccept" Content="Accept" HorizontalAlignment="Left" Margin="756,213,0,0" VerticalAlignment="Top" Width="119" Height="42" Click="btnAccept_Click"/>
-                    <Button x:Name="btnReject" Content="Reject" HorizontalAlignment="Left" Margin="756,314,0,0" VerticalAlignment="Top" Width="119" Height="42" Click="btnReject_Click"/>
-                    <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="756,10,0,0" VerticalAlignment="Top" Width="119" Height="42" Click="btnRefresh_Click"/>
+                    <Button x:Name="btnAccept" Content="Accept" HorizontalAlignment="Left" Margin="783,198,0,0" VerticalAlignment="Top" Width="119" Height="42" Click="btnAccept_Click"/>
+                    <Button x:Name="btnReject" Content="Reject" HorizontalAlignment="Left" Margin="783,312,0,0" VerticalAlignment="Top" Width="119" Height="42" Click="btnReject_Click"/>
+                    <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="783,10,0,0" VerticalAlignment="Top" Width="119" Height="42" Click="btnRefresh_Click"/>
                 </Grid>
             </Grid>
         </TabItem>

@@ -78,6 +78,8 @@ namespace MediaBazaarApp.Classes
             }
             return employees;
         }
+        
+        
         public ShopWorker GetEmployeeById(int id)
         {
             ShopWorker emp = null;
@@ -175,8 +177,17 @@ namespace MediaBazaarApp.Classes
             if (shopWorker.LastWorkingDay.Date < DateTime.Now)
                 prms[13] = new MySqlParameter("@LastWorkingDay", null);
             else prms[13] = new MySqlParameter("@LastWorkingDay", shopWorker.LastWorkingDay);
+            if(shopWorker.WorksAt.DepartmentManager.ID == shopWorker.ID)
+            {
+                throw new Exception("Test");
+            }
+            else
+            {
+                this.ExecuteQuery(sql, prms);
+            }
+          
 
-            this.ExecuteQuery(sql, prms);
+         
         }
         public string Add(ShopWorker shopWorker)
         {

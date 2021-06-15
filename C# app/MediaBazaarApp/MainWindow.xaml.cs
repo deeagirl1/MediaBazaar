@@ -34,6 +34,7 @@ namespace MediaBazaarApp
         private AddDepartment addDepartmentForm;
         private EditDepartment editDepartmentForm;
         private ViewDepartment viewDepartmentForm;
+        private AddUser addUserWindow;
         public MainWindow(Company company, Person person)
         {
             try
@@ -170,46 +171,7 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-        private void btnAddNewUser_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Random rnd = new Random();
-                string firstName = tb_FirstName.Text;
-                string lastName = tb_LastName.Text;
-                string email = tb_Email.Text;
-                string username = email;
-                string password = "";
-                
-
-                AccountManager account = new AccountManager();
-
-
-                if ((bool)rb_Adminstrator.IsChecked)
-                {
-                    password = account.Add(new Administrator(firstName, lastName, email));
-                }
-                else if ((bool)rb_Manager.IsChecked)
-                {
-                    password = account.Add(new Manager(firstName, lastName, email));
-                }
-                else if ((bool)rbDepotWorker.IsChecked)
-                {
-                    password = account.Add(new DepotWorker(firstName, lastName, email));
-                }
-                else if ((bool)rbCashier.IsChecked)
-                {
-                    password = account.Add(new Cashier(firstName, lastName, email));
-                }
-
-                MessageBox.Show($"Username: {username}, Password: {password}" + "\n Please note them down!");
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("All fields must be completed");
-            }
-        }
+    
         private void btn_Search_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -553,6 +515,12 @@ namespace MediaBazaarApp
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btn_AddUser_Click(object sender, RoutedEventArgs e)
+        {
+            this.addUserWindow = new AddUser(company);
+            addUserWindow.Show();
         }
     }
 }

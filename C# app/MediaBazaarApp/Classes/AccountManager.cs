@@ -63,6 +63,8 @@ namespace MediaBazaarApp.Classes
                     return new DepotWorker(ID, FirstName, LastName, Email, username, Password);
                 case 5:
                     return new Cashier(ID, FirstName, LastName, Email, username, Password);
+                case 6:
+                    return new DepartmentManager(ID, FirstName, LastName, Email, username, Password);
             }
             throw new ArgumentException("Invalid credentials supplied");
         }
@@ -98,6 +100,8 @@ namespace MediaBazaarApp.Classes
                 accessLevel = 4;
             if (person is Cashier)
                 accessLevel = 5;
+            if (person is DepartmentManager)
+                accessLevel = 6;
 
             prms[0] = new MySqlParameter("@FirstName", person.FirstName);
             prms[1] = new MySqlParameter("@LastName", person.LastName);

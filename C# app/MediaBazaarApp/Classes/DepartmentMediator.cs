@@ -30,7 +30,7 @@ namespace MediaBazaarApp.Classes
         {
             return this.DAL.GetAll();
         }
-        public IReadOnlyList<Manager> GetManagers()
+        public IReadOnlyList<DepartmentManager> GetManagers()
         {
             return this.DAL.GetManagers();
         }

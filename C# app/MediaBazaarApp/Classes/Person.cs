@@ -53,6 +53,7 @@ namespace MediaBazaarApp.Classes
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Email = email;
+
         }
         public Person(int id, string firstName, string lastName)
         {

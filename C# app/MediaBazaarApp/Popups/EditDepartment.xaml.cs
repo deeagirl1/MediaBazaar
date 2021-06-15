@@ -36,7 +36,7 @@ namespace MediaBazaarApp.Popups
             }
             catch(Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+               MessageBox.Show(ex.Message);
             }
         }
 
@@ -45,13 +45,13 @@ namespace MediaBazaarApp.Popups
             try
             {
                 this.department.Name = tb_Name.Text;
-                this.department.DepartmentManager = ((Manager)cmbDepartment.SelectedItem);
+                this.department.DepartmentManager = ((DepartmentManager)cmbDepartment.SelectedItem);
                 this.company.Departments.Update(department);
                 this.Close();
             }
             catch(Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
