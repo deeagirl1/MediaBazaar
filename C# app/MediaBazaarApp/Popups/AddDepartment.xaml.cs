@@ -29,7 +29,7 @@ namespace MediaBazaarApp.Popups
             try
             {
                 this.company = new Company();
-                this.cmbDepartment.ItemsSource = this.company.Departments.GetManagers();
+                this.cmbDepartment.ItemsSource = this.company.Departments.GetEmployeesToBeAssignedToDepManagers();
             }
             catch (Exception ex)
             {

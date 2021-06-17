@@ -140,6 +140,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\User.cs" />
     <Compile Include="DepartmentManagerWindow.xaml.cs">
       <DependentUpon>DepartmentManagerWindow.xaml</DependentUpon>
     </Compile>
@@ -211,6 +212,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Popups\EditUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Popups\WorkShiftWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -226,6 +231,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Popups\EditUser.xaml.cs">
+      <DependentUpon>EditUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="Popups\WorkShiftWindow.xaml.cs">
       <DependentUpon>WorkShiftWindow.xaml</DependentUpon>

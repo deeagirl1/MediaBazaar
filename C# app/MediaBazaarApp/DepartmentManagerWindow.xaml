@@ -14,7 +14,7 @@
                         <ColumnDefinition Width="82*"/>
                         <ColumnDefinition Width="1049*"/>
                     </Grid.ColumnDefinitions>
-                    <ListView x:Name="lvShopWorkers" ItemsSource="{Binding employees}" Height="675" Margin="5,10,100,0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                    <ListView x:Name="lvShopWorkers" ItemsSource="{Binding employees}" Height="667" Margin="16,18,100,0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                         <ListView.View>
                             <GridView >
                                 <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="40">ID</GridViewColumn>
@@ -26,7 +26,7 @@
                                 <GridViewColumn DisplayMemberBinding="{Binding LastWorkingDay, StringFormat='yyyy-MM-dd'}" Width="70">End of contract</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding HomeAddress}" Width="90">Address</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Contract}" Width="90">Contract</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding WorksAt}" Width="90">Department</GridViewColumn>
+                                
                                 <GridViewColumn DisplayMemberBinding="{Binding HourlyWage}" Width="90">Wage</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding BankAccount}" Width="90">BankAccount</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Status}" Width="90">Status</GridViewColumn>
@@ -55,6 +55,6 @@
             </TabItem>
 
         </TabControl>
-   
+
     </Grid>
 </Window>

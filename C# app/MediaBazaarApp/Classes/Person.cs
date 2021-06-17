@@ -85,6 +85,15 @@ namespace MediaBazaarApp.Classes
             this.LastName = lastName;
             this.Email = email;
         }
+        public Person(int id,string firstName, string lastName, int accessLevel)
+        {
+            this.ID = id;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.AccessLevel = accessLevel;
+        }
+
+
         public Person(int id, string firstName, string lastName, string email,string username, string password)
         {
             this.ID = id;

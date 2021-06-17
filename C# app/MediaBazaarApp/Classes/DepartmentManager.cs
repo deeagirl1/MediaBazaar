@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MediaBazaarApp.Classes
 {
-    public class DepartmentManager : Person
+    public class DepartmentManager : ShopWorker
     {
-        public Department Department { get; set; }
-        public DepartmentManager(string firstName, string lastName, string email) :
+       public Department Department { get; set; }
+       public DepartmentManager(string firstName, string lastName, string email) :
        base(firstName, lastName, email)
         { }
         public DepartmentManager(string firstName, string lastName, string email, string username, string password) :
@@ -28,11 +28,15 @@ namespace MediaBazaarApp.Classes
          base(firstName, lastName)
         {
             this.Department = department;
+            this.isDepManger = true;
+            this.Manager = department.DepartmentManager;
         }
 
         public override string ToString()
         {
-            return base.ToString();
+        
+            return $"{ID}, {FirstName}, {LastName}";
+        
         }
     }
 }

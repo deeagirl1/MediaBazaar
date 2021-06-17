@@ -8,6 +8,7 @@ namespace MediaBazaarApp.Classes
 {
     public class ShopWorker : Person, ISalary, IComparable<ShopWorker>
     {
+        private DepartmentManager manager;
         public Department WorksAt { get; set; }
         public Address HomeAddress { get; set; }
         public DateTime BirthDate { get; set; }
@@ -15,6 +16,11 @@ namespace MediaBazaarApp.Classes
         public DateTime HireTime { get; set; }  
         public DateTime LastWorkingDay { get; set; }
         public Contract Contract { get; set; }
+
+        public bool isDepManger { get; set; }
+
+        public DepartmentManager Manager { get; set; }
+        
         public Status Status { get; set; }
         private decimal hourlyWage;
 
@@ -66,6 +72,23 @@ namespace MediaBazaarApp.Classes
             this.HourlyWage = HourlyWage;
             this.Status = status;
         }
+        public ShopWorker(string firstName, string lastName, string email) :
+      base(firstName, lastName, email)
+        { }
+        public ShopWorker(string firstName, string lastName, string email, string username, string password) :
+          base(firstName, lastName, email, username, password)
+        { }
+     
+        public ShopWorker(string firstName, string lastName) :
+          base(firstName, lastName)
+        { }
+        public ShopWorker(string firstName, string lastName, Department department) :
+         base(firstName, lastName)
+        {
+            
+            this.Manager = department.DepartmentManager;
+            this.isDepManger = true;
+        }
 
         void ISalary.Increase(decimal amount)
         {
@@ -89,6 +112,8 @@ namespace MediaBazaarApp.Classes
             return $"{ID}, {FirstName}, {LastName}, {Email}, {BirthDate.ToShortDateString()}, {HireTime.ToShortDateString()}, {LastWorkingDay.ToShortDateString()}," +
                    $"{HomeAddress}, {Contract.ToString()}, {WorksAt.Name}, {Status.Name}";
         }
+
+        
 
 
     }

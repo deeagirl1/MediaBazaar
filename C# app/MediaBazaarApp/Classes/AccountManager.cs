@@ -115,6 +115,37 @@ namespace MediaBazaarApp.Classes
             return pass;
         }
 
+        public List<User> GetAllUsers()
+        {
+            
+            string sql = $"SELECT p.ID, p.FirstName, p.LastName, p.Email, p.AccessLevel " +
+                         $"FROM person p " +
+                         $"WHERE p.AccessLevel = 2 OR p.AccessLevel = 3 OR p.AccessLevel = 4 OR p.AccessLevel = 5 OR p.AccessLevel = 6 ";
+         
+            MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
+            MySqlDataReader reader = null;
+            
+            List<User> users = new List<User>();
+            try
+            {
+                reader = this.OpenExecuteReader(cmd);
+                while (reader.Read())
+                {
+                    User user = new User(Convert.ToInt32(reader["ID"]),
+                        Convert.ToString(reader["FirstName"]),
+                        Convert.ToString(reader["LastName"]),
+                        Convert.ToInt32(reader["AccessLevel"]));
+                    users.Add(user);
+
+                }
+            }
+            finally
+            {
+                this.CloseExecuteReader(reader);
+            }
+            return users;
+        }
+
 
         
     }

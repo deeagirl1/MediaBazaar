@@ -33,8 +33,9 @@ namespace MediaBazaarApp.Popups
                 tb_DepartmentManager.IsEnabled = false;
                 this.lvDepartments.ItemsSource = this.company.Departments.GetEmployees(department);
                 tb_Name.Text = this.department.Name;
-               
-                tb_DepartmentManager.Text = this.department.DepartmentManager.ToString();
+
+
+                tb_DepartmentManager.Text = this.company.Departments.GetManager(department).ToString();
                 
             }
             catch(Exception ex)

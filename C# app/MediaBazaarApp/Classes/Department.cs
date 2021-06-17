@@ -28,7 +28,7 @@ namespace MediaBazaarApp.Classes
         {
             this.ID = ID;
             this.Name = Name;
-            this.DepartmentManager = manager;
+            this.DepartmentManager = manager.Manager;
         }
         public Department(int ID, string Name, DepartmentManager manager, int nrOfEmployees)
         {

@@ -50,7 +50,7 @@ namespace MediaBazaarApp
                 this.lvMessages.ItemsSource = this.company.Messages.ToList();
                 this.lblUserString.Content = $"Hello , {person.FirstName}";
                 this.cmb_ProductDepartments.ItemsSource = this.company.Departments.GetAll();
-                
+                this.lvUsers.ItemsSource = this.company.AccountManager.GetAllUsers();
 
                 this.showAnnouncements();
                 this.showProducts();
@@ -89,14 +89,7 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+      
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -145,7 +138,7 @@ namespace MediaBazaarApp
                 {
                     this.company.AccountManager.ChangePassword(this.person.Username,
                                         this.tbCurrentPass.Text, this.tbNewPass.Text);
-                    MessageBox.Show("Suucessfully changed");
+                    MessageBox.Show("Sucessfully changed");
                 }
                 else throw new ArgumentException("Passwords do not match");
             }

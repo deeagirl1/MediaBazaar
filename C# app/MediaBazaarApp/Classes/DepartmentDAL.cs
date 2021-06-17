@@ -11,12 +11,14 @@ namespace MediaBazaarApp.Classes
     {
         public void Create(Department department)
         {
-            string sql = $"INSERT INTO department(ID, Name, Manager) values(@ID, @Name, @Manager)";
+            string sql = $"INSERT INTO department(ID, Name, Manager) values(@ID, @Name, @Manager); " +
+                         $"UPDATE employee SET employee.IsDepManager = 2 WHERE employee.ID = @Manager;" +
+                         $"UPDATE person SET person.accesslevel = 6 WHERE person.ID = @Manager; ";
 
             MySqlParameter[] prms = new MySqlParameter[3];
             prms[0] = new MySqlParameter("@ID", department.ID);
             prms[1] = new MySqlParameter("@Name", department.Name);
-            prms[2] = new MySqlParameter("@Manager", department.DepartmentManager);
+            prms[2] = new MySqlParameter("@Manager", department.DepartmentManager.ID);
 
             
 
@@ -28,6 +30,7 @@ namespace MediaBazaarApp.Classes
             string sql = $"SELECT d.ID, d.Name, d.Manager, p.FirstName, p.LastName " +
             $"FROM department as d " +
             $"INNER JOIN  person as p ON d.Manager = p.ID";
+            
 
             MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
             MySqlDataReader reader = null;
@@ -37,17 +40,20 @@ namespace MediaBazaarApp.Classes
                 reader = this.OpenExecuteReader(cmd);
                 while (reader.Read())
                 {
+                    
                     DepartmentManager manager
                     = new DepartmentManager(Convert.ToInt32(reader["Manager"]),
-                                  Convert.ToString(reader["FirstName"]),
-                                  Convert.ToString(reader["LastName"]));
-
+                                            Convert.ToString(reader["FirstName"]),
+                                            Convert.ToString(reader["LastName"]));
+                   
                     Department department
                          = new Department(Convert.ToInt32(reader["ID"]),
                                Convert.ToString(reader["Name"]),
                                manager, this.NrOfEmployees(Convert.ToInt32(reader["ID"])));
-                   
+                    //manager.Department = department;
+
                     departments.Add(department);
+                    
                    
                 }
             }
@@ -58,46 +64,22 @@ namespace MediaBazaarApp.Classes
             return departments;
         }
 
-
         public List<ShopWorker> GetEmployees(Department department)
         {
-            string sql = $"SELECT p.ID, p.FirstName, p.LastName, e.DepartmentID from person as p " +
-                         $"INNER join employee as e on p.ID = e.ID "+
-                         $"INNER JOIN department as d on e.DepartmentID = d.ID "+
-                         $"WHERE d.ID = @ID AN";
-            MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
-            MySqlDataReader reader = null;
-            cmd.Parameters.AddWithValue("@ID", department.ID);
-            List<ShopWorker> workers = new List<ShopWorker>();
-            try
-            {
-                reader = this.OpenExecuteReader(cmd);
-                while (reader.Read())
-                {
-                    ShopWorker worker = new ShopWorker(Convert.ToInt32(reader["ID"]),
-                        Convert.ToString(reader["FirstName"]),
-                        Convert.ToString(reader["LastName"]));
-                    workers.Add(worker);
-
-                }
-            }
-            finally
-            {
-                this.CloseExecuteReader(reader);
-            }
-            return workers;
-        
-        }
-
-        public List<ShopWorker> GetEmployeesByDepartment(Department department)
-        {
-            string sql = $"SELECT p.ID, p.FirstName, p.LastName, e.DepartmentID from person as p " +
+            string sql = $"SELECT p.ID, p.FirstName, p.LastName from person as p " +
                          $"INNER join employee as e on p.ID = e.ID " +
                          $"INNER JOIN department as d on e.DepartmentID = d.ID " +
                          $"WHERE d.ID = @ID";
             MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
             MySqlDataReader reader = null;
-            cmd.Parameters.AddWithValue("@ID", department.ID);
+            if (department == null)
+            {
+                throw new Exception("Something went wrong, please try again.");
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ID", department.ID);
+            }
             List<ShopWorker> workers = new List<ShopWorker>();
             try
             {
@@ -118,29 +100,67 @@ namespace MediaBazaarApp.Classes
             return workers;
 
         }
-
-
-        public List<DepartmentManager> GetManagers()
+   
+        public List<DepartmentManager> GetEmployeesToBeAssignedToDepManagers()
         {
-            string sql = $"SELECT ID,FirstName, LastName from person WHERE AccessLevel = 6";
+           
+              
+                string sql = $"SELECT ID, FirstName, LastName from person WHERE AccessLevel = 1";
 
+                MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
+                MySqlDataReader reader = null;
+              
+                List<DepartmentManager> managers = new List<DepartmentManager>();
+                try
+                {
+                    reader = this.OpenExecuteReader(cmd);
+                    while (reader.Read())
+                    {
+
+
+                    DepartmentManager employee
+                        = new DepartmentManager(Convert.ToInt32(reader["ID"]),
+                                      Convert.ToString(reader["FirstName"]),
+                                      Convert.ToString(reader["LastName"]));
+
+
+
+                       
+                        managers.Add(employee);
+                    }
+                }
+                finally 
+                { 
+                this.CloseExecuteReader(reader);
+                }
+
+            
+                return managers;
+            
+
+        }
+
+        public DepartmentManager GetDepManager(Department department)
+        {
+            string sql = $"SELECT ID, FirstName, LastName from person WHERE AccessLevel = 6 AND ID = @ID";
+                        
+            DepartmentManager manager = null;
             MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
             MySqlDataReader reader = null;
-            List<DepartmentManager> managers = new List<DepartmentManager>();
+            cmd.Parameters.Add(new MySqlParameter("@ID", department.DepartmentManager.ID));
+           
             try
             {
                 reader = this.OpenExecuteReader(cmd);
                 while (reader.Read())
                 {
 
-                    DepartmentManager manager
-                    = new DepartmentManager(Convert.ToInt32(reader["ID"]),
-                                  Convert.ToString(reader["FirstName"]),
-                                  Convert.ToString(reader["LastName"]));
+                    manager = new DepartmentManager(Convert.ToInt32(reader["ID"]),
+                                                    Convert.ToString(reader["FirstName"]),
+                                                    Convert.ToString(reader["LastName"]));
 
 
 
-                    managers.Add(manager);
                 }
             }
             finally
@@ -148,8 +168,10 @@ namespace MediaBazaarApp.Classes
                 this.CloseExecuteReader(reader);
             }
 
-            return managers;
+            return manager;
         }
+
+       
 
         public int NrOfEmployees(int id)
         {
@@ -169,14 +191,33 @@ namespace MediaBazaarApp.Classes
 
         public void Update(Department department)
         {
-            string sql = $"UPDATE department SET Name = @Name, Manager = @Manager WHERE ID = @ID";
+           
+            if(department.DepartmentManager.isDepManger == true)
+            {
+                string sql = $"UPDATE department SET Name = @Name, Manager = @Manager WHERE ID = @ID " +
+                             $"UPDATE employee SET employee.IsDepManager = 0 WHERE employee.ID = @Manager; " +
+                             $"UPDATE person SET person.AccessLevel  = 1 WHERE person.ID = @Manager; ";
+                MySqlParameter[] prms = new MySqlParameter[3];
+                prms[0] = new MySqlParameter("@ID", department.ID);
+                prms[1] = new MySqlParameter("@Name", department.Name);
+                prms[2] = new MySqlParameter("@Manager", department.DepartmentManager);
 
-            MySqlParameter[] prms = new MySqlParameter[3];
-            prms[0] = new MySqlParameter("@ID", department.ID);
-            prms[1] = new MySqlParameter("@Name", department.Name);
-            prms[2] = new MySqlParameter("@Manager", department.DepartmentManager);
+                this.ExecuteQuery(sql, prms);
+            }
+            else
+            {
+                string sql = $"UPDATE department SET Name = @Name, Manager = @Manager WHERE ID = @ID; " +
+                             $"UPDATE employee SET employee.IsDepManager = 2 WHERE employee.ID = @Manager; " +
+                             $"UPDATE person SET person.accesslevel = 6 WHERE person.ID = @Manager; ";
+                MySqlParameter[] prms = new MySqlParameter[3];
+                prms[0] = new MySqlParameter("@ID", department.ID);
+                prms[1] = new MySqlParameter("@Name", department.Name);
+                prms[2] = new MySqlParameter("@Manager", department.DepartmentManager.ID);
 
-            this.ExecuteQuery(sql, prms);
+                this.ExecuteQuery(sql, prms);
+            }
+
+        
         }
 
         

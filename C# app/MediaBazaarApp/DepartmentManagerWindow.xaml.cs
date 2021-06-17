@@ -21,16 +21,16 @@ namespace MediaBazaarApp
     public partial class DepartmentManagerWindow : Window
     {
         private Company company;
-        private DepartmentManager manager;
+        private Department department;
         private List<ShopWorker> employees;
     
         public DepartmentManagerWindow(Company company, Person person)
         {
             InitializeComponent();
             this.company = company;
-          
-            this.manager = (DepartmentManager)person;
-            this.lvShopWorkers.ItemsSource = company.Departments.GetEmployees(manager.Department);
+
+            this.department.DepartmentManager = (DepartmentManager)person;
+            this.lvShopWorkers.ItemsSource = company.Departments.GetEmployees(department);
         }
 
 
