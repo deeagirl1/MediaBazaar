@@ -21,7 +21,7 @@ namespace MediaBazaarApp.Popups
     public partial class AddProduct : Window
     {
         private Company company;
-
+        public RefreshHandler ProductAdded;
         public AddProduct()
         {
             InitializeComponent();
@@ -58,6 +58,7 @@ namespace MediaBazaarApp.Popups
 
 
                 this.Close();
+                this.ProductAdded.Invoke();
             }
             catch (Exception ex)
             {

@@ -43,7 +43,10 @@ namespace MediaBazaarApp.Classes
             return this.DAL.GetEmployees(department);
         }
 
-
+        public Department GetDepartmentByManagerID(int id)
+        {
+            return this.DAL.GetDepartmentByManagerID(id);
+        }
 
     }
 }

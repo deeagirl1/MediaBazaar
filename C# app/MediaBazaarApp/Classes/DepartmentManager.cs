@@ -29,7 +29,7 @@ namespace MediaBazaarApp.Classes
         {
             this.Department = department;
             this.isDepManger = true;
-            this.Manager = department.DepartmentManager;
+            //this.Manager = department.DepartmentManager;
         }
 
         public override string ToString()

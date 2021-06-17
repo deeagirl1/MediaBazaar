@@ -170,8 +170,29 @@ namespace MediaBazaarApp.Classes
 
             return manager;
         }
+        public Department GetDepartmentByManagerID(int id)
+        {
+            string sql = $"SELECT ID, Name FROM DEPARTMENT WHERE MANAGER = @MANAGER";
+            Department department = null;
+            MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
+            MySqlDataReader reader = null;
+            cmd.Parameters.Add(new MySqlParameter("@MANAGER", id));
+            try
+            {
+                reader = this.OpenExecuteReader(cmd);
+                while (reader.Read())
+                {
+                    department = new Department(Convert.ToInt32(reader["ID"]),
+                                                Convert.ToString(reader["Name"]));    
+                }
+            }
+            finally
+            {
+                this.CloseExecuteReader(reader);
+            }
+            return department;
+        }
 
-       
 
         public int NrOfEmployees(int id)
         {

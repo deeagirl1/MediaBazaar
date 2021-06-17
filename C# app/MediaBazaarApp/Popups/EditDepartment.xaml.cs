@@ -29,9 +29,15 @@ namespace MediaBazaarApp.Popups
             {
                 this.company = company;
                 this.department = department;
-                cmbDepartment.ItemsSource = this.company.Departments.GetEmployeesToBeAssignedToDepManagers();
+                cmbDepartment.ItemsSource = this.company.Departments.GetEmployees(department);
                 tb_Name.Text = department.Name;
                 this.lb_manager.Content = department.DepartmentManager;
+
+                foreach(ShopWorker s in this.cmbDepartment.Items)
+                {
+                    if (department.DepartmentManager.ID == s.ID)
+                        this.cmbDepartment.SelectedItem = s;
+                }
 
             }
             catch(Exception ex)
@@ -45,7 +51,7 @@ namespace MediaBazaarApp.Popups
             try
             {
                 this.department.Name = tb_Name.Text;
-                this.department.DepartmentManager = ((DepartmentManager)cmbDepartment.SelectedItem);
+                this.department.DepartmentManager = (ShopWorker)cmbDepartment.SelectedItem;
                 this.company.Departments.Update(department);
                 this.Close();
             }

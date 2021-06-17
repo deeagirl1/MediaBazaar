@@ -15,8 +15,9 @@ namespace MediaBazaarApp.Classes
         List<ShopWorker> GetEmployees(Department department);
         DepartmentManager GetDepManager(Department department);
         List<DepartmentManager> GetEmployeesToBeAssignedToDepManagers();
+        Department GetDepartmentByManagerID(int id);
 
 
-    
+
     }
 }

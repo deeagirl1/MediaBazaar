@@ -19,7 +19,7 @@ namespace MediaBazaarApp.Classes
 
         public bool isDepManger { get; set; }
 
-        public DepartmentManager Manager { get; set; }
+        //public DepartmentManager Manager { get; set; }
         
         public Status Status { get; set; }
         private decimal hourlyWage;
@@ -86,7 +86,7 @@ namespace MediaBazaarApp.Classes
          base(firstName, lastName)
         {
             
-            this.Manager = department.DepartmentManager;
+            //this.Manager = department.DepartmentManager;
             this.isDepManger = true;
         }
 
@@ -109,12 +109,7 @@ namespace MediaBazaarApp.Classes
 
         public override string ToString()
         {
-            return $"{ID}, {FirstName}, {LastName}, {Email}, {BirthDate.ToShortDateString()}, {HireTime.ToShortDateString()}, {LastWorkingDay.ToShortDateString()}," +
-                   $"{HomeAddress}, {Contract.ToString()}, {WorksAt.Name}, {Status.Name}";
+            return $"{ID}, {FirstName}, {LastName}";
         }
-
-        
-
-
     }
 }

@@ -29,8 +29,8 @@ namespace MediaBazaarApp
             InitializeComponent();
             this.company = company;
 
-            this.department.DepartmentManager = (DepartmentManager)person;
-            this.lvShopWorkers.ItemsSource = company.Departments.GetEmployees(department);
+            this.department = this.company.Departments.GetDepartmentByManagerID(person.ID);
+            this.lvShopWorkers.ItemsSource = this.company.Departments.GetEmployees(department);
         }
 
 
