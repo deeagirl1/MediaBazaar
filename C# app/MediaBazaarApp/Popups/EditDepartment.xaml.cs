@@ -22,6 +22,7 @@ namespace MediaBazaarApp.Popups
     {
         private Company company;
         private Department department;
+        public RefreshHandler departmentEdited;
         public EditDepartment(Company company, Department department)
         {
             InitializeComponent();
@@ -51,8 +52,10 @@ namespace MediaBazaarApp.Popups
             try
             {
                 this.department.Name = tb_Name.Text;
+                ShopWorker exManager = department.DepartmentManager;
                 this.department.DepartmentManager = (ShopWorker)cmbDepartment.SelectedItem;
-                this.company.Departments.Update(department);
+                this.company.Departments.Update(department, exManager);
+                this.departmentEdited.Invoke();
                 this.Close();
             }
             catch(Exception ex)

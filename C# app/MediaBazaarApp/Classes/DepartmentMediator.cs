@@ -22,9 +22,9 @@ namespace MediaBazaarApp.Classes
         {
             this.DAL.Create(department);
         }
-        public void Update(Department department)
+        public void Update(Department department, ShopWorker exShopWorker)
         {
-            this.DAL.Update(department);
+            this.DAL.Update(department, exShopWorker);
         }
         public IReadOnlyList<Department> GetDepartments()
         {

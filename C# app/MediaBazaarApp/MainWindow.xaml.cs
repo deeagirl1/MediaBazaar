@@ -51,6 +51,7 @@ namespace MediaBazaarApp
                 this.lblUserString.Content = $"Hello , {person.FirstName}";
                 this.cmb_ProductDepartments.ItemsSource = this.company.Departments.GetAll();
                 this.lvUsers.ItemsSource = this.company.AccountManager.GetAllUsers();
+                this.showDepartments();
 
                 this.showAnnouncements();
                 this.showProducts();
@@ -463,15 +464,28 @@ namespace MediaBazaarApp
                 MessageBox.Show(ex.Message);
             }
         }
-
+        private void bindDepartmentsToCMB()
+        {
+            try
+            {
+                foreach(Department d in this.company.Departments.GetAll())
+                {
+                    this.cmb_ProductDepartments.Items.Add(d);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void btnAddDepartment_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 addDepartmentForm = new AddDepartment(this.company);
                 this.addDepartmentForm.Show();
-                showDepartments();
-                this.cmb_ProductDepartments.ItemsSource = this.company.Departments.GetAll();
+                this.addDepartmentForm.DepartmentAdded += showDepartments;
+                this.addDepartmentForm.DepartmentAdded += bindDepartmentsToCMB;
             }
             catch (Exception ex)
             {
@@ -487,7 +501,7 @@ namespace MediaBazaarApp
                 Department department = (Department)lvDepartments.SelectedItem;
                 editDepartmentForm = new EditDepartment(this.company, department);
                 this.editDepartmentForm.Show();
-                showDepartments();
+                this.editDepartmentForm.departmentEdited += showDepartments;
             }
             catch (Exception ex)
             {

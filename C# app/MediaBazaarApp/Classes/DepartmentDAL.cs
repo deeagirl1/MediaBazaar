@@ -208,37 +208,22 @@ namespace MediaBazaarApp.Classes
             else throw new ArgumentException("No employees found");
         }
 
-      
-
-        public void Update(Department department)
+        public void Update(Department department, ShopWorker exManager)
         {
-           
-            if(department.DepartmentManager.isDepManger == true)
-            {
-                string sql = $"UPDATE department SET Name = @Name, Manager = @Manager WHERE ID = @ID " +
-                             $"UPDATE employee SET employee.IsDepManager = 0 WHERE employee.ID = @Manager; " +
-                             $"UPDATE person SET person.AccessLevel  = 1 WHERE person.ID = @Manager; ";
-                MySqlParameter[] prms = new MySqlParameter[3];
-                prms[0] = new MySqlParameter("@ID", department.ID);
-                prms[1] = new MySqlParameter("@Name", department.Name);
-                prms[2] = new MySqlParameter("@Manager", department.DepartmentManager);
+            string sql = $"UPDATE department SET Name = @Name, Manager = @Manager WHERE ID = @ID; " +
+                         $"UPDATE employee SET employee.IsDepManager = 1 WHERE employee.ID = @Manager; " +
+                         $"UPDATE person SET person.AccessLevel  = 6 WHERE person.ID = @Manager; " +
+                         $"UPDATE employee SET employee.IsDepManager = 0 WHERE employee.ID = @ExManager; " +
+                         $"UPDATE person SET person.AccessLevel = 1 WHERE person.ID = @ExManager; ";
 
-                this.ExecuteQuery(sql, prms);
-            }
-            else
-            {
-                string sql = $"UPDATE department SET Name = @Name, Manager = @Manager WHERE ID = @ID; " +
-                             $"UPDATE employee SET employee.IsDepManager = 2 WHERE employee.ID = @Manager; " +
-                             $"UPDATE person SET person.accesslevel = 6 WHERE person.ID = @Manager; ";
-                MySqlParameter[] prms = new MySqlParameter[3];
-                prms[0] = new MySqlParameter("@ID", department.ID);
-                prms[1] = new MySqlParameter("@Name", department.Name);
-                prms[2] = new MySqlParameter("@Manager", department.DepartmentManager.ID);
 
-                this.ExecuteQuery(sql, prms);
-            }
+            MySqlParameter[] prms = new MySqlParameter[4];
+            prms[0] = new MySqlParameter("@ID", department.ID);
+            prms[1] = new MySqlParameter("@Name", department.Name);
+            prms[2] = new MySqlParameter("@Manager", department.DepartmentManager.ID);
+            prms[3] = new MySqlParameter("@ExManager", exManager.ID);
 
-        
+            this.ExecuteQuery(sql, prms);
         }
 
         

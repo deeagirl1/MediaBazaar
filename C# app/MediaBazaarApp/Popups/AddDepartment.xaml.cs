@@ -22,6 +22,7 @@ namespace MediaBazaarApp.Popups
     {
         private Company company;
         private Department department;
+        public RefreshHandler DepartmentAdded;
 
         public AddDepartment(Company company)
         {
@@ -43,8 +44,8 @@ namespace MediaBazaarApp.Popups
             {
                 string name = tb_Name.Text;
                 DepartmentManager manager = ((DepartmentManager)this.cmbDepartment.SelectedItem);
-
                 this.company.Departments.Add(new Department(name, manager));
+                this.DepartmentAdded.Invoke();
                 this.Close();
             }
             catch(Exception ex)
