@@ -18,10 +18,12 @@ namespace MediaBazaarApp.Popups
     /// <summary>
     /// Interaction logic for EditEmployee.xaml
     /// </summary>
+    public delegate void RefreshHandler();
     public partial class EditEmployee : Window
     {
         private ShopWorker worker;
         private Company company;
+        public RefreshHandler EmployeeEdited;
 
         public EditEmployee(Company company, ShopWorker worker)
         {
@@ -33,6 +35,13 @@ namespace MediaBazaarApp.Popups
                 this.cbx_Department.ItemsSource = this.company.Departments.GetDepartments();
                 this.cbx_Contract.ItemsSource = this.company.Contracts;
                 this.cbx_Status.ItemsSource = this.company.GetEditableStatuses();
+                
+                foreach(Department d in this.cbx_Department.Items)
+                {
+                    if(d.ID == worker.WorksAt.ID)
+                        this.cbx_Department.SelectedItem = d;
+                }
+                   
                 fillFields();
             }
             catch(Exception ex)
@@ -97,6 +106,7 @@ namespace MediaBazaarApp.Popups
                 this.worker.Status = ((Status)this.cbx_Status.SelectedItem);
                 this.company.ShopWorkers.Edit(worker);
                 this.Close();
+                this.EmployeeEdited.Invoke();
             }
             catch (Exception ex)
             {

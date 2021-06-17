@@ -65,6 +65,18 @@ namespace MediaBazaarApp
         {
             this.RefreshCalendar();
         }
+        private void RefreshEmployees()
+        {
+            try
+            {
+                this.employees = this.company.ShopWorkers.ToList();
+                this.lvShopWorkers.ItemsSource = this.employees;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -95,7 +107,9 @@ namespace MediaBazaarApp
             try
             {
                 this.addEmployeeForm = new Add_Employee(this.company);
+                this.addEmployeeForm.EmployeeAdded += RefreshEmployees;
                 this.addEmployeeForm.Show();
+                this.employees = this.company.ShopWorkers.ToList();
             }
             catch (Exception ex)
             {
@@ -122,6 +136,7 @@ namespace MediaBazaarApp
                 {
                     ShopWorker worker = ((ShopWorker)this.lvShopWorkers.SelectedItem);
                     this.editEmployeeForm = new EditEmployee(this.company, worker);
+                    this.editEmployeeForm.EmployeeEdited += RefreshEmployees;
                     this.editEmployeeForm.Show();
                 }
             }
@@ -240,7 +255,15 @@ namespace MediaBazaarApp
         }
         private void btnRefreshAnnouncements_Click(object sender, RoutedEventArgs e)
         {
-            this.showAnnouncements();
+            try
+            {
+                this.showAnnouncements();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
         }
         private void btn_EditAnnouncement_Click(object sender, RoutedEventArgs e)
         {
@@ -251,6 +274,7 @@ namespace MediaBazaarApp
                     Announcement announcement = ((Announcement)this.lvAnnouncements.SelectedItem);
                     this.editAnnouncementForm = new EditAnnouncement(this.company, announcement);
                     this.editAnnouncementForm.Show();
+                    this.showAnnouncements();
                 }
             }
             catch (Exception ex)
@@ -264,6 +288,7 @@ namespace MediaBazaarApp
             {
                 this.addAnnouncementForm = new AddAnnouncement(this.company);
                 this.addAnnouncementForm.Show();
+                this.showAnnouncements();
             }
             catch (Exception ex)
             {
@@ -295,6 +320,7 @@ namespace MediaBazaarApp
                     Product product = (Product)item.Content;
                     this.editProductForm = new EditProduct(this.company, product);
                     this.editProductForm.Show();
+                    this.showProducts();
                 }
             }
             catch (Exception ex)
@@ -307,6 +333,7 @@ namespace MediaBazaarApp
             try
             {
                 new AddProduct().Show();
+                this.showProducts();
             }
             catch (Exception ex)
             {
@@ -443,6 +470,8 @@ namespace MediaBazaarApp
             {
                 addDepartmentForm = new AddDepartment(this.company);
                 this.addDepartmentForm.Show();
+                showDepartments();
+                this.cmb_ProductDepartments.ItemsSource = this.company.Departments.GetAll();
             }
             catch (Exception ex)
             {
@@ -458,6 +487,7 @@ namespace MediaBazaarApp
                 Department department = (Department)lvDepartments.SelectedItem;
                 editDepartmentForm = new EditDepartment(this.company, department);
                 this.editDepartmentForm.Show();
+                showDepartments();
             }
             catch (Exception ex)
             {

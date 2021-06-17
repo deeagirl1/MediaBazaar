@@ -25,5 +25,6 @@
         </StackPanel>
 
         <Button x:Name="btn_login" Grid.Row="2" VerticalAlignment="Bottom" MaxHeight="25" MaxWidth="100" Content="Login" RenderTransformOrigin="0.872,0.5" Click="btn_login_Click" Margin="0,0,0,55" Height="44"></Button>
+        <Label Content="Loading may take up to few minutes." HorizontalAlignment="Left" Margin="98,193,0,0" Grid.Row="1" VerticalAlignment="Top"/>
     </Grid>
 </Window>

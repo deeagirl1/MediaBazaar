@@ -44,7 +44,7 @@
                             <Button x:Name="btn_Refresh" Content="Refresh" Grid.Column="3" Grid.Row="1" VerticalAlignment="Top" Height="25" Click="btn_Refresh_Click"/>
 
                             <Button x:Name ="btn_Edit" Content="Edit" Height="25" Click="Button_Edit_Click"/>
-                            <Button x:Name="btn_Add" Content="Add" Click="Button_Add_Click" Height="25"/>
+                            <Button x:Name="btn_Add" Content="Add" Click="Button_Add_Click" Height="25" HorizontalAlignment="Right" Width="100"/>
 
                         </StackPanel>
                     </Grid>

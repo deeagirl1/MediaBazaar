@@ -16,10 +16,12 @@ namespace MediaBazaarApp
     /// <summary>
     /// Interaction logic for Add_Employee.xaml
     /// </summary>
+    public delegate void RefreshHandler();
     public partial class Add_Employee : Window
     {
         private ShopWorker worker;
         private Company company;
+        public RefreshHandler EmployeeAdded;
 
         public Add_Employee(Company company)
         {
@@ -81,6 +83,7 @@ namespace MediaBazaarApp
 
                 MessageBox.Show($"Username: {username}, Password: {password}" + "\n Please note them down!");
                 this.Close();
+                this.EmployeeAdded.Invoke();
             }
             catch (Exception ex)
             {
