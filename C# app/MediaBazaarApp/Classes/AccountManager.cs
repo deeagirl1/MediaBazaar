@@ -115,12 +115,42 @@ namespace MediaBazaarApp.Classes
             return pass;
         }
 
+        public void Update(Person person)
+        {
+            string sql = " UPDATE person SET FirstName = @FirstName, LastName = @LastName, Email = @Email, AccessLevel = @AccessLevel" +
+                         " WHERE ID = @ID ";
+          
+
+            MySqlParameter[] prms = new MySqlParameter[5];
+
+            int accessLevel = 0;
+            if (person is Administrator)
+                accessLevel = 2;
+            if (person is Manager)
+                accessLevel = 3;
+            if (person is DepotWorker)
+                accessLevel = 4;
+            if (person is Cashier)
+                accessLevel = 5;
+            if (person is DepartmentManager)
+                accessLevel = 6;
+
+            prms[0] = new MySqlParameter("@FirstName", person.FirstName);
+            prms[1] = new MySqlParameter("@LastName", person.LastName);
+            prms[2] = new MySqlParameter("@Email", person.Email);
+            prms[3] = new MySqlParameter("@AccessLevel", accessLevel);
+            prms[4] = new MySqlParameter("@ID", person.ID);
+
+            this.ExecuteQuery(sql, prms);
+
+           
+        }
+
         public List<User> GetAllUsers()
         {
-            
-            string sql = $"SELECT p.ID, p.FirstName, p.LastName, p.Email, p.AccessLevel " +
+            string sql = $"SELECT p.ID, p.FirstName, p.LastName, p.AccessLevel, p.Email " +
                          $"FROM person p " +
-                         $"WHERE p.AccessLevel = 2 OR p.AccessLevel = 3 OR p.AccessLevel = 4 OR p.AccessLevel = 5 OR p.AccessLevel = 6 ";
+                         $"WHERE p.AccessLevel = 2 OR p.AccessLevel = 3 OR p.AccessLevel = 4 OR p.AccessLevel = 5 OR p.AccessLevel = 6; ";
          
             MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
             MySqlDataReader reader = null;
@@ -134,7 +164,9 @@ namespace MediaBazaarApp.Classes
                     User user = new User(Convert.ToInt32(reader["ID"]),
                         Convert.ToString(reader["FirstName"]),
                         Convert.ToString(reader["LastName"]),
-                        Convert.ToInt32(reader["AccessLevel"]));
+                        Convert.ToInt32(reader["AccessLevel"]),
+                        Convert.ToString(reader["Email"]));
+                        
                     users.Add(user);
 
                 }

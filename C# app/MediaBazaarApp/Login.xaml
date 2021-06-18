@@ -14,17 +14,17 @@
             <RowDefinition Height="250"/>
             <RowDefinition Height="200*"/>
         </Grid.RowDefinitions>
-        <Label HorizontalAlignment="Center" FontSize="41" VerticalAlignment="Center" FontFamily="Agency FB" Foreground="White" FontStyle="Oblique"  BorderThickness="5" Margin="97,0,103,1" Width="192">
+        <Label HorizontalAlignment="Center" FontSize="41" VerticalAlignment="Center" FontFamily="Agency FB" Foreground="White" FontStyle="Oblique"  BorderThickness="5" Margin="98,0,47,1" Width="249">
             Media Bazaar</Label>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center" MaxWidth="200">
-            <Label Foreground="White" >Username </Label>
+            <Label Foreground="White" >Username</Label>
             <TextBox x:Name="tbEmail"/>
             <Label Foreground="White">Password</Label>
             <PasswordBox x:Name="tbPassword"/>
         </StackPanel>
 
         <Button x:Name="btn_login" Grid.Row="2" VerticalAlignment="Bottom" MaxHeight="25" MaxWidth="100" Content="Login" RenderTransformOrigin="0.872,0.5" Click="btn_login_Click" Margin="0,0,0,55" Height="44"></Button>
-        <Label Content="Loading may take up to few minutes." HorizontalAlignment="Left" Margin="98,193,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Loading may take up to few minutes." Foreground="White" HorizontalAlignment="Left" Margin="95,193,0,0" Grid.Row="1" VerticalAlignment="Top" Width="209"/>
     </Grid>
 </Window>

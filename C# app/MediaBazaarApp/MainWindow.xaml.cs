@@ -35,6 +35,7 @@ namespace MediaBazaarApp
         private EditDepartment editDepartmentForm;
         private ViewDepartment viewDepartmentForm;
         private AddUser addUserWindow;
+        private EditUser editUserWindow;
         public MainWindow(Company company, Person person)
         {
             try
@@ -544,6 +545,13 @@ namespace MediaBazaarApp
         {
             this.addUserWindow = new AddUser(company);
             addUserWindow.Show();
+        }
+
+        private void btn_EditUser_Click(object sender, RoutedEventArgs e)
+        {
+            User user = (User)this.lvUsers.SelectedItem;
+            this.editUserWindow = new EditUser(company, user);
+            this.editUserWindow.Show();
         }
     }
 }

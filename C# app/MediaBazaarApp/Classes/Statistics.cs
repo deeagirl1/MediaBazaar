@@ -103,6 +103,8 @@ namespace MediaBazaarApp.Classes
 
         }
 
+
+
         public decimal GetAttendaceRateSpecificDate(DateTime startDate, DateTime endDate)
         {
             string sql = "select count(CheckIn)/ COUNT(1) * 100 as Percentage " +
@@ -280,6 +282,65 @@ namespace MediaBazaarApp.Classes
                 return amount;
             }
             else throw new ArgumentException("No data found!");
+        }
+
+        public Product GetMostSoldProductByDate(DateTime start, DateTime end)
+        {
+            string sql = $"select p.ID, p.Name, sum(Amount) as count from purchase pur " +
+                         $"inner join product p on pur.Product = p.ID " +
+                         $"" +
+                         $"group by pur.Product " +
+                         $"order by count desc ";
+
+            Product product = null;
+            MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
+            MySqlDataReader reader = null;
+            reader = this.OpenExecuteReader(cmd);
+            try
+            {
+                while (reader.Read())
+                {
+                    product = new Product(Convert.ToInt32(reader["ID"]),Convert.ToString(reader["Name"]));
+                    return product;
+                    break;
+                }
+            }
+            finally
+            {
+                this.CloseExecuteReader(reader);
+            }
+         
+            return null;
+
+        }
+
+        public Product GetLeastSoldProductByDate()
+        {
+            string sql = $"select p.ID, p.Name, sum(Amount) as count from purchase pur " +
+                         $"inner join product p on pur.Product = p.ID " +
+                         $"group by pur.Product " +
+                         $"order by count asc ";
+
+            Product product = null;
+            MySqlCommand cmd = new MySqlCommand(sql, this.GetConnection());
+            MySqlDataReader reader = null;
+            reader = this.OpenExecuteReader(cmd);
+            try
+            {
+                while (reader.Read())
+                {
+                    product = new Product(Convert.ToInt32(reader["ID"]), Convert.ToString(reader["Name"]));
+                    return product;
+                    break;
+                }
+            }
+            finally
+            {
+                this.CloseExecuteReader(reader);
+            }
+
+            return null;
+
         }
         public int GetTotalSalesPerDepartment(Department department, DateTime start, DateTime end)
         {

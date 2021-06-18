@@ -184,6 +184,8 @@
                                 <Label x:Name="lblTotalProfit" Content="Label" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Margin="335,213,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661"/>
                                 <Label Content="Total sales per product" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Margin="82,260,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
                                 <Label x:Name="lblTotalSalesPerProduct" Foreground="White" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="335,260,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661"/>
+                                <Label Content="Most sold product" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Margin="82,307,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                                <Label x:Name="lblMostSold" Foreground="White" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="335,307,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="2.16,0.661"/>
                             </Grid>
 
 

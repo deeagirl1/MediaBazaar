@@ -62,11 +62,16 @@ namespace MediaBazaarApp.Popups
 
                 MessageBox.Show($"Username: {username}, Password: {password}" + "\n Please note them down!");
 
+
+               
+
             }
             catch (Exception)
             {
                 MessageBox.Show("All fields must be completed");
             }
+
+            this.Close();
         }
     }
 }

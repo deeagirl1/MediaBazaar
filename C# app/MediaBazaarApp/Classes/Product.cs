@@ -77,6 +77,11 @@ namespace MediaBazaarApp.Classes
             this.ID = id;
             this.Name = name;
         }
+        public Product(string name, int amount)
+        {
+            this.Quantity = amount;
+            this.Name = name;
+        }
         public Product(string name, Department department, decimal costPrice, decimal sellingPrice,
             decimal height, decimal length, decimal width, int minThreshold)
         {

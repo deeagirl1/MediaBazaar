@@ -33,7 +33,25 @@ namespace MediaBazaarApp.Popups
                 tb_FirstName.Text = this.user.FirstName;
                 tb_LastName.Text = this.user.LastName;
                 tb_Email.Text = this.user.Email;
-                lbStatus.Content = this.user.AccessLevel.ToString();
+
+                if(user.AccessLevel == 2)
+                {
+                    this.rb_Adminstrator.IsChecked = true;
+                }
+                if (user.AccessLevel == 3)
+                {
+                    this.rb_Manager.IsChecked = true;
+                }
+                if (user.AccessLevel == 4)
+                {
+                    this.rbDepotWorker.IsChecked = true;
+                }
+                if (user.AccessLevel == 5)
+                {
+                    this.rbCashier.IsChecked = true;
+                }
+
+
 
             }
             catch(Exception ex)
@@ -44,7 +62,37 @@ namespace MediaBazaarApp.Popups
 
         private void btn_EditUser_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                this.user.FirstName = tb_FirstName.Text;
+                this.user.LastName = tb_LastName.Text;
+                this.user.Email = tb_Email.Text;
 
+                if (rb_Adminstrator.IsChecked == true)
+                {
+                    user.AccessLevel = 2;
+                }
+                if (rb_Manager.IsChecked == true)
+                {
+                    user.AccessLevel = 3;
+                }
+                if (rbDepotWorker.IsChecked == true)
+                {
+                    user.AccessLevel = 4;
+                }
+                if (rbCashier.IsChecked == true)
+                {
+                    user.AccessLevel = 5;
+                }
+
+                this.company.AccountManager.Update(user);
+            }
+
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+            this.Close();
         }
     }
 }

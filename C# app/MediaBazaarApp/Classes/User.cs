@@ -19,7 +19,7 @@ namespace MediaBazaarApp.Classes
             
 
         }
-        public User(int id, string firstName, string lastName, int accessLevel) : base(id,firstName,lastName,accessLevel)
+        public User(int id, string firstName, string lastName, int accessLevel, string email) : base(id,firstName,lastName,accessLevel, email)
         {
 
             
@@ -37,6 +37,7 @@ namespace MediaBazaarApp.Classes
         {
           
         }
+
         public override string ToString() => $"{this.ID} {this.FirstName} {this.LastName}";
     }
 }

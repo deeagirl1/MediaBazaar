@@ -8,14 +8,17 @@
         Title="Edit user" Height="441.667" Width="323.334">
 
     <Grid Background="#11589b" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <Label Content="Email:" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Height="27" Width="51" Margin="13,0,251,287"/>
-        <TextBox x:Name="tb_LastName"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="13,201,18,0" Width="284"/>
-        <Button x:Name= "btn_EditUser" Content="Edit" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Height="41"  Width="160" Margin="71,350,84,20" Click="btn_EditUser_Click"/>
-        <TextBox x:Name="tb_Email"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="13,132,18,0" Width="284"/>
-        <TextBox x:Name="tb_FirstName"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="13,59,18,0" Width="284"/>
-        <Label Content="Last name:" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Height="28" Width="84" Margin="14,0,217,215"/>
-        <Label Content="First name:" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Height="32" Width="82" Margin="13,0,220,357"/>
-        <Label x:Name="lbStatus" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Height="28" Width="275" Margin="14,0,26,142"/>
+        <Label Content="Email:" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Height="31" Width="130" Margin="13,0,172,283"/>
+        <TextBox x:Name="tb_LastName"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="14,208,17,0" Width="284" Height="25"/>
+        <Button x:Name= "btn_EditUser" Content="Edit" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Height="41"  Width="160" Margin="73,353,82,17" Click="btn_EditUser_Click"/>
+        <TextBox x:Name="tb_Email"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="13,133,18,0" Width="284" Height="25"/>
+        <TextBox x:Name="tb_FirstName"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="14,59,17,0" Width="284" Height="25"/>
+        <Label Content="Last name:" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Height="35" Width="163" Margin="14,0,138,208"/>
+        <Label Content="First name:" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Height="32" Width="147" Margin="13,0,155,357"/>
+        <RadioButton Grid.Row="0" Foreground="White" x:Name="rb_Adminstrator" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"  Height="30" Width="139" IsChecked="True" Margin="14,253,162,128" Content="Administrator"/>
+        <RadioButton x:Name="rb_Manager" Foreground="White" FontSize="15" VerticalAlignment="Center"   Height="36" Margin="184,292,20,83" Content="Manager"/>
+        <RadioButton Foreground="White" x:Name="rbDepotWorker" FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center"  Height="36" Width="115"  Content="Depot worker" Margin="14,292,186,83"/>
+        <RadioButton Foreground="White" x:Name="rbCashier" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"  Height="30" Width="111" Content="Cashier" Margin="184,253,20,128"/>
 
     </Grid>
 </Window>

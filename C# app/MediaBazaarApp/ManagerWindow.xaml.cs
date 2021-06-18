@@ -227,7 +227,8 @@ namespace MediaBazaarApp
                      this.company.Statistics.GetProfitPerProduct(prd) + " €";
                 this.lblTotalSalesPerProduct.Content =
                     this.company.Statistics.GetTotalSalesPerProduct(prd);
-
+              //  this.lblMostSold.Content =
+                //    this.company.Statistics.GetMostSoldProductByDate();
             }
             catch (Exception ex)
             {
@@ -239,11 +240,11 @@ namespace MediaBazaarApp
         {
             try
             {
-             Department department = (Department)this.cmbDepartments1.SelectedItem;
-            DateTime start = Convert.ToDateTime(this.dpStartDateDepartment.SelectedDate.Value.Date);
-            DateTime end = Convert.ToDateTime(this.dpEndDateDepartment.SelectedDate.Value.Date);
-            this.lbSalesPerDepartment.Content = this.company.Statistics.GetTotalSalesPerDepartment(department, start, end);
-            this.lbTotalSalariesPaidPerDepartment.Content = this.company.Statistics.GetTotalSalariesPaidPerDepartment(department, start, end) + "€";
+                Department department = (Department)this.cmbDepartments1.SelectedItem;
+                DateTime start = Convert.ToDateTime(this.dpStartDateDepartment.SelectedDate.Value.Date);
+                DateTime end = Convert.ToDateTime(this.dpEndDateDepartment.SelectedDate.Value.Date);
+                this.lbSalesPerDepartment.Content = this.company.Statistics.GetTotalSalesPerDepartment(department, start, end);
+                this.lbTotalSalariesPaidPerDepartment.Content = this.company.Statistics.GetTotalSalariesPaidPerDepartment(department, start, end) + "€";
             }
             catch (Exception ex)
             {

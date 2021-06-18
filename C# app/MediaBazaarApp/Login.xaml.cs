@@ -25,6 +25,7 @@ namespace MediaBazaarApp.Popups
         private ManagerWindow managerWindow;
         private Depot depotWindow;
         private DepartmentManagerWindow departmentManagerWindow;
+      
         public Login()
         {
             this.company = new Company();
@@ -36,7 +37,8 @@ namespace MediaBazaarApp.Popups
             //{
             //   // Console.WriteLine(w);
             //}
-        }
+   
+    }
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {

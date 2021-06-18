@@ -97,7 +97,7 @@
 
                     <Border  Grid.Column="1" Grid.RowSpan="6" BorderBrush="#11589b" Opacity="1" BorderThickness="1,0,0,0" Background="#11589b">
                         <Grid >
-                            
+
                             <Button x:Name="btnRefreshCalendar" Content="Refresh" Click="btnRefreshCalendar_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Width="99" Height="31" />
                             <Button x:Name="btnAutoSchedule" Content="Auto-Schedule" HorizontalAlignment="Right" VerticalAlignment="Top" Width="99" Height="32" Margin="0,304,0,0" Click="btnAutoSchedule_Click" />
                             <Label FontSize="15" Foreground="White" Content="Legend" HorizontalAlignment="Left" Margin="22,50,0,0" VerticalAlignment="Top"/>
@@ -225,7 +225,7 @@
                         <StackPanel Grid.Row="1" VerticalAlignment="Center">
                             <Button x:Name="btn_RefreshUsers" Content="Refresh" VerticalAlignment="Top" Height="25" />
 
-                            <Button x:Name ="btn_EditUser" Content="Edit" Height="25"/>
+                            <Button x:Name ="btn_EditUser" Content="Edit" Height="25" Click="btn_EditUser_Click"/>
                             <Button x:Name="btn_AddUser" Content="Add" Height="25" Click="btn_AddUser_Click"/>
 
                         </StackPanel>
@@ -237,13 +237,13 @@
                                 <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="100">ID</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Width="250">First Name</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding LastName}" Width="250">Last Name</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding User.Email}" Width="400">Email</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding AccessLevel}" Width="187">AccessLevel</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding AccessLevel}" Width="180">AccessLevel</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Email}" Width="400">Email</GridViewColumn>
                             </GridView>
 
                         </ListView.View>
                     </ListView>
-                    <Label FontSize="15" Content="Legend for AccessLevel => | 2 - Admin| 3 - Manager | 4 - DepotWorker | 5 - Cashier | 6 - Department Manager |" Foreground="White" HorizontalAlignment="Left" Margin="14,606,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                    <Label FontSize="20" Content="Legend for AccessLevel => | 2 - Admin| 3 - Manager | 4 - DepotWorker | 5 - Cashier | 6 - Department Manager |" Foreground="White" HorizontalAlignment="Left" Margin="14,609,0,0" Grid.Row="1" VerticalAlignment="Top" Height="46" Width="1187"/>
 
                 </Grid>
 
@@ -263,7 +263,7 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <ListView x:Name="lvMessages" ItemsSource="{Binding messages}" Grid.Row="1" Margin="19,10,37,0" Height="644" HorizontalAlignment="Stretch" VerticalAlignment="Top" MouseDoubleClick="lvMessages_MouseDoubleClick" Grid.ColumnSpan="3" >
+                    <ListView x:Name="lvMessages" ItemsSource="{Binding messages}" Grid.Row="1" Margin="19,10,36.61,0" Height="627" HorizontalAlignment="Stretch" VerticalAlignment="Top" MouseDoubleClick="lvMessages_MouseDoubleClick" Grid.ColumnSpan="3" >
                         <ListView.View>
                             <GridView >
                                 <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="100">ID</GridViewColumn>
