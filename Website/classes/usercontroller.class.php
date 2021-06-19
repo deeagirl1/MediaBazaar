@@ -213,6 +213,44 @@ public function getShiftsCheckInAndOut($UserID)
     }
     
   }
+
+  public function getDatesAfterToday($UserID){
+    $sql = "SELECT workshift.Date
+    FROM workshift
+    INNER JOIN employeeassignment
+    ON workshift.ID = employeeassignment.ShiftID
+    WHERE workshift.Date > CURRENT_DATE
+    AND employeeassignment.EmployeeID = :id";
+    
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([
+        ':id' => $UserID
+    ]);
+    if($stmt->rowCount() > 0) {
+      while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+        return $row['Date'];
+      }
+    }
+  }
+
+
+ public function callInSick($UserID, $Shift){
+    $sql = "UPDATE employeeassignment 
+            SET calledInSick = true 
+            WHERE EmployeeID = :id  
+            AND ShiftID =(SELECT ShiftID
+                          FROM workshift
+                          INNER JOIN employeeassignment
+                          ON workshift.ID = employeeassignment.ShiftID
+                          WHERE workshift.Date = :shift)";
+    
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([
+        ':id' => $UserID,
+        ':shift' => $Shift
+    ]);
+    return true;
+  }
 }
 
 

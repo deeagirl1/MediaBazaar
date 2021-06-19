@@ -23,6 +23,7 @@ require('phpScripts/isSessionValid.php');
         <li><a href="index.php?page=myaccount">My Account</a></li>
         <li><a href="index.php?page=calendar">Your Schedule</a></li>
         <li><a href="index.php?page=attendance">Attendance</a></li>
+        <li><a href="index.php?page=callinsick">Call in sick</a></li>
         <li><a href="index.php?page=contact">Contact</a></li>
         <li><a><?php require('phpScripts/showName.php')?></a></li>
         <li><a href="index.php?page=logout">Logout</a></li>
@@ -43,6 +44,9 @@ require('phpScripts/isSessionValid.php');
                         break;   
                     case 'attendance':
                         $requestedPage = 'views/attendance.php';
+                        break; 
+                    case 'callinsick':
+                        $requestedPage = 'views/callinsick.php';
                         break; 
                     case 'contact':
                           $requestedPage = 'views/contact.php';
