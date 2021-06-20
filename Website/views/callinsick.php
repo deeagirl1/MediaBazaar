@@ -10,8 +10,6 @@ require_once('classes/usercontroller.class.php');
     <h1>Call in sick</h1>
 
     <br>
-    <label for="message"><b>Optional Message</b></label>
-    <textarea type="text" placeholder="Message" name="Message" id ="Message" rows="5" cols="28"></textarea><br>
     <hr>
     <div>
         <label for="message"><b>Shift</b></label>
