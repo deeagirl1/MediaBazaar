@@ -184,7 +184,7 @@ public function checkOutShift($UserID){
 public function getShiftsCheckInAndOut($UserID) 
 {
   $sql = "SELECT employeeassignment.ID FROM employeeassignment inner join workshift on employeeassignment.shiftID = workshift.ID
-          WHERE EmployeeID = :id and workshift.Date > CURRENT_TIMESTAMP ORDER by workshift.Date ASC ";
+          WHERE EmployeeID = :id and workshift.Date > CURRENT_TIMESTAMP and workshift.Date < (CURRENT_TIMESTAMP + INTERVAL '24' HOUR) ORDER by workshift.Date ASC ";
   $stmt = $this->connect()->prepare($sql);
   $stmt->execute([
     ':id' => $UserID
@@ -234,20 +234,15 @@ public function getShiftsCheckInAndOut($UserID)
   }
 
 
- public function callInSick($UserID, $Shift){
+ public function callInSick($UserID){
     $sql = "UPDATE employeeassignment 
-            SET calledInSick = true 
-            WHERE EmployeeID = :id  
-            AND ShiftID =(SELECT ShiftID
-                          FROM workshift
-                          INNER JOIN employeeassignment
-                          ON workshift.ID = employeeassignment.ShiftID
-                          WHERE workshift.Date = :shift)";
+            SET calledInSick = 2 where
+            employeeassignment.ID = :shift";
     
+    $shift = $this->getShiftsCheckInAndOut($UserID);
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute([
-        ':id' => $UserID,
-        ':shift' => $Shift
+        ':shift' => $shift 
     ]);
     return true;
   }

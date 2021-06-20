@@ -16,28 +16,35 @@ using MediaBazaarApp.Classes;
 namespace MediaBazaarApp.Popups
 {
     /// <summary>
-    /// Interaction logic for ViewDepartment.xaml
+    /// Interaction logic for EditUser.xaml
     /// </summary>
-    public partial class ViewCallInSick : Window
+    public partial class EditUser : Window
     {
-        public ViewCallInSick()
+        private Company company;
+        private User user;
+        public EditUser(Company company, User user)
         {
+            InitializeComponent();
+            this.user = user;
+            this.company = company;
+
             try
             {
-                InitializeComponent();
-                
-                
+                tb_FirstName.Text = this.user.FirstName;
+                tb_LastName.Text = this.user.LastName;
+                tb_Email.Text = this.user.Email;
+                lbStatus.Content = this.user.AccessLevel.ToString();
 
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btn_EditUser_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+
         }
     }
 }

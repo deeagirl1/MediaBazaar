@@ -35,7 +35,6 @@ namespace MediaBazaarApp
         private EditDepartment editDepartmentForm;
         private ViewDepartment viewDepartmentForm;
         private AddUser addUserWindow;
-        private ViewCallInSick viewCallInSickWindow;
         public MainWindow(Company company, Person person)
         {
             try
@@ -52,6 +51,8 @@ namespace MediaBazaarApp
                 this.lblUserString.Content = $"Hello , {person.FirstName}";
                 this.cmb_ProductDepartments.ItemsSource = this.company.Departments.GetAll();
                 this.lvUsers.ItemsSource = this.company.AccountManager.GetAllUsers();
+                this.lvCallInSickMessages.ItemsSource
+                    = this.company.Messages.GetCallInSickMessages();
                 this.showDepartments();
 
                 this.showAnnouncements();
@@ -557,14 +558,34 @@ namespace MediaBazaarApp
 
         private void btn_AddUser_Click(object sender, RoutedEventArgs e)
         {
-            this.addUserWindow = new AddUser(company);
-            addUserWindow.Show();
+            try
+            {
+                this.addUserWindow = new AddUser(company);
+                addUserWindow.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void btnRefreshCallInSickMessages_Click(object sender, RoutedEventArgs e)
         {
-            this.viewCallInSickWindow = new ViewCallInSick();
-            viewCallInSickWindow.Show();
+            try
+            {
+                this.lvCallInSickMessages.ItemsSource
+                    = this.company.Messages.GetCallInSickMessages();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void lvMessages_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

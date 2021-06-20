@@ -8,7 +8,6 @@ require_once('classes/usercontroller.class.php');
 <form action="phpScripts/callInSick.php" method = "POST">
  
     <h1>Call in sick</h1>
-
     <br>
     <hr>
     <div>
@@ -17,7 +16,7 @@ require_once('classes/usercontroller.class.php');
         <?php 
         $test = new UserController();
         //var_dump($results = $test ->getDatesAfterToday(42));
-        $results = $test ->getDatesAfterToday($_SESSION['ID']);
+        $results = $test ->GetClosestShiftDetails($_SESSION['ID']);
         echo $results;
         $_SESSION['storredShift'] = $results;
 

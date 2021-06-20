@@ -35,7 +35,7 @@ namespace MediaBazaarApp.Popups
                 tb_Name.Text = this.department.Name;
 
 
-                tb_DepartmentManager.Text = this.company.Departments.GetManager(department).ToString();
+                tb_DepartmentManager.Text = this.department.DepartmentManager.FullName;
                 
             }
             catch(Exception ex)

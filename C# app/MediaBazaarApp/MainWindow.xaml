@@ -224,8 +224,6 @@
 
                         <StackPanel Grid.Row="1" VerticalAlignment="Center">
                             <Button x:Name="btn_RefreshUsers" Content="Refresh" VerticalAlignment="Top" Height="25" />
-
-                            <Button x:Name ="btn_EditUser" Content="Edit" Height="25"/>
                             <Button x:Name="btn_AddUser" Content="Add" Height="25" Click="btn_AddUser_Click"/>
 
                         </StackPanel>
@@ -261,20 +259,43 @@
                         <ColumnDefinition Width="582*"/>
                         <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
+                    <TabControl HorizontalAlignment="Left" Height="689" Margin="10,0,0,0" VerticalAlignment="Top" Width="1291" Grid.ColumnSpan="4" Grid.RowSpan="2">
+                        <TabItem Header="General messages">
+                            <Grid Background="#11589b" Margin="-6,-3,-4,-12" Height="676" VerticalAlignment="Top">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="49*"/>
+                                    <ColumnDefinition Width="124*"/>
+                                    <ColumnDefinition Width="1123*"/>
+                                </Grid.ColumnDefinitions>
+                                <ListView x:Name="lvMessages" ItemsSource="{Binding messages}" Margin="13,26,116,0" Height="626" HorizontalAlignment="Stretch" VerticalAlignment="Top" MouseDoubleClick="lvMessages_MouseDoubleClick" SelectionChanged="lvMessages_SelectionChanged" Grid.ColumnSpan="3" >
+                                    <ListView.View>
+                                        <GridView >
+                                            <GridViewColumn DisplayMemberBinding="{Binding Sender.FullName}" Width="350" Header="Employee"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding DateTime}" Width="350" Header="Shift"/>
+                                        </GridView>
 
+                                    </ListView.View>
+                                </ListView>
+                                <Button x:Name="btnRefreshMessages" Content="Refresh" HorizontalAlignment="Left" Margin="1014,26,0,0" VerticalAlignment="Top" Width="100" Height="38" Click="btnRefreshMessages_Click" Grid.Column="2"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Call-in-sick messages">
+                            <Grid Background="#11589b" Margin="-12,-4,0,-13">
+                                <ListView x:Name="lvCallInSickMessages" ItemsSource="{Binding messages}" Margin="20,26,116,0" Height="626" HorizontalAlignment="Stretch" VerticalAlignment="Top" MouseDoubleClick="lvMessages_MouseDoubleClick" >
+                                    <ListView.View>
+                                        <GridView >
+                                            <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="100" Header="ID"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding Topic}" Width="500" Header="Topic"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding Sender.FullName}" Width="250" Header="Sender"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding DateTime}" Width="300" Header="Time"/>
+                                        </GridView>
 
-                    <ListView x:Name="lvMessages" ItemsSource="{Binding messages}" Grid.Row="1" Margin="19,10,37,0" Height="644" HorizontalAlignment="Stretch" VerticalAlignment="Top" MouseDoubleClick="lvMessages_MouseDoubleClick" Grid.ColumnSpan="3" >
-                        <ListView.View>
-                            <GridView >
-                                <GridViewColumn DisplayMemberBinding="{Binding ID}" Width="100">ID</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Topic}" Width="500">Topic</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Sender.FullName}" Width="250">Sender</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding DateTime}" Width="300">Time</GridViewColumn>
-                            </GridView>
-
-                        </ListView.View>
-                    </ListView>
-                    <Button x:Name="btnRefreshMessages" Grid.ColumnSpan="2" Content="Refresh" HorizontalAlignment="Left" Margin="663,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="39" Click="btnRefreshMessages_Click" Grid.Column="2"/>
+                                    </ListView.View>
+                                </ListView>
+                                <Button x:Name="btnRefreshCallInSickMessages" Content="Refresh" HorizontalAlignment="Left" Margin="1185,26,0,0" VerticalAlignment="Top" Width="100" Height="38" Click="btnRefreshCallInSickMessages_Click"/>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
 
                 </Grid>
             </TabItem>
@@ -480,6 +501,5 @@
             </TabItem>
 
         </TabControl>
-        <Button Content="View &#xD;&#xA;call in sick&#xD;&#xA;employees" HorizontalAlignment="Left" Margin="1217,47.6,-0.2,0" VerticalAlignment="Top" Width="100" Height="64" Click="Button_Click_2" RenderTransformOrigin="0.521,1.081" Grid.Row="1"/>
     </Grid>
 </Window>
