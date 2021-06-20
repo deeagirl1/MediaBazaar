@@ -35,6 +35,7 @@ namespace MediaBazaarApp
         private EditDepartment editDepartmentForm;
         private ViewDepartment viewDepartmentForm;
         private AddUser addUserWindow;
+        private ViewCallInSick viewCallInSickWindow;
         public MainWindow(Company company, Person person)
         {
             try
@@ -558,6 +559,12 @@ namespace MediaBazaarApp
         {
             this.addUserWindow = new AddUser(company);
             addUserWindow.Show();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            this.viewCallInSickWindow = new ViewCallInSick();
+            viewCallInSickWindow.Show();
         }
     }
 }

@@ -97,7 +97,7 @@
 
                     <Border  Grid.Column="1" Grid.RowSpan="6" BorderBrush="#11589b" Opacity="1" BorderThickness="1,0,0,0" Background="#11589b">
                         <Grid >
-                            
+
                             <Button x:Name="btnRefreshCalendar" Content="Refresh" Click="btnRefreshCalendar_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Width="99" Height="31" />
                             <Button x:Name="btnAutoSchedule" Content="Auto-Schedule" HorizontalAlignment="Right" VerticalAlignment="Top" Width="99" Height="32" Margin="0,304,0,0" Click="btnAutoSchedule_Click" />
                             <Label FontSize="15" Foreground="White" Content="Legend" HorizontalAlignment="Left" Margin="22,50,0,0" VerticalAlignment="Top"/>
@@ -480,5 +480,6 @@
             </TabItem>
 
         </TabControl>
+        <Button Content="View &#xD;&#xA;call in sick&#xD;&#xA;employees" HorizontalAlignment="Left" Margin="1215,365,0,0" VerticalAlignment="Top" Width="100" Height="64" Grid.RowSpan="2" Click="Button_Click_2"/>
     </Grid>
 </Window>

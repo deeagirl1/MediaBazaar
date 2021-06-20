@@ -216,6 +216,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Popups\ViewCallInSick.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Popups\WorkShiftWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -234,6 +238,9 @@
     </Compile>
     <Compile Include="Popups\EditUser.xaml.cs">
       <DependentUpon>EditUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\ViewCallInSick.xaml.cs">
+      <DependentUpon>ViewCallInSick.xaml</DependentUpon>
     </Compile>
     <Compile Include="Popups\WorkShiftWindow.xaml.cs">
       <DependentUpon>WorkShiftWindow.xaml</DependentUpon>
