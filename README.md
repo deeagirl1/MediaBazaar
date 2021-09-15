@@ -15,13 +15,12 @@ We are **Tree**, a 4-person group of students that focuses on fixing other compa
 ## Documentation
 
 ### Analysis
-- [Project plan](https://git.fhict.nl/I454066/prj-cb07-group1/-/blob/master/Documentation/Project_plan_v1.4.docx)
-- [User Requirments Specifications](https://git.fhict.nl/I454066/prj-cb07-group1/-/blob/master/Documentation/URS_Group1_v1.5.docx)
+- [Project plan](https://git.fhict.nl/I454066/transitspot/-/blob/master/Documentation/ProjPlanITS_V0.1.5.pdf)
+-- Backlog
+-- User Stories
+-- Prioritazation
+-- Estimation
 
 ### Design
-- [Wireframes](https://git.fhict.nl/I454066/prj-cb07-group1/-/tree/master/Documentation/Wireframes.pdf)
-### Suppoting documentation
-- [Meeting agendas](https://git.fhict.nl/I454066/prj-cb07-group1/-/tree/master/Documentation/Agendas)
-- [Meeting notes](https://git.fhict.nl/I454066/prj-cb07-group1/-/tree/master/Documentation/Notes)
-- [UML](https://git.fhict.nl/I454066/prj-cb07-group1/-/blob/master/Documentation/UML.pdf)
+- [Wireframes](https://git.fhict.nl/I454066/transitspot/-/tree/master/Wireframes/JPG)
 
