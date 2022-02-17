@@ -1,0 +1,19 @@
+﻿<Window x:Class="MediaBazaarApp.Popups.AutoScheduleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MediaBazaarApp.Popups"
+        mc:Ignorable="d"
+        Title="AutoScheduleWindow" Height="245.642" Width="592.546" ResizeMode="NoResize">
+    <Grid Background="#11589b">
+        <DatePicker x:Name="dtpStartDate" HorizontalAlignment="Left" Margin="46,55,0,0" VerticalAlignment="Top" Width="144"/>
+        <DatePicker x:Name="dtpEndDate" HorizontalAlignment="Left" Margin="426,55,0,0" VerticalAlignment="Top" Width="144"/>
+        <TextBox x:Name="tbAmount" HorizontalAlignment="Left" Height="23" Margin="246,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnProceed" Content="Proceed" HorizontalAlignment="Left" Margin="215,148,0,0" VerticalAlignment="Top" Width="174" Height="34" Click="btnProceed_Click"/>
+        <Label Content="From" HorizontalAlignment="Left" Margin="46,32,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="To" HorizontalAlignment="Left" Margin="426,32,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="People per shift" HorizontalAlignment="Left" Margin="246,32,0,0" VerticalAlignment="Top" Foreground="White"/>
+
+    </Grid>
+</Window>
